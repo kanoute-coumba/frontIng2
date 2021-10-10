@@ -1,4 +1,4 @@
-package episen.pds.citizens.FrontEnd;
+package episen.pds.citizens.frontend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Web Application</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<h2 class="h2">Liste des employées</h2>
+<table id="test">
+    <tbody>
+
+    </tbody>
+</table>
+<script>
+    function loadTest() {
+        $('#test tbody')[0].innerHTML = '';
+        let data;
+        $.ajax({
+            dataType : "json",
+            url : 'https://jsonplaceholder.typicode.com/posts',
+            type : 'GET',
+            crossDomain : true,
+            success : function(msg) {
+                console.log(msg);
+                data = msg;
+            }
+
+        }).then(()=>{
+            console.log(data);
+            for(let i = 0; i < 10; i++) {
+                $('#test tbody')[0].innerHTML += '<tr>' +
+                    '<td>' + data[i].id + '</td>' +
+                    '<td>' + data[i].title + '</td>' +
+                    '<td>' + data[i].body + '</td></tr>';
+            }
+        });
+    }
+
+    function loadTestT() {
+        $('#test tbody')[0].innerHTML = '';
+        let data;
+        $.ajax({
+            dataType: "json",
+            url : 'http://172.31.249.1:9000/Test',
+            type : 'GET',
+            crossDomain : true,
+            success : function(msg) {
+                console.log(msg);
+                data = msg;
+            }
+
+        }).then(()=>{
+            console.log(data);
+            for(let i = 0; i < data.length; i++) {
+                $('#test tbody')[0].innerHTML += '<tr>' +
+                    '<td>' + data[i].name + '</td>' +
+                    '<td>' + data[i].id + '</td></tr>';
+            }
+        });
+    }
+
+    loadTestT();
+</script>
+</body>
+</html>

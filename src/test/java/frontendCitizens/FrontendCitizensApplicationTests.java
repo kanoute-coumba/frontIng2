@@ -1,10 +1,10 @@
-package episen.pds.citizens.FrontEnd;
+package frontendCitizens;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FrontEndApplicationTests {
+class FrontendCitizensApplicationTests {
 
 	@Test
 	void contextLoads() {

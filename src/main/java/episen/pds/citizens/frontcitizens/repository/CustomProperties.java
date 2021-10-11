@@ -11,6 +11,6 @@ import lombok.Data;
 @Data
 public class CustomProperties {
 
-    private String apiUrl = "https://jsonplaceholder.typicode.com";
+    private String apiUrl = "http://172.31.249.1:9000";
 
 }

@@ -15,14 +15,14 @@ import lombok.Data;
 public class TestService {
 
     @Autowired
-    private TestProxy testProxy;
+    private TestProxy testProxy = new TestProxy();
 
 
     public Iterable<Test> getTests() {
         return testProxy.getTests();
     }
 
-    public Test getTest() {
+    public Iterable<Test> getTest() {
         return testProxy.getTest();
     }
 

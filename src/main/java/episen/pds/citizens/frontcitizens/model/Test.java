@@ -7,10 +7,6 @@ public class Test {
 
     private Integer id;
 
-    private String userId;
-
-    private String title;
-
-    private String body;
+    private String name;
 
 }

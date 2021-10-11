@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class TestProxy {
 
     @Autowired
-    private CustomProperties props;
+    private CustomProperties props = new CustomProperties();
 
     public Iterable<Test> getTests() {
         String baseApiUrl = props.getApiUrl();
@@ -69,20 +69,22 @@ public class TestProxy {
         return response.getBody();
     }
 
-    public Test getTest() {
+    public Iterable<Test> getTest() {
         String baseApiUrl = props.getApiUrl();
-        String createTestUrl = baseApiUrl + "/posts/1";
+        String getEmployeesUrl = baseApiUrl + "/Test";
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Test> response = restTemplate.exchange(
-                createTestUrl,
+        ResponseEntity<Iterable<Test>> response = restTemplate.exchange(
+                getEmployeesUrl,
                 HttpMethod.GET,
                 null,
-                Test.class);
+                new ParameterizedTypeReference<Iterable<Test>>() {}
+        );
 
-        log.debug("Get Test call " + response.getStatusCode().toString());
+        log.debug("Get Employees call " + response.getStatusCode().toString());
 
         return response.getBody();
     }
-    
+
+
 }

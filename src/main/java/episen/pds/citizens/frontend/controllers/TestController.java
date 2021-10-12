@@ -16,41 +16,48 @@ public class TestController {
 
     private TestService testService = new TestService();
 
-
-    @GetMapping("/home")
-    public String home() {
-        System.out.println("Réussir");
-        System.out.println(testService);
-
-        return "home";
-    }
-
-    @GetMapping("/deleteTest/{id}")
-    public ModelAndView deleteTest(@PathVariable("id") final int id) {
-        System.out.println(testService);
-        testService.deleteTest(id);
-        return new ModelAndView("redirect:/");
-    }
+//
+//    @GetMapping("/home")
+//    public String home() {
+//        System.out.println("Réussir");
+//        System.out.println(testService);
+//
+//        return "home";
+//    }
+//
+//    @GetMapping("/deleteTest/{id}")
+//    public ModelAndView deleteTest(@PathVariable("id") final int id) {
+//        System.out.println(testService);
+//        testService.deleteTest(id);
+//        return new ModelAndView("redirect:/");
+//    }
 
     @GetMapping("/h")
     public String home(Model model) {
         Iterable<Test> listTest = testService.getTest();
         model.addAttribute("tests", listTest);
-        Test t1 = new Test();
+        //Test t1 = new Test();
 
-        model.addAttribute("test", t1);
+        //model.addAttribute("test", t1);
 
-        return "home";
+        return "index";
+    }
+
+    @GetMapping("/showNewTestForm")
+    public String showNewTestForm(Model model) {
+        Test test1 = new Test();
+        model.addAttribute("test", test1);
+        return "newTest";
     }
 
     @PostMapping("/saveTest")
     public String saveTest(Model model, @ModelAttribute Test test) {
         //ModelAttribut récupère l'objet crée
-
-        model.addAttribute("t1", test);
-
+        model.addAttribute("listTest", testService.getTest());
         testService.saveTest(test);
-        return "test";
+        return "redirect:/";
         // ModelAndView("redirect:/");
     }
+
+
 }

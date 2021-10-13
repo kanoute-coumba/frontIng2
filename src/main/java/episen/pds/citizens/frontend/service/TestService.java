@@ -1,9 +1,9 @@
-package service;
+package episen.pds.citizens.frontend.service;
 
-import repository.TestProxy;
+import episen.pds.citizens.frontend.repository.TestProxy;
 import lombok.Data;
 
-import model.Test;
+import episen.pds.citizens.frontend.model.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

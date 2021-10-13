@@ -1,8 +1,8 @@
-package repository;
+package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
 import lombok.extern.slf4j.Slf4j;
-import model.Test;
+import episen.pds.citizens.frontend.model.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -40,12 +40,12 @@ public class TestProxy {
 
     public Test createTest(Test e) {
         String baseApiUrl = props.getApiUrl();
-        String createEmployeeUrl = baseApiUrl + "/Form";
+        String createTestUrl = baseApiUrl + "/Form";
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Test> request = new HttpEntity<Test>(e);
         ResponseEntity<Test> response = restTemplate.exchange(
-                createEmployeeUrl,
+                createTestUrl,
                 HttpMethod.POST,
                 request,
                 Test.class);

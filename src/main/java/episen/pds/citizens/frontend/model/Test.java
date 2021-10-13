@@ -1,4 +1,4 @@
-package model;
+package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 

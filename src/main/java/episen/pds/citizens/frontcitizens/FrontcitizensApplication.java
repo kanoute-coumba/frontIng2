@@ -9,12 +9,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import lombok.Data;
 
+import java.util.logging.Logger;
+
 @Data
 @SpringBootApplication
 public class FrontcitizensApplication implements FrontcitizensApplicationOverride {
 
 	@Autowired
 	private CustomProperties properties;
+	private static final Logger logger = Logger.getLogger(FrontcitizensApplication.class.getName());
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(FrontcitizensApplication.class, args);
@@ -22,7 +26,7 @@ public class FrontcitizensApplication implements FrontcitizensApplicationOverrid
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(properties.getApiUrl());
+		logger.config(properties.getApiUrl());
 	}
 
 }

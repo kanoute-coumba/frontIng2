@@ -4,11 +4,9 @@ import lombok.Data;
 
 @Data
 public class Test {
-    private Integer id;
-    private String name;
-
-
-
+    private int id;
+    private String lastname;
+    private String firstname;
 
 }
 

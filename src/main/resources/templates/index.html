@@ -14,13 +14,18 @@
         <thead>
         <tr>
             <th>id</th>
-            <th>name</th>
+            <th>firstname</th>
+            <th>lastname</th>
+
         </tr>
         </thead>
         <tbody>
         <tr th:each="test : ${tests}">
             <td th:text="${test.id}"></td>
-            <td th:text="${test.name}"></td>
+            <td th:text="${test.firstname}"></td>
+            <td th:text="${test.lastname}"></td>
+
+
         </tr>
 
         </tbody>

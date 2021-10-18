@@ -49,6 +49,7 @@ public class TestProxy {
                 HttpMethod.POST,
                 request,
                 Test.class);
+        System.out.println(request);
 
         log.debug("Create Test call " + response.getStatusCode().toString());
 

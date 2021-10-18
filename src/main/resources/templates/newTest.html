@@ -12,9 +12,13 @@
     <h2>Save Test</h2>
     <form action="#" method="post" th:action="@{/saveTest}" th:object="${test}">
         <label>id:</label> <input name="id" type="text" th:field="*{id}"/>
-        <label>Name:</label> <input name="name" type="text" th:field="*{name}"/>
+        <label>firstname:</label> <input name="firstname" type="text" th:field="*{firstname}"/>
+        <label>lastname:</label> <input name="lastname" type="text" th:field="*{lastname}"/>
+
         <input type="submit" value="Sauvegarder"/>
     </form>
+
+
 
 
     <br/>

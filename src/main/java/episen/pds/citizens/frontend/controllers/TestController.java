@@ -50,6 +50,7 @@ public class TestController {
 
     @PostMapping("/saveTest")
     public String saveTest(Model model, @ModelAttribute Test test) {
+        System.out.println(test);
         //ModelAttribut récupère l'objet crée
         model.addAttribute("listTest", testService.getTest());
         testService.saveTest(test);

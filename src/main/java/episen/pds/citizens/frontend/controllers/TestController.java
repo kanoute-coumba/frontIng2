@@ -33,7 +33,7 @@ public class TestController {
     }
 
     @GetMapping("/h")
-    public String home(Model model) {
+    public String getListTest(Model model) {
         Iterable<Test> listTest = testService.getTest();
         model.addAttribute("tests", listTest);
         return "index";

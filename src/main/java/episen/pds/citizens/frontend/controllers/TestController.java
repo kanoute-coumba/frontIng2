@@ -52,7 +52,7 @@ public class TestController {
         //ModelAttribut récupère l'objet crée
         model.addAttribute("listTest", testService.getTest());
         testService.saveTest(test);
-        return "redirect:/";
+        return "redirect:/h";
         // ModelAndView("redirect:/");
     }
 

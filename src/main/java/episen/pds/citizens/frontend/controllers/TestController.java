@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import episen.pds.citizens.frontend.service.TestService;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TestController {
@@ -23,21 +25,17 @@ public class TestController {
 //        return "home";
 //    }
 //
-//    @GetMapping("/deleteTest/{id}")
-//    public ModelAndView deleteTest(@PathVariable("id") final int id) {
-//        System.out.println(testService);
-//        testService.deleteTest(id);
-//        return new ModelAndView("redirect:/");
-//    }
+    @GetMapping("/deleteTest/{id}")
+    public ModelAndView deleteTest(@PathVariable("id") final int id) {
+        System.out.println(testService);
+        testService.deleteTest(id);
+        return new ModelAndView("redirect:/h");
+    }
 
     @GetMapping("/h")
     public String home(Model model) {
         Iterable<Test> listTest = testService.getTest();
         model.addAttribute("tests", listTest);
-        //Test t1 = new Test();
-
-        //model.addAttribute("test", t1);
-
         return "index";
     }
 

@@ -24,6 +24,9 @@
             <td th:text="${test.id}"></td>
             <td th:text="${test.firstname}"></td>
             <td th:text="${test.lastname}"></td>
+            <td><a th:href="@{/showNewTestForm}" class="btn btn-link btn-sm mb-3"> Mettre à jour </a>
+                <br/>
+                <a th:href="@{/deleteTest/{id}(id=${test.id})}" class="btn btn-link btn-sm mb-3"> Supprimer </a></td>
 
 
         </tr>
@@ -31,10 +34,12 @@
         </tbody>
     </table>
     <br/>
-    <a th:href = "@{/showNewTestForm}" class="btn btn-link btn-sm mb-3"> Ajouter </a>
+    <a th:href="@{/showNewTestForm}" class="btn btn-link btn-sm mb-3"> Ajouter </a>
+
 
 
 </div>
+
 
 </body>
 </html>

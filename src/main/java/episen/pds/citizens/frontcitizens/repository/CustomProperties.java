@@ -10,7 +10,5 @@ import lombok.Data;
 @ConfigurationProperties(prefix = "episen.pds.frontcitizens")
 @Data
 public class CustomProperties {
-
     private String apiUrl = "http://172.31.249.1:9000";
-
 }

@@ -32,7 +32,7 @@ public class TestController {
         return new ModelAndView("redirect:/h");
     }
 
-    @GetMapping("/h")
+    @GetMapping("/")
     public String getListTest(Model model) {
         Iterable<Test> listTest = testService.getTest();
         model.addAttribute("tests", listTest);

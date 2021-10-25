@@ -43,6 +43,7 @@ public class TestService {
 
         // Règle de gestion : Le nom de famille doit être mis en majuscule.
         test.setFirstname(test.getFirstname().toUpperCase());
+
         savedTest = testProxy.createTest(test);
         // System.out.println(savedTest + "hh");
 

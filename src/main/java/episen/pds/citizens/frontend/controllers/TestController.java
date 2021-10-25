@@ -28,7 +28,7 @@ public class TestController {
     @GetMapping("/deleteTest/{id}")
     public ModelAndView deleteTest(@PathVariable("id") final int id) {
         testService.deleteTest(id);
-        return new ModelAndView("redirect:/h");
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/")

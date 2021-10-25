@@ -9,13 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>episen.pds.citizens</groupId>
-	<artifactId>frontcitizens</artifactId>
+	<artifactId>citizens-frontend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>frontcitizens</name>
+	<name>citizens-frontend</name>
 	<description>Test Spring Front</description>
     <properties>
-        <java.version>14</java.version>
-        <maven.compiler.target>14</maven.compiler.target>
+        <java.version>16</java.version>
+        <maven.compiler.target>16</maven.compiler.target>
     </properties>
 	<dependencies>
 		<dependency>

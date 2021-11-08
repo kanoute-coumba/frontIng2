@@ -73,9 +73,20 @@ var chartResaParSalle = new Chart(ctxChartResaParSalle, {
 // ========================================
 
 $('body').on('click', '.action-salle .btn', function(e) {
-    $('#exampleModal').modal('show');
+    var title = '';
+    if($(this).hasClass('btn-primary')) {
+        title = 'Caméra';
+        $('#exampleModal .modal-body')[0].innerHTML = '<img src="/image/salle.jpg">'
+    } else if($(this).hasClass('btn-warning')) {
+        title = 'Alerte';
+        $('#exampleModal .modal-body')[0].innerHTML = '<div class="title-alerte">Alerte envoyée</div>'
+    }
+    $('#exampleModalLabel')[0].innerHTML = title;
+    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+    myModal.show();
 });
 
 $('body').on('click', '#exampleModal .close', function(e) {
-    $('#exampleModal').modal('hide');
+    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+    myModal.hide();
 });

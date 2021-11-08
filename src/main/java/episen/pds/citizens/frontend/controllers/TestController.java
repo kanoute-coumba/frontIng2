@@ -54,5 +54,16 @@ public class TestController {
         // ModelAndView("redirect:/");
     }
 
+    @GetMapping("/authen")
+   public String Authentification() {
+
+        return "authentification";
+   }
+
+   @GetMapping("/piece")
+   public String DisplayPiece() {
+        return "displayPiece";
+   }
+
 
 }

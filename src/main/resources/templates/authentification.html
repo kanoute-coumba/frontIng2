@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentification</title>
+</head>
+<body>
+<form>
+<div align="center" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+    <label for="pet-select"> Choississez votre habitation:</label><br>
+
+    <select name="nameHabitation" id="pet-select" size="1" style="margin-top:15px; margin-bottom:15px">
+        <option selected>Open this select menu</option>
+        <option value="Maison A">Maison A</option>
+        <option value="Maison B">Maison B</option>
+        <option value="Maison C">Maison C</option>
+        <option value="Maison D">Maison D</option>
+        <option value="Maison E">Maison E</option>
+        <option value="Maison F">Maison F</option>
+    </select><br>
+
+    <a th:href="@{/piece}" class="btn btn-primary" role="button" style="margin-left:100px">Valider</a>
+
+</div>
+</form>
+
+
+</body>
+</html>

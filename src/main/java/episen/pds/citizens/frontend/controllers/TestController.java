@@ -53,6 +53,20 @@ public class TestController {
         return "redirect:/";
         // ModelAndView("redirect:/");
     }
+    @GetMapping("/authen")
+    public String Authentification() {
 
+        return "authentification";
+    }
+
+    @GetMapping("/piece")
+    public String DisplayPiece() {
+        return "displayPiece";
+    }
+
+    @GetMapping("/eclaire")
+    public String equipEclairage() {
+        return "eclairage";
+    }
 
 }

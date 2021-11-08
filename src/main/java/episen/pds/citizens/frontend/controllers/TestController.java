@@ -54,5 +54,10 @@ public class TestController {
         // ModelAndView("redirect:/");
     }
 
+    @GetMapping("/sallesReunion")
+    public String getsallesReunion(Model model) {
+        return "salles-reunion";
+    }
+
 
 }

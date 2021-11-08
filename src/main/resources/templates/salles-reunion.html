@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>UC 9</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Accueil</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Page 1</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Page 2</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Salles de réunion
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/sallesReunion">Services généraux</a>
+                    <a class="dropdown-item" href="#">Ecran salle de réunion</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- NAV BAR -->
+
+<div class="title-page">SERVICES GENERAUX</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div id="container-chartSalleRes">
+            <canvas id="chartSalleRes"></canvas>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div id="container-chartResaParSalle">
+            <canvas id="chartResaParSalle"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top:50px">
+    <div class="col-sm-6">
+        <div class="liste-salle-reunion">
+            <div class="title-liste-salle">Liste des salles réservées cette heure</div>
+            <hr>
+            <div id="liste-salle-reserve">
+                <div class="salle-element">
+                    <div class="nom-salle">- Salle de réunion 1 : réservée par Alexandre POINOT</div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle">- Salle de réunion 2 : réservée par Alexandre POINOT</div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="liste-salle-reunion">
+            <div class="title-liste-salle">Liste des salles sans présence détectée</div>
+            <hr>
+            <div id="liste-salle-reserve-sans-presence">
+                <div class="salle-element">
+                    <div class="nom-salle">- Salle de réunion 1 : réservée par Alexandre POINOT</div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle">- Salle de réunion 2 : réservée par Alexandre POINOT</div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top:50px">
+    <div class="col-sm-6">
+        <div class="liste-salle-reunion">
+            <div class="title-liste-salle">Liste des alertes</div>
+            <hr>
+            <div id="liste-alerte">
+                <div class="salle-element">
+                    <div class="nom-salle">ALERTE ! Une présence est détectée dans la Salle de réunion 2
+                        <i class="fas fa-info-circle" title="08/11/2021 à 14:55"></i>
+                    </div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                        <button type="button" class="btn btn-warning">Alerte</button>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle">ALERTE ! Une personne à essayé de rentrer dans la Salle de réunion 4
+                        <i class="fas fa-info-circle" title="08/11/2021 à 12:38"></i>
+                    </div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                        <button type="button" class="btn btn-warning">Alerte</button>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle">ALERTE ! Une présence est détectée dans la Salle de réunion 2
+                        <i class="fas fa-info-circle" title="05/11/2021 à 17:56"></i>
+                    </div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                        <button type="button" class="btn btn-warning">Alerte</button>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle">ALERTE ! Une personne à essayé de rentrer dans la Salle de réunion 3
+                        <i class="fas fa-info-circle" title="05/11/2021 à 14:06"></i>
+                    </div>
+                    <div class="action-salle">
+                        <button type="button" class="btn btn-primary">Voir caméra</button>
+                        <button type="button" class="btn btn-warning">Alerte</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#exampleModal').modal('hide');">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/salles_reunion_js.js}" th:inline="javascript"></script>
+<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+</body>
+
+</html>

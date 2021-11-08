@@ -1,0 +1,57 @@
+.title-page {
+    font-size: 1.3em;
+    color: #484848;
+    font-weight: 700;
+    margin: 3vh 4vw;
+}
+
+#container-chartSalleRes {
+    width:20vw;
+    margin:auto;
+}
+
+#container-chartResaParSalle {
+    width:40vw;
+    margin:auto;
+}
+
+.liste-salle-reunion {
+    background-color : #222222e3;
+    color:white;
+    margin:auto;
+    width:40vw;
+    max-height:40vh;
+    overflow-y: auto;
+    padding:20px 15px;
+    border-radius:30px;
+}
+
+.title-liste-salle {
+    text-align:center;
+    font-weight:600;
+    font-size:1em;
+}
+
+.hr-liste-salle {
+    color : white;
+    width : 90%;
+    height : 5px;
+    margin: 15px auto;
+}
+
+.nom-salle, .action-salle {
+    padding-left : 20px;
+}
+
+.action-salle {
+    margin-top:5px
+}
+
+.row {
+    width:100%;
+}
+
+.nom-salle i {
+    float: right;
+    cursor: pointer;
+}

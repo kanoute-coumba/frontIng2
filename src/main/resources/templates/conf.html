@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="conf.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+<p> Configuration de la luminosité </p>
+<div style="center; " class="container">
+    <div id="stepProgressbar">
+        <div class="step">
+            <div class="bullet ">1</div>
+        </div>
+        <div class="step">
+            <div class="bullet ">2</div>
+        </div>
+        <div class="step">
+            <div class="bullet">3</div>
+        </div>
+        <div class="step">
+            <div class="bullet">4</div>
+        </div>
+    </div>
+
+    <div style="margin-left: 550px " id="main">
+        <button id="previousBtn">-</button>
+        <button id="nextBtn">+</button>
+    </div>
+
+    <div style="center" class="choixConfiguration">
+        <form>
+            <fieldset>
+                <legend>Choississez la position</legend>
+
+                <input type="radio" id="Nord" name="monster">
+                <label for="Nord">Nord</label><br/>
+
+                <input type="radio" id="Est" name="monster">
+                <label for="Est">Est</label><br/>
+
+                <input type="radio" id="Ouest" name="monster">
+                <label for="Ouest">Ouest</label> <br/>
+
+                <input type="radio" id="Sud" name="monster">
+                <label for="Sud">Sud</label>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+
+
+</body>
+<script src="app.js">
+</script>
+</html>

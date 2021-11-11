@@ -69,4 +69,9 @@ public class TestController {
         return "eclairage";
     }
 
+    @GetMapping("/conf")
+    public String configuration() {
+        return "conf";
+    }
+
 }

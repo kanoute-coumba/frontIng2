@@ -14,7 +14,7 @@
 
 
         <div>
-            Paramétrer de la Luminosité
+            Paramétrer de la Luminosité :
             <span id="rangeValueLuminosite">0</span> <br/>
             <Input class="rangeL" type="range"  value="0" min="0" max="100" onChange="rangeSlideL(this.value)" onmousemove="rangeSlideL(this.value)">
 
@@ -29,7 +29,7 @@
 
 
         <div style="margin-bottom: 30px">
-            Paramétrer de la Température
+            Paramétrer de la Température :
             <span id="rangeValueTemperature">0</span> <br/>
             <Input class="rangeT" type="range"  value="0" min="0" max="100" onChange="rangeSlideT(this.value)" onmousemove="rangeSlideT(this.value)">
 
@@ -42,10 +42,10 @@
     </script>
 
         <div  style="display : flex">
-            <a th:href="@{/eclaire}" class="btn btn-primary" role="button"  >
+            <a th:href="@{/configurationAutomatique}" class="btn btn-primary" role="button"  >
                 <button type="button" class="btn btn-dark">Automatique</button>
             </a>
-            <a th:href="@{/piece}" class="btn btn-primary" role="button"style="margin-left: 5px" >
+            <a th:href="@{/configurationManuel}" class="btn btn-primary" role="button"style="margin-left: 5px" >
                 <button type="button" class="btn btn-dark">Manuel</button>
             </a>
         </div>

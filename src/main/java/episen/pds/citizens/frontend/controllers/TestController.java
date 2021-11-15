@@ -64,9 +64,14 @@ public class TestController {
         return "displayPiece";
     }
 
-    @GetMapping("/eclaire")
-    public String equipEclairage() {
-        return "eclairage";
+    @GetMapping("/configurationAutomatique")
+    public String equipAutomatic() {
+        return "configAuto";
+    }
+
+    @GetMapping("/configurationManuel")
+    public String equipManuel() {
+        return "configManu";
     }
 
     @GetMapping("/conf")

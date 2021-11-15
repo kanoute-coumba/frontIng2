@@ -30,25 +30,19 @@
         <button id="nextBtn">+</button>
     </div>
 
-    <div style="center" class="choixConfiguration">
-        <form>
-            <fieldset>
-                <legend>Choississez la position</legend>
+<div>
+    <div>
+        <h2 id="rangeValue">0</h2>
+        <input type="range" value="0" min="0" max="100" onchange="rangeSlide(this.value)"
+               onmousemove="rangeSlide(this.value)">
 
-                <input type="radio" id="Nord" name="monster">
-                <label for="Nord">Nord</label><br/>
-
-                <input type="radio" id="Est" name="monster">
-                <label for="Est">Est</label><br/>
-
-                <input type="radio" id="Ouest" name="monster">
-                <label for="Ouest">Ouest</label> <br/>
-
-                <input type="radio" id="Sud" name="monster">
-                <label for="Sud">Sud</label>
-            </fieldset>
-        </form>
     </div>
+    <script type="test">
+               function rangeSlide(value) {
+               document.getElementById('rangeValue').innerHTML = value;
+               }
+        </script>
+</div>
 
 </div>
 

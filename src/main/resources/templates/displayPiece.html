@@ -10,50 +10,127 @@
 
 <div style="display:flex">
     <div class="box" style="background-color:SteelBlue">&nbsp;
-        <div style="margin-bottom:30px" > Chambre </div>
-       <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Eclairage</button> </a>
-       <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Climatisation</button> </a>
-       <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Radiateur</button> </a>
-       <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Fenêtre</button> </a>
-       <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Store</button> </a>
+        <div style="margin-bottom:30px"> Chambre</div>
+
+
+        <div>
+            Paramétrer de la Luminosité
+            <span id="rangeValueLuminosite">0</span> <br/>
+            <Input class="rangeL" type="range"  value="0" min="0" max="100" onChange="rangeSlideL(this.value)" onmousemove="rangeSlideL(this.value)">
+
+
+        </div>
+        <script type="text/javascript">
+        function rangeSlideL(value) {
+            document.getElementById('rangeValueLuminosite').innerHTML = value;
+        }
+    </script>
+
+
+
+        <div style="margin-bottom: 30px">
+            Paramétrer de la Température
+            <span id="rangeValueTemperature">0</span> <br/>
+            <Input class="rangeT" type="range"  value="0" min="0" max="100" onChange="rangeSlideT(this.value)" onmousemove="rangeSlideT(this.value)">
+
+
+        </div>
+        <script type="text/javascript">
+        function rangeSlideT(value) {
+            document.getElementById('rangeValueTemperature').innerHTML = value;
+        }
+    </script>
+
+        <div  style="display : flex">
+            <a th:href="@{/eclaire}" class="btn btn-primary" role="button"  >
+                <button type="button" class="btn btn-dark">Automatique</button>
+            </a>
+            <a th:href="@{/piece}" class="btn btn-primary" role="button"style="margin-left: 5px" >
+                <button type="button" class="btn btn-dark">Manuel</button>
+            </a>
+        </div>
+
+
     </div>
 
     <div class="box" style="background-color:DarkSeaGreen">&nbsp;
-        <div style="margin-bottom:30px"> Salon </div>
-        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Eclairage</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Climatisation</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Radiateur</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Fenêtre</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Store</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Télévision</button> </a>
+        <div style="margin-bottom:30px"> Salon</div>
+        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Eclairage</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Climatisation</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Radiateur</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Fenêtre</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Store</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Télévision</button>
+        </a>
 
     </div>
 </div>
 <div style="display:flex">
     <div class="box" style="background-color:DarkGray">&nbsp;
         <div style="margin-bottom:30px">Cuisine</div>
-        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Eclairage</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Climatisation</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Radiateur</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Fenêtre</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Store</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Lave-vaiselle</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Four</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Table-cuisson</button> </a>
+        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Eclairage</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Climatisation</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Radiateur</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Fenêtre</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Store</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Lave-vaiselle</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Four</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Table-cuisson</button>
+        </a>
 
     </div>
     <div class="box">&nbsp;
-        <div style="margin-bottom:30px"> Salle de bain </div>
-        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Eclairage</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Climatisation</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Radiateur</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Fenêtre</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Store</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Lave-linge</button> </a>
-        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex "><button type="button" class="btn btn-dark">Aspirateur-robot</button> </a>
+        <div style="margin-bottom:30px"> Salle de bain</div>
+        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Eclairage</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Climatisation</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Radiateur</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Fenêtre</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Store</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Lave-linge</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Aspirateur-robot</button>
+        </a>
 
 
-        </div>
+    </div>
 </div>
 
 

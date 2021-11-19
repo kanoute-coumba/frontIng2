@@ -2,6 +2,7 @@ package episen.pds.citizens.frontend.controllers;
 
 
 import episen.pds.citizens.frontend.model.Test;
+import episen.pds.citizens.frontend.service.EquipmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class TestController {
 
     private TestService testService = new TestService();
+    private EquipmentService equipmentService = new EquipmentService();
 
 //
 //    @GetMapping("/home")
@@ -65,7 +67,14 @@ public class TestController {
     }
 
     @GetMapping("/configurationAutomatique")
-    public String equipAutomatic() {
+    public String equipAutomatic(Model model) {
+        String type_equipment="Auto";
+        String locations= "Chambre";
+        Iterable<String> equipment = equipmentService.getListEquipment(type_equipment, locations);
+        System.out.println(equipment);
+        model.addAttribute("listequip", equipment);
+
+
         return "configAuto";
     }
 

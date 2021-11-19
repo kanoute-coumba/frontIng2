@@ -10,20 +10,18 @@
 
 <form>
     <div align="center" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
-        <label for="pet-select"> Choississez le l'appareil à configurer </label><br>
+        <label for="pet-select"> Choississez l'appareil à configurer </label><br>
 
         <select name="equipement" id="pet-select" size="1" style="margin-top:15px; margin-bottom:15px">
-            <option selected>Open this select menu</option>
-            <option value="1">Lampe</option>
-            <option value="2">Climatisation</option>
-            <option value="3">Radiateur</option>
-            <option value="4">Fenêtre Nord</option>
-            <option value="5">Fenêtre Est</option>
-            <option value="6">Store Nord </option>
-            <option value="7">Store Est </option>
+
+            <option value = "">equipement</option>
+            <option th:each="equipment : ${listequip}"
+            th:value="${equipment}"
+            th:utext="${equipment}"/>
+
         </select><br>
 
-        <a th:href="@{/configurationAutomatique}" class="btn btn-primary" role="button" style="margin-left:100px"><button type="button" class="btn btn-primary">Valider</button></a>
+        <a  class="btn btn-primary" role="button" style="margin-left:100px"><button type="button" class="btn btn-primary">Valider</button></a>
 
 
     </div>

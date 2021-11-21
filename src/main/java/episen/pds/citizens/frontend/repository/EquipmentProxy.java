@@ -21,9 +21,9 @@ public class EquipmentProxy {
     private static CustomProperties props = new CustomProperties();
     private static final Logger logger = Logger.getLogger(EquipmentProxy.class.getName());
 
-    public static Iterable<String> getEquipment(String variable1, String variable2) {
+    public static Iterable<String> getEquipment(Integer variable1, Integer variable2) {
         String baseApiUrl = props.getApiUrl();
-        String getEquipmentUrl = baseApiUrl + "/ListEquipment?typEquipement="+ variable1 +"&location="+variable2;
+        String getEquipmentUrl = baseApiUrl + "/ListEquipment?id_room="+ variable1 +"&id_floor="+variable2;
 
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();

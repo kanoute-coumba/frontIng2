@@ -68,9 +68,9 @@ public class TestController {
 
     @GetMapping("/configurationAutomatique")
     public String equipAutomatic(Model model) {
-        String type_equipment="Auto";
-        String locations= "Chambre";
-        Iterable<String> equipment = equipmentService.getListEquipment(type_equipment, locations);
+        Integer id_room= 1;
+        Integer id_floor= 1;
+        Iterable<String> equipment = equipmentService.getListEquipment(id_room, id_floor);
         System.out.println(equipment);
         model.addAttribute("listequip", equipment);
 

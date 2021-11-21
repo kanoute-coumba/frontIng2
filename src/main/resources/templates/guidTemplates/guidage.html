@@ -21,14 +21,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Accueil</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Architecture
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/planAcces">Plan d'accès</a>
-                    <a class="dropdown-item" href="/designInterieur">Design intérieur (Admin)</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/planAcces">Plan d'accès</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/designInterieur">Design Intérieur</a>
             </li>
         </ul>
     </div>
@@ -39,7 +36,7 @@
 <div class="title-page">Se faire guider</div>
 
 <style>
-    th  {border:5px solid #095484;}
+    th {border:5px solid #095484;}
     td {border:20px groove #1c87c9;}
 </style>
 
@@ -96,9 +93,8 @@
     <img src="https://www.jung.de/~mi/9930/16537/jung-knx-topologie.png" alt="" />
 </p>
 
-
-<script type="text/javascript" th:src="@{/salles_reunion_js.js}" th:inline="javascript"></script>
 <link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+
 </body>
 
 </html>

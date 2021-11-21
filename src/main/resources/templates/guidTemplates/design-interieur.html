@@ -11,6 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <script type="text/javascript">
+        function personalizeDesignBasic()
+        {
+            window.location.href = "http://localhost:9001/designInterieur/personalizeDesignBasic"
+        }
+        function personalizeDesignSquare()
+        {
+            window.location.href = "http://localhost:9001/designInterieur/personalizeDesignSquare"
+        }
+        function personalizeDesignParallel()
+        {
+            window.location.href = "http://localhost:9001/designInterieur/personalizeDesignParallel"
+        }
+    </script>
 </head>
 
 <body>
@@ -175,11 +189,11 @@
         </td>
     </tr>
     <tr style="text-align: center">
-        <td><button type="button" class="btn btn-primary"> Modèle Basique </button></td>
+        <td><button type="button" class="btn btn-primary" onclick="personalizeDesignBasic()"> Modèle Basique </button></td>
         <td style="color: #F5F5F5"> *** </td>
-        <td><button type="button" class="btn btn-primary"> Modèle Carré </button></td>
+        <td><button type="button" class="btn btn-primary" onclick="personalizeDesignSquare()"> Modèle Carré </button></td>
         <td style="color: #F5F5F5"> *** </td>
-        <td><button type="button" class="btn btn-primary"> Modèle Parallèle </button></td>
+        <td><button type="button" class="btn btn-primary" onclick="personalizeDesignParallel()"> Modèle Parallèle </button></td>
     </tr>
     </tbody>
 </table>
@@ -188,7 +202,7 @@
 <br><br><br><br><br><br>
 <p style="text-align: center;"><span style="font-size: large;"> T*F : Toilette Femme </span></p>
 <p style="text-align: center;"><span style="font-size: large;"> T*H : Toilette Homme </span></p>
-<p style="text-align: center;"><span style="font-size: large;"> A* : Ascenceur / Escaliers </span></p>
+<p style="text-align: center;"><span style="font-size: large;"> A* : Ascenceurs / Escaliers </span></p>
 <p style="text-align: center;"><span style="font-size: large;"> C* : Couloirs </span></p>
 
 

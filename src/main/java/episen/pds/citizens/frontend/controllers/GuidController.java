@@ -12,14 +12,29 @@ public class GuidController {
         return "guidTemplates/plan-acces";
     }
 
+    @GetMapping("/guidage")
+    public String getGuidage(Model model) {
+        return "guidTemplates/guidage";
+    }
+
     @GetMapping("/designInterieur")
     public String getDesignInterieur(Model model) {
         return "guidTemplates/design-interieur";
     }
 
-    @GetMapping("/guidage")
-    public String getGuidage(Model model) {
-        return "guidTemplates/guidage";
+    @GetMapping("/designInterieur/personalizeDesignBasic")
+    public String getPersonalizeDesignBasic(Model model) {
+        return "guidTemplates/personalize-design-basic";
+    }
+
+    @GetMapping("/designInterieur/personalizeDesignSquare")
+    public String getPersonalizeDesignSquare(Model model) {
+        return "guidTemplates/personalize-design-square";
+    }
+
+    @GetMapping("/designInterieur/personalizeDesignParallel")
+    public String getPersonalizeDesignParallel(Model model) {
+        return "guidTemplates/personalize-design-parallel";
     }
 
 }

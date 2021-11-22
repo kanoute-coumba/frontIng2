@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartGrid</title>
+</head>
+<body>
+    <p th:each="building : ${buildings}">
+        <span th:text="${building.id}"></span>
+        <span th:text="${building.name}"></span>
+        <span th:text="${building.address}"></span>
+    </p>
+</body>
+</html>

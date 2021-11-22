@@ -1,10 +1,12 @@
 package episen.pds.citizens.frontend.controllers;
 
+import episen.pds.citizens.frontend.model.Test;
 import episen.pds.citizens.frontend.service.UseMonitorService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+@Controller
 public class UseMonitorController {
     private UseMonitorService useMonitorService = new UseMonitorService();
 
@@ -15,7 +17,13 @@ public class UseMonitorController {
 
     @GetMapping("/monitor")
     public String getConsumptionByBuilding(Model model) {
-        return "consumption by building";
+        return "monitor";
     }
 
+    @GetMapping("/listRooms")
+    public String getRooms(Model model){
+        Iterable<Test> listRoom = useMonitorService.getRooms();
+        model.addAttribute("room", listRoom);
+        return "configmanu";
+    }
 }

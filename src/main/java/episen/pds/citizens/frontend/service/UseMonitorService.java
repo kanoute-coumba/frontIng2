@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.service;
 
 import episen.pds.citizens.frontend.model.ConsumptionByBuilding;
+import episen.pds.citizens.frontend.model.Test;
 import episen.pds.citizens.frontend.repository.UseMonitorProxy;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,4 +16,7 @@ public class UseMonitorService {
         return useMonitorProxy.getConsumptionByBuilding();
     }
 
+    public Iterable<Test> getRooms() {
+        return  useMonitorProxy.getRoomsWithConsumption();
+    }
 }

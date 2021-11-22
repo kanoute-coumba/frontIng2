@@ -6,22 +6,22 @@
 </head>
 <body>
 <h2 class="h2">Liste des Equipement avec leurs consommations</h2>
-<table>
+<table id="test" border="1" class="table table-striped table responsive-md">
     <thead>
     <tr>
-        <th>id_equipment</th>
-        <th>id_room</th>
-        <th>type</th>
-        <th>value</th>
+        <th>numéro de l'équipement</th>
+        <th>numéro de la salle</th>
+        <th>type de l'équipement</th>
+        <th>consommation de l'équipement</th>
     </tr>
     </thead>
     <tbody>
     </tr>
     <tr th:each="equip: ${equipmentWithConsumption}">
-        <td><span th:int="${equip.id_equipment}"> id_equipment </span></td>
-        <td><span th:int="${equip.id_room}"> id_room </span></td>
-        <td><span th:text="${equip.type}"> type </span></td>
-        <td><span th:float="${equip.value}"> value </span></td>
+        <td><span th:text="${equip.id_equipment}"> numéro de l'équipement </span></td>
+        <td><span th:text="${equip.id_room}"> numéro de la salle </span></td>
+        <td><span th:text="${equip.type}"> type de l'équipement </span></td>
+        <td><span th:text="${equip.value}"> consommation de l'équipement </span></td>
 
     </tr>
     </tbody>

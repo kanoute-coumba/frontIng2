@@ -23,9 +23,9 @@ public class EquipmentProxy {
     private static CustomProperties props = new CustomProperties();
     private static final Logger logger = Logger.getLogger(EquipmentProxy.class.getName());
 
-    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumption() {
+    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumption(int id_b) {
         String baseApiUrl = props.getApiUrl();
-        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentByConsumption";
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentByConsumption/"+id_b;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(

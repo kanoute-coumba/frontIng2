@@ -17,8 +17,8 @@ public class EquipmentService {
     private EquipmentProxy equipmentProxy = new EquipmentProxy();
     private static final Logger logger = Logger.getLogger(EquipmentService.class.getName());
 
-    public Iterable<EquipmentWithConsumption> getEquipmentWithConsumption() {
-        return EquipmentProxy.getEquipmentWithConsumption();
+    public Iterable<EquipmentWithConsumption> getEquipmentWithConsumption(int id_b) {
+        return EquipmentProxy.getEquipmentWithConsumption(id_b);
 
     }
 }

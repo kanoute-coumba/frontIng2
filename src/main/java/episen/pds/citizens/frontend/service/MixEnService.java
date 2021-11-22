@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.service;
 
 import episen.pds.citizens.frontend.model.MixEn;
+import episen.pds.citizens.frontend.model.MixEnBySite;
 import episen.pds.citizens.frontend.repository.MixEnProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,6 +15,10 @@ public class MixEnService {
 
     public Iterable<MixEn> getMixEn(){
         return mixEnProxy.getCurrentMixEn();
+    }
+
+    public Iterable<MixEnBySite> getMixEnBySite(){
+        return mixEnProxy.getCurrentMixEnBySite();
     }
 
 }

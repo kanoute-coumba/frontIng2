@@ -34,6 +34,13 @@
             <th>Energie</th>
             <th>Proportion</th>
         </tr>
+
+        <tr th:each="mix : ${listMixEnByEn}">
+            <td th:text="${mix.address}"></td>
+            <th>energie</th>
+            <td><span th:text="${mix.mix}"></span>%</td>
+        </tr>
+
     </table>
 </div>
 </body>

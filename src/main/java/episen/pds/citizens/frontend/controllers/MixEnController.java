@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.MixEn;
+import episen.pds.citizens.frontend.model.MixEnBySite;
 import episen.pds.citizens.frontend.service.MixEnService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +14,18 @@ public class MixEnController {
     @GetMapping("/Mix")
     public String getListTest(Model model) {
 
-        Iterable<MixEn> listTest = mixEnService.getMixEn();
-        for(MixEn m : listTest) {
-            if (m.getAdress().equals("1 rue panneau solaire")) {
+        Iterable<MixEn> listMixEn = mixEnService.getMixEn();
+        for(MixEn m : listMixEn) {
+            if (m.getNameBuilding().equals("solaire")) {
                 model.addAttribute("panneauSolaire", m.getMix());
             }
-            if (m.getAdress().equals("1 rue eolienne")) {
+            if (m.getNameBuilding().equals("eolienne")) {
                 model.addAttribute("eolienne", m.getMix());
             }
         }
+
+        Iterable<MixEnBySite> listMixEnByEn = mixEnService.getMixEnBySite();
+        model.addAttribute("listMixEnByEn", listMixEnByEn);
         return "currentMix";
     }
 }

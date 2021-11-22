@@ -2,6 +2,7 @@ package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.MixEn;
+import episen.pds.citizens.frontend.model.MixEnBySite;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -39,4 +40,24 @@ public class MixEnProxy {
 
 
     }
+    public static Iterable<MixEnBySite> getCurrentMixEnBySite() {
+        String baseApiUrl = props.getApiUrl();
+        String getTestUrl = baseApiUrl + "/MixBySite";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<MixEnBySite>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<MixEnBySite>>() {
+                }
+        );
+
+        //log.debug("Get Test call " + response.getStatusCode().toString());
+
+        return response.getBody();
+
+
+    }
+
 }

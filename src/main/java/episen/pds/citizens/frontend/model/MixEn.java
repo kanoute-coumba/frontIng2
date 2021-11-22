@@ -5,13 +5,13 @@ public class MixEn {
     private int mix;
 
 
-    private String address;
+    private String name_building;
 
     public MixEn(){}
 
     public MixEn(int mix, String address){
         this.mix=mix;
-        this.address=address;
+        this.name_building=address;
     }
 
     public int getMix(){
@@ -20,13 +20,13 @@ public class MixEn {
     public void setMix(int mix){
         this.mix=mix;
     }
-    public String getAdress(){
-        return address;
+    public String getNameBuilding(){
+        return name_building;
     }
-    public void setAdress(String address){
-        this.address=address;
+    public void setNameBuilding(String address){
+        this.name_building=address;
     }
     public String toString(){
-        return ""+address+" "+mix;
+        return ""+name_building+" "+mix;
     }
 }

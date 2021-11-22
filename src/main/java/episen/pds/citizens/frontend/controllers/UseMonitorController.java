@@ -22,8 +22,8 @@ public class UseMonitorController {
 
     @GetMapping("/listRooms")
     public String getRooms(Model model){
-        Iterable<RoomsWithConsumption> listRoom = useMonitorService.getRooms();
-        model.addAttribute("rooms", listRoom);
+        //Iterable<RoomsWithConsumption> listRoom = useMonitorService.getRooms();
+       // model.addAttribute("rooms", listRoom);
         return "showmyrooms";
     }
 }

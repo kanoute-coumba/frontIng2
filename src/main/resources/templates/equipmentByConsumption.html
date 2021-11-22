@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipment By Consumption</title>
+</head>
+<body>
+<h2 class="h2">Liste des Equipement avec leurs consommations</h2>
+<table>
+    <thead>
+    <tr>
+        <th>id_equipment</th>
+        <th>id_room</th>
+        <th>type</th>
+        <th>value</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tr>
+    <tr th:each="equip: ${equipmentWithConsumption}">
+        <td><span th:int="${equip.id_equipment}"> id_equipment </span></td>
+        <td><span th:int="${equip.id_room}"> id_room </span></td>
+        <td><span th:text="${equip.type}"> type </span></td>
+        <td><span th:float="${equip.value}"> value </span></td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

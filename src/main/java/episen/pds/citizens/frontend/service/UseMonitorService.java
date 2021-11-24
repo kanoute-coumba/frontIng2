@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.service;
 
 import episen.pds.citizens.frontend.model.ConsumptionByBuilding;
+import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.model.RoomsWithConsumption;
 import episen.pds.citizens.frontend.model.Test;
 import episen.pds.citizens.frontend.repository.UseMonitorProxy;
@@ -19,5 +20,9 @@ public class UseMonitorService {
 
     public Iterable<RoomsWithConsumption> getRooms() {
         return  useMonitorProxy.getRoomsWithConsumption();
+    }
+
+    public Iterable<Equipment> getEquipmentByRoom(int id_room) {
+        return useMonitorProxy.getEquipmentByRoom(id_room);
     }
 }

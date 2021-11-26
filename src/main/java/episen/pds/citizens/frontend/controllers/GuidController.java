@@ -3,6 +3,7 @@ package episen.pds.citizens.frontend.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GuidController {
@@ -35,6 +36,13 @@ public class GuidController {
     @GetMapping("/designInterieur/personalizeDesignParallel")
     public String getPersonalizeDesignParallel(Model model) {
         return "guidTemplates/personalize-design-parallel";
+    }
+
+    @GetMapping("/designInterieur/personalizeDesignBasic/create")
+    public String getPersonalizeDesignBasicCreation(@RequestParam(name = "os") String os, @RequestParam(name = "of") String of, Model model) {
+        model.addAttribute("os",os);
+        model.addAttribute("of",of);
+        return "guidTemplates/test";
     }
 
 }

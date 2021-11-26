@@ -9,19 +9,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{/guidCss/design.css}">
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
     <script type="text/javascript">
-        function personalizeDesignBasic()
-        {
+        function personalizeDesignBasic() {
             window.location.href = "http://localhost:9001/designInterieur/personalizeDesignBasic"
         }
-        function personalizeDesignSquare()
-        {
+        function personalizeDesignSquare() {
             window.location.href = "http://localhost:9001/designInterieur/personalizeDesignSquare"
         }
-        function personalizeDesignParallel()
-        {
+        function personalizeDesignParallel() {
             window.location.href = "http://localhost:9001/designInterieur/personalizeDesignParallel"
         }
     </script>
@@ -190,99 +188,26 @@
     </tr>
     <tr style="text-align: center">
         <td><button type="button" class="btn btn-primary" onclick="personalizeDesignBasic()"> Modèle Basique </button></td>
-        <td style="color: #F5F5F5"> *** </td>
+        <td style="color: #F5F5F5"> ******** </td>
         <td><button type="button" class="btn btn-primary" onclick="personalizeDesignSquare()"> Modèle Carré </button></td>
-        <td style="color: #F5F5F5"> *** </td>
+        <td style="color: #F5F5F5"> ******** </td>
         <td><button type="button" class="btn btn-primary" onclick="personalizeDesignParallel()"> Modèle Parallèle </button></td>
     </tr>
     </tbody>
 </table>
 </p>
 
-<br><br><br><br><br><br>
-<p style="text-align: center;"><span style="font-size: large;"> T*F : Toilette Femme </span></p>
-<p style="text-align: center;"><span style="font-size: large;"> T*H : Toilette Homme </span></p>
+<br><br><br>
+<p style="text-align: center;"><span style="font-size: large;"> T*F : Toilette / Vestiaire Femme </span></p>
+<p style="text-align: center;"><span style="font-size: large;"> T*H : Toilette / Vestiaire Homme </span></p>
 <p style="text-align: center;"><span style="font-size: large;"> A* : Ascenceurs / Escaliers </span></p>
 <p style="text-align: center;"><span style="font-size: large;"> C* : Couloirs </span></p>
-
-
-<style>
-    body {
-        width: 100%;
-        height: 100%;
-    }
-    .item {
-        position: absolute;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid black;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-    }
-    .item-content {
-        position: relative;
-        text-align: center;
-        font-size: 12px;
-        color: white;
-        cursor: pointer;
-    }
-    .plan1 {
-        position: relative;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        margin: 10% auto;
-    }
-    .plan2 {
-        position: relative;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        margin: 10% auto;
-    }
-    .plan3 {
-        position: relative;
-        width: 600px;
-        height: 200px;
-        border: 2px solid black;
-        margin: 10% auto;
-    }
-    .elevator        { background: black;      width: 5%;  height: 12%; }
-    .toilet          { background: green;      width: 5%;  height: 44%; }
-    .openSpace1      { background: orange;     width: 45%; height: 44%; }
-    .office1         { background: blueviolet; width: 45%; height: 44%; }
-    .individualRoom1 { background: coral;      width: 45%; height: 44%; }
-    .meetingRoom1    { background: violet;     width: 45%; height: 44%; }
-    .corridor1       { background: skyblue;    width: 90%; height: 12%; border: 0px;}
-    .openSpace2      { background: orange;     width: 90%; height: 17%; }
-    .office2         { background: blueviolet; width: 90%; height: 17%; }
-    .individualRoom2 { background: coral;      width: 80%; height: 23%; }
-    .meetingRoom2    { background: violet;     width: 80%; height: 23%; }
-    .corridor21      { background: skyblue;    width: 90%; height: 10%; border: 0px;}
-    .corridor22      { background: skyblue;    width: 90%; height: 10%; border: 0px;}
-    .corridor23      { background: skyblue;    width: 5%;  height: 46%; border: 0px;}
-    .corridor24      { background: skyblue;    width: 5%;  height: 46%; border: 0px;}
-    .openSpace3      { background: orange;     width: 80%; height: 18%; }
-    .office3         { background: blueviolet; width: 80%; height: 18%; }
-    .individualRoom3 { background: coral;      width: 80%; height: 18%; }
-    .meetingRoom3    { background: violet;     width: 80%; height: 18%; }
-    .corridor31      { background: skyblue;    width: 5%;  height: 100%; border: 0px;}
-    .corridor32      { background: skyblue;    width: 5%;  height: 100%; border: 0px;}
-    .corridor33      { background: skyblue;    width: 80%; height: 8%;   border: 0px;}
-    .corridor34      { background: skyblue;    width: 80%; height: 12%;  border: 0px;}
-    .corridor35      { background: skyblue;    width: 80%; height: 8%;   border: 0px;}
-</style>
 
 <script>
     var plan1 = new Muuri('.plan1', {dragEnabled: false, layout: {vertical: true}});
     var plan2 = new Muuri('.plan2', {dragEnabled: false, layout: {vertical: true}});
     var plan3 = new Muuri('.plan3', {dragEnabled: false, layout: {vertical: true}});
 </script>
-
-<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
 
 </body>
 </html>

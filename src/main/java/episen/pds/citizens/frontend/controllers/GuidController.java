@@ -8,41 +8,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GuidController {
 
-    @GetMapping("/planAcces")
-    public String getPlanAcces(Model model) {
-        return "guidTemplates/plan-acces";
+    @GetMapping("/accessMap")
+    public String getAccessMap(Model model) {
+        return "guidTemplates/access-map";
     }
 
-    @GetMapping("/guidage")
+    @GetMapping("/guidanceOption")
     public String getGuidage(Model model) {
-        return "guidTemplates/guidage";
+        return "guidTemplates/guidance-option";
     }
 
-    @GetMapping("/designInterieur")
-    public String getDesignInterieur(Model model) {
-        return "guidTemplates/design-interieur";
+    @GetMapping("/personalizeDesign")
+    public String getPersonalizeDesign(Model model) {
+        return "guidTemplates/personalizeTemplates/personalize-design";
     }
 
-    @GetMapping("/designInterieur/personalizeDesignBasic")
-    public String getPersonalizeDesignBasic(Model model) {
-        return "guidTemplates/personalize-design-basic";
+    @GetMapping("/personalizeDesign/designBasic")
+    public String getDesignBasic(Model model) {
+        return "guidTemplates/personalizeTemplates/design-basic";
     }
 
-    @GetMapping("/designInterieur/personalizeDesignSquare")
-    public String getPersonalizeDesignSquare(Model model) {
-        return "guidTemplates/personalize-design-square";
+    @GetMapping("/personalizeDesign/designSquare")
+    public String getDesignSquare(Model model) {
+        return "guidTemplates/personalizeTemplates/design-square";
     }
 
-    @GetMapping("/designInterieur/personalizeDesignParallel")
-    public String getPersonalizeDesignParallel(Model model) {
-        return "guidTemplates/personalize-design-parallel";
+    @GetMapping("/personalizeDesign/designParallel")
+    public String getDesignParallel(Model model) {
+        return "guidTemplates/personalizeTemplates/design-parallel";
     }
 
-    @GetMapping("/designInterieur/personalizeDesignBasic/create")
-    public String getPersonalizeDesignBasicCreation(@RequestParam(name = "os") String os, @RequestParam(name = "of") String of, Model model) {
-        model.addAttribute("os",os);
-        model.addAttribute("of",of);
-        return "guidTemplates/test";
+    @GetMapping("/personalizeDesign/designBasic/display")
+    public String getDisplayDesignBasic(Model model) {
+        return "guidTemplates/personalizeTemplates/design-basic-display";
+    }
+
+    @GetMapping("/personalizeDesign/designSquare/display")
+    public String getDisplayDesignSquare(Model model) {
+        return "guidTemplates/personalizeTemplates/design-square-display";
+    }
+
+    @GetMapping("/personalizeDesign/designParallel/display")
+    public String getDisplayDesignParallel(Model model) {
+        return "guidTemplates/personalizeTemplates/design-parallel-display";
     }
 
 }

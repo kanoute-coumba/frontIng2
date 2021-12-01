@@ -12,14 +12,12 @@
     <link rel="stylesheet" th:href="@{/guidCss/design.css}">
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
-<script>
-    function httpGet() {
-        var sel_os=document.getElementById("os");
-        var sel_of=document.getElementById("of");
-        window.open("http://localhost:9001/designInterieur/personalizeDesignBasic/create?os="+ sel_os.options[sel_os.selectedIndex].text +"&of="+  sel_of.options[sel_of.selectedIndex].text  ,"MyTargetWindowName");
+</head>
+<script type="text/javascript">
+    function saveDesign() {
+        // ici on doit sauvegarder la configuration
     }
 </script>
-</head>
 
 <body>
 
@@ -30,101 +28,106 @@
                 <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/planAcces">Plan d'accès</a>
+                <a class="nav-link" href="/accessMap">Plan d'accès</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/guidage">Se faire guider</a>
+                <a class="nav-link" href="/guidanceOption">Se faire guider</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div class="title-page">Personnalisation du design basique</div>
+<div class="title-page">Configuration Parallèle</div>
 
 <div class="plan0">
     <div class="item toilet">
         <div class="item-content">T1F</div>
     </div>
-    <div class="item openSpace1">
+    <div class="item openSpace2">
         <div class="item-content">Espace Ouvert</div>
-    </div>
-    <div class="item office1">
-        <div class="item-content ">Bureau</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2F</div>
     </div>
+    <div class="item corridor21">
+        <div class="item-content">C1</div>
+    </div>
+    <div class="item corridor24">
+        <div class="item-content">C4</div>
+    </div>
+    <div class="item individualRoom2">
+        <div class="item-content ">Salle individuelle</div>
+    </div>
+    <div class="item corridor23">
+        <div class="item-content">C3</div>
+    </div>
     <div class="item elevator">
         <div class="item-content">A1</div>
-    </div>
-    <div class="item corridor1">
-        <div class="item-content">Couloir</div>
     </div>
     <div class="item elevator">
         <div class="item-content">A2</div>
     </div>
-    <div class="item toilet">
-        <div class="item-content">T1H</div>
-    </div>
-    <div class="item meetingRoom1">
+    <div class="item meetingRoom2">
         <div class="item-content">Salle de réunion</div>
     </div>
-    <div class="item individualRoom1">
-        <div class="item-content">Salle individuelle</div>
+    <div class="item toilet">
+        <div class="item-content">T1H</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2H</div>
     </div>
+    <div class="item corridor22">
+        <div class="item-content">C2</div>
+    </div>
+    <div class="item office2">
+        <div class="item-content">Bureau</div>
+    </div>
 </div>
 
-<form method="post" action=""
 <p style="text-align: center; font-size: large;">
     Espace ouvert :     <input type="text" list="os" />
     <datalist id="os">
-        <option value="1">         <!-- 1 espaces de [45%;44%] -->
-        <option value="2">         <!-- 2 espaces de [22.5%;44%] -->
-        <option value="3">         <!-- 3 espaces de [15%;44%] -->
-        <option value="4">         <!-- 4 espaces de [11.25%;44%] -->
-        <option value="5">         <!-- 5 espaces de [9%;44%] -->
+        <option value="1">          <!-- 1 espaces de [90%;17%] -->
+        <option value="2">          <!-- 2 espaces de [45%;17%] -->
+        <option value="3">          <!-- 3 espaces de [30%;17%] -->
+        <option value="4">          <!-- 4 espaces de [22.5%;17%] -->
+        <option value="5">          <!-- 5 espaces de [18%;17%] -->
     </datalist>
 </p>
 <p style="text-align: center; font-size: large;">
     Bureau :     <input type="text" list="of" />
     <datalist id="of">
-        <option value="5">          <!-- 5 espaces de [9%;44%] -->
-        <option value="10">         <!-- 10 espaces de [4.5%;44%] -->
-        <option value="15">         <!-- 15 espaces de [3%;44%] -->
-        <option value="20">         <!-- 20 espaces de [2.25%;44%] -->
-        <option value="25">         <!-- 25 espaces de [1.8%;44%] -->
-        <option value="30">         <!-- 30 espaces de [1.5%;44%] -->
+        <option value="5">          <!-- 5 espaces de [18%;17%] -->
+        <option value="10">         <!-- 10 espaces de [9%;17%] -->
+        <option value="15">         <!-- 15 espaces de [6%;17%] -->
+        <option value="20">         <!-- 20 espaces de [4.5%;17%] -->
+        <option value="25">         <!-- 25 espaces de [3.6%;17%] -->
+        <option value="30">         <!-- 30 espaces de [3%;17%] -->
     </datalist>
 </p>
 <p style="text-align: center; font-size: large;">
     Salle de réunion :     <input type="text" list="mr" />
     <datalist id="mr">
-        <option value="1">         <!-- 1 espaces de [45%;44%] -->
-        <option value="2">         <!-- 2 espaces de [22.5%;44%] -->
-        <option value="3">         <!-- 3 espaces de [15%;44%] -->
-        <option value="4">         <!-- 4 espaces de [11.25%;44%] -->
-        <option value="5">         <!-- 5 espaces de [9%;44%] -->
+        <option value="1">         <!-- 1 espaces de [80%;23%] -->
+        <option value="2">         <!-- 2 espaces de [40%;23%] -->
+        <option value="4">         <!-- 4 espaces de [20%;23%] -->
+        <option value="5">         <!-- 5 espaces de [16%;23%] -->
     </datalist>
 </p>
 <p style="text-align: center; font-size: large;">
     Salle individuelle :     <input type="text" list="ir" />
     <datalist id="ir">
-        <option value="5">          <!-- 5 espaces de [9%;44%] -->
-        <option value="10">         <!-- 10 espaces de [4.5%;44%] -->
-        <option value="15">         <!-- 15 espaces de [3%;44%] -->
-        <option value="20">         <!-- 20 espaces de [2.25%;44%] -->
-        <option value="25">         <!-- 25 espaces de [1.8%;44%] -->
-        <option value="30">         <!-- 30 espaces de [1.5%;44%] -->
+        <option value="5">          <!-- 5 espaces de [16%;23%] -->
+        <option value="10">         <!-- 10 espaces de [8%;23%] -->
+        <option value="20">         <!-- 20 espaces de [4%;23%] -->
+        <option value="25">         <!-- 25 espaces de [3.2%;23%] -->
     </datalist>
 </p>
 
 <br><br>
 
 <p style="text-align: center;">
-    <button type="button" class="btn btn-primary" onclick="httpGet();">Définir ceci comme design du bâtiment</button>
+    <button type="button" class="btn btn-primary" onclick="saveDesign();">Enregistrer cette configration</button>
 </p>
 
 <script>

@@ -23,7 +23,7 @@ public class EquipmentProxy {
 
     public static Iterable<String> getEquipment(Integer variable1, Integer variable2) {
         String baseApiUrl = props.getApiUrl();
-        String getEquipmentUrl = baseApiUrl + "/ListEquipment?id_room="+ variable1 +"&id_floor="+variable2;
+        String getEquipmentUrl = baseApiUrl + "/ListEquipment?id_room=" + variable1 + "&id_floor=" + variable2;
 
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
@@ -42,4 +42,23 @@ public class EquipmentProxy {
 
     }
 
+    public static String getLampe(Integer id_room, Integer id_equipment) {
+        String baseApiUrl = props.getApiUrl();
+        String getEquipmentUrl = baseApiUrl + "/Lampe?id_room=" + id_room + "&id_equipment=" + id_equipment;
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }
+        );
+
+        log.debug("Get Equipment call " + response.getStatusCode().toString());
+
+        return response.getBody();
+
+    }
 }

@@ -62,7 +62,13 @@ public class TestController {
     }
 
     @GetMapping("/piece")
-    public String DisplayPiece() {
+    public String DisplayPiece(Model model) {
+        Integer id_room = 1;
+        Integer id_equipment = 8;
+        String equipLampe = equipmentService.equipmentLampe(id_room, id_equipment);
+        System.out.println(equipLampe);
+        model.addAttribute("nameEquip", equipLampe);
+
         return "displayPiece";
     }
 

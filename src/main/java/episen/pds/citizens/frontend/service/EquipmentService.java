@@ -20,4 +20,8 @@ public class EquipmentService {
         return EquipmentProxy.getEquipment(id_room, id_floor);
 
     }
+
+    public String equipmentLampe(Integer id_room, Integer id_equipment) {
+        return EquipmentProxy.getLampe(id_room, id_equipment);
+    }
 }

@@ -28,4 +28,8 @@ public class EquipmentService {
     public String equipmentClimatisation(Integer id_room, Integer id_equipment) {
         return EquipmentProxy.getClimatisation(id_room, id_equipment);
     }
+
+    public String equipmentRadiateur(Integer id_room, Integer id_equipment) {
+        return EquipmentProxy.getRadiateur(id_room, id_equipment);
+    }
 }

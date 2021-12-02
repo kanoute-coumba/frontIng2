@@ -76,6 +76,11 @@ public class TestController {
         System.out.println(equipClimatisation);
         model.addAttribute("nameEquipe", equipClimatisation);
 
+        getDataId(1,1);
+        String equipRadiateur = equipmentService.equipmentRadiateur(1,1);
+        System.out.println(equipRadiateur);
+        model.addAttribute("nameRadiateur", equipRadiateur);
+
         return "displayPiece";
     }
 

@@ -63,13 +63,24 @@ public class TestController {
 
     @GetMapping("/piece")
     public String DisplayPiece(Model model) {
-        Integer id_room = 1;
-        Integer id_equipment = 8;
-        String equipLampe = equipmentService.equipmentLampe(id_room, id_equipment);
+        //
+        getDataId(1, 8);
+        String equipLampe = equipmentService.equipmentLampe(1, 8);
         System.out.println(equipLampe);
         model.addAttribute("nameEquip", equipLampe);
 
+
+
+        getDataId(1,7);
+        String equipClimatisation = equipmentService.equipmentClimatisation(1, 7);
+        System.out.println(equipClimatisation);
+        model.addAttribute("nameEquipe", equipClimatisation);
+
         return "displayPiece";
+    }
+
+    private void getDataId(Integer id_room, Integer id_equipment) {
+
     }
 
     @GetMapping("/configurationAutomatique")

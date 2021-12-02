@@ -24,4 +24,8 @@ public class EquipmentService {
     public String equipmentLampe(Integer id_room, Integer id_equipment) {
         return EquipmentProxy.getLampe(id_room, id_equipment);
     }
+
+    public String equipmentClimatisation(Integer id_room, Integer id_equipment) {
+        return EquipmentProxy.getClimatisation(id_room, id_equipment);
+    }
 }

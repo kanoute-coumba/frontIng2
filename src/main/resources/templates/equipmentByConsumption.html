@@ -26,5 +26,23 @@
     </tr>
     </tbody>
 </table>
+<h3 class="h3">Liste des centrals avec leurs productions</h3>
+<table id="test2" border="1" class="table table-striped table responsive-md">
+    <thead>
+    <tr>
+        <th>numéro de la central</th>
+        <th>type de central</th>
+        <th>production de la central</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tr>
+    <tr th:each="central: ${centralWithProduction}">
+        <td><span th:text="${central.id_central}"> numéro de la central </span></td>
+        <td><span th:text="${central.type}"> type de la central </span></td>
+        <td><span th:text="${central.value}"> production de la central </span></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

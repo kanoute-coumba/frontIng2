@@ -81,6 +81,11 @@ public class TestController {
         System.out.println(equipRadiateur);
         model.addAttribute("nameRadiateur", equipRadiateur);
 
+        getDataId(1,9);
+        String equipFenetre = equipmentService.equipmentFenetre(1,9);
+        System.out.println(equipFenetre);
+        model.addAttribute("nameFenetre", equipFenetre);
+
         return "displayPiece";
     }
 

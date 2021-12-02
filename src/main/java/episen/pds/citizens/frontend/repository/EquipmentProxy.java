@@ -101,4 +101,24 @@ public class EquipmentProxy {
         return response.getBody();
 
     }
+
+    public static String getFenetre(Integer id_room, Integer id_equipment) {
+        String baseApiUrl = props.getApiUrl();
+        String getEquipmentUrl = baseApiUrl + "/Fenetre?id_room=" + id_room + "&id_equipment=" + id_equipment;
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }
+        );
+
+        log.debug("Get Equipment call " + response.getStatusCode().toString());
+
+        return response.getBody();
+
+    }
 }

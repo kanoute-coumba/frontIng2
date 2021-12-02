@@ -32,4 +32,8 @@ public class EquipmentService {
     public String equipmentRadiateur(Integer id_room, Integer id_equipment) {
         return EquipmentProxy.getRadiateur(id_room, id_equipment);
     }
+
+    public String equipmentFenetre(Integer id_room, Integer id_equipment) {
+        return EquipmentProxy.getFenetre(id_room, id_equipment);
+    }
 }

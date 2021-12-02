@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link rel="stylesheet" th:href="@{/guidCss/design.css}">
+    <link rel="stylesheet" th:href="@{/architecture-css.css}">
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
 </head>
@@ -37,52 +37,51 @@
     </div>
 </nav>
 
-<div class="title-page">Configuration Parallèle</div>
+<div class="title-page">Configuration Basique</div>
 
 <div class="plan0">
     <div class="item toilet">
         <div class="item-content">T1F</div>
     </div>
-    <div class="item openSpace2">
+    <div class="item openSpace1">
         <div class="item-content">Espace Ouvert</div>
+    </div>
+    <div class="item office1">
+        <div class="item-content ">Bureau</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2F</div>
     </div>
-    <div class="item corridor21">
-        <div class="item-content">C1</div>
-    </div>
-    <div class="item corridor24">
-        <div class="item-content">C4</div>
-    </div>
-    <div class="item individualRoom2">
-        <div class="item-content ">Salle individuelle</div>
-    </div>
-    <div class="item corridor23">
-        <div class="item-content">C3</div>
-    </div>
     <div class="item elevator">
         <div class="item-content">A1</div>
+    </div>
+    <div class="item corridor1">
+        <div class="item-content">Couloir</div>
     </div>
     <div class="item elevator">
         <div class="item-content">A2</div>
     </div>
-    <div class="item meetingRoom2">
-        <div class="item-content">Salle de réunion</div>
-    </div>
     <div class="item toilet">
         <div class="item-content">T1H</div>
+    </div>
+    <div class="item meetingRoom1">
+        <div class="item-content">Salle de réunion</div>
+    </div>
+    <div class="item individualRoom1">
+        <div class="item-content">Salle individuelle</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2H</div>
     </div>
-    <div class="item corridor22">
-        <div class="item-content">C2</div>
-    </div>
-    <div class="item office2">
-        <div class="item-content">Bureau</div>
-    </div>
 </div>
+
+
+
+
+<div th:text="${param.osName}" ></div>
+
+
+
 
 <br><br>
 

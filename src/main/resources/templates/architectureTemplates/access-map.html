@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link th:href="@{/guidCss/design.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/architecture-css.css}">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/accessMap">Plan d'accès</a>
+                <a class="nav-link" href="/guidanceOption">Se faire guider</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/personalizeDesign">Design Intérieur</a>
@@ -34,10 +34,10 @@
 
 <!-- NAV BAR -->
 
-<div class="title-page">Se faire guider</div>
+<div class="title-page">Plan d'accès</div>
 
 <style>
-    th {border:5px solid #095484;}
+    th  {border:5px solid #095484;}
     td {border:20px groove #1c87c9;}
 </style>
 
@@ -66,21 +66,6 @@
         <td><span style="font-size: x-large;">Etage 1</span></td>
         <td><span style="font-size: x-large;">Etage 2</span></td>
         <td><span style="font-size: x-large;">Etage 3</span></td>
-    </tr>
-    </tbody>
-</table>
-</p>
-
-<p style="text-align: center;">
-    <span style="font-size: xx-large;">Veuillez selectionner un espace :</span>
-</p>
-<p style="text-align: center;">
-<table align="center" border="5">
-    <tbody>
-    <tr>
-        <td><span style="font-size: x-large;">Salle de réunion</span></td>
-        <td><span style="font-size: x-large;">Espace ouvert</span></td>
-        <td><span style="font-size: x-large;">Bureau</span></td>
     </tr>
     </tbody>
 </table>

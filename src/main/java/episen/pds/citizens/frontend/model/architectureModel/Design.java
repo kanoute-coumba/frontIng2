@@ -1,4 +1,4 @@
-package episen.pds.citizens.frontend.model.guidModels;
+package episen.pds.citizens.frontend.model.architectureModel;
 
 import lombok.Data;
 

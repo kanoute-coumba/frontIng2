@@ -108,22 +108,14 @@ public class TestController {
         return "configurationLampe";
     }
 
-    @GetMapping("/configurationAutomatique")
-    public String equipAutomatic(Model model) {
-        Integer id_room= 1;
-        Integer id_floor= 1;
-        Iterable<String> equipment = equipmentService.getListEquipment(id_room, id_floor);
-        System.out.println(equipment);
-        model.addAttribute("listequip", equipment);
-
-
-        return "configAuto";
+    @GetMapping("/Chambre/Lampe")
+    public String configManuel() {
+        return "Manuelle";
     }
 
-    @GetMapping("/configurationManuel")
-    public String equipManuel() {
-        return "configManu";
-    }
+
+
+
 
     @GetMapping("/conf")
     public String configuration() {

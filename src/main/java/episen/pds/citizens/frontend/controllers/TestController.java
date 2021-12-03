@@ -86,6 +86,16 @@ public class TestController {
         System.out.println(equipFenetre);
         model.addAttribute("nameFenetre", equipFenetre);
 
+        getDataId(1,3);
+        String equipStore = equipmentService.equipmentStore(1,3);
+        System.out.println(equipStore);
+        model.addAttribute("nameStore", equipStore);
+
+        getDataId(1,2);
+        String equipScreen = equipmentService.equipmentScreen(1,2);
+        System.out.println(equipScreen);
+        model.addAttribute("nameScreen", equipScreen);
+
         return "displayPiece";
     }
 

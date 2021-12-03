@@ -103,6 +103,11 @@ public class TestController {
 
     }
 
+    @GetMapping("/configurationLampe")
+    public String displayConfigLampe () {
+        return "configurationLampe";
+    }
+
     @GetMapping("/configurationAutomatique")
     public String equipAutomatic(Model model) {
         Integer id_room= 1;

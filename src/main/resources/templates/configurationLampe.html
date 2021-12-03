@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Configuration d'une Lampe</title>
+    <link rel="stylesheet" type="text/css" href="configurationEquip.css">
+
 </head>
 <body>
+
+<div class="test">
+    Configuration de la Lampe
+
+    <a th:href="@{ /eclaire}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+
+    <a th:href="@{ /eclaire}">
+        <button type="button" class="btn btn-dark">Automatique</button>
+    </a>
+
+
+</div>
 
 </body>
 </html>

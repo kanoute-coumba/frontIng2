@@ -6,17 +6,17 @@ import episen.pds.citizens.frontend.service.UseMonitorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UseMonitorController {
-    private UseMonitorService useMonitorService = new UseMonitorService();
+    private final UseMonitorService useMonitorService = new UseMonitorService();
 
-    @GetMapping("/configManual")
-    @ResponseBody
-    public String getRoomConditions(Model model, @RequestParam int id) {
-        Iterable<RoomConditions> listConditions = useMonitorService.getConditionsInRoom(id);
+    @GetMapping("/configManual/{id}")
+    public String getRoomConditions(Model model, @PathVariable("id") int id_room) {
+        Iterable<RoomConditions> listConditions = useMonitorService.getConditionsInRoom(id_room);
         model.addAttribute("conditions", listConditions);
         return "configmanu";
     }
@@ -33,10 +33,9 @@ public class UseMonitorController {
         return "showmyrooms";
     }
 
-    @GetMapping("/configManual")
-    @ResponseBody
-    public  String getEquipmentByRoom(Model model, @RequestParam int id) {
-        Iterable<Equipment> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id);
+    @GetMapping("/configManual/{id}")
+    public  String getEquipmentByRoom(Model model, @PathVariable("id") int id_room) {
+        Iterable<Equipment> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id_room);
         model.addAttribute("equipments", listEquipmentInRoom);
         return "configmanu";
     }

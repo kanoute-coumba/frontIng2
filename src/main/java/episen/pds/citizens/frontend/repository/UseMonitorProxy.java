@@ -1,10 +1,7 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.model.ConsumptionByBuilding;
-import episen.pds.citizens.frontend.model.Equipment;
-import episen.pds.citizens.frontend.model.RoomsWithConsumption;
-import episen.pds.citizens.frontend.model.Test;
+import episen.pds.citizens.frontend.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -55,6 +52,21 @@ public class UseMonitorProxy {
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Equipment>> response = restTemplate.exchange(
+                getConsBuildUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        return response.getBody();
+    }
+
+    public Iterable<RoomConditions> getConditionsInRoom(int id) {
+        String baseApiUrl = props.getApiUrl();
+        String getConsBuildUrl = baseApiUrl + "/getRoomConditions?id_room=" + id;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<RoomConditions>> response = restTemplate.exchange(
                 getConsBuildUrl,
                 HttpMethod.GET,
                 null,

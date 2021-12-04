@@ -1,7 +1,9 @@
 package episen.pds.citizens.frontend.model;
 
-import javax.swing.*;
+import lombok.Data;
 
+import javax.swing.ImageIcon;
+@Data
 public class Equipment {
     private int Id;
     private String type;

@@ -13,13 +13,9 @@ import org.springframework.context.annotation.Configuration;
 
 public class CustomProperties {
 
-    public String getApiUrl() {
-        return apiUrl;
-    }
-
-    //private String apiUrl= "http://172.31.249.1:9000";
-    private String apiUrl ="http://localhost:9000";
-
-
+    private String apiUrl= "http://172.31.249.1:9000";
+    //private final String apiArchitectureUrl = "http://172.31.249.1:9000/architecture/";
+    //private String apiUrl ="http://localhost:9000";
+    private final String apiArchitectureUrl = "http://localhost:9000/architecture/";
 
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class ArchitectureController {
 
@@ -14,7 +15,7 @@ public class ArchitectureController {
 
     @GetMapping("/accessMap")
     public String getAccessMap(Model model) {
-        model.addAttribute("buildings", buildingService.getBuildings());
+        model.addAttribute("buildings", buildingService.getAllBuildings());
         return "architectureTemplates/accessTemplates/access-map";
     }
 
@@ -25,6 +26,7 @@ public class ArchitectureController {
 
     @GetMapping("/guidanceOption")
     public String getGuidanceOption(Model model) {
+        model.addAttribute("buildings", buildingService.getAllBuildings());
         return "architectureTemplates/guidanceTemplates/guidance-option";
     }
 

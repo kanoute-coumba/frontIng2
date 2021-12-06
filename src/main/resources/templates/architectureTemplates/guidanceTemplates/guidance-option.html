@@ -37,8 +37,8 @@
 <div class="container text-center mag-t">
     <form action="/guidanceOption/display">
         <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: xx-large;">Veuillez selectionner un bâtiment :</span> <br><br>
-            <select id="building" name="buildings" class="btn btn-secondary btn-lg dropdown-toggle">
+            <span style="font-size: x-large;">Veuillez selectionner un bâtiment :</span> <br><br>
+            <select id="building" name="buildings" class="btn btn-primary">
                 <th:block th:each="building : ${buildings}">
                     <option value="${building.name_building}">
                         <span th:text="${building.name_building}"></span>
@@ -48,20 +48,20 @@
         </div>
         <br><br><br>
         <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: xx-large;">Veuillez selectionner un étage :</span> <br><br>
-            <select id="floors" name="floors" class="btn btn-secondary btn-lg dropdown-toggle">
+            <span style="font-size: x-large;">Veuillez selectionner un étage :</span> <br><br>
+            <select id="floors" name="floors" class="btn btn-primary">
                 <!--                    Ici faut mettre le code pour récupérer les étages du bâtiment sélectionné-->
             </select>
         </div>
         <br><br><br>
         <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: xx-large;">Veuillez selectionner un espace :</span> <br><br>
-            <select id="spaces" name="spaces" class="btn btn-secondary btn-lg dropdown-toggle">
+            <span style="font-size: x-large;">Veuillez selectionner un espace :</span> <br><br>
+            <select id="spaces" name="spaces" class="btn btn-primary">
                 <!--                    Ici faut mettre le code pour récupérer les espaces de l'étage sélectionné-->
             </select>
         </div>
         <br><br><br>
-        <button type=" submit" class="btn btn-primary" style="font-size: x-large;">Guider moi</button>
+        <button type=" submit" class="btn btn-primary" style="font-size: large;">Guider moi</button>
     </form>
 </div>
 

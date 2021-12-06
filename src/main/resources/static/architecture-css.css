@@ -64,32 +64,28 @@ th {
 td {
     border:20px groove #1c87c9;
 }
-.elevator        { background: black;      width: 5%;  height: 12%; }
-.toilet          { background: green;      width: 5%;  height: 44%; }
-.openSpace1      { background: orange;     width: 45%; height: 44%; }
-.office1         { background: blueviolet; width: 45%; height: 44%; }
-.individualRoom1 { background: coral;      width: 45%; height: 44%; }
-.meetingRoom1    { background: violet;     width: 45%; height: 44%; }
-.corridor1       { background: skyblue;    width: 90%; height: 12%; border: 0px;}
-.openSpace2      { background: orange;     width: 90%; height: 17%; }
-.office2         { background: blueviolet; width: 90%; height: 17%; }
-.individualRoom2 { background: coral;      width: 80%; height: 23%; }
-.meetingRoom2    { background: violet;     width: 80%; height: 23%; }
-.corridor21      { background: skyblue;    width: 90%; height: 10%; border: 0px;}
-.corridor22      { background: skyblue;    width: 90%; height: 10%; border: 0px;}
-.corridor23      { background: skyblue;    width: 5%;  height: 46%; border: 0px;}
-.corridor24      { background: skyblue;    width: 5%;  height: 46%; border: 0px;}
-.openSpace3      { background: orange;     width: 80%; height: 18%; }
-.office3         { background: blueviolet; width: 80%; height: 18%; }
-.individualRoom3 { background: coral;      width: 80%; height: 18%; }
-.meetingRoom3    { background: violet;     width: 80%; height: 18%; }
-.corridor31      { background: skyblue;    width: 5%;  height: 100%; border: 0px;}
-.corridor32      { background: skyblue;    width: 5%;  height: 100%; border: 0px;}
-.corridor33      { background: skyblue;    width: 80%; height: 8%;   border: 0px;}
-.corridor34      { background: skyblue;    width: 80%; height: 12%;  border: 0px;}
-.corridor35      { background: skyblue;    width: 80%; height: 8%;   border: 0px;}
+.elevator        { background: greenyellow; width: 5%;  height: 12%; border: 0px;}
+.toilet          { background: green;       width: 5%;  height: 44%; border: 0px;}
+.openSpace1      { background: orange;      width: 45%; height: 44%; border: 0px;}
+.office1         { background: red;         width: 45%; height: 44%; border: 0px;}
+.individualRoom1 { background: coral;       width: 45%; height: 44%; border: 0px;}
+.meetingRoom1    { background: goldenrod;   width: 45%; height: 44%; border: 0px;}
+.corridor1       { background: lightgray;   width: 90%; height: 12%; border: 0px;}
+.openSpace2      { background: orange;      width: 90%; height: 17%; border: 0px;}
+.office2         { background: red;         width: 90%; height: 17%; border: 0px;}
+.individualRoom2 { background: coral;       width: 80%; height: 23%; border: 0px;}
+.meetingRoom2    { background: goldenrod;   width: 80%; height: 23%; border: 0px;}
+.corridor21      { background: lightgray;   width: 90%; height: 10%; border: 0px;}
+.corridor22      { background: lightgray;   width: 90%; height: 10%; border: 0px;}
+.corridor23      { background: lightgray;   width: 5%;  height: 46%; border: 0px;}
+.corridor24      { background: lightgray;   width: 5%;  height: 46%; border: 0px;}
+.openSpace3      { background: orange;      width: 80%; height: 18%; border: 0px;}
+.office3         { background: red;         width: 80%; height: 18%; border: 0px;}
+.individualRoom3 { background: coral;       width: 80%; height: 18%; border: 0px;}
+.meetingRoom3    { background: goldenrod;   width: 80%; height: 18%; border: 0px;}
+.corridor31      { background: lightgray;  width: 5%;  height: 100%; border: 0px;}
+.corridor32      { background: lightgray;  width: 5%;  height: 100%; border: 0px;}
+.corridor33      { background: lightgray;  width: 80%; height: 8%;   border: 0px;}
+.corridor34      { background: lightgray;  width: 80%; height: 12%;  border: 0px;}
+.corridor35      { background: lightgray;  width: 80%; height: 8%;   border: 0px;}
 
-.dropdown {
-    margin:0 auto;
-    width:500px;
-}

@@ -9,6 +9,9 @@ body {
     font-weight: 700;
     margin: 3vh 4vw;
 }
+.row {
+    width:100%;
+}
 .item {
     position: absolute;
     z-index: 1;
@@ -55,6 +58,12 @@ body {
     border: 2px solid black;
     margin: 10% auto;
 }
+th {
+    border:5px solid #095484;
+}
+td {
+    border:20px groove #1c87c9;
+}
 .elevator        { background: black;      width: 5%;  height: 12%; }
 .toilet          { background: green;      width: 5%;  height: 44%; }
 .openSpace1      { background: orange;     width: 45%; height: 44%; }
@@ -79,3 +88,8 @@ body {
 .corridor33      { background: skyblue;    width: 80%; height: 8%;   border: 0px;}
 .corridor34      { background: skyblue;    width: 80%; height: 12%;  border: 0px;}
 .corridor35      { background: skyblue;    width: 80%; height: 8%;   border: 0px;}
+
+.dropdown {
+    margin:0 auto;
+    width:500px;
+}

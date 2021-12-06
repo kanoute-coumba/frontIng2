@@ -80,62 +80,58 @@
 </div>
 
 <form method="get" action="/personalizeDesign/designSquare/display">
-<p style="text-align: center; font-size: large;">
-    Espace ouvert :
-    <select name ="osName" id="osId">
-        <option value="">Choisissez une valeur</option>
-        <option value="1">1</option>         <!-- 1 espaces de [90%;17%] -->
-        <option value="2">2</option>         <!-- 2 espaces de [45%;17%] -->
-        <option value="3">3</option>         <!-- 3 espaces de [30%;17%] -->
-        <option value="4">4</option>         <!-- 4 espaces de [22.5%;17%] -->
-        <option value="5">5</option>         <!-- 5 espaces de [18%;17%] -->
-    </select>
-</p>
-<p style="text-align: center; font-size: large;">
-    Bureau :
-    <select name ="ofName" id="ofId">
-        <option value="">Choisissez une valeur</option>
-        <option value="5">5</option>           <!-- 5 espaces de [18%;17%] -->
-        <option value="10">10</option>         <!-- 10 espaces de [9%;17%] -->
-        <option value="15">15</option>         <!-- 15 espaces de [6%;17%] -->
-        <option value="20">20</option>         <!-- 20 espaces de [4.5%;17%] -->
-        <option value="25">25</option>         <!-- 25 espaces de [3.6%;17%] -->
-        <option value="30">30</option>         <!-- 30 espaces de [3%;17%] -->
-    </select>
-</p>
-<p style="text-align: center; font-size: large;">
-    Salle de réunion :
-    <select name ="mrName" id="mrId">
-        <option value="">Choisissez une valeur</option>
-        <option value="1">1</option>         <!-- 1 espaces de [80%;23%] -->
-        <option value="2">2</option>         <!-- 2 espaces de [40%;23%] -->
-        <option value="4">4</option>         <!-- 4 espaces de [20%;23%] -->
-        <option value="5">5</option>         <!-- 5 espaces de [16%;23%] -->
-    </select>
-</p>
-<p style="text-align: center; font-size: large;">
-    Salle individuelle :
-    <select name ="irName" id="irId">
-        <option value="">Choisissez une valeur</option>
-        <option value="5">5</option>          <!-- 5 espaces de [16%;23%] -->
-        <option value="10">10</option>         <!-- 10 espaces de [8%;23%] -->
-        <option value="20">20</option>         <!-- 20 espaces de [4%;23%] -->
-        <option value="25">25</option>         <!-- 25 espaces de [3.2%;23%] -->
-    </select>
-</p>
-
-<br><br>
-
-<p style="text-align: center;">
-    <input type="submit" class="btn btn-primary" value="Simuler le plan" />
-</p>
+    <p style="text-align: center; font-size: large;">
+        Espace ouvert :
+        <select name ="osName" id="osId">
+            <option value="">Choisissez une valeur</option>
+            <option value="1">1</option>         <!-- 1 espaces de [90%;17%] -->
+            <option value="2">2</option>         <!-- 2 espaces de [45%;17%] -->
+            <option value="3">3</option>         <!-- 3 espaces de [30%;17%] -->
+            <option value="4">4</option>         <!-- 4 espaces de [22.5%;17%] -->
+            <option value="5">5</option>         <!-- 5 espaces de [18%;17%] -->
+        </select>
+    </p>
+    <p style="text-align: center; font-size: large;">
+        Bureau :
+        <select name ="ofName" id="ofId">
+            <option value="">Choisissez une valeur</option>
+            <option value="5">5</option>           <!-- 5 espaces de [18%;17%] -->
+            <option value="10">10</option>         <!-- 10 espaces de [9%;17%] -->
+            <option value="15">15</option>         <!-- 15 espaces de [6%;17%] -->
+            <option value="20">20</option>         <!-- 20 espaces de [4.5%;17%] -->
+            <option value="25">25</option>         <!-- 25 espaces de [3.6%;17%] -->
+            <option value="30">30</option>         <!-- 30 espaces de [3%;17%] -->
+        </select>
+    </p>
+    <p style="text-align: center; font-size: large;">
+        Salle de réunion :
+        <select name ="mrName" id="mrId">
+            <option value="">Choisissez une valeur</option>
+            <option value="1">1</option>         <!-- 1 espaces de [80%;23%] -->
+            <option value="2">2</option>         <!-- 2 espaces de [40%;23%] -->
+            <option value="4">4</option>         <!-- 4 espaces de [20%;23%] -->
+            <option value="5">5</option>         <!-- 5 espaces de [16%;23%] -->
+        </select>
+    </p>
+    <p style="text-align: center; font-size: large;">
+        Salle individuelle :
+        <select name ="irName" id="irId">
+            <option value="">Choisissez une valeur</option>
+            <option value="5">5</option>          <!-- 5 espaces de [16%;23%] -->
+            <option value="10">10</option>         <!-- 10 espaces de [8%;23%] -->
+            <option value="20">20</option>         <!-- 20 espaces de [4%;23%] -->
+            <option value="25">25</option>         <!-- 25 espaces de [3.2%;23%] -->
+        </select>
+    </p>
+    <br><br>
+    <p style="text-align: center;">
+        <input type="submit" class="btn btn-primary" value="Simuler le plan" />
+    </p>
 </form>
 
 <script>
     var plan0 = new Muuri('.plan0', {dragEnabled: false, layout: {vertical: true}});
 </script>
-
-<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
 
 </body>
 

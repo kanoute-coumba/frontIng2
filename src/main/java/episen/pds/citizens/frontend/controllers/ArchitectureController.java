@@ -1,5 +1,7 @@
 package episen.pds.citizens.frontend.controllers;
 
+import episen.pds.citizens.frontend.service.architectureService.BuildingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,14 +9,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ArchitectureController {
 
+    @Autowired
+    private BuildingService buildingService;
+
     @GetMapping("/accessMap")
     public String getAccessMap(Model model) {
-        return "architectureTemplates/access-map";
+        model.addAttribute("buildings", buildingService.getBuildings());
+        return "architectureTemplates/accessTemplates/access-map";
+    }
+
+    @GetMapping("/accessMap/display")
+    public String getDisplayAccessMap(Model model) {
+        return "architectureTemplates/accessTemplates/display-access-map";
     }
 
     @GetMapping("/guidanceOption")
-    public String getGuidage(Model model) {
-        return "architectureTemplates/guidance-option";
+    public String getGuidanceOption(Model model) {
+        return "architectureTemplates/guidanceTemplates/guidance-option";
+    }
+
+    @GetMapping("/guidanceOption/display")
+    public String getDisplayGuidance(Model model) {
+        return "architectureTemplates/guidanceTemplates/display-guidance";
     }
 
     @GetMapping("/personalizeDesign")

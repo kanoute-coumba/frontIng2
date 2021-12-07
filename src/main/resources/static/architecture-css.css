@@ -69,12 +69,12 @@ td {
 .openSpace1      { background: orange;      width: 45%; height: 44%; border: 0px;}
 .office1         { background: red;         width: 45%; height: 44%; border: 0px;}
 .individualRoom1 { background: coral;       width: 45%; height: 44%; border: 0px;}
-.meetingRoom1    { background: goldenrod;   width: 45%; height: 44%; border: 0px;}
+.meetingRoom1    { background: hotpink;     width: 45%; height: 44%; border: 0px;}
 .corridor1       { background: lightgray;   width: 90%; height: 12%; border: 0px;}
 .openSpace2      { background: orange;      width: 90%; height: 17%; border: 0px;}
 .office2         { background: red;         width: 90%; height: 17%; border: 0px;}
 .individualRoom2 { background: coral;       width: 80%; height: 23%; border: 0px;}
-.meetingRoom2    { background: goldenrod;   width: 80%; height: 23%; border: 0px;}
+.meetingRoom2    { background: hotpink;     width: 80%; height: 23%; border: 0px;}
 .corridor21      { background: lightgray;   width: 90%; height: 10%; border: 0px;}
 .corridor22      { background: lightgray;   width: 90%; height: 10%; border: 0px;}
 .corridor23      { background: lightgray;   width: 5%;  height: 46%; border: 0px;}
@@ -82,7 +82,7 @@ td {
 .openSpace3      { background: orange;      width: 80%; height: 18%; border: 0px;}
 .office3         { background: red;         width: 80%; height: 18%; border: 0px;}
 .individualRoom3 { background: coral;       width: 80%; height: 18%; border: 0px;}
-.meetingRoom3    { background: goldenrod;   width: 80%; height: 18%; border: 0px;}
+.meetingRoom3    { background: hotpink;     width: 80%; height: 18%; border: 0px;}
 .corridor31      { background: lightgray;  width: 5%;  height: 100%; border: 0px;}
 .corridor32      { background: lightgray;  width: 5%;  height: 100%; border: 0px;}
 .corridor33      { background: lightgray;  width: 80%; height: 8%;   border: 0px;}

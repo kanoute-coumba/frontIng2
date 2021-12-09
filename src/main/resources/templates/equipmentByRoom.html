@@ -43,8 +43,8 @@ color : black;
 
     <tr th:each="equipment : ${listEquipment}">
         <td th:text="${equipment.id_equipment}"></td>
-        <td th:if="${equipment.type} == 'Lampe'"><a th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}" class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
-        <td th:unless="${equipment.type} == 'Lampe'"><span th:text="${equipment.type}"></span></td>
+        <td th:if="${equipment.type} == 'lampe'"><a th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}" class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+        <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
 
         <td th:text="${equipment.statut}"></td>
         <td th:text="${equipment.type_mode}"></td>

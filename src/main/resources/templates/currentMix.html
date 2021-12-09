@@ -2,6 +2,7 @@
 <html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
+    <meta http-equiv="Refresh" content="20">
     <meta charset="UTF-8">
     <title>Mix énergétique actuel</title>
 </head>
@@ -37,7 +38,7 @@
 
         <tr th:each="mix : ${listMixEnByEn}">
             <td th:text="${mix.address}"></td>
-            <th>energie</th>
+            <td th:text="${mix.name_building}"></td>
             <td><span th:text="${mix.mix}"></span>%</td>
         </tr>
 

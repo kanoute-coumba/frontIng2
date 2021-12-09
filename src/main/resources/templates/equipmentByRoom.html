@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipements</title>
+    <style>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+  text-align: center
+}
+
+a {
+text-decoration: none;
+color : black;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<div>Chambre</div>
+
+
+<table id="test" border="1" class="table">
+    <thead>
+    <tr>
+        <th bgcolor="bleu">id</th>
+        <th bgcolor="bleu">Type equipement</th>
+        <th bgcolor="bleu">Statut</th>
+        <th bgcolor="bleu">Mode de l'équipement</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr th:each="equipment : ${listEquipment}">
+        <td th:text="${equipment.id_equipment}"></td>
+        <td th:if="${equipment.type} == 'Lampe'"><a th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}" class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+        <td th:unless="${equipment.type} == 'Lampe'"><span th:text="${equipment.type}"></span></td>
+
+        <td th:text="${equipment.statut}"></td>
+        <td th:text="${equipment.type_mode}"></td>
+        <td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+</body>
+</html>

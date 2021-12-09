@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Configuration Manuelle</title>
-  <style>
+    <style>
       .test {
    border-radius: 10px;
  text-align: center;
@@ -20,7 +20,7 @@
 .btn.btn-info {
 
  text-align: center;
-  width:40%;
+  width: 90px;
   margin-top: 10px;
   background-color : #68DBDF;
   border-radius: 4px;
@@ -30,22 +30,36 @@ h3 {
   margin-top: 2px;
 }
 
-.style{
-  text-align: center;
 
 
-}
-  </style>
+
+    </style>
 </head>
 <body>
 <div class="style">
-<div class="test">
+    <div class="test">
 
         <h3>Lampe</h3>
         Veuillez choisir votre opération
-        <button type="button" class="btn btn-info">ON</button>
 
-        <button type="button" class="btn btn-info">OFF</button>
+        <form method="get" action="/form">
+
+            <input id="choose1" type="radio" value="ON" class="btn btn-info" name="chooseStatut">
+            <input id="statut" type="hidden" value="Manuel" name="type_mode">
+            <label for="choose1">ON</label>
+            <input id="id_equipment" type="hidden" th:value="${id_equipment}" name="id_equipment">
+            <input id="choose2" type="radio" value="OFF" class="btn btn-info" name="chooseStatut">
+            <label for="choose2">OFF</label>
+
+
+            <input type="submit" value="Valider"/>
+        </form>
+
+        <form>
+
+
+        </form>
+
 
     </div>
 </div>

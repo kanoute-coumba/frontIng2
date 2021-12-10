@@ -78,8 +78,9 @@
             <td th:text="${equipment.type}"></td>
             <td th:text="${equipment.statut}"></td>
             <td>
-                <form action="/setEquipment" method="post">
-                    <input type="range" class="form-range" min="0" max="5" step="1" id="cursor">
+                <form action="@{/setEquipment/{id_equipment}(id_equipment=${equipment.id_equipment})}" method="post" name="changevalue">
+                    <input type="range" class="form-range" min="0" max="5" step="1" id="cursor" value="3" oninput="this.nextElementSibling.value = this.value">
+                    <output>3</output>
                 </form>
             </td>
 <!--

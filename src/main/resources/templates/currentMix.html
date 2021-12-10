@@ -8,11 +8,12 @@
 </head>
 <body>
 <div align="center" class="container my-2">
+
+    <h1>Mix énergétique </h1>
     <table border="1" class="table table-striped table responsive-md">
-        <caption>Mix énergétique </caption>
         <tr>
-            <th>Energie</th>
-            <th>Proportion</th>
+            <th bgcolor="bleu">Energie</th>
+            <th bgcolor="bleu">Proportion</th>
         </tr>
         <tr>
             <th>Eolienne</th>
@@ -24,22 +25,30 @@
         </tr>
         <tr>
             <th>Hydraulique</th>
-            <th>Proportion</th>
+            <td><span th:text="${hydraulique}"></span>%</td>
         </tr>
     </table>
 
+    <h1> </h1>
+
+    <h1>Mix énergétique par usine</h1>
     <table border="1" class="table table-striped table responsive-md">
-        <caption>Mix énergétique par usine</caption>
         <tr>
-            <th>Usine</th>
-            <th>Energie</th>
-            <th>Proportion</th>
+            <th bgcolor="aqua">Usine</th>
+            <th bgcolor="aqua">Energie</th>
+            <th bgcolor="aqua">Proportion</th>
+            <th bgcolor="aqua">Production en W</th>
+            <th bgcolor="aqua">Nb Equip Actif</th>
+            <th bgcolor="aqua">Capacité utilisée</th>
         </tr>
 
-        <tr th:each="mix : ${listMixEnByEn}">
+        <tr th:each="mix : ${listMixEnBySite}">
             <td th:text="${mix.address}"></td>
             <td th:text="${mix.name_building}"></td>
             <td><span th:text="${mix.mix}"></span>%</td>
+            <td th:text="${mix.production}"></td>
+            <td><span th:text="${mix.active_equip}"></span>/<span th:text="${mix.number_equip}"></span></td>
+            <td><span th:text="${mix.capacity_used}"></span>%</td>
         </tr>
 
     </table>

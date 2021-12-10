@@ -27,13 +27,6 @@ public class MenuProxy {
         String getTestUrl = baseApiUrl + "/cafeteria/" + id;
 
         RestTemplate restTemplate = new RestTemplate();
-        /*ResponseEntity<Iterable<Menu>> response = restTemplate.exchange(
-                getTestUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<Iterable<Menu>>() {
-                }
-        );*/
 
         ResponseEntity<Menu> response = restTemplate.exchange(
                 getTestUrl,
@@ -42,13 +35,24 @@ public class MenuProxy {
                 Menu.class);
 
         log.debug("Get Test call " + response.getStatusCode().toString());
-
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + response.getBody());
-
         return response.getBody();
-
-
     }
 
+    public Menu reserveMenu (Menu menu) {
+        String baseApiUrl = props.getApiUrl();
+        String createTestUrl = baseApiUrl + "/cafeteria-reservation";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Menu> request = new HttpEntity(menu);
+        ResponseEntity<Menu> response = restTemplate.exchange(
+                createTestUrl,
+                HttpMethod.POST,
+                request,
+                Menu.class);
+        System.out.println(request);
+
+        log.debug("Create Test call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
 
 }

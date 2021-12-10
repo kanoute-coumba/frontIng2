@@ -21,16 +21,18 @@ public class MenuService {
         return MenuProxy.getMenuById(id);
     }
 
-   /* public Menu saveMenu(Menu menu) {
+
+
+    public Menu saveMenu(Menu menu) {
         System.out.println("fffffffffffff");
         System.out.println(menu);
 
-        Test savedTest;
+        Menu savedMenu;
 
         // Règle de gestion : Le nom de famille doit être mis en majuscule.
-        test.setFirstname(test.getFirstname().toUpperCase());
+        menu.setMenu_id(menu.getMenu_id());
 
-        savedTest = testProxy.createTest(test);
+        savedMenu = menuProxy.reserveMenu(menu);
         // System.out.println(savedTest + "hh");
 
 //        if(test.getId() == null) {
@@ -41,9 +43,8 @@ public class MenuService {
 //            savedTest = testProxy.updateTest(test);
 //        }
 
-        return savedTest;
-    } */
-
+        return savedMenu;
+    }
 }
 
 

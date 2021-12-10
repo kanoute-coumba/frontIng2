@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import episen.pds.citizens.frontend.service.MenuService;
@@ -15,10 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Controller
 public class MenuController {
 
-    private MenuService menuService = new MenuService();
+    MenuService menuService = new MenuService();
 
 
     @GetMapping("/cafeteria")
@@ -30,6 +32,15 @@ public class MenuController {
             i++;
         }
         return "cafeteria";
+
+    }
+
+    @GetMapping("/cafeteria/reservation")
+    public String reserveMenu(Model model, @ModelAttribute Menu menu) {
+            //ModelAttribut récupère l'objet crée
+            model.addAttribute("reserved-menu", menuService.getMenuById(1));
+            menuService.saveMenu(menu);
+            return "redirect:/";
     }
 
 }

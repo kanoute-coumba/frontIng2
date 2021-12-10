@@ -34,12 +34,10 @@ public class MixEnProxy {
                 }
         );
 
-        //log.debug("Get Test call " + response.getStatusCode().toString());
-
         return response.getBody();
 
-
     }
+
     public static Iterable<MixEnBySite> getCurrentMixEnBySite() {
         String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/MixBySite";
@@ -53,10 +51,7 @@ public class MixEnProxy {
                 }
         );
 
-        //log.debug("Get Test call " + response.getStatusCode().toString());
-
         return response.getBody();
-
 
     }
 

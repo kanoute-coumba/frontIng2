@@ -10,7 +10,7 @@ table, th, td {
 }
 th, td {
   background-color: #96D4D4;
-  text-align: center
+  text-align: center;
 }
 
 a{
@@ -24,10 +24,15 @@ align: center;
 .table{
  margin-left: auto;
  margin-right: auto;
- margin-top: 10%;
+ margin-top: 10px;
  width: 60%;
  table-layout: auto;
  table-layout: fixed;
+}
+
+.name{
+text-align: center;
+margin-top: 30px;
 }
 
 
@@ -38,7 +43,7 @@ align: center;
 </head>
 <body>
 
-<div th:text="${nameRoom}" ></div>
+<div class="name" th:text="${nameRoom}" ></div>
 
 <div class="container my-2" align="center">
     <div class="row">

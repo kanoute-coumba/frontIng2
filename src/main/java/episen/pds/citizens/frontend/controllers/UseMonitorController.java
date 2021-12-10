@@ -1,8 +1,5 @@
 package episen.pds.citizens.frontend.controllers;
-import episen.pds.citizens.frontend.model.ConsumptionByBuilding;
-import episen.pds.citizens.frontend.model.RoomConditions;
-import episen.pds.citizens.frontend.model.Equipment;
-import episen.pds.citizens.frontend.model.RoomsWithConsumption;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.service.UseMonitorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +35,8 @@ public class UseMonitorController {
 
     @GetMapping("/listRooms")
     public String getRooms(Model model){
-        Iterable<RoomsWithConsumption> listRoom = useMonitorService.getRooms();
-        for (RoomsWithConsumption row: listRoom) {
+        Iterable<Room> listRoom = useMonitorService.getRooms();
+        for (Room row: listRoom) {
             logger.info(row.toString());
         }
         model.addAttribute("rooms", listRoom);
@@ -48,6 +45,7 @@ public class UseMonitorController {
 
     @GetMapping("/configManual/{id}")
     public  String getEquipmentByRoom(Model model, @PathVariable("id") int id_room) {
+        logger.info("Id_room="+id_room);
         Iterable<Equipment> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id_room);
         for (Equipment row: listEquipmentInRoom) {
             logger.info(row.toString());
@@ -62,7 +60,6 @@ public class UseMonitorController {
         for (Equipment row: listEquipments) {
             logger.info(row.toString());
         }
-
         model.addAttribute("equipments", listEquipments);
         return "configmanu";
     }

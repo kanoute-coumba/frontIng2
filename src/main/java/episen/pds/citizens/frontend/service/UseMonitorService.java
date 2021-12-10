@@ -3,7 +3,6 @@ package episen.pds.citizens.frontend.service;
 import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.repository.UseMonitorProxy;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Data
@@ -16,8 +15,8 @@ public class UseMonitorService {
         return useMonitorProxy.getConsumptionByBuilding();
     }
 
-    public Iterable<RoomsWithConsumption> getRooms() {
-        return  useMonitorProxy.getRoomsWithConsumption();
+    public Iterable<Room> getRooms() {
+        return  useMonitorProxy.getRooms();
     }
 
     public Iterable<Equipment> getEquipmentByRoom(int id_room) {

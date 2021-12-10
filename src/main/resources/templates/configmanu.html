@@ -13,7 +13,7 @@
 <!-- NAV BAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Citizen_logo.svg" alt=""  height="50" />
+        <img src="https://mallmaverick.imgix.net/web/property_managers/1/properties/726/stores/citizen_watch_company_store/20200316201327/__asset_get_105347" alt=""  height="50" />
     </a>
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
@@ -79,7 +79,7 @@
             <td th:text="${equipment.statut}"></td>
             <td>
                 <form action="@{/setEquipment/{id_equipment}(id_equipment=${equipment.id_equipment})}" method="post" name="changevalue">
-                    <input type="range" class="form-range" min="0" max="5" step="1" id="cursor" value="3" oninput="this.nextElementSibling.value = this.value">
+                    <input type="range" class="form-range" min="0" max="5" step="1" id="cursor" value="${equipment}" oninput="this.nextElementSibling.value = this.value">
                     <output>3</output>
                 </form>
             </td>

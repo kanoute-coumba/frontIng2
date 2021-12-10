@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Restauration</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -90,15 +90,16 @@
                 </div>
                 <hr class="hr-liste-salle">
                 <div class="action-salle">
-                    <button type="button" class="btn btn-primary">Choisir ce Menu </button>
+                    <a href="/cafeteria_reservation" class="btn btn-link btn-sm mb-3">
+                        <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                    </a>
                 </div>
             </div>
 
         </div>
     </div>
     </tr>
-</div>
-    <div class="row" style="margin-top:50px">
+
         <tr th:each="menu : ${Menu2}">
         <div class="col-sm-6">
             <div class="liste-salle-reunion">
@@ -126,13 +127,16 @@
                     </div>
                     <hr class="hr-liste-salle">
                     <div class="action-salle">
-                        <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                        <a href="/cafeteria_reservation" class="btn btn-link btn-sm mb-3">
+                            <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         </tr>
-    </div>
+</div>
+
     <div class="row" style="margin-top:50px">
         <tr th:each="menu : ${Menu3}">
         <div class="col-sm-6">
@@ -163,7 +167,9 @@
                     </div>
                     <hr class="hr-liste-salle">
                     <div class="action-salle">
+                        <a href="/cafeteria_reservation" class="btn btn-link btn-sm mb-3">
                         <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                        </a>
                     </div>
                 </div>
             </div>

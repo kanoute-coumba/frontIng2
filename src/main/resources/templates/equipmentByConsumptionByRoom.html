@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Equipment By Consumption</title>
+    <meta charset="UTF-8" http-equiv="refresh" content="20">
+    <title>Equipement de la Salle </title>
 </head>
 <body>
 <h2 class="h2">Liste des Equipement avec leurs consommations</h2>
@@ -17,7 +17,7 @@
     </thead>
     <tbody>
     </tr>
-    <tr th:each="equip: ${equipmentWithConsumption}">
+    <tr th:each="equip: ${equipmentWithConsumption2}">
         <td><span th:text="${equip.id_equipment}"> numéro de l'équipement </span></td>
         <td><span th:text="${equip.id_room}"> numéro de la salle </span></td>
         <td><span th:text="${equip.type}"> type de l'équipement </span></td>
@@ -26,5 +26,6 @@
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>

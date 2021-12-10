@@ -35,55 +35,38 @@ text-align: center;
 margin-top: 30px;
 }
 
-
-
-
-
     </style>
 </head>
 <body>
 
-<div class="name" th:text="${nameRoom}" ></div>
+<div class="name" th:text="${nameRoom}"></div>
 
 <div class="container my-2" align="center">
     <div class="row">
         <div class="col-12">
+            <table border="1" class="table">
+                <thead>
+                <tr>
+                    <th style="vertical-align: middle" scope="col">Equipements</th>
+                    <th style="vertical-align: middle" scope="col">Statut</th>
+                    <th style="vertical-align: middle" scope="col">Mode équipement</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="equipment : ${listEquipment}">
+                    <td th:if="${equipment.type} == 'lampe'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}"
+                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                    <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
+                    <td th:text="${equipment.statut}"></td>
+                    <td th:text="${equipment.type_mode}"></td>
 
-
-
-
-<table border="1" class="table">
-    <thead>
-    <tr>
-
-        <th style="vertical-align: middle" scope="col">Equipements</th>
-        <th style="vertical-align: middle" scope="col">Statut</th>
-        <th style="vertical-align: middle" scope="col">Mode équipement</th>
-
-
-    </tr>
-    </thead>
-    <tbody>
-
-
-    <tr th:each="equipment : ${listEquipment}">
-
-        <td th:if="${equipment.type} == 'lampe'"><a th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}" class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
-        <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
-
-        <td th:text="${equipment.statut}"></td>
-        <td th:text="${equipment.type_mode}"></td>
-        <td>
-    </tr>
-
-    </tbody>
-</table>
-
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
-
 
 </body>
 </html>

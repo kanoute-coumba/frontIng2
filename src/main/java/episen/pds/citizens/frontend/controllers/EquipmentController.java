@@ -22,10 +22,13 @@ public class EquipmentController {
     public String getEquipmentByRoom(@PathVariable("idr") final int idr, Model model) {
         List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
-        System.out.println(iterable);
+        String nameRoom = equipmentService.getNameRoomByIdroom(idr);
+        model.addAttribute("nameRoom", nameRoom);
+        System.out.println(idr);
 
         return "equipmentByRoom";
     }
+
 
     @GetMapping("/configurationLampe")
     public String displayConfigLampe(@RequestParam("id_equipment") String id_equipment, Model model ) {

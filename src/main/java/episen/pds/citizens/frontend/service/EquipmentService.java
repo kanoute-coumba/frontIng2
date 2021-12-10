@@ -26,12 +26,12 @@ public class EquipmentService {
 
     public void UpdateStatutMode (String chooseStatut, String type_mode, Integer id_equipment) {
         System.out.println("debut");
-
         EquipmentProxy.updateStatutMode(chooseStatut, type_mode, id_equipment);
-
         logger.info("fin");
+    }
 
-
+    public String getNameRoomByIdroom (Integer id_room) {
+       return EquipmentProxy.getNameRoomByIdroom(id_room);
     }
 
 //

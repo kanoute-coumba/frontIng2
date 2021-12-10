@@ -13,10 +13,24 @@ th, td {
   text-align: center
 }
 
-a {
+a{
 text-decoration: none;
 color : black;
 }
+.style{
+align: center;
+}
+
+.table{
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 10%;
+ width: 60%;
+ table-layout: auto;
+ table-layout: fixed;
+}
+
+
 
 
 
@@ -24,16 +38,22 @@ color : black;
 </head>
 <body>
 
-<div>Chambre</div>
+<div th:text="${nameRoom}" ></div>
+
+<div class="container my-2" align="center">
+    <div class="row">
+        <div class="col-12">
 
 
-<table id="test" border="1" class="table">
+
+
+<table border="1" class="table">
     <thead>
     <tr>
-        <th bgcolor="bleu">id</th>
-        <th bgcolor="bleu">Type equipement</th>
-        <th bgcolor="bleu">Statut</th>
-        <th bgcolor="bleu">Mode de l'équipement</th>
+
+        <th style="vertical-align: middle" scope="col">Equipements</th>
+        <th style="vertical-align: middle" scope="col">Statut</th>
+        <th style="vertical-align: middle" scope="col">Mode équipement</th>
 
 
     </tr>
@@ -42,7 +62,7 @@ color : black;
 
 
     <tr th:each="equipment : ${listEquipment}">
-        <td th:text="${equipment.id_equipment}"></td>
+
         <td th:if="${equipment.type} == 'lampe'"><a th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}" class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
         <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
 
@@ -53,6 +73,11 @@ color : black;
 
     </tbody>
 </table>
+
+        </div>
+    </div>
+</div>
+
 
 
 </body>

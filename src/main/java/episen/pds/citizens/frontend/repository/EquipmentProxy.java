@@ -44,7 +44,7 @@ public class EquipmentProxy {
 
     public static Iterable<Equipment> getEquipmentByRoom(Integer idr) {
         String baseApiUrl = props.getApiUrl();
-        String getEquipmentUrl = baseApiUrl + "/equipmentBYRoom/" +idr;
+        String getEquipmentUrl = baseApiUrl + "/equipmentBYRoom/" + idr;
 
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
@@ -62,7 +62,7 @@ public class EquipmentProxy {
 
     }
 
-    public static void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment ) {
+    public static void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment) {
         System.out.println("oooooooooooo");
         String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/choosestatut?chooseStatut=" + chooseStatut + "&type_mode=" + type_mode + "&id_equipment=" + id_equipment;
@@ -78,9 +78,30 @@ public class EquipmentProxy {
         );
 
         log.debug("Get Equipment call " + response.getStatusCode().toString());
-
-
     }
+
+    public static String getNameRoomByIdroom(Integer id_room) {
+        System.out.println("oooooooooooo");
+        String baseApiUrl = props.getApiUrl();
+        String getEquipmentUrl = baseApiUrl + "/nameRoom?id_room=" + id_room;
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }
+        );
+
+        log.debug("Get Equipment call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+
+
 
 
 //    public static void UpdateTypeMode(String type_mode, Integer id_equipment ) {

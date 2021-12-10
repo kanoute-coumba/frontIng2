@@ -45,7 +45,7 @@ public class UseMonitorController {
         model.addAttribute("rooms", listRoom);
         return "showmyrooms";
     }
-/*
+
     @GetMapping("/configManual/{id}")
     public  String getEquipmentByRoom(Model model, @PathVariable("id") int id_room) {
         Iterable<Equipment> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id_room);
@@ -55,5 +55,5 @@ public class UseMonitorController {
         model.addAttribute("equipments", listEquipmentInRoom);
         return "configmanu";
     }
- */
+
 }

@@ -18,9 +18,9 @@ public class EquipmentProxy {
     private static final CustomProperties props = new CustomProperties();
     private static final Logger logger = Logger.getLogger(EquipmentProxy.class.getName());
 
-    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumption(int id_b) {
+    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByBuilding(int id_b) {
         String baseApiUrl = props.getApiUrl();
-        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentByConsumption/"+id_b;
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idb="+id_b;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(
@@ -31,9 +31,26 @@ public class EquipmentProxy {
                 }
         );
 
-        logger.info("Get EquipmentWithConsumption call " + response.getStatusCode().toString());
+        logger.info("Get EquipmentWithConsumption call " + response.getStatusCode());
 
         return response.getBody();
     }
 
+    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByRoom(int id_r) {
+        String baseApiUrl = props.getApiUrl();
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idr="+id_r;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(
+                getEquipWithConsumptionUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+
+        logger.info("Get EquipmentWithConsumption call " + response.getStatusCode());
+
+        return response.getBody();
+    }
 }

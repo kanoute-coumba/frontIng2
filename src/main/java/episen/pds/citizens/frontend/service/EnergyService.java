@@ -16,8 +16,12 @@ public class EnergyService {
 
     public Iterable<EquipmentWithConsumption> getEquipmentWithConsumption(int id_b) {
         logger.info("EnergyService getEquipment");
-        return EquipmentProxy.getEquipmentWithConsumption(id_b);
+        return EquipmentProxy.getEquipmentWithConsumptionByBuilding(id_b);
 
+    }
+    public Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByRoom(int id_r){
+        logger.info("EnergyService getEquipmentWithConsumptionByRoom");
+        return EquipmentProxy.getEquipmentWithConsumptionByRoom(id_r);
     }
     public Iterable<CentralByProduction> getCentralWithProduction(int id_b) {
         logger.info("EnergyService getCentral");

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>UC 7 - Architecture</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{/architecture-css.css}">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://img.icons8.com/ultraviolet/100/000000/mac-os--v1.png">
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/accessMap">Plan d'accès</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/personalizeDesign">Design Intérieur</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- NAV BAR -->
+
+<div class="title-page">Se faire guider</div>
+
+<div class="container text-center mag-t">
+    <form action="/guidanceOption/display">
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Veuillez selectionner un bâtiment :</span> <br><br>
+            <select id="building" name="buildings" class="btn btn-primary">
+                <th:block th:each="building : ${buildings}">
+                    <option value="${building.name_building}">
+                        <span th:text="${building.name_building}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+        <br><br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Veuillez selectionner un étage :</span> <br><br>
+            <select id="floors" name="floors" class="btn btn-primary">
+                <!--                    Ici faut mettre le code pour récupérer les étages du bâtiment sélectionné-->
+            </select>
+        </div>
+        <br><br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Veuillez selectionner un espace :</span> <br><br>
+            <select id="spaces" name="spaces" class="btn btn-primary">
+                <!--                    Ici faut mettre le code pour récupérer les espaces de l'étage sélectionné-->
+            </select>
+        </div>
+        <br><br>
+        <button type=" submit" class="btn btn-primary" style="font-size: large;">Guider moi</button>
+    </form>
+</div>
+
+</body>
+
+</html>

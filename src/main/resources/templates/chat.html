@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Citizens</title>
+    <title>chat</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <script  src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
 </head>
 
 <body>
 
 <!-- NAV BAR -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Citizen_logo.svg" alt=""  height="50" />
-    </a>
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/monitor">Monitorer</a>
+                <a class="nav-link" href="#">Page 1</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/listRooms">Configurer</a>
+                <a class="nav-link" href="#">Page 2</a>
             </li>
-           <!-- <li class="nav-item active">
-                <a class="nav-link" href="/configManual">Mes Equipements</a>
-            </li>-->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Services
@@ -45,9 +42,9 @@
                     Architecture
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                    <a class="dropdown-item" href="/accessMap">Plan d'accès</a>
-                    <a class="dropdown-item" href="/guidanceOption">Se faire guider</a>
-                    <a class="dropdown-item" href="/personalizeDesign">Design intérieur (Admin)</a>
+                    <a class="dropdown-item" href="/planAcces">Plan d'accès</a>
+                    <a class="dropdown-item" href="/guidage">Se faire guider</a>
+                    <a class="dropdown-item" href="/designInterieur">Design intérieur (Admin)</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -64,39 +61,44 @@
 </nav>
 
 <!-- NAV BAR -->
+<div class="title-page">Chat</div>
 
+<div class="container">
+    <button class="btn btn-info btn-chat" type="button" onclick="openChat()">Chat</button>
 
-<div align="center" class="container my-2">
-    <h1>Liste des personnes enregistrées</h1>
-    <table id="test" border="1" class="table table-striped table responsive-md">
-        <thead>
-        <tr>
-            <th bgcolor="bleu">id</th>
-            <th bgcolor="bleu">firstname</th>
-            <th bgcolor="bleu">lastname</th>
-            <th bgcolor="red">Operation</th>
+    <div class="chatbox" id="chatbox">
+        <h2>Message</h2>
+        <form class="form-container">
+            <textarea type="text" placeholder="Type Text.." name="msg" required=""></textarea>
+            <button type="submit" class="btn btn-info btn-lg btn-send">Send</button>
+            <button type="button" class="btn btn-danger btn-lg btn-close" onclick="closeChat()">Close</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+    function openChat() {
+      document.getElementById('chatbox').style.display='block';
+      $('.btn-chat').hide();
+    }
+    function closeChat() {
+      document.getElementById('chatbox').style.display='none';
+      $('.btn-chat').show();
+    }
+    $('form').submit(function () {
+      var text=$(this).find("textarea[name='msg']").val();
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="test : ${tests}">
-            <td th:text="${test.id}"></td>
-            <td th:text="${test.firstname}"></td>
-            <td th:text="${test.lastname}"></td>
-            <td>
-                <a th:href="@{/deleteTest/{id}(id=${test.id})}" class="btn btn-link btn-sm mb-3"> Supprimer </a></td>
-
-        </tr>
-
-        </tbody>
-    </table>
-    <br/>
-    <a th:href="@{/showNewTestForm}" class="btn btn-link btn-sm mb-3"> Ajouter/Modifier</a>
-
-
+      alert(text);
+    });
+  </script>
 
 </div>
-
-
 </body>
+</html>
+
+
+
+<script type="text/javascript" th:src="@{/chat.js}" th:inline="javascript"></script>
+<link th:href="@{/chat.css}" rel="stylesheet"/>
+<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+</body>
+
 </html>

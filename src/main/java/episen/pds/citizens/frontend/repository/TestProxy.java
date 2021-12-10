@@ -79,9 +79,6 @@ public class TestProxy {
                 null,
                 Test.class);
         response.getBody();
-
-
-
     }
 
 

@@ -59,4 +59,18 @@ public class TestController {
         return "salles-reunion";
     }
 
+    @GetMapping("/planAcces")
+    public String getPlanAcces(Model model) {
+        return "plan-acces";
+    }
+
+    @GetMapping("/designInterieur")
+    public String getDesignInterieur(Model model) {
+        return "design-interieur";
+    }
+
+    @GetMapping("/guidage")
+    public String getGuidage(Model model) {
+        return "guidage";
+    }
 }

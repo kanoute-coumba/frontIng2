@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
+import episen.pds.citizens.frontend.controllers.UseMonitorController;
 import episen.pds.citizens.frontend.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.logging.Logger;
+
 @Slf4j
 @Component
 public class UseMonitorProxy {
     @Autowired
     private static CustomProperties props = new CustomProperties();
+    private static final Logger logger = Logger.getLogger(UseMonitorProxy.class.getName());
 
     public static Iterable<ConsumptionByBuilding> getConsumptionByBuilding() {
         String baseApiUrl = props.getApiUrl();
@@ -50,6 +54,21 @@ public class UseMonitorProxy {
         String baseApiUrl = props.getApiUrl();
         String getConsBuildUrl = baseApiUrl + "/getEquipmentsByRoom?id_room=" + id_room;
 
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<Equipment>> response = restTemplate.exchange(
+                getConsBuildUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        return response.getBody();
+    }
+
+    public Iterable<Equipment> getAllEquipments() {
+        String baseApiUrl = props.getApiUrl();
+        String getConsBuildUrl = baseApiUrl + "/getAllEquipments";
+        logger.info(getConsBuildUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Equipment>> response = restTemplate.exchange(
                 getConsBuildUrl,

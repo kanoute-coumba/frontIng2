@@ -16,7 +16,7 @@ public class UseMonitorController {
     private final UseMonitorService useMonitorService = new UseMonitorService();
     private static final Logger logger = Logger.getLogger(UseMonitorController.class.getName());
 
-    @GetMapping("/configManual/{id}")
+    @GetMapping("/configManual/conditions/{id}")
     public String getRoomConditions(Model model, @PathVariable("id") int id_room) {
         Iterable<RoomConditions> listConditions = useMonitorService.getConditionsInRoom(id_room);
         for (RoomConditions row: listConditions) {
@@ -56,4 +56,14 @@ public class UseMonitorController {
         return "configmanu";
     }
 
+    @GetMapping("/configManual")
+    public  String getAllEquipments(Model model) {
+        Iterable<Equipment> listEquipments = useMonitorService.getAllEquipments();
+        for (Equipment row: listEquipments) {
+            logger.info(row.toString());
+        }
+
+        model.addAttribute("equipments", listEquipments);
+        return "configmanu";
+    }
 }

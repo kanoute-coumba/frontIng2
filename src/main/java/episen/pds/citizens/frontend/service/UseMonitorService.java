@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class UseMonitorService {
 
     private UseMonitorProxy useMonitorProxy = new UseMonitorProxy();
+
     public Iterable<ConsumptionByBuilding> getConsumptionByBuilding() {
         return useMonitorProxy.getConsumptionByBuilding();
     }
@@ -25,5 +26,9 @@ public class UseMonitorService {
 
     public Iterable<RoomConditions> getConditionsInRoom(int id) {
         return useMonitorProxy.getConditionsInRoom(id);
+    }
+
+    public Iterable<Equipment> getAllEquipments() {
+        return useMonitorProxy.getAllEquipments();
     }
 }

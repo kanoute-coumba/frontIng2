@@ -34,4 +34,12 @@ public class UseMonitorService {
     public void setEquipmentValue(int id_equipment, double value) {
         useMonitorProxy.setEquipmentValue(id_equipment,value);
     }
+
+    public void setEquipmentAuto(int id_equipment) {
+        useMonitorProxy.setEquipmentAuto(id_equipment);
+    }
+
+    public void setEquipmentManu(int id_equipment) {
+        useMonitorProxy.setEquipmentManu(id_equipment);
+    }
 }

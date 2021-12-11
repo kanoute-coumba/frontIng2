@@ -35,12 +35,12 @@ public class MenuController {
 
     }
 
-    @GetMapping("/cafeteria_reservation")
-    public String savecMenu(Model model, @ModelAttribute Menu menu) {
+   @GetMapping("/cafeteria_reservation/saved")
+    public String savedMenu(Model model, @ModelAttribute Menu menu) {
         //ModelAttribut récupère l'objet crée
         //model.addAttribute("reserved-menu", menuService.getMenuById(1));
         //menuService.saveMenu(menu);
-        return "cafeteria_reservation";
+        return "cafeteria_reservation_saved";
     }
 
     @GetMapping("/cafeteria_reservation")

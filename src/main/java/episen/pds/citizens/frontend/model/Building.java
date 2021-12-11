@@ -7,6 +7,7 @@ public class Building {
     private int id;
     private String name;
     private String address;
-    //private double consumption;
-    //private double production;
+    private String type;
+    private String consumption;
+    private String production;
 }

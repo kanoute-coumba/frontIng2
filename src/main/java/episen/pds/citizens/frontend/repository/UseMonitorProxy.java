@@ -6,6 +6,7 @@ import episen.pds.citizens.frontend.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -108,5 +109,19 @@ public class UseMonitorProxy {
                 }
         );
         return response.getBody();
+    }
+
+    public void setEquipmentValue(int id_equipment, double value) {
+        String baseApiUrl = props.getApiUrl();
+        String getConsBuildUrl = baseApiUrl + "/setEquipment/"+id_equipment+"/"+value;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getConsBuildUrl,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
     }
 }

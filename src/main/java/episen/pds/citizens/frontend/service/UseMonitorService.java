@@ -30,4 +30,8 @@ public class UseMonitorService {
     public Iterable<Equipment> getAllEquipments() {
         return useMonitorProxy.getAllEquipments();
     }
+
+    public void setEquipmentValue(int id_equipment, double value) {
+        useMonitorProxy.setEquipmentValue(id_equipment,value);
+    }
 }

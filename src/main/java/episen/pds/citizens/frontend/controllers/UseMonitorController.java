@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.logging.Logger;
 
@@ -63,4 +65,20 @@ public class UseMonitorController {
         model.addAttribute("equipments", listEquipments);
         return "configmanu";
     }
+
+    @PostMapping("/setEquipmentValue/{id_equipment}")
+    public String setEquipmentValue(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("changevalue") double value, @RequestParam("id_room") int id_room) {
+        logger.info("SET: id_equipment="+id_equipment + ", new_value=" + value + ", id_room=" + id_room);
+        useMonitorService.setEquipmentValue(id_equipment,value);
+        useMonitorService.setEquipmentManu(id_equipment);
+        return "redirect:/configManual/"+ id_room;
+    }
+
+    @PostMapping("/setEquipmentAuto/{id_equipment}")
+    public String setEquipmentAuto(Model model, @PathVariable int id_equipment, @RequestParam("id_room") int id_room) {
+        logger.info("SET_AUTO: id_equipment="+ id_equipment + ", id_room=" + id_room);
+        useMonitorService.setEquipmentAuto(id_equipment);
+        return "redirect:/configManual/"+ id_room;
+    }
+
 }

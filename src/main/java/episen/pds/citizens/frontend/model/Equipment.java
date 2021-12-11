@@ -8,6 +8,17 @@ public class Equipment {
     private int id_equipment;
     private int id_room;
     private String type;
+    private double value;
+    private String type_mode;
+    private String statut;
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
 
     public int getId_equipment() {
         return id_equipment;
@@ -41,5 +52,23 @@ public class Equipment {
         this.statut = statut;
     }
 
-    private String statut;
+    public String getType_mode() {
+        return type_mode;
+    }
+
+    public void setType_mode(String type_mode) {
+        this.type_mode = type_mode;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "id_equipment=" + id_equipment +
+                ", id_room=" + id_room +
+                ", type='" + type + '\'' +
+                ", value=" + value +
+                ", type_mode='" + type_mode + '\'' +
+                ", statut='" + statut + '\'' +
+                '}';
+    }
 }

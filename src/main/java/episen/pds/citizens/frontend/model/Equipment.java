@@ -8,6 +8,16 @@ public class Equipment {
     private int id_equipment;
     private int id_room;
     private String type;
+    private double value;
+    private String statut;
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
 
     public int getId_equipment() {
         return id_equipment;
@@ -41,5 +51,14 @@ public class Equipment {
         this.statut = statut;
     }
 
-    private String statut;
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "id_equipment=" + id_equipment +
+                ", id_room=" + id_room +
+                ", type='" + type + '\'' +
+                ", value=" + value +
+                ", statut='" + statut + '\'' +
+                '}';
+    }
 }

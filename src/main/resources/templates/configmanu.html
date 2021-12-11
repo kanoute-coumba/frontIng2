@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Citizens</title>
@@ -13,7 +13,7 @@
 <!-- NAV BAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Citizen_logo.svg" alt=""  height="50" />
+        <img src="https://mallmaverick.imgix.net/web/property_managers/1/properties/726/stores/citizen_watch_company_store/20200316201327/__asset_get_105347" alt=""  height="50" />
     </a>
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
@@ -55,8 +55,9 @@
 
 <!-- NAV BAR -->
 
-<div style="text-align: center;">
+<div style="text-align: center;" class="container my-2">
     <h2>LES EQUIPEMENTS DE LA SALLE</h2>
+    <h2 th:text="${id}"></h2>
     <table id="equipment" border="1" class="table table-striped table responsive-md">
         <thead>
         <tr>
@@ -69,7 +70,8 @@
             <th bgcolor="bleu">Equipement N°</th>
             <th bgcolor="bleu">Type</th>
             <th bgcolor="bleu">Statut</th>
-            <th bgcolor="bleu">Configurer</th>
+            <th bgcolor="bleu">Value</th>
+            <th bgcolor="red">Configurer</th>
         </tr>
         </thead>
         <tbody>
@@ -77,10 +79,13 @@
             <td th:text="${equipment.id_equipment}"></td>
             <td th:text="${equipment.type}"></td>
             <td th:text="${equipment.statut}"></td>
+            <td th:text="${equipment.value}"></td>
             <td>
-                <form action="@{/setEquipment/{id_equipment}(id_equipment=${equipment.id_equipment})}" method="post" name="changevalue">
-                    <input type="range" class="form-range" min="0" max="5" step="1" id="cursor" value="3" oninput="this.nextElementSibling.value = this.value">
-                    <output>3</output>
+                <form th:action="@{/setEquipmentValue/{id_equipment}(id_equipment=${equipment.id_equipment})}" method="post" name="changevalue">
+                    <input type="hidden" th:value="${id}" name="id_room" id="id_room">
+                    <input type="range" class="form-range" min="0" max="5" step="1" name="changevalue" id="changevalue" th:value="${equipment.value}" oninput="this.nextElementSibling.value = this.value">
+                    <output th:text="${equipment.value}"></output>
+                    <button type="submit" class="btn btn-primary">Confirmer</button>
                 </form>
             </td>
 <!--
@@ -89,7 +94,6 @@
             <td th:text="${equipment.measure}"></td>
             <td th:text="${equipment.consumption}"></td>-->
         </tr>
-
         </tbody>
     </table>
 

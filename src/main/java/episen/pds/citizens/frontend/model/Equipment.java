@@ -9,6 +9,7 @@ public class Equipment {
     private int id_room;
     private String type;
     private double value;
+    private String type_mode;
     private String statut;
 
     public double getValue() {
@@ -51,6 +52,14 @@ public class Equipment {
         this.statut = statut;
     }
 
+    public String getType_mode() {
+        return type_mode;
+    }
+
+    public void setType_mode(String type_mode) {
+        this.type_mode = type_mode;
+    }
+
     @Override
     public String toString() {
         return "Equipment{" +
@@ -58,6 +67,7 @@ public class Equipment {
                 ", id_room=" + id_room +
                 ", type='" + type + '\'' +
                 ", value=" + value +
+                ", type_mode='" + type_mode + '\'' +
                 ", statut='" + statut + '\'' +
                 '}';
     }

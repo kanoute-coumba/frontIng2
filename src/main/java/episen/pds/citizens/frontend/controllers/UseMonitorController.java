@@ -71,6 +71,12 @@ public class UseMonitorController {
         logger.info("SET: id_equipment="+id_equipment + ", new_value=" + value + ", id_room=" + id_room);
         useMonitorService.setEquipmentValue(id_equipment,value);
         useMonitorService.setEquipmentManu(id_equipment);
+        if (value > 0) {
+            useMonitorService.setEquipmentOn(id_equipment);
+        }
+        else {
+            useMonitorService.setEquipmentOff(id_equipment);
+        }
         return "redirect:/configManual/"+ id_room;
     }
 

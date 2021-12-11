@@ -152,4 +152,32 @@ public class UseMonitorProxy {
                 }
         );
     }
+
+    public void setEquipmentOff(int id_equipment) {
+        String baseApiUrl = props.getApiUrl();
+        String getConsBuildUrl = baseApiUrl + "/setEquipmentOff/"+id_equipment;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getConsBuildUrl,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+    }
+
+    public void setEquipmentOn(int id_equipment) {
+        String baseApiUrl = props.getApiUrl();
+        String getConsBuildUrl = baseApiUrl + "/setEquipmentOn/"+id_equipment;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getConsBuildUrl,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+    }
 }

@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8" http-equiv="refresh" content="20">
     <title>Equipment By Consumption</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+
 </head>
 <body>
-<h2 class="h2">Liste des Equipement avec leurs consommations</h2>
+<h2>Les équipements et les générateurs du Batiment</h2>
+<h2 th:text="${idb}"></h2>
+<h3 class="tableau1">Liste des Equipements avec leurs consommations</h3>
 <table id="test" border="1" class="table table-striped table responsive-md">
     <thead>
     <tr>
@@ -26,7 +30,7 @@
     </tr>
     </tbody>
 </table>
-<h3 class="h3">Liste des centrals avec leurs productions</h3>
+<h3 class="tableau2">Liste des centrals avec leurs productions</h3>
 <table id="test2" border="1" class="table table-striped table responsive-md">
     <thead>
     <tr>

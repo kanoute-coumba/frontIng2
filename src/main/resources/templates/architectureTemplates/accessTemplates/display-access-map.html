@@ -34,9 +34,57 @@
 
 <div class="title-page">Plan d'accès du <span th:text="${param.floors}"></span> </div>
 
-<p style="text-align: center;">
-    <img src="https://www.jung.de/~mi/9930/16537/jung-knx-topologie.png" alt="" />
-</p>
+<!--<p style="text-align: center;">-->
+<!--    <img src="https://www.jung.de/~mi/9930/16537/jung-knx-topologie.png" alt="" />-->
+<!--</p>-->
+
+<div class="container text-center mag-t">
+    <form action="/accessMap/display">
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Bureaux :</span> <br><br>
+            <select id="office" name="offices" class="btn btn-primary" >
+                <th:block th:each="office : ${offices}">
+                    <option value="${office.name_space}">
+                        <span th:text="${office.name_space}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+        <br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Salles de réunion :</span> <br><br>
+            <select id="meetingRoom" name="meetingRooms" class="btn btn-primary" >
+                <th:block th:each="meetingRoom : ${meetingRooms}">
+                    <option value="${meetingRoom.name_space}">
+                        <span th:text="${meetingRoom.name_space}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+        <br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Salles individuelles :</span> <br><br>
+            <select id="individualRoom" name="individualRooms" class="btn btn-primary" >
+                <th:block th:each="individualRoom : ${individualRooms}">
+                    <option value="${individualRoom.name_space}">
+                        <span th:text="${individualRoom.name_space}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+        <br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Espaces Ouverts :</span> <br><br>
+            <select id="openSpace" name="openSpaces" class="btn btn-primary" >
+                <th:block th:each="openSpace : ${openSpaces}">
+                    <option value="${openSpace.name_space}">
+                        <span th:text="${openSpace.name_space}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+    </form>
+</div>
 
 </body>
 

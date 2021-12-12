@@ -37,7 +37,7 @@ public class TestProxy {
                 }
         );
 
-        log.debug("Get Test call " + response.getStatusCode().toString());
+        logger.info("Get Test call " + response.getStatusCode().toString());
 
         return response.getBody();
 
@@ -49,7 +49,7 @@ public class TestProxy {
         String createTestUrl = baseApiUrl + "/Form";
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Test> request = new HttpEntity<Test>(e);
+        HttpEntity<Test> request = new HttpEntity(e);
         ResponseEntity<Test> response = restTemplate.exchange(
                 createTestUrl,
                 HttpMethod.POST,
@@ -57,7 +57,7 @@ public class TestProxy {
                 Test.class);
         System.out.println(request);
 
-        log.debug("Create Test call " + response.getStatusCode().toString());
+        logger.info("Create Test call " + response.getStatusCode().toString());
 
         return response.getBody();
     }
@@ -79,9 +79,6 @@ public class TestProxy {
                 null,
                 Test.class);
         response.getBody();
-
-
-
     }
 
 

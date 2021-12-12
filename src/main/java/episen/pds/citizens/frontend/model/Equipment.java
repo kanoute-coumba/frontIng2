@@ -9,10 +9,19 @@ public class Equipment {
     private int id_room;
     private String type;
     private String statut;
+    private String value;
     private String type_mode;
 
     public int getId_equipment() {
         return id_equipment;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public void setId_equipment(int id_equipment) {

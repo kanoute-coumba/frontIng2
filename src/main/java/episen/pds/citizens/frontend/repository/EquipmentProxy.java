@@ -2,11 +2,12 @@ package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Equipment;
-import episen.pds.citizens.frontend.model.Test;
+import episen.pds.citizens.frontend.model.EquipmentWithConsumption;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
+
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -19,8 +20,44 @@ import java.util.logging.Logger;
 public class EquipmentProxy {
 
     @Autowired
-    private static CustomProperties props = new CustomProperties();
+    private static final CustomProperties props = new CustomProperties();
     private static final Logger logger = Logger.getLogger(EquipmentProxy.class.getName());
+
+    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByBuilding(int id_b) {
+        String baseApiUrl = props.getApiUrl();
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idb="+id_b;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(
+                getEquipWithConsumptionUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+
+        logger.info("Get EquipmentWithConsumptionByBuilding call " + response.getStatusCode());
+
+        return response.getBody();
+    }
+
+    public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByRoom(int id_r) {
+        String baseApiUrl = props.getApiUrl();
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idr="+id_r;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(
+                getEquipWithConsumptionUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+
+        logger.info("Get EquipmentWithConsumptionByRoom call " + response.getStatusCode());
+
+        return response.getBody();
+    }
 
     public static Iterable<String> getEquipment(Integer variable1, Integer variable2) {
         String baseApiUrl = props.getApiUrl();
@@ -36,7 +73,7 @@ public class EquipmentProxy {
                 }
         );
 
-        log.debug("Get Equipment call " + response.getStatusCode().toString());
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
 
         return response.getBody();
 
@@ -56,7 +93,7 @@ public class EquipmentProxy {
                 }
         );
 
-        log.debug("Get equipmentByRoom " + response.getStatusCode().toString());
+        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
 
         return response.getBody();
 
@@ -77,7 +114,7 @@ public class EquipmentProxy {
                 }
         );
 
-        log.debug("Get Equipment call " + response.getStatusCode().toString());
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
     }
 
     public static String getNameRoomByIdroom(Integer id_room) {
@@ -95,7 +132,7 @@ public class EquipmentProxy {
                 }
         );
 
-        log.debug("Get Equipment call " + response.getStatusCode().toString());
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
 
         return response.getBody();
     }

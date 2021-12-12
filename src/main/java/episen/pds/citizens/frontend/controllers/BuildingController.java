@@ -1,7 +1,7 @@
 package episen.pds.citizens.frontend.controllers;
 
-import episen.pds.citizens.frontend.model.Building;
-import episen.pds.citizens.frontend.service.BuildingService;
+import episen.pds.citizens.frontend.model.BuildingPatch;
+import episen.pds.citizens.frontend.service.BuildingServicePatch;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BuildingController {
 
-    private BuildingService buildingService = new BuildingService();
+    private BuildingServicePatch buildingServicePatch = new BuildingServicePatch();
 
-    @GetMapping("/buildings")
+    @GetMapping("/buildingsPatch")
     public String getBuildings(Model model) {
-        Iterable<Building> buildings = buildingService.getBuildings();
+        Iterable<BuildingPatch> buildings = buildingServicePatch.getBuildings();
         model.addAttribute("buildings", buildings);
         return "smartgrid/home.html";
     }

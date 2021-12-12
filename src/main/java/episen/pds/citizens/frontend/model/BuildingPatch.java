@@ -3,7 +3,7 @@ package episen.pds.citizens.frontend.model;
 import lombok.Data;
 
 @Data
-public class Building {
+public class BuildingPatch {
     private int id;
     private String name;
     private String address;

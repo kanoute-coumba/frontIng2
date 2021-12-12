@@ -16,6 +16,7 @@ public class TestController {
 
     private TestService testService = new TestService();
 
+
 //
 //    @GetMapping("/home")
 //    public String home() {
@@ -59,4 +60,30 @@ public class TestController {
         return "salles-reunion";
     }
 
+
+    @GetMapping("/cafeteria/validation")
+    public String getMenuValidation(Model model) {
+        return "cafeteria-validation";
+    }
+
+    @GetMapping("/chat")
+    public String getChat(Model model) {
+        return "chat";
+    }
+
+
+    @GetMapping("/planAcces")
+    public String getPlanAcces(Model model) {
+        return "plan-acces";
+    }
+
+    @GetMapping("/designInterieur")
+    public String getDesignInterieur(Model model) {
+        return "design-interieur";
+    }
+
+    @GetMapping("/guidage")
+    public String getGuidage(Model model) {
+        return "guidage";
+    }
 }

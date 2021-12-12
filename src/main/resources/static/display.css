@@ -1,0 +1,24 @@
+.box{
+  background-color: rgb(128, 128, 128);
+   width: 800px;
+   height: 250px;
+   margin: 25px;
+
+}
+.box a{
+margin-bottom:10px
+margin-left: 10px
+
+
+}
+
+.table {
+
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+}
+
+

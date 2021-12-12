@@ -4,17 +4,224 @@
     <meta charset="UTF-8">
     <title>Affichage des pièces</title>
     <link rel="stylesheet" type="text/css" href="display.css">
-    <p style="text-align:center"> Choississez votre habitation:</p><br>
+    <style>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+  text-align: center
+}
+
+
+
+
+
+    </style>
+
+    <p style="text-align:center"> Liste des pièces disponibles</p><br>
 </head>
 <body>
 
-<div style="display:flex">
-    <div class="box" style="background-color:SteelBlue">&nbsp; Chambre </div>
-    <div class="box" style="background-color:DarkSeaGreen">&nbsp; Salon</div>
+<div style="display:flex ">
+    <div class="box">&nbsp;
+
+        <div style=" margin-bottom: 30px"> Chambre</div>
+        <div class="container my-2" align="center">
+            <div class="row">
+                <div class="col-12">
+
+                    <table border="1" class="table">
+
+                        <thead>
+                        <tr>
+
+                            <th style="vertical-align: middle" scope="col">Equipements</th>
+                            <th style="vertical-align: middle" scope="col">Status</th>
+                            <th style="vertical-align: middle" scope="col">Mode</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+
+                            <td>
+                                <a th:href="@{/configurationLampe}" class="btn btn-primary" role="button" style="display: flex">
+
+                                    <button type="button" th:text="${nameEquip}" class="btn btn-dark"></button>
+
+                                </a>
+                            </td>
+                            <td>
+                                iiiiiiiiiiiii
+                            </td>
+                            <td>
+                                ggggggggggggggg
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+                                    <button type="button" th:text="${nameEquipe}" class="btn btn-dark"></button>
+                                </a>
+                            </td>
+                            <td>
+                                oooooooooooooooooooooo
+                            </td>
+                            <td>
+                                kkkkkkkkkkkkkkkkkkkkkkkkkkk
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+                                    <button type="button" th:text="${nameRadiateur}" class="btn btn-dark"></button>
+                                </a>
+                            </td>
+                            <td>
+                                jjjjjjjjjjjjjjjjjjj
+                            </td>
+                            <td>
+                                popiioouihhjhjhj
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+                                    <button type="button" th:text="${nameFenetre}" class="btn btn-dark"></button>
+                                </a>
+                            </td>
+                            <td>
+                                rrrrrrrrrrrrrrrrrrrrrrrrrrr
+                            </td>
+                            <td>
+                                nqnqqnqnqnnqqnnnqnqnqnq
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+                                    <button type="button" th:text="${nameStore}" class="btn btn-dark"></button>
+                                </a>
+                            </td>
+
+                            <td>
+                                sksksskskskskksksskskks
+                            </td>
+                            <td>
+                                mmpozpdjdjhdjdkskkskskskskjdjdj
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+                                    <button type="button" th:text="${nameScreen}" class="btn btn-dark"></button>
+                                </a>
+                            </td>
+
+                            <td>
+                                ghgjgjggkggkglgglglglgglglgllgl
+                            </td>
+
+                            <td>
+                                guuyuyiyyoyyyypyyyl
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" style="background-color:DarkSeaGreen">&nbsp;
+        <div style="margin-bottom:30px"> Salon</div>
+        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Eclairage</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Climatisation</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Radiateur</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Fenêtre</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Store</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Télévision</button>
+        </a>
+
+    </div>
 </div>
 <div style="display:flex">
-    <div class="box" style="background-color:DarkGray">&nbsp; Cuisine</div>
-    <div class="box">&nbsp; Salle de bain</div>
+    <div class="box" style="background-color:DarkGray">&nbsp;
+        <div style="margin-bottom:30px">Cuisine</div>
+        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Eclairage</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Climatisation</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Radiateur</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Fenêtre</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Store</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Lave-vaiselle</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Four</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Table-cuisson</button>
+        </a>
+
+    </div>
+    <div class="box">&nbsp;
+        <div style="margin-bottom:30px"> Salle de bain</div>
+        <a th:href="@{/eclaire}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Eclairage</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Climatisation</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Radiateur</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Fenêtre</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Store</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Lave-linge</button>
+        </a>
+        <a th:href="@{/piece}" class="btn btn-primary" role="button" style="display: flex ">
+            <button type="button" class="btn btn-dark">Aspirateur-robot</button>
+        </a>
+
+
+    </div>
 </div>
 
 

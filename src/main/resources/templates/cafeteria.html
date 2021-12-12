@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Restauration</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Accueil</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Page 1</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Page 2</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Services
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    <a class="dropdown-item" href="/chat">Chat</a>
+                    <a class="dropdown-item" href="/cafeteria">Restauration</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Architecture
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href="/planAcces">Plan d'accès</a>
+                    <a class="dropdown-item" href="/guidage">Se faire guider</a>
+                    <a class="dropdown-item" href="/designInterieur">Design intérieur (Admin)</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Salles de réunion
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/sallesReunion">Services généraux</a>
+                    <a class="dropdown-item" href="#">Ecran salle de réunion</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- NAV BAR -->
+<div class="title-page">Menus du Jour</div>
+
+<div class="row" style="margin-top:50px">
+    <tr th:each="menu : ${Menu1}">
+    <div class="col-sm-6">
+        <div class="liste-salle-reunion">
+            <div class="title-liste-salle">Menu 1</div>
+            <hr>
+            <div id="liste-salle-reserve">
+                <div class="salle-element">
+                    <div class="nom-salle"> ENTREE </E></div>
+                    <div class= "menu">
+                        <td th:text="${menu.starter}"></td>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> PLAT </div>
+                    <div class= "menu">
+                        <td th:text="${menu.dish}"></td>
+                    </div>
+
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> DESSERT </div>
+                    <div class= "menu"> <td th:text="${menu.dessert}"></td> </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="action-salle">
+                    <a href="/cafeteria_reservation" class="btn btn-link btn-sm mb-3">
+                        <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </tr>
+
+        <tr th:each="menu : ${Menu2}">
+        <div class="col-sm-6">
+            <div class="liste-salle-reunion">
+                <div class="title-liste-salle">Menu 2</div>
+                <hr>
+                <div id="liste-salle-reserve2">
+                    <div class="salle-element">
+                        <div class="nom-salle"> ENTREE </E></div>
+                        <div class= "menu">
+                            <td th:text="${menu.starter}"></td>
+                        </div>
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="salle-element">
+                        <div class="nom-salle"> PLAT </div>
+                        <div class= "menu">
+                            <td th:text="${menu.dish}"></td>
+                        </div>
+
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="salle-element">
+                        <div class="nom-salle"> DESSERT </div>
+                        <div class= "menu"> <td th:text="${menu.dessert}"></td> </div>
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="action-salle">
+                        <a href="/cafeteria_reservation" class="btn btn-link btn-sm mb-3">
+                            <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </tr>
+</div>
+
+    <div class="row" style="margin-top:50px">
+        <tr th:each="menu : ${Menu3}">
+        <div class="col-sm-6">
+            <div class="liste-salle-reunion">
+                <div class="title-liste-salle">Menu 3</div>
+                <hr>
+                <div id="liste-salle-reserve3">
+                    <div class="salle-element">
+                        <div class="nom-salle"> ENTREE </E></div>
+                        <div class= "menu">
+                            <td th:text="${menu.starter}"></td>
+                        </div>
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="salle-element">
+                        <div class="nom-salle"> PLAT </div>
+                        <div class= "menu">
+                            <td th:text="${menu.dish}"></td>
+                        </div>
+
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="salle-element">
+                        <div class="nom-salle"> DESSERT </div>
+                        <div class= "menu">
+                            <td th:text="${menu.dessert}"></td>
+                        </div>
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="action-salle">
+                        <a href="/cafeteria_reservation" class="btn btn-link btn-sm mb-3">
+                        <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </tr>
+    </div>
+
+
+
+<script type="text/javascript" th:src="@{/salles_reunion_js.js}" th:inline="javascript"></script>
+<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+</body>
+
+</html>

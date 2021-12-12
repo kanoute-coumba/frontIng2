@@ -49,7 +49,7 @@ public class TestProxy {
         String createTestUrl = baseApiUrl + "/Form";
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Test> request = new HttpEntity<Test>(e);
+        HttpEntity<Test> request = new HttpEntity(e);
         ResponseEntity<Test> response = restTemplate.exchange(
                 createTestUrl,
                 HttpMethod.POST,
@@ -79,9 +79,6 @@ public class TestProxy {
                 null,
                 Test.class);
         response.getBody();
-
-
-
     }
 
 

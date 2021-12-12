@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Configuration</title>
+    <link rel="stylesheet" type="text/css" href="conf.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+<p> Configuration de la luminosité </p>
+<div style="center; " class="container">
+    <div id="stepProgressbar">
+        <div class="step">
+            <div class="bullet ">1</div>
+        </div>
+        <div class="step">
+            <div class="bullet ">2</div>
+        </div>
+        <div class="step">
+            <div class="bullet">3</div>
+        </div>
+        <div class="step">
+            <div class="bullet">4</div>
+        </div>
+    </div>
+
+    <div style="margin-left: 550px " id="main">
+        <button id="previousBtn">-</button>
+        <button id="nextBtn">+</button>
+    </div>
+
+<div>
+    <div>
+        <h2 id="rangeValue">0</h2>
+        <input type="range" value="0" min="0" max="100" onchange="rangeSlide(this.value)"
+               onmousemove="rangeSlide(this.value)">
+
+    </div>
+    <script type="test">
+               function rangeSlide(value) {
+               document.getElementById('rangeValue').innerHTML = value;
+               }
+        </script>
+</div>
+
+</div>
+
+
+</body>
+<script src="app.js">
+</script>
+</html>

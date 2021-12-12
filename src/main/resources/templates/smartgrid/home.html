@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>SmartGrid</title>
+    <!--link rel="stylesheet" href="../../static/styles/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/styles/uicons.css"/>
+    <link rel="stylesheet" href="../../static/styles/global.css"/-->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/global.css}"/>
+</head>
+<body>
+
+<header class="navbar">
+    <h1>Citizens</h1>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <form class="filter" action="#" method="post">
+                <div class="filter-field">
+                    <label for="search">Recherche</label>
+                    <input class="filter-field-input" type="search" id="search" name="search" placeholder="nom, adresse, .."/>
+                </div>
+
+                <div class="filter-field">
+                    <label for="type">Type de bâtiment</label>
+                    <select class="filter-field-select" name="type" id="type">
+                        <option value="">--todo--</option>
+                        <option value="Entreprise">Entreprise</option>
+                        <option value="Maison">Maison</option>
+                        <option value="Immeuble">Immeuble</option>
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="district">Quartier</label>
+                    <select class="filter-field-select" name="district" id="district">
+                        <option value="">--todo--</option>
+                        <option value="1">Quartier 1</option>
+                        <option value="2">Quartier 2</option>
+                        <option value="3">Quartier 3</option>
+                        <option value="4">Quartier 4</option>
+                        <option value="5">Quartier 5</option>
+                        <option value="6">Quartier 6</option>
+                        <option value="7">Quartier 7</option>
+                        <option value="8">Quartier 8</option>
+                        <option value="9">Quartier 9</option>
+                        <option value="10">Quartier 10</option>
+                        <option value="11">Quartier 11</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-9">
+            <div class="list-building">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Type</th>
+                        <th>Production</th>
+                        <th>Consommation</th>
+                        <th>Quartier</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="building : ${buildings}">
+                        <td th:text="${building.name}"></td>
+                        <td th:text="${building.address}"></td>
+                        <td th:text="${building.type}"></td>
+                        <td th:text="${building.consumption} + 'kWh'"></td>
+                        <td th:text="${building.production} + 'kWh'"></td>
+                        <td>--todo--</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer></footer>
+
+<!--script type='text/javascript' src="../../static/scripts/global.js"></script-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" th:src="@{/scripts/global.js}"></script>
+
+</body>
+</html>

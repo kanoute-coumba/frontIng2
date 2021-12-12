@@ -1,0 +1,93 @@
+/**********************/
+/*** Reset defaults ***/
+/**********************/
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/*****************/
+/*** Constants ***/
+/*****************/
+
+:root {
+    --color-primary: #007FFF;
+    --color-secondary: rgba(223, 225, 229, 1);
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+}
+
+/***********************/
+/*** Global elements ***/
+/***********************/
+
+/*** Navbar ***/
+.navbar {
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+/*** Filter ***/
+.filter {
+    border: 1px solid var(--color-secondary);
+    border-radius: 10px;
+    padding: 20px;
+    /*position: fixed;*/
+}
+
+.filter > .filter-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.filter > .filter-field:last-child {
+    margin-bottom: 0;
+}
+
+.filter > .filter-field > .filter-field-input,
+.filter > .filter-field > .filter-field-select {
+    padding: 10px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 5px;
+}
+
+.filter > .filter-field > .filter-field-input:hover,
+.filter > .filter-field > .filter-field-select:hover {
+    border-color: rgba(223, 225, 229, 0);
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+/*** List-building ***/
+.list-building {
+    border: 1px solid var(--color-secondary);
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.list-building table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-building table thead tr {
+    color: var(--color-white);
+    background: var(--color-primary);
+}
+
+.list-building table td,
+.list-building table th {
+    text-align: left;
+    padding: 10px;
+}
+
+.list-building table tbody tr:nth-child(even) {
+    background: var(--color-secondary);
+}

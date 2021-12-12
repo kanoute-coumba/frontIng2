@@ -25,12 +25,14 @@ public class ArchitectureController {
         return "architectureTemplates/accessTemplates/access-map";
     }
 
-    @GetMapping("/accessMap/display{name_floor}")
-    public String getDisplayAccessMap(Model model, @PathVariable final String name_floor) {
-        model.addAttribute("offices",spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
-        model.addAttribute("meetingRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
-        model.addAttribute("individualRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
-        model.addAttribute("openSpaces",spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
+    @GetMapping("/accessMap/display")
+    public String getDisplayAccessMap(Model model) {
+//    @GetMapping("/accessMap/display{name_floor}")
+//    public String getDisplayAccessMap(Model model, @PathVariable final String name_floor) {
+//        model.addAttribute("offices",spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
+//        model.addAttribute("meetingRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
+//        model.addAttribute("individualRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
+//        model.addAttribute("openSpaces",spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
         return "architectureTemplates/accessTemplates/display-access-map";
     }
 

@@ -81,10 +81,23 @@ public class UseMonitorController {
     }
 
     @PostMapping("/setEquipmentAuto/{id_equipment}")
-    public String setEquipmentAuto(Model model, @PathVariable int id_equipment, @RequestParam("id_room") int id_room) {
+    public String setEquipmentAuto(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
         logger.info("SET_AUTO: id_equipment="+ id_equipment + ", id_room=" + id_room);
         useMonitorService.setEquipmentAuto(id_equipment);
         return "redirect:/configManual/"+ id_room;
     }
 
+    @PostMapping("setEquipmentOn/{id_equipment}")
+    public String setEquipmentOn(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
+        logger.info("SET_ON: id_equipment="+ id_equipment + ", id_room=" + id_room);
+        useMonitorService.setEquipmentOn(id_equipment);
+        return "redirect:/configManual/"+ id_room;
+    }
+
+    @PostMapping("setEquipmentOff/{id_equipment}")
+    public String setEquipmentOff(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
+        logger.info("SET_OFF: id_equipment="+ id_equipment + ", id_room=" + id_room);
+        useMonitorService.setEquipmentOff(id_equipment);
+        return "redirect:/configManual/"+ id_room;
+    }
 }

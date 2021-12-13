@@ -24,7 +24,7 @@ public class EquipmentProxy {
     private static final Logger logger = Logger.getLogger(EquipmentProxy.class.getName());
 
     public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByBuilding(int id_b) {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idb="+id_b;
 
         RestTemplate restTemplate = new RestTemplate();
@@ -42,7 +42,7 @@ public class EquipmentProxy {
     }
 
     public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByRoom(int id_r) {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idr="+id_r;
 
         RestTemplate restTemplate = new RestTemplate();
@@ -60,7 +60,7 @@ public class EquipmentProxy {
     }
 
     public static Iterable<String> getEquipment(Integer variable1, Integer variable2) {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/ListEquipment?id_room=" + variable1 + "&id_floor=" + variable2;
 
         System.out.println(getEquipmentUrl);
@@ -80,7 +80,7 @@ public class EquipmentProxy {
     }
 
     public static Iterable<Equipment> getEquipmentByRoom(Integer idr) {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/equipmentBYRoom/" + idr;
 
         System.out.println(getEquipmentUrl);
@@ -101,7 +101,7 @@ public class EquipmentProxy {
 
     public static void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment) {
         System.out.println("oooooooooooo");
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/choosestatut?chooseStatut=" + chooseStatut + "&type_mode=" + type_mode + "&id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -119,7 +119,7 @@ public class EquipmentProxy {
 
     public static String getNameRoomByIdroom(Integer id_room) {
         System.out.println("oooooooooooo");
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/nameRoom?id_room=" + id_room;
 
         System.out.println(getEquipmentUrl);
@@ -135,6 +135,47 @@ public class EquipmentProxy {
         logger.info("Get Equipment call " + response.getStatusCode().toString());
 
         return response.getBody();
+    }
+
+    public static String NameEquipment (Integer id_equipment) {
+
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/nameEquipment?id_equipment=" + id_equipment;
+
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }
+        );
+
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
+        System.out.println("fin de nameEquipment");
+
+        return response.getBody();
+
+    }
+
+    public static void updateValueEquipment(Integer valueEquipment, Integer id_equipment) {
+
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/valueEquipment?valueEquipment=" + valueEquipment + "&id_equipment=" + id_equipment;
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.PUT,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }
+        );
+
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
     }
 
 

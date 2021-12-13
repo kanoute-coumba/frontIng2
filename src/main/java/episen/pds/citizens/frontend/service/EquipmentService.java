@@ -24,14 +24,26 @@ public class EquipmentService {
         return EquipmentProxy.getEquipmentByRoom(idr);
     }
 
-    public void UpdateStatutMode (String chooseStatut, String type_mode, Integer id_equipment) {
+    public void updateStatutMode (String chooseStatut, String type_mode, Integer id_equipment) {
         System.out.println("debut");
         EquipmentProxy.updateStatutMode(chooseStatut, type_mode, id_equipment);
         logger.info("fin");
     }
 
+    public void updateValueEquipment (Integer valueEquipment, Integer id_equipment) {
+        System.out.println("début de nouvelle");
+        EquipmentProxy.updateValueEquipment(valueEquipment, id_equipment);
+        logger.info("fin 22");
+    }
+
     public String getNameRoomByIdroom (Integer id_room) {
        return EquipmentProxy.getNameRoomByIdroom(id_room);
+    }
+
+    public String NameEquipment (Integer id_equipment) {
+        System.out.println("deerrrrrr");
+        System.out.println(EquipmentProxy.NameEquipment(id_equipment));
+        return EquipmentProxy.NameEquipment(id_equipment);
     }
 
 //

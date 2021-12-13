@@ -5,11 +5,11 @@
     <title>Configuration Manuelle</title>
     <style>
       .test {
-   border-radius: 10px;
- text-align: center;
-   background-color: #A4A4A4;
-    height:140px;
-    width : 30%;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #A4A4A4;
+  height:160px;
+  width : 30%;
   display: flex;
   flex-direction:column;
   align-items: center;
@@ -33,18 +33,13 @@ h3 {
 }
 
 
-
-
-
-
-
     </style>
 </head>
 <body>
 <div class="style">
     <div class="test">
 
-        <h3>Lampe</h3>
+        <h3 th:text="${nameEquipment}"></h3>
         Veuillez choisir votre opération
 
         <form method="get" action="/form">
@@ -54,10 +49,15 @@ h3 {
             <label for="choose1">ON</label>
             <input id="id_equipment" type="hidden" th:value="${id_equipment}" name="id_equipment">
             <input id="choose2" type="radio" value="OFF" class="btn btn-info" name="chooseStatut">
-            <label  for="choose2">OFF</label> <br/> <br/>
+            <label for="choose2">OFF</label> <br/> <br/>
+
+            <div>
+                <label>Veuillez entrer l'intensité de l'équipement</label>
+                <input id="number" type="number"  name="valueEquipment" th:value="${valueEquiment}" min="1" max="10">
+            </div>
 
 
-            <input  type="submit" value="Valider"/>
+            <input type="submit" value="Valider"/>
         </form>
 
         <form>

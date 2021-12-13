@@ -31,25 +31,28 @@ public class EquipmentController {
 
 
     @GetMapping("/configurationLampe")
-    public String displayConfigLampe(@RequestParam("id_equipment") String id_equipment, Model model ) {
+    public String displayConfigLampe(@RequestParam("id_equipment") Integer id_equipment, Model model) {
         System.out.println(id_equipment + " valeur ");
         model.addAttribute("id_equipment", id_equipment);
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
+        System.out.println(nameEquipment + "nananananan");
         return "configurationLampe";
     }
 
     @GetMapping("/Chambre/Lampe")
-    public String configManuel(@RequestParam("id_equipment") String id_equipment, Model model) {
+    public String configManuel(@RequestParam("id_equipment") Integer id_equipment, Model model) {
         model.addAttribute("id_equipment", id_equipment);
-        System.out.println(id_equipment + "vvvvvvv");
-        System.out.println("kkkkkkkkkkkk");
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
         return "Manuelle";
     }
 
     @GetMapping("/form")
-    public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, Model model) {
-        equipmentService.UpdateStatutMode(chooseStatut, type_mode, id_equipment);
+    public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, Model model) {
+        equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
+        equipmentService.updateValueEquipment(valueEquipment,id_equipment);
         System.out.println(id_equipment);
-
         return "equipmentByRoom";
     }
 

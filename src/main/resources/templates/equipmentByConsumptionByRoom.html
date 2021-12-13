@@ -7,7 +7,8 @@
 
 </head>
 <body>
-<h2 class="h2">Liste des Equipement avec leurs consommations</h2>
+<h2 th:text="'Les équipements et les générateurs de la salle ' + ${id_r}" ></h2>
+<h3 class="h2">Liste des Equipement avec leurs consommations</h3>
 <table id="test" border="1" class="table table-striped table responsive-md">
     <thead>
     <tr>
@@ -28,6 +29,7 @@
     </tr>
     </tbody>
 </table>
+<h4 th:text="'La consommation totale actuelle est de ' + ${dp}+' Watts'" ></h4>
 
 </body>
 </html>

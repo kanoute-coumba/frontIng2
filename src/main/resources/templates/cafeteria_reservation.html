@@ -66,10 +66,10 @@
         <div class="col col-lg-2">
         </div>
         <div class="col-md-auto">
-<form class="row g-3 needs-validation .col-lg-" novalidate>
+<form name="menu_form" class="row g-3 needs-validation .col-lg-"  action="#" method="post" th:action="@{/cafeteria_reservation/saved}"  novalidate>
     <div class="col-md-4">
         <label for="validationCustom01" class="form-label">Name</label>
-        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+        <input  name="name" type="text" class="form-control" id="validationCustom01" value="Mark"  required>
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -78,7 +78,7 @@
         <label for="validationCustomUsername" class="form-label">Menu Number</label>
         <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">menu n°</span>
-            <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <input name="menu_number" type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" th:value="${num_menu}" required>
             <div class="invalid-feedback">
                 Please choose a menu.
             </div>
@@ -86,14 +86,14 @@
     </div>
     <div class="col-md-6">
         <label for="validationCustom03" class="form-label">Some allergies ?</label>
-        <input type="text" class="form-control" id="validationCustom03">
+        <input name="note" type="text" class="form-control" id="validationCustom03" >
         <div class="invalid-feedback">
             Please provide .
         </div>
     </div>
     <div class="col-md-3">
         <label for="validationCustom04" class="form-label">Hour</label>
-        <select class="form-select" id="validationCustom04" required>
+        <select name="time_slot" class="form-select" id="validationCustom04"  required>
             <option selected disabled value="">Choose time slot</option>
             <option>12h00-12H30</option>
             <option>12h30-13h00</option>
@@ -106,7 +106,7 @@
     </div>
     <div class="col-12">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck"  required>
             <label class="form-check-label" for="invalidCheck">
                 Agree to terms and conditions
             </label>
@@ -117,7 +117,7 @@
     </div>
     <div class="col-12">
         <a href="/cafeteria_reservation/saved" class="btn btn-link btn-sm mb-3">
-        <button class="btn btn-primary" type="button">Submit form</button>
+        <button class="btn btn-primary" type="submit">Submit form</button>
         </a>
     </div>
 </form>
@@ -127,6 +127,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 
 
 <script type="text/javascript" th:src="@{/salles_reunion_js.js}" th:inline="javascript"></script>

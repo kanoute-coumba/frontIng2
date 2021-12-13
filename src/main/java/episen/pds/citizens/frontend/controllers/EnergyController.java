@@ -19,12 +19,14 @@ public class EnergyController {
         Iterable<CentralByProduction> centralByProductionsIterable=energyService.getCentralWithProduction(id_b);
         model.addAttribute("equipmentWithConsumption",equipmentWithConsumptionIterable);
         model.addAttribute("centralWithProduction",centralByProductionsIterable);
+        model.addAttribute("id_b", id_b);
         return "equipmentByConsumptionByBuilding";
     }
     @GetMapping("/Energy/idr={id_r}")
     public String getEquipmentWithConsumptionByRoom(Model model, @PathVariable("id_r") final int id_r){
         Iterable<EquipmentWithConsumption> equipmentWithConsumptionIterable= energyService.getEquipmentWithConsumptionByRoom(id_r);
         model.addAttribute("equipmentWithConsumption2",equipmentWithConsumptionIterable);
+        model.addAttribute("id_r", id_r);
         return "equipmentByConsumptionByRoom";
     }
 }

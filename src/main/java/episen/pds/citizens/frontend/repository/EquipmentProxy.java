@@ -69,11 +69,11 @@ public class EquipmentProxy {
                 getEquipmentUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<String>>() {
+                new ParameterizedTypeReference<>() {
                 }
         );
 
-        logger.info("Get Equipment call " + response.getStatusCode().toString());
+        logger.info("Get Equipment call " + response.getStatusCode());
 
         return response.getBody();
 

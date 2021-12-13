@@ -44,30 +44,39 @@ h3 {
 
         <form method="get" action="/form">
 
-            <input id="choose1" type="radio" value="ON" class="btn btn-info" name="chooseStatut">
+            <input id="choose1" type="radio" onchange="handleChange(this)"  value="ON" class="btn btn-info" name="chooseStatut">
             <input id="statut" type="hidden" value="Manuel" name="type_mode">
             <label for="choose1">ON</label>
             <input id="id_equipment" type="hidden" th:value="${id_equipment}" name="id_equipment">
-            <input id="choose2" type="radio" value="OFF" class="btn btn-info" name="chooseStatut">
+            <input id="choose2" type="radio" onchange="handleChange(this)" value="OFF" class="btn btn-info" name="chooseStatut">
             <label for="choose2">OFF</label> <br/> <br/>
 
-            <div>
+            <div id="valeurEquip">
                 <label>Veuillez entrer l'intensité de l'équipement</label>
-                <input id="number" type="number"  name="valueEquipment" th:value="${valueEquiment}" min="1" max="10">
+                <input id="number" type="number"  name="valueEquipment" th:value="${valueEquipment}" min="0" max="10">
             </div>
-
-
             <input type="submit" value="Valider"/>
         </form>
 
-        <form>
-
-
-        </form>
 
 
     </div>
 </div>
+
+<script type="text/javascript">
+
+    function handleChange(src) {
+    if(src.value == "OFF"){
+    document.getElementById('valeurEquip').style.display="none";
+    document.getElementById('number').value = 0;
+    console.log(src);
+    } else {
+    document.getElementById('valeurEquip').style.display="block";
+    document.getElementById('number').value = 0;
+    }
+
+    }
+</script>
 
 </body>
 </html>

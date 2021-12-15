@@ -6,9 +6,7 @@ import episen.pds.citizens.frontend.service.architectureService.SpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -25,14 +23,18 @@ public class ArchitectureController {
         return "architectureTemplates/accessTemplates/access-map";
     }
 
+//    @GetMapping("/accessMap/display")
+//    public String getDisplayAccessMap(Model model) {
     @GetMapping("/accessMap/display")
-    public String getDisplayAccessMap(Model model) {
-//    @GetMapping("/accessMap/display{name_floor}")
-//    public String getDisplayAccessMap(Model model, @PathVariable final String name_floor) {
-//        model.addAttribute("offices",spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
-//        model.addAttribute("meetingRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
-//        model.addAttribute("individualRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
-//        model.addAttribute("openSpaces",spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
+    public String getDisplayAccessMap(Model model, @RequestParam("buildings") String name_building ,@RequestParam("floors") String name_floor) {
+        model.addAttribute("offices",spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
+        model.addAttribute("meetingRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
+        model.addAttribute("individualRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
+        model.addAttribute("openSpaces",spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
+        System.out.println(spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
+        System.out.println(spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
+        System.out.println(spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
+        System.out.println(spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
         return "architectureTemplates/accessTemplates/display-access-map";
     }
 

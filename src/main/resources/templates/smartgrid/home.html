@@ -16,6 +16,11 @@
 
 <header class="navbar">
     <h1>Citizens</h1>
+    <div class="menu">
+        <span>Actualisé à --todo--</span>
+        <span th:text="'Production totale : ' + ${sumProduction} + 'kW'"></span>
+        <span th:text="'Consommation totale : ' + ${sumConsumption} + 'kW'"></span>
+    </div>
 </header>
 
 <div class="container">
@@ -76,8 +81,8 @@
                         <td th:text="${building.name}"></td>
                         <td th:text="${building.address}"></td>
                         <td th:text="${building.type}"></td>
-                        <td th:text="${building.production} + 'kWh'"></td>
-                        <td th:text="${building.consumption} + 'kWh'"></td>
+                        <td th:text="${building.production} + 'kW'"></td>
+                        <td th:text="${building.consumption} + 'kW'"></td>
                         <td>--todo--</td>
                     </tr>
                     </tbody>

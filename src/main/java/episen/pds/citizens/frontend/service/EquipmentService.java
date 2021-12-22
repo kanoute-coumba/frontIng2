@@ -46,47 +46,13 @@ public class EquipmentService {
         return EquipmentProxy.NameEquipment(id_equipment);
     }
 
-//
-//
-//    public void  UpdateTypeMode (String type_mode, Integer id_equipment) {
-//        System.out.println("debut");
-//        System.out.println(type_mode);
-//        EquipmentProxy.updateStatutMode(type_mode, id_equipment);
-//        System.out.println("milieux");
-//        EquipmentProxy.UpdateTypeMode(type_mode, id_equipment);
-//        System.out.println("fin");
-//    }
+    public Iterable<String> NameRoomByFloor(Integer id_floor) {
+        logger.info("service debut");
+        return EquipmentProxy.NameRoomByFloor(id_floor);
+    }
 
+    public Integer retriveIdroom (String name, Integer floor) {
+        return EquipmentProxy.retrieveIdroom(name, floor);
+    }
 
-
-
-
-
-//    public String equipmentLampe(Integer id_room, Integer id_equipment) {
-//        return EquipmentProxy.getLampe(id_room, id_equipment);
-//    }
-//
-//    public String equipmentClimatisation(Integer id_room, Integer id_equipment) {
-//        return EquipmentProxy.getClimatisation(id_room, id_equipment);
-//    }
-//
-//    public String equipmentRadiateur(Integer id_room, Integer id_equipment) {
-//        return EquipmentProxy.getRadiateur(id_room, id_equipment);
-//    }
-//
-//    public String equipmentFenetre(Integer id_room, Integer id_equipment) {
-//        return EquipmentProxy.getFenetre(id_room, id_equipment);
-//    }
-//
-//    public String equipmentStore(Integer id_room, Integer id_equipment) {
-//        return EquipmentProxy.getStore(id_room, id_equipment);
-//    }
-//
-//    public String equipmentScreen(Integer id_room, Integer id_equipment) {
-//        return EquipmentProxy.getScreen(id_room, id_equipment);
-//    }
-
-//    public void updateStatutLampe(Equipment equipment, Integer id_room, Integer id_equipment) {
-//        EquipmentProxy.updateStatutLampe(equipment, id_room, id_equipment);
-//    }
 }

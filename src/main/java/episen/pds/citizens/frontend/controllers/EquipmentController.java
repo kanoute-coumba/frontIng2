@@ -21,11 +21,12 @@ public class EquipmentController {
     @GetMapping("/getIdrEquipmentRoom/{idr}")
     public String getEquipmentByRoom(@PathVariable("idr") final int idr, Model model) {
         List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(idr);
+        System.out.println(idr + "vvvvvvv");
         model.addAttribute("listEquipment", iterable);
+
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
         System.out.println(idr);
-
         return "equipmentByRoom";
     }
 
@@ -51,9 +52,36 @@ public class EquipmentController {
     @GetMapping("/form")
     public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
-        equipmentService.updateValueEquipment(valueEquipment,id_equipment);
+        equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         System.out.println(id_equipment);
         return "equipmentByRoom";
+    }
+
+    @GetMapping("/formulaire")
+    public String formNameByRoom(@RequestParam("room") String room, @RequestParam("floor") Integer floor, Model model) {
+
+        Integer id_room = equipmentService.retriveIdroom(room, floor);
+        List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(id_room);
+        System.out.println(id_room + "vvvvvvv");
+        model.addAttribute("listEquipment", iterable);
+
+        String nameRoom = equipmentService.getNameRoomByIdroom(id_room);
+        model.addAttribute("nameRoom", nameRoom);
+        System.out.println(id_room);
+
+
+        return "equipmentByRoom";
+
+    }
+
+    @GetMapping("/roomByFloor")
+    public String NameRoomByFloor(@RequestParam("id_floor") Integer id_floor, Model model) {
+        System.out.println("controler début");
+        Iterable<String> listRoomByFloor = equipmentService.NameRoomByFloor(id_floor);
+        model.addAttribute("listRoom", listRoomByFloor);
+        model.addAttribute("id_floor", id_floor);
+        System.out.println("controler fin");
+        return "listRoomByFloor";
     }
 
 

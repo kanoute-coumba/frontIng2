@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des pièces par étage</title>
+</head>
+<body>
+
+
+<form method="get" action="/formulaire">
+    <div align="center" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+        <label for="pet-select"> Choississez la salle  </label><br>
+
+        <select name="room" id="pet-select" size="1" style="margin-top:15px; margin-bottom:15px">
+
+            <option value = "">Veuillez choisir une salle</option>
+
+            <option th:each="room : ${listRoom}"
+                    th:value="${room}"
+                    th:utext="${room}"/>
+
+        </select>
+
+        <input id="floor" type="hidden" name="floor" th:value="${id_floor}">
+        <input type="submit" value="Valider">
+
+<!--        <a th:href="@{/category/edit/{id}(id=${category.idCategory})}">view</a>-->
+<!--        <a th:href="${'/category/edit/' + {category.id}}">view</a>-->
+<!--        <a href="somepage.html" th:href="@{|/my/url/${variable}|}">A Link</a>-->
+
+    </div>
+</form>
+
+</body>
+</html>

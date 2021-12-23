@@ -20,7 +20,13 @@ public class FloorRepo {
 
     public Floor getFloor(int id_floor) {
         ResponseEntity<Floor> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floor" + id_floor, HttpMethod.GET, null, Floor.class);
+                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floor/" + id_floor, HttpMethod.GET, null, Floor.class);
+        return responseEntity.getBody();
+    }
+
+    public String getDesignOfFloor(String name_floor) {
+        ResponseEntity<String> responseEntity =
+                restTemplate.exchange(customProperties.getApiLocalArchitectureUrl() + "/design_of/" + name_floor, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {});
         return responseEntity.getBody();
     }
 

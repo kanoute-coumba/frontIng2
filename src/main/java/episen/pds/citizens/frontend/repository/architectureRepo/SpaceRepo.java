@@ -39,7 +39,6 @@ public class SpaceRepo {
         return responseEntity.getBody();
     }
 
-    // Not yet
     public Iterable<Space> getSpacesOfFloorByType(String name_floor, String type_space) {
         ResponseEntity<Iterable<Space>> responseEntity =
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/spaces_of_floor_by_type/" + name_floor + "/" + type_space, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});

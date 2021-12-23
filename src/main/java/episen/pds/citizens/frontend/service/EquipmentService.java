@@ -55,4 +55,13 @@ public class EquipmentService {
         return EquipmentProxy.retrieveIdroom(name, floor);
     }
 
+    public Iterable<String> NameFloorByBuilding (Integer id_building) {
+        logger.info("service debut");
+        return EquipmentProxy.NameFloorByBuilding(id_building);
+    }
+
+    public Integer retriveIdFloor (String name_floor, Integer id_building) {
+        return EquipmentProxy.retrieveIdFloor(name_floor, id_building);
+    }
+
 }

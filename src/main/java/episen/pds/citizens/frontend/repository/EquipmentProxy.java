@@ -223,6 +223,50 @@ public class EquipmentProxy {
 
     }
 
+    public static Iterable<String> NameFloorByBuilding (Integer id_building) {
+
+        System.out.println("proxy début");
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/nameFloorByBuilding?id_building=" + id_building;
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<String>> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<String>>() {
+                }
+        );
+
+        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
+
+        return response.getBody();
+
+    }
+
+    public static Integer retrieveIdFloor (String name_floor, Integer id_building) {
+
+        System.out.println("proxy début");
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/getIdFloor?name_floor=" + name_floor + "&id_building=" + id_building;
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Integer> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Integer>() {
+                }
+        );
+
+        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
+
+        return response.getBody();
+
+    }
+
 
 
 

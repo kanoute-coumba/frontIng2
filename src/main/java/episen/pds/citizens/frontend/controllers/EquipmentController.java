@@ -57,25 +57,20 @@ public class EquipmentController {
         return "equipmentByRoom";
     }
 
-    @GetMapping("/formulaire")
+    @GetMapping("/formForRoom")
     public String formNameByRoom(@RequestParam("room") String room, @RequestParam("floor") Integer floor, Model model) {
-
         Integer id_room = equipmentService.retriveIdroom(room, floor);
         List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(id_room);
         System.out.println(id_room + "vvvvvvv");
         model.addAttribute("listEquipment", iterable);
-
         String nameRoom = equipmentService.getNameRoomByIdroom(id_room);
         model.addAttribute("nameRoom", nameRoom);
         System.out.println(id_room);
-
-
         return "equipmentByRoom";
-
     }
 
     @GetMapping("/roomByFloor")
-    public String NameRoomByFloor(@RequestParam("id_floor") Integer id_floor, Model model) {
+    public String NameRoomByFloor (Integer id_floor, Model model) {
         System.out.println("controler début");
         Iterable<String> listRoomByFloor = equipmentService.NameRoomByFloor(id_floor);
         model.addAttribute("listRoom", listRoomByFloor);
@@ -83,6 +78,29 @@ public class EquipmentController {
         System.out.println("controler fin");
         return "listRoomByFloor";
     }
+
+    @GetMapping("/formForFloor")
+    public String formNameByFloor(@RequestParam("floor") String name_floor, @RequestParam("building") Integer id_building, Model model) {
+        Integer id_floor = equipmentService.retriveIdFloor(name_floor, id_building);
+
+        Iterable<String> listRoomByFloor = equipmentService.NameRoomByFloor(id_floor);
+        model.addAttribute("listRoom", listRoomByFloor);
+        model.addAttribute("id_floor", id_floor);
+        System.out.println("controler fin");
+        return "listRoomByFloor";
+
+
+    }
+
+    @GetMapping("/floorByBuilding")
+    public String NameFloorByBuilding (Integer id_building, Model model) {
+        Iterable<String> listFloorByBuilding = equipmentService.NameFloorByBuilding(id_building);
+        model.addAttribute("listFloor", listFloorByBuilding);
+        model.addAttribute("id_building", id_building);
+        return "listFloorByBuilding";
+    }
+
+
 
 
 }

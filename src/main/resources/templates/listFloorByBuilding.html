@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des étages par maison</title>
+</head>
+<body>
+
+<form method="get"  action="/formForFloor">
+    <div align="center" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+        <label for="pet-select"> Choississez l'étage  </label><br>
+
+        <select name="floor" id="pet-select" size="1" style="margin-top:15px; margin-bottom:15px">
+
+            <option value = "">Veuillez choisir une étage</option>
+
+            <option th:each="floor : ${listFloor}"
+                    th:value="${floor}"
+                    th:utext="${floor}"/>
+
+        </select>
+
+        <input id="building" type="hidden" name="building" th:value="${id_building}">
+        <input type="submit" value="Valider">
+
+    </div>
+</form>
+
+</body>
+</html>

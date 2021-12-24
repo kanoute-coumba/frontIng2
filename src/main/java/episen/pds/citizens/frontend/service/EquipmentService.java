@@ -64,4 +64,7 @@ public class EquipmentService {
         return EquipmentProxy.retrieveIdFloor(name_floor, id_building);
     }
 
+    public Integer getIdRoomByEquipment(Integer id_equipment) {
+        return EquipmentProxy.getIdRoomByEquipment(id_equipment);
+    }
 }

@@ -267,10 +267,24 @@ public class EquipmentProxy {
 
     }
 
+    public static Integer getIdRoomByEquipment(Integer id_equipment) {
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/getIdRoomByEquipment?id_equipment=" + id_equipment;
 
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Integer> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Integer>() {
+                }
+        );
 
+        logger.info("Get id room " + response.getStatusCode().toString());
 
-
+        return response.getBody();
+    }
 
 
 //    public static void UpdateTypeMode(String type_mode, Integer id_equipment ) {

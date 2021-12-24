@@ -42,10 +42,10 @@ h3 {
         <h3 th:text="${nameEquipment}"></h3>
         Veuillez choisir votre opération
 
-        <form method="get" action="/form">
-
+        <form method="get" action="/form"}>
             <input id="choose1" type="radio" onchange="handleChange(this)"  value="ON" class="btn btn-info" name="chooseStatut">
             <input id="statut" type="hidden" value="Manuel" name="type_mode">
+            <input type="hidden" th:value="${id_room}" name="idr">
             <label for="choose1">ON</label>
             <input id="id_equipment" type="hidden" th:value="${id_equipment}" name="id_equipment">
             <input id="choose2" type="radio" onchange="handleChange(this)" value="OFF" class="btn btn-info" name="chooseStatut">

@@ -21,20 +21,21 @@ public class EquipmentController {
     @GetMapping("/getIdrEquipmentRoom/{idr}")
     public String getEquipmentByRoom(@PathVariable("idr") final int idr, Model model) {
         List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(idr);
-        System.out.println(idr + "vvvvvvv");
         model.addAttribute("listEquipment", iterable);
-
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
+        model.addAttribute("id_room", idr);
         System.out.println(idr);
         return "equipmentByRoom";
     }
 
 
     @GetMapping("/configurationLampe")
-    public String displayConfigLampe(@RequestParam("id_equipment") Integer id_equipment, Model model) {
+    public String displayConfigLampe(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        System.out.println(name_room);
         System.out.println(id_equipment + " valeur ");
         model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("nameRoom", name_room);
         String nameEquipment = equipmentService.NameEquipment(id_equipment);
         model.addAttribute("nameEquipment", nameEquipment);
         System.out.println(nameEquipment + "nananananan");
@@ -42,19 +43,22 @@ public class EquipmentController {
     }
 
     @GetMapping("/Chambre/Lampe")
-    public String configManuel(@RequestParam("id_equipment") Integer id_equipment, Model model) {
+    public String configManuel(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
         model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("id_room", id_room);
         String nameEquipment = equipmentService.NameEquipment(id_equipment);
         model.addAttribute("nameEquipment", nameEquipment);
         return "Manuelle";
     }
 
     @GetMapping("/form")
-    public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, Model model) {
+    public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         System.out.println(id_equipment);
-        return "equipmentByRoom";
+        System.out.println("ICI EST L'iDDD : " + idr);
+        return "redirect:/getIdrEquipmentRoom/" +idr ;
     }
 
     @GetMapping("/formForRoom")
@@ -70,7 +74,7 @@ public class EquipmentController {
     }
 
     @GetMapping("/roomByFloor")
-    public String NameRoomByFloor (Integer id_floor, Model model) {
+    public String NameRoomByFloor(Integer id_floor, Model model) {
         System.out.println("controler début");
         Iterable<String> listRoomByFloor = equipmentService.NameRoomByFloor(id_floor);
         model.addAttribute("listRoom", listRoomByFloor);
@@ -93,14 +97,12 @@ public class EquipmentController {
     }
 
     @GetMapping("/floorByBuilding")
-    public String NameFloorByBuilding (Integer id_building, Model model) {
+    public String NameFloorByBuilding(Integer id_building, Model model) {
         Iterable<String> listFloorByBuilding = equipmentService.NameFloorByBuilding(id_building);
         model.addAttribute("listFloor", listFloorByBuilding);
         model.addAttribute("id_building", id_building);
         return "listFloorByBuilding";
     }
-
-
 
 
 }

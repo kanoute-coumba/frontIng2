@@ -56,7 +56,7 @@ margin-top: 30px;
                 <tbody>
                 <tr th:each="equipment : ${listEquipment}">
                     <td th:if="${equipment.type} == 'lampe'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}"
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                             class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
                     <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
                     <td th:text="${equipment.statut}"></td>

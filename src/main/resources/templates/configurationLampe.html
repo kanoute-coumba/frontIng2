@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" href="configurationEquip.css">
 
     <style>
-        .test{
-        margin-top: 10%;
-        margin-left: auto;
-        margin-right: auto;
-        height:120px;
+        .test {
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 120px;
 
         }
     </style>
@@ -19,9 +19,9 @@
 <body>
 
 <div class="test">
-   Configuration de la<span th:text="${nameEquipment}"></span>
+    Configuration de la<span th:text="${nameEquipment}"></span>
 
-    <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${id_equipment}}">
+    <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
         <button type="button" class="btn btn-info">Manuelle</button>
     </a>
 

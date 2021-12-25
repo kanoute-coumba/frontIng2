@@ -3,11 +3,10 @@ package episen.pds.citizens.frontend.repository;
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.model.EquipmentWithConsumption;
-
+import episen.pds.citizens.frontend.model.House;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -25,7 +24,7 @@ public class EquipmentProxy {
 
     public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByBuilding(int id_b) {
         String baseApiUrl = props.getApiLocalUrl();
-        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idb="+id_b;
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idb=" + id_b;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(
@@ -43,7 +42,7 @@ public class EquipmentProxy {
 
     public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByRoom(int id_r) {
         String baseApiUrl = props.getApiLocalUrl();
-        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idr="+id_r;
+        String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idr=" + id_r;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<EquipmentWithConsumption>> response = restTemplate.exchange(
@@ -57,26 +56,6 @@ public class EquipmentProxy {
         logger.info("Get EquipmentWithConsumptionByRoom call " + response.getStatusCode());
 
         return response.getBody();
-    }
-
-    public static Iterable<String> getEquipment(Integer variable1, Integer variable2) {
-        String baseApiUrl = props.getApiLocalUrl();
-        String getEquipmentUrl = baseApiUrl + "/ListEquipment?id_room=" + variable1 + "&id_floor=" + variable2;
-
-        System.out.println(getEquipmentUrl);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<String>> response = restTemplate.exchange(
-                getEquipmentUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<Iterable<String>>() {
-                }
-        );
-
-        logger.info("Get Equipment call " + response.getStatusCode().toString());
-
-        return response.getBody();
-
     }
 
     public static Iterable<Equipment> getEquipmentByRoom(Integer idr) {
@@ -137,7 +116,7 @@ public class EquipmentProxy {
         return response.getBody();
     }
 
-    public static String NameEquipment (Integer id_equipment) {
+    public static String NameEquipment(Integer id_equipment) {
 
         String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/nameEquipment?id_equipment=" + id_equipment;
@@ -178,95 +157,6 @@ public class EquipmentProxy {
         logger.info("Get Equipment call " + response.getStatusCode().toString());
     }
 
-
-    public static Iterable<String> NameRoomByFloor(Integer id_floor) {
-
-        System.out.println("proxy début");
-        String baseApiUrl = props.getApiLocalUrl();
-        String getEquipmentUrl = baseApiUrl + "/nameRoomByFloor?id_floor=" + id_floor;
-
-        System.out.println(getEquipmentUrl);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<String>> response = restTemplate.exchange(
-                getEquipmentUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<Iterable<String>>() {
-                }
-        );
-
-        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
-
-        return response.getBody();
-
-    }
-
-    public static Integer retrieveIdroom (String name, Integer floor) {
-
-        System.out.println("proxy début");
-        String baseApiUrl = props.getApiLocalUrl();
-        String getEquipmentUrl = baseApiUrl + "/getIdRoom?name=" + name + "&id_floor=" + floor;
-
-        System.out.println(getEquipmentUrl);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Integer> response = restTemplate.exchange(
-                getEquipmentUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<Integer>() {
-                }
-        );
-
-        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
-
-        return response.getBody();
-
-    }
-
-    public static Iterable<String> NameFloorByBuilding (Integer id_building) {
-
-        System.out.println("proxy début");
-        String baseApiUrl = props.getApiLocalUrl();
-        String getEquipmentUrl = baseApiUrl + "/nameFloorByBuilding?id_building=" + id_building;
-
-        System.out.println(getEquipmentUrl);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<String>> response = restTemplate.exchange(
-                getEquipmentUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<Iterable<String>>() {
-                }
-        );
-
-        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
-
-        return response.getBody();
-
-    }
-
-    public static Integer retrieveIdFloor (String name_floor, Integer id_building) {
-
-        System.out.println("proxy début");
-        String baseApiUrl = props.getApiLocalUrl();
-        String getEquipmentUrl = baseApiUrl + "/getIdFloor?name_floor=" + name_floor + "&id_building=" + id_building;
-
-        System.out.println(getEquipmentUrl);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Integer> response = restTemplate.exchange(
-                getEquipmentUrl,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<Integer>() {
-                }
-        );
-
-        logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
-
-        return response.getBody();
-
-    }
-
     public static Integer getIdRoomByEquipment(Integer id_equipment) {
         String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/getIdRoomByEquipment?id_equipment=" + id_equipment;
@@ -286,166 +176,21 @@ public class EquipmentProxy {
         return response.getBody();
     }
 
+    public static Iterable<House> getBuildingsByUser(String email) {
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/house?email=" + email;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<House>> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
 
-//    public static void UpdateTypeMode(String type_mode, Integer id_equipment ) {
-//        System.out.println("type mode");
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/equipmentmode?type_mode=" + type_mode + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//    }
+        logger.info("Get buildings " + response.getStatusCode());
 
+        return response.getBody();
 
-
-
-
-//    public static String getLampe(Integer id_room, Integer id_equipment) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/Lampe?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//        return response.getBody();
-//
-//    }
-//
-//    public static String getClimatisation(Integer id_room, Integer id_equipment) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/Climatisation?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//        return response.getBody();
-//
-//    }
-//
-//    public static String getRadiateur(Integer id_room, Integer id_equipment) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/Radiateur?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//        return response.getBody();
-//
-//    }
-//
-//    public static String getFenetre(Integer id_room, Integer id_equipment) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/Fenetre?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//        return response.getBody();
-//
-//    }
-//
-//    public static String getStore(Integer id_room, Integer id_equipment) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/Store?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//        return response.getBody();
-//
-//    }
-//
-//    public static String getScreen(Integer id_room, Integer id_equipment) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/Screen?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        ResponseEntity<String> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.GET,
-//                null,
-//                new ParameterizedTypeReference<String>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//        return response.getBody();
-//
-//    }
-
-//    public static void updateStatutLampe(Equipment equipment, Integer id_room, Integer id_equipment ) {
-//        String baseApiUrl = props.getApiUrl();
-//        String getEquipmentUrl = baseApiUrl + "/updateLampe?id_room=" + id_room + "&id_equipment=" + id_equipment;
-//
-//        System.out.println(getEquipmentUrl);
-//        RestTemplate restTemplate = new RestTemplate();
-//        HttpEntity<Equipment> request = new HttpEntity<Equipment>(equipment);
-//        ResponseEntity<Equipment> response = restTemplate.exchange(
-//                getEquipmentUrl,
-//                HttpMethod.PUT,
-//                request,
-//                new ParameterizedTypeReference<Equipment>() {
-//                }
-//        );
-//
-//        log.debug("Get Equipment call " + response.getStatusCode().toString());
-//
-//    }
+    }
 }

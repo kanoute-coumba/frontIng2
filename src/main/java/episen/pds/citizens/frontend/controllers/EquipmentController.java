@@ -1,15 +1,14 @@
 package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Equipment;
+import episen.pds.citizens.frontend.model.House;
 import episen.pds.citizens.frontend.service.EquipmentService;
-import episen.pds.citizens.frontend.service.TestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class EquipmentController {
         model.addAttribute("nameRoom", nameRoom);
         model.addAttribute("id_room", idr);
         System.out.println(idr);
-        return "equipmentByRoom";
+        return "equipmentsHouse/equipmentByRoom";
     }
 
 
@@ -39,7 +38,7 @@ public class EquipmentController {
         String nameEquipment = equipmentService.NameEquipment(id_equipment);
         model.addAttribute("nameEquipment", nameEquipment);
         System.out.println(nameEquipment + "nananananan");
-        return "configurationLampe";
+        return "equipmentsHouse/configurationLampe";
     }
 
     @GetMapping("/Chambre/Lampe")
@@ -49,7 +48,7 @@ public class EquipmentController {
         model.addAttribute("id_room", id_room);
         String nameEquipment = equipmentService.NameEquipment(id_equipment);
         model.addAttribute("nameEquipment", nameEquipment);
-        return "Manuelle";
+        return "equipmentsHouse/Manuelle";
     }
 
     @GetMapping("/form")
@@ -58,50 +57,32 @@ public class EquipmentController {
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         System.out.println(id_equipment);
         System.out.println("ICI EST L'iDDD : " + idr);
-        return "redirect:/getIdrEquipmentRoom/" +idr ;
+        return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
     @GetMapping("/formForRoom")
-    public String formNameByRoom(@RequestParam("room") String room, @RequestParam("floor") Integer floor, Model model) {
-        Integer id_room = equipmentService.retriveIdroom(room, floor);
+    public String formNameByRoom(@RequestParam("house") Integer id_house, @RequestParam("floor") Integer id_floor, @RequestParam("room") Integer id_room, Model model) {
         List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(id_room);
-        System.out.println(id_room + "vvvvvvv");
+        System.out.println(id_house + " is id house");
+        System.out.println(id_floor + " is id floor");
+        System.out.println(id_room + " is id room");
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(id_room);
         model.addAttribute("nameRoom", nameRoom);
         System.out.println(id_room);
-        return "equipmentByRoom";
+        return "equipmentsHouse/equipmentByRoom";
     }
 
-    @GetMapping("/roomByFloor")
-    public String NameRoomByFloor(Integer id_floor, Model model) {
-        System.out.println("controler début");
-        Iterable<String> listRoomByFloor = equipmentService.NameRoomByFloor(id_floor);
-        model.addAttribute("listRoom", listRoomByFloor);
-        model.addAttribute("id_floor", id_floor);
-        System.out.println("controler fin");
-        return "listRoomByFloor";
+    @GetMapping("/formUser")
+    public String viewForm() {
+        return "equipmentsHouse/formUser";
     }
 
-    @GetMapping("/formForFloor")
-    public String formNameByFloor(@RequestParam("floor") String name_floor, @RequestParam("building") Integer id_building, Model model) {
-        Integer id_floor = equipmentService.retriveIdFloor(name_floor, id_building);
-
-        Iterable<String> listRoomByFloor = equipmentService.NameRoomByFloor(id_floor);
-        model.addAttribute("listRoom", listRoomByFloor);
-        model.addAttribute("id_floor", id_floor);
-        System.out.println("controler fin");
-        return "listRoomByFloor";
-
-
-    }
-
-    @GetMapping("/floorByBuilding")
-    public String NameFloorByBuilding(Integer id_building, Model model) {
-        Iterable<String> listFloorByBuilding = equipmentService.NameFloorByBuilding(id_building);
-        model.addAttribute("listFloor", listFloorByBuilding);
-        model.addAttribute("id_building", id_building);
-        return "listFloorByBuilding";
+    @PostMapping("/chooseRoom")
+    public String chooseRoom(@RequestParam("email") String email, Model model) {
+        Iterable<House> listHouse = equipmentService.getBuildings(email);
+        model.addAttribute("houses", listHouse);
+        return "equipmentsHouse/chooseRoom";
     }
 
 

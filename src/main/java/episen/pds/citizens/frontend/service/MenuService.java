@@ -1,14 +1,10 @@
 package episen.pds.citizens.frontend.service;
 
 import episen.pds.citizens.frontend.model.Menu;
-import episen.pds.citizens.frontend.model.Test;
 import episen.pds.citizens.frontend.repository.MenuProxy;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.logging.Logger;
 
 @Data
 @Service

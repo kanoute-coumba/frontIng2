@@ -23,7 +23,7 @@ public class EquipmentProxy {
     private static final Logger logger = Logger.getLogger(EquipmentProxy.class.getName());
 
     public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByBuilding(int id_b) {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idb=" + id_b;
 
         RestTemplate restTemplate = new RestTemplate();
@@ -41,7 +41,7 @@ public class EquipmentProxy {
     }
 
     public static Iterable<EquipmentWithConsumption> getEquipmentWithConsumptionByRoom(int id_r) {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipWithConsumptionUrl = baseApiUrl + "/EquipmentOrderByConsumption/idr=" + id_r;
 
         RestTemplate restTemplate = new RestTemplate();
@@ -59,7 +59,7 @@ public class EquipmentProxy {
     }
 
     public static Iterable<Equipment> getEquipmentByRoom(Integer idr) {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/equipmentBYRoom/" + idr;
 
         System.out.println(getEquipmentUrl);
@@ -80,7 +80,7 @@ public class EquipmentProxy {
 
     public static void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment) {
         System.out.println("oooooooooooo");
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/choosestatut?chooseStatut=" + chooseStatut + "&type_mode=" + type_mode + "&id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -98,7 +98,7 @@ public class EquipmentProxy {
 
     public static String getNameRoomByIdroom(Integer id_room) {
         System.out.println("oooooooooooo");
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/nameRoom?id_room=" + id_room;
 
         System.out.println(getEquipmentUrl);
@@ -118,7 +118,7 @@ public class EquipmentProxy {
 
     public static String NameEquipment(Integer id_equipment) {
 
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/nameEquipment?id_equipment=" + id_equipment;
 
 
@@ -141,7 +141,7 @@ public class EquipmentProxy {
 
     public static void updateValueEquipment(Integer valueEquipment, Integer id_equipment) {
 
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/valueEquipment?valueEquipment=" + valueEquipment + "&id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -158,7 +158,7 @@ public class EquipmentProxy {
     }
 
     public static Integer getIdRoomByEquipment(Integer id_equipment) {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/getIdRoomByEquipment?id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -177,7 +177,7 @@ public class EquipmentProxy {
     }
 
     public static Iterable<House> getBuildingsByUser(String email) {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/house?email=" + email;
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<House>> response = restTemplate.exchange(

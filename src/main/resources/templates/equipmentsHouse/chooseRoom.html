@@ -41,7 +41,7 @@
     house.addEventListener('change', function () {
         let houseselected = house.options[house.options.selectedIndex].label;
         $.ajax({
-            url: 'http://localhost:9000/floor?house=' + houseselected,
+            url: 'http://172.31.249.240:9000/floor?house=' + houseselected,
             type: 'GET',
             dataType: 'json',
             success: function (listFloor) {
@@ -59,7 +59,7 @@
         let floorselected = floor.options[floor.options.selectedIndex].value;
         console.log("L'id est : " + floorselected);
         $.ajax({
-            url: 'http://localhost:9000/room?floor=' + floorselected,
+            url: 'http://172.31.249.240:9000/room?floor=' + floorselected,
             type: 'GET',
             dataType: 'json',
             success: function (listRoom) {

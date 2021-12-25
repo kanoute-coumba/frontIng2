@@ -7,10 +7,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
-    <script type="text/javascript" th:src="@{/architecture-js.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link rel="stylesheet" th:href="@{/architecture-css.css}">
+    <link rel="stylesheet" th:href="@{/architectureStatic/architecture-css.css}">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://img.icons8.com/ultraviolet/100/000000/mac-os--v1.png">
 </head>
 
 <body>
@@ -36,12 +36,13 @@
 <div class="title-page">Plan d'accès</div>
 
 <div class="container text-center mag-t">
-    <form action="/accessMap/display">
+    <form th:action="@{/accessMap/display}" method="get">
             <div class="dropdown" style="margin:0 auto; width:500px;">
                 <span style="font-size: x-large;">Veuillez selectionner un bâtiment :</span> <br><br>
                 <select id="building" name="buildings" class="btn btn-primary" >
+                    <option value="*">Choisissez un bâtiment</option>
                     <th:block th:each="building : ${buildings}">
-                        <option value="${building.name_building}">
+                        <option th:value="${building.name_building}">
                             <span th:text="${building.name_building}"></span>
                         </option>
                     </th:block>
@@ -54,10 +55,13 @@
                 </select>
             </div>
         <br><br><br>
-        <button type=" submit" class="btn btn-primary" style="font-size: large;">Afficher le plan</button>
+        <button type="submit" class="btn btn-primary" style="font-size: large;">Afficher le plan</button>
     </form>
 </div>
 
+<script type="text/javascript" th:src="@{/architectureStatic/getting-floors.js}"></script>
+
 </body>
 
+</body>
 </html>

@@ -24,4 +24,8 @@ public class FloorService {
         return floorRepo.getFloor(id_floor);
     }
 
+    public String getDesignOfFloor(final String name_floor) {
+        return floorRepo.getDesignOfFloor(name_floor);
+    }
+
 }

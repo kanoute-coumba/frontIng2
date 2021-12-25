@@ -24,6 +24,12 @@ public class FloorRepo {
         return responseEntity.getBody();
     }
 
+    public String getDesignOfFloor(String name_floor) {
+        ResponseEntity<String> responseEntity =
+                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/design_of/" + name_floor, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {});
+        return responseEntity.getBody();
+    }
+
     public Iterable<Floor> getFloorsOfBuilding(String name_building) {
         ResponseEntity<Iterable<Floor>> responseEntity =
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floors_of/" + name_building, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});

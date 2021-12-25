@@ -2,8 +2,11 @@ package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Menu;
+import episen.pds.citizens.frontend.model.Menu_reservation;
+import episen.pds.citizens.frontend.model.Test;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -36,16 +39,32 @@ public class MenuProxy {
         return response.getBody();
     }
 
-    public Menu reserveMenu (Menu menu) {
+    public static Menu_reservation getMenuReservation(int id) {
         String baseApiUrl = props.getApiUrl();
-        String createTestUrl = baseApiUrl + "/cafeteria-reservation";
+        String getTestUrl = baseApiUrl + "/cafeteria_reservation";
+
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Menu> request = new HttpEntity(menu);
-        ResponseEntity<Menu> response = restTemplate.exchange(
+
+        ResponseEntity<Menu_reservation> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                Menu_reservation.class);
+
+        log.debug("Get Test call " + response.getStatusCode().toString());
+        return response.getBody();
+    }
+
+    public Menu_reservation reserveMenu (Menu_reservation menu_reservation) {
+        String baseApiUrl = props.getApiUrl();
+        String createTestUrl = baseApiUrl + "/cafeteria_reservation";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Menu_reservation> request = new HttpEntity(menu_reservation);
+        ResponseEntity<Menu_reservation> response = restTemplate.exchange(
                 createTestUrl,
                 HttpMethod.POST,
                 request,
-                Menu.class);
+                Menu_reservation.class);
         System.out.println(request);
 
         log.debug("Create Test call " + response.getStatusCode().toString());

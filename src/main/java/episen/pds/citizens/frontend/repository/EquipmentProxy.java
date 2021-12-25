@@ -179,6 +179,7 @@ public class EquipmentProxy {
     public static Iterable<House> getBuildingsByUser(String email) {
         String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/house?email=" + email;
+        System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<House>> response = restTemplate.exchange(
                 getEquipmentUrl,

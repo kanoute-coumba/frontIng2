@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <title>Configuration d'une Lampe</title>
     <link rel="stylesheet" type="text/css" href="configurationEquip.css">
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <style>
         .test {
             margin-top: 10%;
             margin-left: auto;
             margin-right: auto;
-            height: 120px;
+            height: 160px;
 
         }
     </style>
 
 </head>
 <body>
-
+<nav th:insert="~{fragment :: navbar}"></nav>
 <div class="test">
     Configuration de la<span th:text="${nameEquipment}"></span>
 

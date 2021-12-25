@@ -2,7 +2,6 @@ package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.model.MixEnBySite;
-import episen.pds.citizens.frontend.repository.MixEnProxy;
 import episen.pds.citizens.frontend.service.MixEnService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

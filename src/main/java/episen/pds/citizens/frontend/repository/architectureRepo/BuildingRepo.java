@@ -29,5 +29,6 @@ public class BuildingRepo {
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/buildings", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
         return responseEntity.getBody();
     }
+
 }
 

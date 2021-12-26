@@ -20,5 +20,6 @@ public class BuildingService {
         return buildingRepo.getAllBuildings();
     }
 
+
 }
 

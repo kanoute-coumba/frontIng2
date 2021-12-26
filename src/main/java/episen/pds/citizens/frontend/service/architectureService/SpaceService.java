@@ -36,5 +36,6 @@ public class SpaceService {
     public Space getSpace(final int id_space) {
         return spaceRepo.getSpace(id_space);
     }
+
 }
 

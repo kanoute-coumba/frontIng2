@@ -41,4 +41,5 @@ public class CustomProperties {
     private final String apiArchitectureUrl = "http://172.31.249.1:9000/architecture/";
     private final String apiLocalArchitectureUrl = "http://localhost:9000/architecture/";
 
+
 }

@@ -30,4 +30,5 @@ public class Design {
         this.lengthMeetRoom_design = lengthMeetRoom_design;
         this.widthMeetRoom_design = widthMeetRoom_design;
     }
+
 }

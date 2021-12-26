@@ -87,4 +87,5 @@ public class ArchitectureController {
         return "architectureTemplates/personalizeTemplates/design-parallel-display";
     }
 
+
 }

@@ -14,7 +14,15 @@ public class BuildingController {
     @GetMapping("/buildingsPatch")
     public String getBuildings(Model model) {
         Iterable<BuildingPatch> buildings = buildingServicePatch.getBuildings();
+        int sumProduction = 0;
+        int sumConsumption = 0;
+        for(BuildingPatch building: buildings) {
+            sumProduction += building.getProduction() != null ? Double.parseDouble(building.getProduction()) : 0;
+            sumConsumption += building.getConsumption() != null ? Double.parseDouble(building.getConsumption()) : 0;
+        }
         model.addAttribute("buildings", buildings);
+        model.addAttribute("sumProduction", sumProduction);
+        model.addAttribute("sumConsumption", sumConsumption);
         return "smartgrid/home.html";
     }
 }

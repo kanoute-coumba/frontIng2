@@ -45,13 +45,5 @@ public class SpaceRepo {
         return responseEntity.getBody();
     }
 
-    // Not yet
-    public Iterable<Space> getAllSpaces() {
-        ResponseEntity<Iterable<Space>> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/spaces", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
-        return responseEntity.getBody();
-    }
-
-
 }
 

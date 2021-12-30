@@ -12,4 +12,5 @@ public class EquipmentWithConsumption {
     public String type;
 
     public String value;
+
 }

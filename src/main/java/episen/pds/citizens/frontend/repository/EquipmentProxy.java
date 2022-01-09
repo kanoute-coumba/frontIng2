@@ -194,4 +194,27 @@ public class EquipmentProxy {
         return response.getBody();
 
     }
+
+    public static void updateStatutAuto(String type_mode, Integer id_equipment) {
+        logger.info("j'entre dans la méthode");
+        System.out.println(type_mode + "proxy");
+
+
+
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/updateAuto?type_mode=" + type_mode +"&id_equipment=" + id_equipment;
+
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.PUT,
+                null,
+                new ParameterizedTypeReference<String>() {
+                }
+        );
+
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
+    }
 }

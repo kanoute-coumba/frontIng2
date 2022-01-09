@@ -28,10 +28,14 @@
         <button type="button" class="btn btn-info">Manuelle</button>
     </a>
 
-    <a th:href="@{ /eclaire}">
-        <button type="button" class="btn btn-dark">Automatique</button>
-    </a>
+    <form method="get" action="/formAuto" >
 
+
+        <input type="hidden" th:value="${id_equipment}" name="id_equipment">
+        <input type="hidden" value="Automatique" name="type_mode">
+        <input type="submit" class="btn btn-dark" value="Automatique"/>
+
+    </form>
 
 </div>
 

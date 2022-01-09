@@ -60,6 +60,14 @@ public class EquipmentController {
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
+    @GetMapping("/formAuto")
+    public String formAuto(@RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment) {
+        equipmentService.updateStatutAuto(type_mode, id_equipment);
+        System.out.println(id_equipment);
+        System.out.println(type_mode + "tpm");
+        return "equipmentsHouse/response";
+    }
+
     @GetMapping("/formForRoom")
     public String formNameByRoom(@RequestParam("house") Integer id_house, @RequestParam("floor") Integer id_floor, @RequestParam("room") Integer id_room, Model model) {
         List<Equipment> iterable = (List<Equipment>) equipmentService.getEquipmentByRoom(id_room);
@@ -84,6 +92,12 @@ public class EquipmentController {
         model.addAttribute("houses", listHouse);
         return "equipmentsHouse/chooseRoom";
     }
+
+//    @GetMapping("/automaticlight/")
+//    public String UpdateStatutAuto(String chooseStatut, String type_mode, Integer id_equipment) {
+//        equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
+//        return "equipmentsHouse/response";
+//    }
 
 
 }

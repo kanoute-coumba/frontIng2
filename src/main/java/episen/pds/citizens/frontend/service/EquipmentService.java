@@ -51,4 +51,11 @@ public class EquipmentService {
         return EquipmentProxy.getBuildingsByUser(email);
     }
 
+
+
+    public void updateStatutAuto(String type_mode, Integer id_equipment){
+        EquipmentProxy.updateStatutAuto(type_mode, id_equipment);
+        System.out.println(type_mode + "ttttp");
+    }
+
 }

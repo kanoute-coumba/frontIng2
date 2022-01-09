@@ -63,8 +63,31 @@
                 <tr th:each="equipment : ${listEquipment}">
                     <td th:if="${equipment.type} == 'lampe'"><a
                             th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
-                    <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
+                            class="link-dark"> <span th:text="${equipment.type}"></span> </a>
+                    </td>
+
+                    <td th:if="${equipment.type} == 'télévision'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            class="link-dark"> <span th:text="${equipment.type}"></span> </a> </td>
+
+                    <td th:if="${equipment.type} == 'fenêtre'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            class="link-dark"> <span th:text="${equipment.type}"></span> </a> </td>
+
+                    <td th:if="${equipment.type} == 'store'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            class="link-dark"> <span th:text="${equipment.type}"></span> </a> </td>
+
+                    <td th:if="${equipment.type} == 'radiateur'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            class="link-dark"> <span th:text="${equipment.type}"></span>  </a> </td>
+
+                    <td th:if="${equipment.type} == 'climatisation'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            class="link-dark"> <span th:text="${equipment.type}"></span> </a> </td>
+
+
+
                     <td th:text="${equipment.statut}"></td>
                     <td th:text="${equipment.type_mode}"></td>
                     <td th:text="${equipment.value}"></td>

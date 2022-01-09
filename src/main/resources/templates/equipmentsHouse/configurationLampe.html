@@ -24,17 +24,19 @@
 <div class="test">
     Configuration de la<span th:text="${nameEquipment}"></span>
 
-    <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+    <div th:if="${nameEquipment} == 'lampe'"><a th:href="@{'/Chambre/Lampe?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
         <button type="button" class="btn btn-info">Manuelle</button>
     </a>
+    </div>
+    <div th:if="${nameEquipment} == 'télévision'"><a th:href="@{'/Chambre/Télévision?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
 
     <form method="get" action="/formAuto" >
-
-
         <input type="hidden" th:value="${id_equipment}" name="id_equipment">
         <input type="hidden" value="Automatique" name="type_mode">
         <input type="submit" class="btn btn-dark" value="Automatique"/>
-
     </form>
 
 </div>

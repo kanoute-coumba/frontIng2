@@ -50,14 +50,14 @@ public class EquipmentController {
         return "equipmentsHouse/Manuelle";
     }
 
-    @GetMapping("/Chambre/Télévision")
+    @GetMapping("/Chambre/Television")
     public String configManuScreen(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
         Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
         model.addAttribute("id_equipment", id_equipment);
         model.addAttribute("id_room", id_room);
         String nameEquipment = equipmentService.NameEquipment(id_equipment);
         model.addAttribute("nameEquipment", nameEquipment);
-        return "equipmentsHouse/ManuelleTélévision";
+        return "ManuelleTelevision";
     }
 
 

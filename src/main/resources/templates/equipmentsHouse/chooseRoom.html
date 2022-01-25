@@ -13,12 +13,12 @@
 <nav th:insert="~{fragment :: navbar}"></nav>
 <form method="get" action="/formForRoom">
     <div class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <div class="row"><label for="house"> Choississez votre maison </label><br>
-            <select name="house" id="house" size="1" style="margin-top:15px; margin-bottom:15px">
-                <th:block th:each="house : ${houses}">
+        <div class="row"><label for="building"> Choississez votre maison </label><br>
+            <select name="building" id="building"  style="margin-top:15px; margin-bottom:15px">
+                <th:block th:each="building : ${houses}">
                     <option
-                            th:value="${house.id_house}"
-                            th:utext="${house.address}"/>
+                            th:value="${building.id_building}"
+                            th:utext="${building.address}"/>
                 </th:block>
             </select>
         </div>
@@ -37,15 +37,20 @@
     </div>
 </form>
 <script>
-    let house = document.getElementById("house");
-    house.addEventListener('change', function () {
+    let house = document.getElementById("building");
+    house.addEventListener('click', function () {
         let houseselected = house.options[house.options.selectedIndex].label;
+        let test = 'http://localhost:9000/floor?house' + houseselected;
+        console.log("url test"+test);
         $.ajax({
-            url: 'http://172.31.249.1:9000/floor?house=' + houseselected,
+            //url: 'http://172.31.249.1:9000/floor?house=' + houseselected,
+            url: 'http://localhost:9000/floor?house=' + houseselected,
             type: 'GET',
             dataType: 'json',
             success: function (listFloor) {
+
                 document.getElementById("floor").innerHTML = "";
+                document.getElementById("room").innerHTML = "";
                 for (let i = 0; i < listFloor.length; i++) {
                     document.getElementById("floor").innerHTML += '<option value="' + listFloor[i].id_floor + '">' + listFloor[i].name_floor + '</option>';
                 }
@@ -55,11 +60,12 @@
 
 
     let floor = document.getElementById("floor");
-    floor.addEventListener('change', function () {
+    floor.addEventListener('click', function () {
         let floorselected = floor.options[floor.options.selectedIndex].value;
         console.log("L'id est : " + floorselected);
         $.ajax({
-            url: 'http://172.31.249.1:9000/room?floor=' + floorselected,
+            //url: 'http://172.31.249.1:9000/room?floor=' + floorselected,
+            url: 'http://localhost:9000/room?floor=' + floorselected,
             type: 'GET',
             dataType: 'json',
             success: function (listRoom) {

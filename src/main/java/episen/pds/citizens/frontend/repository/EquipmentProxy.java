@@ -4,6 +4,7 @@ import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.model.EquipmentWithConsumption;
 import episen.pds.citizens.frontend.model.House;
+import episen.pds.citizens.frontend.model.architectureModel.Building;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Slf4j
@@ -58,19 +60,20 @@ public class EquipmentProxy {
         return response.getBody();
     }
 
-    public static Iterable<Equipment> getEquipmentByRoom(Integer idr) {
-        String baseApiUrl = props.getApiUrl();
+    public static Iterable<Map<String, String>> getEquipmentByRoom(Integer idr) {
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/equipmentBYRoom/" + idr;
 
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<Equipment>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<Map<String, String>>> response = restTemplate.exchange(
                 getEquipmentUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<Equipment>>() {
+                new ParameterizedTypeReference<Iterable<Map<String, String>>>() {
                 }
         );
+        logger.info(response.toString() + "les équipements");
 
         logger.info("Get equipmentByRoom " + response.getStatusCode().toString());
 
@@ -80,7 +83,7 @@ public class EquipmentProxy {
 
     public static void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment) {
         System.out.println("oooooooooooo");
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/choosestatut?chooseStatut=" + chooseStatut + "&type_mode=" + type_mode + "&id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -98,7 +101,7 @@ public class EquipmentProxy {
 
     public static String getNameRoomByIdroom(Integer id_room) {
         System.out.println("oooooooooooo");
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/nameRoom?id_room=" + id_room;
 
         System.out.println(getEquipmentUrl);
@@ -118,7 +121,7 @@ public class EquipmentProxy {
 
     public static String NameEquipment(Integer id_equipment) {
 
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/nameEquipment?id_equipment=" + id_equipment;
 
 
@@ -141,7 +144,7 @@ public class EquipmentProxy {
 
     public static void updateValueEquipment(Integer valueEquipment, Integer id_equipment) {
 
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/valueEquipment?valueEquipment=" + valueEquipment + "&id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -158,7 +161,7 @@ public class EquipmentProxy {
     }
 
     public static Integer getIdRoomByEquipment(Integer id_equipment) {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/getIdRoomByEquipment?id_equipment=" + id_equipment;
 
         System.out.println(getEquipmentUrl);
@@ -176,12 +179,12 @@ public class EquipmentProxy {
         return response.getBody();
     }
 
-    public static Iterable<House> getBuildingsByUser(String email) {
-        String baseApiUrl = props.getApiUrl();
+    public static Iterable<Building> getBuildingsByUser(String email) {
+        String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/house?email=" + email;
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<House>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<Building>> response = restTemplate.exchange(
                 getEquipmentUrl,
                 HttpMethod.GET,
                 null,
@@ -190,7 +193,8 @@ public class EquipmentProxy {
         );
 
         logger.info("Get buildings " + response.getStatusCode());
-
+        System.out.println("testetetetetett");
+        System.out.println(response.getBody().toString());
         return response.getBody();
 
     }

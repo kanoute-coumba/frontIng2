@@ -2,11 +2,13 @@ package episen.pds.citizens.frontend.service;
 
 import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.model.House;
+import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.repository.EquipmentProxy;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Data
@@ -17,7 +19,7 @@ public class EquipmentService {
     private EquipmentProxy equipmentProxy = new EquipmentProxy();
     private static final Logger logger = Logger.getLogger(EquipmentService.class.getName());
 
-    public Iterable<Equipment> getEquipmentByRoom(Integer idr) {
+    public Iterable<Map<String, String>> getEquipmentByRoom(Integer idr) {
         return EquipmentProxy.getEquipmentByRoom(idr);
     }
 
@@ -47,7 +49,7 @@ public class EquipmentService {
         return EquipmentProxy.getIdRoomByEquipment(id_equipment);
     }
 
-    public Iterable<House> getBuildings(String email) {
+    public Iterable<Building> getBuildings(String email) {
         return EquipmentProxy.getBuildingsByUser(email);
     }
 

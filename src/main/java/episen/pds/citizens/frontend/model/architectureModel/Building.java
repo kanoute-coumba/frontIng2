@@ -9,6 +9,7 @@ public class Building {
     private String address;
     private String name_building;
     private String type_building;
+    private Integer id_owner;
 
     public Building() {}
 

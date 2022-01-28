@@ -165,8 +165,12 @@
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
 
-                        <a href="button" class="btn btn-danger">Automatique</a>
-                        </a>
+                        <form method="get" action="/formAuto" >
+                            <input type="hidden" th:value="${equipment.id_equipment}" name="id_equipment">
+                            <input type="hidden" value="Automatique" name="type_mode">
+                            <input type="hidden" th:value="${id_room}" name="id_room">
+                            <input type="submit" class="btn btn-dark" value="Automatique"/>
+                        </form>
 
 
                     </td>

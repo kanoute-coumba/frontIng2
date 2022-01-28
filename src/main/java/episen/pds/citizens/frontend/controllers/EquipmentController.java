@@ -89,20 +89,25 @@ public class EquipmentController {
     }
 
     @GetMapping("/formAuto")
-    public String formAuto(@RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment) {
+    public String formAuto(@RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("id_room") Integer id_room, Model model) {
         equipmentService.updateStatutAuto(type_mode, id_equipment);
-        return "equipmentsHouse/response";
-    }
-
-    @GetMapping("/formForRoom")
-    public String formNameByRoom(@RequestParam("building") Integer id_house, @RequestParam("floor") Integer id_floor, @RequestParam("room") Integer id_room, Model model) {
         List<Map<String, String>> iterable = (List<Map<String, String>>) equipmentService.getEquipmentByRoom(id_room);
 
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(id_room);
         model.addAttribute("nameRoom", nameRoom);
+        model.addAttribute("id_room", id_room);
 
+        return "equipmentsHouse/equipmentByRoom";
+    }
 
+    @GetMapping("/formForRoom")
+    public String formNameByRoom(@RequestParam("building") Integer id_house, @RequestParam("floor") Integer id_floor, @RequestParam("room") Integer id_room, Model model) {
+        List<Map<String, String>> iterable = (List<Map<String, String>>) equipmentService.getEquipmentByRoom(id_room);
+        model.addAttribute("listEquipment", iterable);
+        String nameRoom = equipmentService.getNameRoomByIdroom(id_room);
+        model.addAttribute("nameRoom", nameRoom);
+        model.addAttribute("id_room", id_room);
         return "equipmentsHouse/equipmentByRoom";
     }
 

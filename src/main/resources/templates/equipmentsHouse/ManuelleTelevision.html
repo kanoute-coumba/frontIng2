@@ -32,6 +32,10 @@
             margin-bottom: 1px;
             display: inline-block;
         }
+        .d {
+            display: flex;
+            margin-bottom: 2em;
+        }
 
         h3 {
 
@@ -50,6 +54,8 @@
         Veuillez choisir votre opération
 
         <form method="get" action="/form" }>
+
+            <div class="d">
             <input id="choose1" type="radio" onchange="handleChange(this)" value="ON" class="btn btn-info"
                    name="chooseStatut">
             <input id="statut" type="hidden" value="Manuel" name="type_mode">
@@ -59,6 +65,11 @@
             <input id="choose2" type="radio" onchange="handleChange(this)" value="OFF" class="btn btn-info"
                    name="chooseStatut">
             <label for="choose2">OFF</label> <br/> <br/>
+
+            <input id="choose3" type="radio" onchange="handleChange(this)" value="En veille" class="btn btn-info"
+                   name="chooseStatut">
+            <label for="choose3">En veille</label>
+            </div>
 
             <div id="valeurEquip">
                 <label>Veuillez entrer l'intensité de l'équipement</label>
@@ -74,7 +85,7 @@
 <script type="text/javascript">
 
     function handleChange(src) {
-        if (src.value == "OFF") {
+        if (src.value == "OFF" || src.value == "En veille") {
             document.getElementById('valeurEquip').style.display = "none";
             document.getElementById('number').value = 0;
             console.log(src);
@@ -82,6 +93,7 @@
             document.getElementById('valeurEquip').style.display = "block";
             document.getElementById('number').value = 0;
         }
+
 
     }
 </script>

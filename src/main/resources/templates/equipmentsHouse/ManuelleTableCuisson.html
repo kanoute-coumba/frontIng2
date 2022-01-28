@@ -2,7 +2,7 @@
 <html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Configuration Manuelle Télévision</title>
+    <title>Configuration Manuelle Table Cuisson</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -34,22 +34,22 @@
         }
 
         h3 {
-
             margin-top: 2px;
         }
 
-
     </style>
+
 </head>
 <body>
 <nav th:insert="~{fragment :: navbar}"></nav>
+
 <div class="style">
     <div class="test">
 
         <h3 th:text="${nameEquipment}"></h3>
         Veuillez choisir votre opération
 
-        <form method="get" action="/form" }>
+        <form method="get" action="/formTableCuisson" }>
             <input id="choose1" type="radio" onchange="handleChange(this)" value="ON" class="btn btn-info"
                    name="chooseStatut">
             <input id="statut" type="hidden" value="Manuel" name="type_mode">
@@ -62,7 +62,7 @@
 
             <div id="valeurEquip">
                 <label>Veuillez entrer l'intensité de l'équipement</label>
-                <input id="number" type="number" name="valueEquipment" th:value="${valueEquipment}" min="0" max="1">
+                <input id="number" type="number" name="valueEquipment" th:value="${valueEquipment}" min="0" max="14">
             </div>
             <input type="submit" value="Valider"/>
         </form>

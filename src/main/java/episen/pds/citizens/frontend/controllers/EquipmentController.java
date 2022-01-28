@@ -19,12 +19,14 @@ public class EquipmentController {
 
     @GetMapping("/getIdrEquipmentRoom/{idr}")
     public String getEquipmentByRoom(@PathVariable("idr") final int idr, Model model) {
+        System.out.println(" dna s cette méthode");
         Iterable<Map<String, String>> iterable =  equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
         model.addAttribute("id_room", idr);
         System.out.println(nameRoom + "liste equipement");
+        System.out.println(iterable.toString() + "n");
 
         return "equipmentsHouse/equipmentByRoom";
     }
@@ -61,19 +63,34 @@ public class EquipmentController {
         return "equipmentsHouse/ManuelleTelevision";
     }
 
+    @GetMapping("/Cuisine/TableCuisson")
+    public String configManuTableC(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
+        model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("id_room", id_room);
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
+        return "equipmentsHouse/ManuelleTelevision";
+    }
+
 
     @GetMapping("/form")
     public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
+        return "redirect:/getIdrEquipmentRoom/" + idr;
+    }
 
+    @GetMapping("/formTableCuisson")
+    public String formTableC (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+        equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
+        equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
     @GetMapping("/formAuto")
     public String formAuto(@RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment) {
         equipmentService.updateStatutAuto(type_mode, id_equipment);
-
         return "equipmentsHouse/response";
     }
 
@@ -84,6 +101,7 @@ public class EquipmentController {
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(id_room);
         model.addAttribute("nameRoom", nameRoom);
+
 
         return "equipmentsHouse/equipmentByRoom";
     }

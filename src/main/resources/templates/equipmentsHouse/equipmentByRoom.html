@@ -121,7 +121,11 @@
 
                     <td th:text="${equipment.statut}"></td>
                     <td th:text="${equipment.type_mode}"></td>
-                    <td th:text="${equipment.value}"></td>
+                    <td th:text="${equipment.value}">
+                        <div th:if="${equipment.type} == 'lampe'">
+                            <span th:text="lx"></span>
+                        </div>
+                    </td>
                     <td class="bouton">
                         <div th:if="${equipment.type} == 'lampe'">
                             <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
@@ -141,7 +145,7 @@
                         </div>
 
                         <div th:if="${equipment.type} == 'radiateur'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
                         <div th:if="${equipment.type} == 'climatisation'">
@@ -157,7 +161,7 @@
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
                         <div th:if="${equipment.type} == 'réfrigérateur'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            <a th:href="@{'/Cuisine/Refrigerateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
                         <div th:if="${equipment.type} == 'four'">

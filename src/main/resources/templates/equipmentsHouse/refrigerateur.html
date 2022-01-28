@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuration Manuelle Réfrigérateur</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <style>
+        .test {
+            border-radius: 10px;
+            text-align: center;
+            background-color: #A4A4A4;
+            height: 220px;
+            width: 39%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: solid;
+            margin-top: 50px;
+            margin-left: 35%;
+        }
+
+        .btn.btn-info {
+
+            text-align: center;
+            width: 90px;
+            margin-top: 10px;
+            background-color: #68DBDF;
+            border-radius: 4px;
+            margin-bottom: 1px;
+            display: inline-block;
+            margin: 0.7px;
+        }
+        .d {
+            display: flex;
+            margin-bottom: 2em;
+        }
+
+        h3 {
+
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+<nav th:insert="~{fragment :: navbar}"></nav>
+
+<div class="style">
+    <div class="test">
+
+        <h3 th:text="${nameEquipment}"></h3>
+        Veuillez choisir votre opération
+
+        <form method="get" action="/formRefrigerateur" }>
+
+            <div class="d">
+                <input id="choose1" type="radio" onchange="handleChange(this)" value="ON" class="btn btn-info"
+                       name="chooseStatut">
+                <input id="statut" type="hidden" value="Manuel" name="type_mode">
+                <input type="hidden" th:value="${id_room}" name="idr">
+                <label for="choose1">ON</label>
+                <input id="id_equipment" type="hidden" th:value="${id_equipment}" name="id_equipment">
+                <input id="choose2" type="radio" onchange="handleChange(this)" value="OFF" class="btn btn-info"
+                       name="chooseStatut">
+                <label for="choose2">OFF</label> <br/> <br/>
+
+                <input id="choose3" type="radio" onchange="handleChange(this)" value="Ouvert" class="btn btn-info"
+                       name="chooseStatut">
+                <label for="choose3">Ouvert</label>
+                <input id="choose4" type="radio" onchange="handleChange(this)" value="Fermé" class="btn btn-info"
+                       name="chooseStatut">
+                <label for="choose4">Fermé</label>
+            </div>
+
+            <div id="valeurEquip" >
+                <label>Veuillez entrer l'intensité de l'équipement</label> </br>
+                <input id="number"  type="number" name="valueEquipment" th:value="${valueEquipment}" min="0" max="5">
+            </div>
+            <input type="submit" value="Valider"/>
+        </form>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function handleChange(src) {
+        if (src.value == "OFF") {
+            document.getElementById('valeurEquip').style.display = "none";
+            document.getElementById('number').value = 0;
+            console.log(src);
+        } else {
+            document.getElementById('valeurEquip').style.display = "block";
+            document.getElementById('number').value = 0;
+        }
+
+
+    }
+</script>
+
+</body>
+</html>

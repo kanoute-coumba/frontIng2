@@ -70,7 +70,17 @@ public class EquipmentController {
         model.addAttribute("id_room", id_room);
         String nameEquipment = equipmentService.NameEquipment(id_equipment);
         model.addAttribute("nameEquipment", nameEquipment);
-        return "equipmentsHouse/ManuelleTelevision";
+        return "equipmentsHouse/ManuelleTableCuisson";
+    }
+
+    @GetMapping("/Cuisine/Refrigerateur")
+    public String configManuRefrigerateur(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
+        model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("id_room", id_room);
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
+        return "equipmentsHouse/refrigerateur";
     }
 
 
@@ -83,6 +93,13 @@ public class EquipmentController {
 
     @GetMapping("/formTableCuisson")
     public String formTableC (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+        equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
+        equipmentService.updateValueEquipment(valueEquipment, id_equipment);
+        return "redirect:/getIdrEquipmentRoom/" + idr;
+    }
+
+    @GetMapping("/formRefrigerateur")
+    public String formTableRefrigerateur (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;

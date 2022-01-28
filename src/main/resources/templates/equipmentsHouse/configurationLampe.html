@@ -39,6 +39,13 @@
     </a>
     </div>
 
+    <div th:if="${nameEquipment} == 'réfrigérateur'"><a th:href="@{'/Cuisine/Refrigerateur?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+
+
     <form method="get" action="/formAuto" >
         <input type="hidden" th:value="${id_equipment}" name="id_equipment">
         <input type="hidden" value="Automatique" name="type_mode">

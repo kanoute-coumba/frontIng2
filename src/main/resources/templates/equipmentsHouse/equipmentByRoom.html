@@ -136,7 +136,7 @@
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
                         <div th:if="${equipment.type} == 'fenêtre'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            <a th:href="@{'/fenetre?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
                         <div th:if="${equipment.type} == 'store'">

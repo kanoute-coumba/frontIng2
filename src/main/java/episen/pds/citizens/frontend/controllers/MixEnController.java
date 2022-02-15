@@ -40,4 +40,9 @@ public class MixEnController {
         }
         return "currentMix";
     }
+    @GetMapping("/AlgoMix")
+    public String getChoiceAlogo(){
+
+        return "choiceAlgo";
+    }
 }

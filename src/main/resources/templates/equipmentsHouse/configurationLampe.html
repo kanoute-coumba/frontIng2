@@ -49,6 +49,11 @@
     </a>
     </div>
 
+    <div th:if="${nameEquipment} == 'radiateur'"><a th:href="@{'/radiateur?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
 
 
     <form method="get" action="/formAuto" >

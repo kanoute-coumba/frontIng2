@@ -145,7 +145,7 @@
                         </div>
 
                         <div th:if="${equipment.type} == 'radiateur'">
-                            <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                            <a th:href="@{'/radiateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                class="btn btn-info"> <span>Manuelle</span></a>
                         </div>
                         <div th:if="${equipment.type} == 'climatisation'">

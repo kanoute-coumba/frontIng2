@@ -16,6 +16,8 @@ public class MixEnController {
 
     private MixEnService mixEnService = new MixEnService();
 
+    // service Current Mix
+
     @GetMapping("/Mix")
     public String getListTest(Model model) {
 
@@ -40,8 +42,11 @@ public class MixEnController {
         }
         return "currentMix";
     }
+
+    // Service Choice Algo
+
     @GetMapping("/AlgoMix")
-    public String getChoiceAlogo(){
+    public String getChoiceAlgo(){
 
         return "choiceAlgo";
     }

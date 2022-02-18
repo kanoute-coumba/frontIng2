@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class Building {
+
     private Integer id_building;
     private String address;
     private String name_building;

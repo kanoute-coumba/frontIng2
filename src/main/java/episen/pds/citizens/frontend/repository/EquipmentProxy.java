@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -193,7 +194,6 @@ public class EquipmentProxy {
         );
 
         logger.info("Get buildings " + response.getStatusCode());
-        System.out.println("testetetetetett");
         System.out.println(response.getBody().toString());
         return response.getBody();
 

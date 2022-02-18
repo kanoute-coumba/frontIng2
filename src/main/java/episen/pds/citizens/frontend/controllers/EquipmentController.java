@@ -153,6 +153,8 @@ public class EquipmentController {
     @PostMapping("/chooseRoom")
     public String chooseRoom(@RequestParam("email") String email, Model model) {
         Iterable<Building> listHouse = equipmentService.getBuildings(email);
+
+
         model.addAttribute("houses", listHouse);
         System.out.println(listHouse.toString());
         return "equipmentsHouse/chooseRoom";

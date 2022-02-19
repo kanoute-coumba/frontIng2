@@ -2,8 +2,6 @@ package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 public class Consumption {
 
@@ -13,6 +11,6 @@ public class Consumption {
 
     public String value;
 
-    public LocalDateTime date_time;
+    public long date_time;
 
 }

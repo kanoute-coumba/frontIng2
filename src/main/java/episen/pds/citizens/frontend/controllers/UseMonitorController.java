@@ -8,22 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.concurrent.locks.Condition;
 import java.util.logging.Logger;
 
 @Controller
 public class UseMonitorController {
     private final UseMonitorService useMonitorService = new UseMonitorService();
     private static final Logger logger = Logger.getLogger(UseMonitorController.class.getName());
-
-    @GetMapping("/configManual/conditions/{id}")
-    public String getRoomConditions(Model model, @PathVariable("id") int id_room) {
-        Iterable<RoomConditions> listConditions = useMonitorService.getConditionsInRoom(id_room);
-        for (RoomConditions row: listConditions) {
-            logger.info(row.toString());
-        }
-        model.addAttribute("conditions", listConditions);
-        return "configmanu";
-    }
 
     @GetMapping("/monitor")
     public String getConsumptionByBuilding(Model model) {
@@ -52,6 +43,10 @@ public class UseMonitorController {
         for (Equipment row: listEquipmentInRoom) {
             logger.info(row.toString());
         }
+        logger.info("GET_COND: id_room=" + id_room);
+        RoomConditions cond = useMonitorService.getConditionsInRoom(id_room);
+        logger.info(cond.toString());
+        model.addAttribute(cond);
         model.addAttribute("equipments", listEquipmentInRoom);
         return "configmanu";
     }
@@ -87,14 +82,14 @@ public class UseMonitorController {
         return "redirect:/configManual/"+ id_room;
     }
 
-    @PostMapping("setEquipmentOn/{id_equipment}")
+    @PostMapping("/setEquipmentOn/{id_equipment}")
     public String setEquipmentOn(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
         logger.info("SET_ON: id_equipment="+ id_equipment + ", id_room=" + id_room);
         useMonitorService.setEquipmentOn(id_equipment);
         return "redirect:/configManual/"+ id_room;
     }
 
-    @PostMapping("setEquipmentOff/{id_equipment}")
+    @PostMapping("/setEquipmentOff/{id_equipment}")
     public String setEquipmentOff(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
         logger.info("SET_OFF: id_equipment="+ id_equipment + ", id_room=" + id_room);
         useMonitorService.setEquipmentOff(id_equipment);

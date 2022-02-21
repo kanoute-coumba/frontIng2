@@ -23,7 +23,7 @@ public class UseMonitorService {
         return useMonitorProxy.getEquipmentByRoom(id_room);
     }
 
-    public Iterable<RoomConditions> getConditionsInRoom(int id) {
+    public RoomConditions getConditionsInRoom(int id) {
         return useMonitorProxy.getConditionsInRoom(id);
     }
 

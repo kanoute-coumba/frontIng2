@@ -81,12 +81,12 @@ public class UseMonitorProxy {
         return response.getBody();
     }
 
-    public Iterable<RoomConditions> getConditionsInRoom(int id) {
+    public RoomConditions getConditionsInRoom(int id_room) {
         String baseApiUrl = props.getApiUrl();
-        String getConsBuildUrl = baseApiUrl + "/getRoomConditions?id_room=" + id;
+        String getConsBuildUrl = baseApiUrl + "/getLastConditions/" + id_room;
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<RoomConditions>> response = restTemplate.exchange(
+        ResponseEntity<RoomConditions> response = restTemplate.exchange(
                 getConsBuildUrl,
                 HttpMethod.GET,
                 null,

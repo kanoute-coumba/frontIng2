@@ -3,28 +3,20 @@ package episen.pds.citizens.frontend.service;
 import episen.pds.citizens.frontend.model.Messages;
 import episen.pds.citizens.frontend.model.Users;
 import episen.pds.citizens.frontend.repository.MessagesProxy;
+import episen.pds.citizens.frontend.repository.UsersProxy;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Data
 @Service
-public class MessagesService {
+public class UsersService {
 
     @Autowired
-    private MessagesProxy messagesProxy = new MessagesProxy();
-    public Messages getMessagesById(int id) {
-        //System.out.print(MessagesProxy.getMessagesById(id).getClass());
-        return MessagesProxy.getMessagesById(id);
-    }
-
-    public Iterable<Messages> getMessages(String sender, String receiver) {
-        //System.out.print(MessagesProxy.getMessagesById(id).getClass());
-        return MessagesProxy.getMessageBySenderAndReceiver(sender, receiver);
-    }
+    private UsersProxy usersProxy = new UsersProxy();
 
     public Iterable<Users> getUsers() {
-        return MessagesProxy.getUsers();
+        return usersProxy.getUsers();
     }
 
     /*public Messages_reservation saveMessages(Messages_reservation messages_reservation) {

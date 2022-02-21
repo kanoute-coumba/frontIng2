@@ -1,4 +1,4 @@
-package episen.pds.citizens.frontend.model.architectureModel;
+package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 
@@ -8,46 +8,28 @@ public class Users {
     private int user_id;
     private String username;
     private String right_layer;
-    private String receiver;
-    private int time;
 
-    public int getMessage_id() {
-        return message_id;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setMessage_id(int message_id) {
-        this.message_id = message_id;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getUsername() {
+        return username;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getSender() {
-        return sender;
+    public String getRight_layer() {
+        return right_layer;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
+    public void setRight_layer(String right_layer) {
+        this.right_layer = right_layer;
     }
 }

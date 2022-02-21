@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>chat</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -9,6 +9,9 @@
     <script  src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link th:href="@{/chat.css}" rel="stylesheet"/>
+    <link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+
 
 </head>
 
@@ -60,45 +63,250 @@
     </div>
 </nav>
 
-<!-- NAV BAR -->
+<!-- NAV BAR
 <div class="title-page">Chat</div>
+<div class="messages">
+    <div class="message">
+        <span>
+            from : amal
+        </span>
+        <span>
+            to : antoine
+        </span>
+        <span>
+            salut
+        </span>
+    </div>
+    <div class="message">
+        <span>
+            from : amal
+        </span>
+        <span>
+            to : antoine
+        </span>
+        <span>
+            salut
+        </span>
+    </div>
+</div>
+
+
+
+<tr th:each="message : ${MessagesById}">
+    <div class="col-sm-6">
+        <div class="liste-salle-reunion">
+            <div class="title-liste-salle">Menu 1</div>
+            <hr>
+            <div id="liste-salle-reserve">
+                <div class="salle-element">
+                    <div class="nom-salle"> message_id </E></div>
+                    <div class= "menu">
+                        <td th:text="${message.message_id}"></td>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> message </div>
+                    <div class= "menu">
+                        <td th:text="${message.message}"></td>
+                    </div>
+
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> sender </div>
+                    <div class= "menu">
+                        <td th:text="${message.sender}"></td>
+                    </div>
+
+                </div>
+
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> receiver </div>
+                    <div class= "menu"> <td th:text="${message.receiver}"></td> </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="action-salle">
+                    <a href="/cafeteria_reservation/1" class="btn btn-link btn-sm mb-3">
+                        <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</tr>
+
+
+
+
+
+<tr th:each="message : ${all_messages}">
+    <div class="col-sm-6">
+        <div class="liste-salle-reunion">
+            <div class="title-liste-salle">Menu 1</div>
+            <hr>
+            <div id="liste-salle-reserve">
+                <div class="salle-element">
+                    <div class="nom-salle"> message_id </E></div>
+                    <div class= "menu">
+                        <td th:text="${message.message_id}"></td>
+                    </div>
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> message </div>
+                    <div class= "menu">
+                        <td th:text="${message.message}"></td>
+                    </div>
+
+                </div>
+                <hr class="hr-liste-salle">
+                <div class="salle-element">
+                    <div class="nom-salle"> sender </div>
+                    <div class= "menu">
+                        <td th:text="${message.sender}"></td>
+                    </div>
+
+                </div>
+
+            </div>
+            <hr class="hr-liste-salle">
+            <div class="salle-element">
+                <div class="nom-salle"> receiver </div>
+                <div class= "menu"> <td th:text="${message.receiver}"></td> </div>
+            </div>
+            <hr class="hr-liste-salle">
+            <div class="action-salle">
+                <a href="/cafeteria_reservation/1" class="btn btn-link btn-sm mb-3">
+                    <button type="button" class="btn btn-primary">Choisir ce Menu</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</tr>
+
+
+-->
+
 
 <div class="container">
-    <button class="btn btn-info btn-chat" type="button" onclick="openChat()">Chat</button>
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card chat-app">
 
-    <div class="chatbox" id="chatbox">
-        <h2>Message</h2>
-        <form class="form-container">
-            <textarea type="text" placeholder="Type Text.." name="msg" required=""></textarea>
-            <button type="submit" class="btn btn-info btn-lg btn-send">Send</button>
-            <button type="button" class="btn btn-danger btn-lg btn-close" onclick="closeChat()">Close</button>
-        </form>
+                <div id="plist" class="people-list">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Search...">
+                    </div>
+                    <div class="scroller">
+                    <ul class="list-unstyled chat-list mt-2 mb-0">
+                        <tr th:each="user : ${all_users}">
+
+                        <li class="clearfix">
+                            <div class="about">
+
+                                <a style=hidden href="/chat/sender=sender%>/receiver=<%=${users.username}">
+                                    <div class="status" ><td class="name" th:text="${user.username}"></div>
+                                </a>
+
+                                <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>
+                            </div>
+                        </li>
+                        </tr>
+                        <li class="clearfix active">
+
+                            <div class="about">
+                                <div class="name">Aiden Chavez</div>
+                                <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="about">
+                                <div class="name">Mike Thomas</div>
+                                <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="about">
+                                <div class="name">Christian Kelly</div>
+                                <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+
+
+                <div class="chat">
+                    <div class="chat-header clearfix">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                </a>
+                                <div class="chat-about">
+                                    <h6 class="m-b-0"><td th:text="${sender}"}></td></h6>
+                                    <small>Last seen: 2 hours ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroller-chat">
+                    <div class="chat-history">
+                        <ul class="m-b-0">
+                            <tr th:each="message : ${all_messages}">
+                            <li class="clearfix">
+                                <div class="message-data text-right">
+                                    <span class="message-data-time"> <td th:text="${message.time}"></td>, <td th:text="${message.sender}"></td></span>
+                                </div>
+                                <div class="message other-message float-right"> <td th:text="${message.message}"></td> </div>
+                            </li>
+                            </tr>
+                            <li class="clearfix">
+                                <div class="message-data">
+                                    <span class="message-data-time">10:12 AM, Today</span>
+                                </div>
+                                <div class="message my-message">Are we meeting today?</div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="message-data">
+                                    <span class="message-data-time">10:15 AM, Today</span>
+                                </div>
+                                <div class="message my-message">Project has been already finished and I have results to show you.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+                    <div class="chat-message clearfix">
+                        <div class="input-group mb-0">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-send"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter text here...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script type="text/javascript">
-    function openChat() {
-      document.getElementById('chatbox').style.display='block';
-      $('.btn-chat').hide();
-    }
-    function closeChat() {
-      document.getElementById('chatbox').style.display='none';
-      $('.btn-chat').show();
-    }
-    $('form').submit(function () {
-      var text=$(this).find("textarea[name='msg']").val();
-
-      alert(text);
-    });
-  </script>
-
 </div>
-</body>
-</html>
+
+
+-->
 
 
 
 <script type="text/javascript" th:src="@{/chat.js}" th:inline="javascript"></script>
-<link th:href="@{/chat.css}" rel="stylesheet"/>
-<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+
 </body>
 
 </html>

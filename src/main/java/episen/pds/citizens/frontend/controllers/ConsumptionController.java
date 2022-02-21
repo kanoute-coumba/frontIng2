@@ -18,14 +18,14 @@ public class ConsumptionController {
         model.addAttribute("consoIterable",consumptionIterable);
         return "histoEquipment";
     }
-    @GetMapping("")
+    @GetMapping("/ConsumptionByIdEquipment/{ide}/Between/{db}&{de}")
     public String getConsumptionOfEquipmentBetweenTwoDate(Model model,
                                                           @PathVariable("ide") int ide,
                                                           @PathVariable("db") long db,
                                                           @PathVariable("de") long de){
         Iterable<Consumption> consumptionIterable = consumptionService.getConsumptionByEquipmentBetweenTwoDate(ide,db,de);
         model.addAttribute("consoIterable",consumptionIterable);
-    return "jenesaispas";
+    return "histoEquipment";
     }
 
 }

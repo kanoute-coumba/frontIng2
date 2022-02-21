@@ -4,7 +4,39 @@
     <meta charset="UTF-8" http-equiv="refresh" content="20">
     <title>Equipement de la Salle </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <style>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+  text-align: center;
+}
 
+a{
+text-decoration: none;
+color : black;
+}
+.style{
+align: center;
+}
+
+.table{
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 10px;
+ width: 60%;
+ table-layout: auto;
+ table-layout: fixed;
+}
+
+.name{
+text-align: center;
+margin-top: 30px;
+}
+
+    </style>
 </head>
 <body>
 <h2 th:text="'Les équipements et les générateurs de la salle ' + ${id_r}" ></h2>

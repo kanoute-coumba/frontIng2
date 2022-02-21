@@ -9,7 +9,7 @@ public class Consumption {
 
     public int id_equipment;
 
-    public String value;
+    public double value;
 
     public long date_time;
 

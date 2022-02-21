@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 @Slf4j
@@ -46,6 +47,21 @@ public class ConsumptionProxy {
                 }
         );
         logger.info("Get Consumption By Equipment  Between Two Date call " + response.getStatusCode());
+        return response.getBody();
+    }
+    public static ArrayList<Consumption> getConsumptionByRoomBetweenTwoDate(int id_r, long db, long de){
+        String baseApiUrl = props.getApiUrl();
+        String getConsumptionByRoomUrl = baseApiUrl
+                +"/ConsumptionRoom/"+id_r+"/Between/" +db+"&"+de;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<ArrayList<Consumption>> response = restTemplate.exchange(
+                getConsumptionByRoomUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        logger.info("Get Consumption By Room  Between Two Date call " + response.getStatusCode());
         return response.getBody();
     }
 }

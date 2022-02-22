@@ -1,9 +1,6 @@
 package episen.pds.citizens.frontend.service;
 
-import episen.pds.citizens.frontend.model.Attribution;
-import episen.pds.citizens.frontend.model.Consumption;
-import episen.pds.citizens.frontend.model.MixEn;
-import episen.pds.citizens.frontend.model.MixEnBySite;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.repository.MixEnProxy;
 import episen.pds.citizens.frontend.repository.OverrunProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,7 @@ public class OverrunService {
     private OverrunProxy overrunProxy = new OverrunProxy();
     private static final Logger logger = Logger.getLogger(OverrunService.class.getName());
 
-    public Iterable<Consumption> getConsumption(){
+    public Iterable<Consobyday> getConsumption(){
         return overrunProxy.getConsumption();
     }
 

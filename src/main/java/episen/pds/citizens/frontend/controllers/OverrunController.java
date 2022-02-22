@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Attribution;
+import episen.pds.citizens.frontend.model.Consobyday;
 import episen.pds.citizens.frontend.model.Consumption;
 import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.service.OverrunService;
@@ -22,20 +23,23 @@ public class OverrunController {
     @GetMapping("/overrun")
     public String getAttribution(Model model) {
         Iterable<Attribution> listAttribution = overrunService.getAttribution();
-        for(Attribution att : listAttribution) {
+        for (Attribution att : listAttribution) {
             logger.info(att.toString());
         }
         model.addAttribute("attribution", listAttribution);
         return "attribution";
         //return listAttribution;
     }
+
     @GetMapping("/conso")
     public String getConsumption(Model model) {
-        Iterable<Consumption> listConso = overrunService.getConsumption();
-        for(Consumption conso : listConso) {
+        Iterable<Consobyday> listConso = overrunService.getConsumption();
+        model.addAttribute("consumption", listConso);
+
+        for (Consobyday conso : listConso) {
             logger.info(conso.toString());
         }
-        model.addAttribute("consumption", listConso);
+
         return "conso";
     }
 }

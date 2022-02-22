@@ -2,6 +2,7 @@ package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Attribution;
+import episen.pds.citizens.frontend.model.Consobyday;
 import episen.pds.citizens.frontend.model.Consumption;
 import episen.pds.citizens.frontend.model.Test;
 import lombok.extern.slf4j.Slf4j;
@@ -21,16 +22,16 @@ public class OverrunProxy {
     private static CustomProperties props = new CustomProperties();
     private static final Logger logger = Logger.getLogger(OverrunProxy.class.getName());
 
-    public static Iterable<Consumption> getConsumption() {
+    public static Iterable<Consobyday> getConsumption() {
         String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/conso";
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<Consumption>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<Consobyday>> response = restTemplate.exchange(
                 getTestUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<Consumption>>() {
+                new ParameterizedTypeReference<Iterable<Consobyday>>() {
                 }
         );
 

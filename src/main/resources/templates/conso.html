@@ -17,25 +17,19 @@
     <title>Attribution</title>
 </head>
 <body>
-<h1>Consommation par équipement de la journée du 23/05/2021</h1>
+<h1>Consommation par jour de toute la SmartCity</h1>
 <br>
 <table border="1" class="table table-striped table responsive-md">
     <thead>
     <tr>
-        <th bgcolor="bleu">id_consumption</th>
-        <th bgcolor="bleu">value</th>
-        <th bgcolor="bleu">date_time</th>
-        <th bgcolor="bleu">id_equipment</th>
-        <!--<th bgcolor="bleu">id_building</th> -->
+        <th bgcolor="bleu">date</th>
+        <th bgcolor="bleu">consoday</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="test : ${consumption}">
-        <td th:text="${test.id}"></td>
-        <td th:text="${test.value}"></td>
-        <td th:text="${test.date_time}"></td>
-        <td th:text="${test.id_equipment}"></td>
-        <!-- <td th:text="${test.id_building}"></td> -->
+        <td th:text="${test.date}"></td>
+        <td th:text="${test.consoday}"></td>
     </tr>
 
     </tbody>

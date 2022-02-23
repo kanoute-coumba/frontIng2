@@ -2,8 +2,6 @@ package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Attribution;
 import episen.pds.citizens.frontend.model.Consobyday;
-import episen.pds.citizens.frontend.model.Consumption;
-import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +16,7 @@ public class OverrunController {
     private static final Logger logger = Logger.getLogger(OverrunController.class.getName());
 
     @Autowired
-    OverrunService overrunService = new OverrunService();
+    OverrunService overrunService;
 
     @GetMapping("/overrun")
     public String getAttribution(Model model) {
@@ -38,6 +36,7 @@ public class OverrunController {
 
         for (Consobyday conso : listConso) {
             logger.info(conso.toString());
+            System.out.println(conso);
         }
 
         return "conso";

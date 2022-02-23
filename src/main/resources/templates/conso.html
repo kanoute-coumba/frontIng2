@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
     <style>
     /* RESET CSS */
     *
@@ -27,9 +27,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="test : ${consumption}">
-        <td th:text="${test.date}"></td>
-        <td th:text="${test.consoday}"></td>
+    <tr th:each="data : ${consumption}">
+        <td th:text="${data.date}"></td>
+        <td th:text="${data.consoday}"></td>
     </tr>
 
     </tbody>

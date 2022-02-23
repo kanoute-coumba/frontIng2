@@ -5,16 +5,16 @@ import lombok.Data;
 import java.sql.Date;
 
 @Data
-public class Consobyday {
+public class ConsoByDay {
 
     private Date date;
     private int consoday;
 
-    public Consobyday() {
+    public ConsoByDay() {
 
     }
 
-    public Consobyday(Date date, int consoday) {
+    public ConsoByDay(Date date, int consoday) {
         this.date = date;
         this.consoday = consoday;
     }

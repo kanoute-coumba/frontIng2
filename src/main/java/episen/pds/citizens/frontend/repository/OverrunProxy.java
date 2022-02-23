@@ -20,13 +20,15 @@ import java.util.logging.Logger;
 public class OverrunProxy {
     @Autowired
     private static CustomProperties props = new CustomProperties();
+
     private static final Logger logger = Logger.getLogger(OverrunProxy.class.getName());
 
-    public static Iterable<Consobyday> getConsumption() {
+    public Iterable<Consobyday> getConsumption() {
         String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/conso";
 
         RestTemplate restTemplate = new RestTemplate();
+
         ResponseEntity<Iterable<Consobyday>> response = restTemplate.exchange(
                 getTestUrl,
                 HttpMethod.GET,
@@ -35,12 +37,12 @@ public class OverrunProxy {
                 }
         );
 
-        log.debug("Get Consumption call " + response.getStatusCode().toString());
+        logger.info("Get Consobyday Call " + response.getStatusCode().toString());
 
         return response.getBody();
     }
 
-    public static Iterable<Attribution> getAttribution() {
+    public Iterable<Attribution> getAttribution() {
         String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/overrun";
 
@@ -53,7 +55,7 @@ public class OverrunProxy {
                 }
         );
 
-        log.debug("Get Attribution call " + response.getStatusCode().toString());
+        logger.info("Get Attribution call " + response.getStatusCode().toString());
 
         return response.getBody();
     }

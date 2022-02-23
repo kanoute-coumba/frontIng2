@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class OverrunService {
 
     @Autowired
-    private OverrunProxy overrunProxy = new OverrunProxy();
+    private OverrunProxy overrunProxy;
     private static final Logger logger = Logger.getLogger(OverrunService.class.getName());
 
     public Iterable<Consobyday> getConsumption(){

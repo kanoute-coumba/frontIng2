@@ -8,9 +8,16 @@ import java.sql.Date;
 public class Consobyday {
 
     private Date date;
-    private Double consoday;
+    private int consoday;
 
+    public Consobyday() {
 
+    }
+
+    public Consobyday(Date date, int consoday) {
+        this.date = date;
+        this.consoday = consoday;
+    }
 
     public Date getDate() {
         return date;
@@ -20,11 +27,11 @@ public class Consobyday {
         this.date = date;
     }
 
-    public Double getConsoday() {
+    public int getConsoday() {
         return consoday;
     }
 
-    public void setConsoday(Double consoday) {
+    public void setConsoday(int consoday) {
         this.consoday = consoday;
     }
 }

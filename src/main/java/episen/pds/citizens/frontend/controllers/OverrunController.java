@@ -1,12 +1,13 @@
 package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Attribution;
-import episen.pds.citizens.frontend.model.Consobyday;
+import episen.pds.citizens.frontend.model.ConsoByDay;
+import episen.pds.citizens.frontend.model.PeakDay;
 import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -31,14 +32,37 @@ public class OverrunController {
 
     @GetMapping("/conso")
     public String getConsumption(Model model) {
-        Iterable<Consobyday> listConso = overrunService.getConsumption();
+        Iterable<ConsoByDay> listConso = overrunService.getConsumption();
         model.addAttribute("consumption", listConso);
 
-        for (Consobyday conso : listConso) {
+        for (ConsoByDay conso : listConso) {
             logger.info(conso.toString());
-            System.out.println(conso);
         }
 
         return "conso";
     }
+
+    @GetMapping("/peak")
+    public String getPeakDay(Model model) {
+        Iterable<PeakDay> listPeak = overrunService.getPeakDay();
+        model.addAttribute("peak", listPeak);
+
+        for (PeakDay peak : listPeak) {
+            logger.info(peak.toString());
+        }
+
+        return "peak";
+    }
+
+    @GetMapping("/municipality")
+           public String authForm() {
+            return "municipality";
+        }
+
+
+    @RequestMapping(method = RequestMethod.POST, value = "/principal")
+    public String submitProfil() {
+        return "principal";
+    }
+
 }

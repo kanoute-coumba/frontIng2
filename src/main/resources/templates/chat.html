@@ -276,7 +276,7 @@
                                     <div class="message-data text-left">
                                         <span class="message-data-time"> <td th:text="${message.time}"></td>, <td th:text="${message.sender}"></td></span>
                                     </div>
-                                <div class="message other-message float-right"> salut <td th:text="${message.message}"></td> </div>
+                                <div class="message other-message float-right"><td th:text="${message.message}"></td> </div>
                                 </div>
 
                                 <div th:unless="${message.sender} == ${sender}">

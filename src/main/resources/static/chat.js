@@ -1,4 +1,5 @@
 
+startRequestAjax = setInterval(function () { reload(); }, 10000);
 
 function sendMessage()
 {
@@ -59,9 +60,15 @@ let request = {
         })
         .catch(err => console.error(err))
 
+        //document.getElementById("msg").value = "";
+       setTimeout(reload, 300)
 
 
 
+}
+
+function reload(){
+    window.location.reload();
 }
 
 //    var xhr = new XMLHttpRequest();

@@ -31,7 +31,7 @@ public class MessagesController {
         Iterable<Users> all_users = UsersService.getUsers();
         model.addAttribute("all_users" , all_users);
         model.addAttribute("sender" , sender);
-
+        model.addAttribute("receiver" , receiver);
         logger.info(all_messages.toString());
         return "chat";
 

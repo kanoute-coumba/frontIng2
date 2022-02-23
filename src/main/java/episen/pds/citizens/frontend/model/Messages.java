@@ -1,4 +1,7 @@
 package episen.pds.citizens.frontend.model;
+import java.sql.Timestamp;
+import java.util.Date;
+
 
 import lombok.Data;
 
@@ -9,7 +12,7 @@ public class Messages {
     private String message;
     private String sender;
     private String receiver;
-    private int time;
+    private long time;
 
     public int getMessage_id() {
         return message_id;
@@ -35,6 +38,9 @@ public class Messages {
         this.sender = sender;
     }
 
+    public Messages() {
+    }
+
     public String getReceiver() {
         return receiver;
     }
@@ -43,11 +49,17 @@ public class Messages {
         this.receiver = receiver;
     }
 
-    public int getTime() {
-        return time;
+    public String getTime() {
+        Timestamp ts = new Timestamp(time);
+        String str = ts.toString();  ;
+        String[] date_hour = str.split(" ");
+        str = date_hour[1];
+        String[] hour = str.split(":");
+        str= hour[0] + ":" + hour[1];
+        return str;
     }
 
-    public void setTime(int time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }

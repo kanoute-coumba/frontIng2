@@ -36,9 +36,9 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 10px;
-            width: 60%;
+            width: 100%;
             table-layout: auto;
-            table-layout: fixed;
+
         }
 
         .name {
@@ -52,137 +52,161 @@
             justify-content: space-around;
             align-items: flex-start;
             text-align: center;
+        }
 
+        .calendar{
+            border-radius: 10px;
+            text-align: center;
+            background-color: #A4A4A4;
+            height: 130px;
+            margin-left: 75px;
+            margin-top: 37%;
 
         }
+
+
 
     </style>
 </head>
 <body>
 <nav th:insert="~{fragment :: navbar}"></nav>
-<div class="name" th:text="${nameRoom}"></div>
+
 
 <div class="container my-2" align="center">
     <div class="row">
-        <div class="col-12">
-            <table border="1" class="table">
-                <thead>
-                <tr>
-                    <th style="vertical-align: middle" scope="col">Equipements</th>
-                    <th style="vertical-align: middle" scope="col">Statut</th>
-                    <th style="vertical-align: middle" scope="col">Mode équipement</th>
-                    <th style="vertical-align: middle" scope="col">Valeur équipement</th>
-                    <th style="vertical-align: middle; width: 250px" scope="col">Configuration</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="equipment : ${listEquipment}">
-                    <td th:if="${equipment.type} == 'lampe'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a>
-                    </td>
+        <div class="col-12" style="display: grid; grid-template-columns: 80% auto;">
+            <div>
+                <div class="name" th:text="${nameRoom}"></div>
+                <table border="1" class="table">
+                    <thead>
+                    <tr>
+                        <th style="vertical-align: middle" scope="col">Equipements</th>
+                        <th style="vertical-align: middle" scope="col">Statut</th>
+                        <th style="vertical-align: middle" scope="col">Mode équipement</th>
+                        <th style="vertical-align: middle" scope="col">Valeur équipement</th>
+                        <th style="vertical-align: middle; width: 250px" scope="col">Configuration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="equipment : ${listEquipment}">
+                        <td th:if="${equipment.type} == 'lampe'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a>
+                        </td>
 
-                    <td th:if="${equipment.type} == 'télévision'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'télévision'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'fenêtre'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'fenêtre'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'store'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'store'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'radiateur'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'radiateur'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'climatisation'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'climatisation'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'four'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'four'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'réfrigérateur'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'réfrigérateur'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'table-cuisson'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'table-cuisson'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                    <td th:if="${equipment.type} == 'lave-vaiselle'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
-
-
-                    <td th:text="${equipment.statut}"></td>
-                    <td th:text="${equipment.type_mode}"></td>
-                    <td th:text="${equipment.value}">
-                        <div th:if="${equipment.type} == 'lampe'">
-                            <span th:text="lx"></span>
-                        </div>
-                    </td>
-                    <td class="bouton">
-                        <div th:if="${equipment.type} == 'lampe'">
-                            <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'télévision'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'fenêtre'">
-                            <a th:href="@{'/fenetre?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'store'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-
-                        <div th:if="${equipment.type} == 'radiateur'">
-                            <a th:href="@{'/radiateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'climatisation'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'lave-vaiselle'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'table-cuisson'">
-                            <a th:href="@{'/Cuisine/TableCuisson?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'réfrigérateur'">
-                            <a th:href="@{'/Cuisine/Refrigerateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-                        <div th:if="${equipment.type} == 'four'">
-                            <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                               class="btn btn-info"> <span>Manuelle</span></a>
-                        </div>
-
-                        <form method="get" action="/formAuto" >
-                            <input type="hidden" th:value="${equipment.id_equipment}" name="id_equipment">
-                            <input type="hidden" value="Automatique" name="type_mode">
-                            <input type="hidden" th:value="${id_room}" name="id_room">
-                            <input type="submit" class="btn btn-dark" value="Automatique"/>
-                        </form>
+                        <td th:if="${equipment.type} == 'lave-vaiselle'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
 
-                    </td>
+                        <td th:text="${equipment.statut}"></td>
+                        <td th:text="${equipment.type_mode}"></td>
+                        <td th:text="${equipment.value}">
+                            <div th:if="${equipment.type} == 'lampe'">
+                                <span th:text="lx"></span>
+                            </div>
+                        </td>
+                        <td class="bouton">
+                            <div th:if="${equipment.type} == 'lampe'">
+                                <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'télévision'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'fenêtre'">
+                                <a th:href="@{'/fenetre?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'store'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+
+                            <div th:if="${equipment.type} == 'radiateur'">
+                                <a th:href="@{'/radiateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'climatisation'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'lave-vaiselle'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'table-cuisson'">
+                                <a th:href="@{'/Cuisine/TableCuisson?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'réfrigérateur'">
+                                <a th:href="@{'/Cuisine/Refrigerateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'four'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+
+                            <form method="get" action="/formAuto">
+                                <input type="hidden" th:value="${equipment.id_equipment}" name="id_equipment">
+                                <input type="hidden" value="Automatique" name="type_mode">
+                                <input type="hidden" th:value="${id_room}" name="id_room">
+                                <input type="submit" class="btn btn-dark" value="Automatique"/>
+                            </form>
+
+                        </td>
 
 
-                </tr>
-                </tbody>
-            </table>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="calendar">
+
+                <form method="post" action="/calendarwithtime">
+                    <label for="meeting_time">Choose a time for your appointment:</label>
+                    <input type="datetime-local" id="meeting_time" name="meeting_time" value="2018-06-12T19:30" min="2018-06-12T19:30"
+                           max="2023-06-12T19:30"> </br>
+                    <button style="margin-top: 12px" type="submit" class="btn btn-primary">Choisir</button>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

@@ -221,4 +221,30 @@ public class EquipmentProxy {
 
         logger.info("Get Equipment call " + response.getStatusCode().toString());
     }
+
+    public static void calandarwithtime(String meeting_time) {
+        logger.info("j'entre dans la méthode");
+        System.out.println(meeting_time + "time");
+
+
+
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/updateAutoEquip?meeting_time=" +meeting_time;
+        System.out.println(meeting_time);
+
+
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
+    }
+
+
 }

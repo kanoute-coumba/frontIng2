@@ -1,14 +1,11 @@
 package episen.pds.citizens.frontend.service;
 
-import episen.pds.citizens.frontend.model.Equipment;
-import episen.pds.citizens.frontend.model.House;
 import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.repository.EquipmentProxy;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -59,6 +56,11 @@ public class EquipmentService {
     public void updateStatutAuto(String type_mode, Integer id_equipment){
         EquipmentProxy.updateStatutAuto(type_mode, id_equipment);
         System.out.println(type_mode + "ttttp");
+    }
+
+    public void calandarwithtime (String meeting_time) {
+        EquipmentProxy.calandarwithtime(meeting_time);
+        System.out.println(meeting_time);
     }
 
 }

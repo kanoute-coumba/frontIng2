@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class EquipmentController {
     @GetMapping("/getIdrEquipmentRoom/{idr}")
     public String getEquipmentByRoom(@PathVariable("idr") final int idr, Model model) {
         System.out.println(" dna s cette méthode");
-        Iterable<Map<String, String>> iterable =  equipmentService.getEquipmentByRoom(idr);
+        Iterable<Map<String, String>> iterable = equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
@@ -104,8 +105,6 @@ public class EquipmentController {
     }
 
 
-
-
     @GetMapping("/form")
     public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
@@ -114,28 +113,28 @@ public class EquipmentController {
     }
 
     @GetMapping("/formTableCuisson")
-    public String formTableC (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+    public String formTableC(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
     @GetMapping("/formFenetre")
-    public String formWindows (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+    public String formWindows(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
     @GetMapping("/formRefrigerateur")
-    public String formTableRefrigerateur (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+    public String formTableRefrigerateur(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
     @GetMapping("/formRadiateur")
-    public String formTableRadiateur (@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+    public String formTableRadiateur(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
@@ -179,7 +178,11 @@ public class EquipmentController {
         return "equipmentsHouse/chooseRoom";
     }
 
-
+    @PostMapping("/calendarwithtime")
+    public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time) {
+        equipmentService.calandarwithtime(meeting_time);
+        return "equipmentsHouse/response";
+    }
 
 
 }

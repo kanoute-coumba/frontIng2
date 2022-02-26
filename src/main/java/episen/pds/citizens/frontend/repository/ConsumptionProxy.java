@@ -3,7 +3,6 @@ package episen.pds.citizens.frontend.repository;
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Consumption;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ import java.util.logging.Logger;
 @Slf4j
 @Component
 public class ConsumptionProxy {
-    @Autowired
+
     private static final CustomProperties props = new CustomProperties();
     private static final Logger logger = Logger.getLogger(ConsumptionProxy.class.getName());
 
@@ -62,6 +61,36 @@ public class ConsumptionProxy {
                 }
         );
         logger.info("Get Consumption By Room  Between Two Date call " + response.getStatusCode());
+        return response.getBody();
+    }
+    public static ArrayList<Consumption> getConsumptionByFloorBetweenTwoDate(int id_f, long db, long de){
+        String baseApiUrl = props.getApiUrl();
+        String getConsumptionByFloorUrl = baseApiUrl
+                +"/ConsumptionFloor/"+id_f+"/Between/" +db+"&"+de;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<ArrayList<Consumption>> response = restTemplate.exchange(
+                getConsumptionByFloorUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        logger.info("Get Consumption By Floor  Between Two Date call " + response.getStatusCode());
+        return response.getBody();
+    }
+    public static ArrayList<Consumption> getConsumptionByBuildingBetweenTwoDate(int id_f, long db, long de){
+        String baseApiUrl = props.getApiUrl();
+        String getConsumptionByBuildingUrl = baseApiUrl
+                +"/ConsumptionBuilding/"+id_f+"/Between/" +db+"&"+de;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<ArrayList<Consumption>> response = restTemplate.exchange(
+                getConsumptionByBuildingUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        logger.info("Get Consumption By Building  Between Two Date call " + response.getStatusCode());
         return response.getBody();
     }
 }

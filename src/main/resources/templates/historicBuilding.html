@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Historique de la pièce</title>
+    <title>Historique du batiment</title>
 </head>
 
 <body>
@@ -14,12 +14,10 @@
 
 <table id="test" border="1" class="table table-striped table responsive-md">
     <thead>
-    <tr>
-        <th>numéro de l'équipement</th>
-        <th>numéro de la consommation</th>
-        <th>date de la consommation</th>
-        <th>consommation de l'équipement</th>
-    </tr>
+    <th>numéro de l'équipement</th>
+    <th>numéro de la consommation</th>
+    <th>date de la consommation</th>
+    <th>consommation de l'équipement</th>
     </thead>
     <tbody>
     <tr th:each="conso: ${consoIterable}">
@@ -31,7 +29,6 @@
     </tr>
     </tbody>
 </table>
-
 
 <script th:inline="javascript">
     var conso = [[${consoIterable}]];

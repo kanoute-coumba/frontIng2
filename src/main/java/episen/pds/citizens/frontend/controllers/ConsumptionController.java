@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.security.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -40,11 +38,26 @@ public class ConsumptionController {
                                                      @PathVariable("db") long db,
                                                      @PathVariable("de") long de) {
         ArrayList<Consumption> consumptionIterable = consumptionService.getConsumptionByRoomBetweenTwoDate(idr, db, de);
-        logger.info("nb lignes" + consumptionIterable.size());
-        logger.info("json" + consumptionIterable);
         model.addAttribute("consoIterable", consumptionIterable);
-
         return "historicRoom";
     }
-
+    @GetMapping("/ConsumptionByIdFloor/{idf}/Between/{db}&{de}")
+    public String getConsumptionOfFloorBetweenTwoDate(Model model,
+                                                     @PathVariable("idf") int idr,
+                                                     @PathVariable("db") long db,
+                                                     @PathVariable("de") long de) {
+        ArrayList<Consumption> consumptionIterable = consumptionService.getConsumptionByFloorBetweenTwoDate(idr, db, de);
+        model.addAttribute("consoIterable", consumptionIterable);
+        return "historicFloor";
+    }
+    @GetMapping("/ConsumptionByIdBuilding/{idf}/Between/{db}&{de}")
+    public String getConsumptionOfBuildingBetweenTwoDate(Model model,
+                                                      @PathVariable("idf") int idr,
+                                                      @PathVariable("db") long db,
+                                                      @PathVariable("de") long de) {
+        ArrayList<Consumption> consumptionIterable = consumptionService.getConsumptionByBuildingBetweenTwoDate(idr, db, de);
+        model.addAttribute("consoIterable", consumptionIterable);
+        logger.info("getConsumptionOfBuildingBetweenTwoDate");
+        return "historicBuilding";
+    }
 }

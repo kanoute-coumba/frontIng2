@@ -25,5 +25,13 @@ public class ConsumptionService {
         logger.info("getConsumptionByEquipment "+id_r +" Between "+db +" "+de);
         return ConsumptionProxy.getConsumptionByRoomBetweenTwoDate(id_r,db,de);
     }
+    public ArrayList<Consumption> getConsumptionByFloorBetweenTwoDate(int id_r, long db, long de){
+        logger.info("getConsumptionByEquipment "+id_r +" Between "+db +" "+de);
+        return ConsumptionProxy.getConsumptionByFloorBetweenTwoDate(id_r,db,de);
+    }
+    public ArrayList<Consumption> getConsumptionByBuildingBetweenTwoDate(int id_r, long db, long de){
+        logger.info("getConsumptionByEquipment "+id_r +" Between "+db +" "+de);
+        return ConsumptionProxy.getConsumptionByBuildingBetweenTwoDate(id_r,db,de);
+    }
 
 }

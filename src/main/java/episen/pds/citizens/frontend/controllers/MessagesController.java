@@ -32,7 +32,7 @@ public class MessagesController {
         model.addAttribute("all_users" , all_users);
         model.addAttribute("sender" , sender);
         model.addAttribute("receiver" , receiver);
-        logger.info(all_messages.toString());
+        //logger.info(all_messages.toString());
         return "chat";
 
     }

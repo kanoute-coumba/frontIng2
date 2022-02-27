@@ -14,12 +14,26 @@ public class OverrunService {
     private OverrunProxy overrunProxy;
     private static final Logger logger = Logger.getLogger(OverrunService.class.getName());
 
+    public Iterable<Attribution> getAttribAfterMock() {
+        return overrunProxy.getAttribAfterMock();
+
+    }
+
+    public Iterable<ConsoByDay> getConsoAfterMock() {
+        return overrunProxy.getConsoAfterMock();
+
+    }
+
     public Iterable<ConsoByDay> getConsumption(){
         return overrunProxy.getConsumption();
     }
 
     public Iterable<PeakDay> getPeakDay(){
         return overrunProxy.getPeakDay();
+    }
+
+    public Iterable<PeakDay> getPeak(){
+        return overrunProxy.getPeak();
     }
 
     public Iterable<Attribution> getAttribution() { return overrunProxy.getAttribution();

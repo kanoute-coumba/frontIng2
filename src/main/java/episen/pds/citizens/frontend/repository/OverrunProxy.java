@@ -4,6 +4,7 @@ import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Attribution;
 import episen.pds.citizens.frontend.model.ConsoByDay;
 import episen.pds.citizens.frontend.model.PeakDay;
+import episen.pds.citizens.frontend.model.PeakYear;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -115,20 +116,20 @@ public class OverrunProxy {
         return response.getBody();
     }
 
-    public Iterable<PeakDay> getPeak() {
+    public Iterable<PeakYear> getPeak() {
         String baseApiUrl = props.getApiLocalUrl();
         String getTestUrl = baseApiUrl + "/statistiques";
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<PeakDay>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<PeakYear>> response = restTemplate.exchange(
                 getTestUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<PeakDay>>() {
+                new ParameterizedTypeReference<Iterable<PeakYear>>() {
                 }
         );
 
-        logger.info("Get PeakDay call " + response.getStatusCode().toString());
+        logger.info("Get PeakYear call " + response.getStatusCode().toString());
 
         return response.getBody();
     }

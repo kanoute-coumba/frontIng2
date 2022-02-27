@@ -1,5 +1,5 @@
 
-startRequestAjax = setInterval(function () { reload(); }, 10000);
+startRequestAjax = setInterval(function () { reload(); }, 13000);
 
 function sendMessage()
 {

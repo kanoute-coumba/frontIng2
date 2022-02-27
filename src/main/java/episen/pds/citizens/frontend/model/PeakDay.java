@@ -9,4 +9,7 @@ public class PeakDay {
 
     Date date;
     int consoday;
-}
+    int value;
+    int numberofpeak;
+
+  }

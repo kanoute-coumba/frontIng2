@@ -32,7 +32,7 @@ public class OverrunService {
         return overrunProxy.getPeakDay();
     }
 
-    public Iterable<PeakDay> getPeak(){
+    public Iterable<PeakYear> getPeak(){
         return overrunProxy.getPeak();
     }
 

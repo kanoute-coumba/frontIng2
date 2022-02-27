@@ -1,9 +1,6 @@
 package episen.pds.citizens.frontend.controllers;
 
-import episen.pds.citizens.frontend.model.Attribution;
-import episen.pds.citizens.frontend.model.ConsoByDay;
-import episen.pds.citizens.frontend.model.PeakDay;
-import episen.pds.citizens.frontend.model.Test;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,7 +68,7 @@ public class OverrunController {
 
     @GetMapping("/statistiques")
     public String getPeak(Model model) {
-        Iterable<PeakDay> nbrePeak = overrunService.getPeak();
+        Iterable<PeakYear> nbrePeak = overrunService.getPeak();
         model.addAttribute("peak", nbrePeak);
 
         return "statistiques";

@@ -20,7 +20,6 @@
     </tr>
     </thead>
     <tbody>
-    </tr>
     <tr th:each="equip: ${equipmentWithConsumption}">
         <td><span th:text="${equip.id_equipment}"> numéro de l'équipement </span></td>
         <td><span th:text="${equip.id_room}"> numéro de la salle </span></td>
@@ -41,7 +40,6 @@
     </tr>
     </thead>
     <tbody>
-    </tr>
     <tr th:each="central: ${centralWithProduction}">
         <td><span th:text="${central.id_central}"> numéro de la central </span></td>
         <td><span th:text="${central.type}"> type de la central </span></td>

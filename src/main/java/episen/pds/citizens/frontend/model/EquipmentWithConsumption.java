@@ -2,7 +2,7 @@ package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+
 
 @Data
 public class EquipmentWithConsumption {
@@ -15,5 +15,5 @@ public class EquipmentWithConsumption {
 
     public String value;
 
-    public LocalDateTime date_time;
+
 }

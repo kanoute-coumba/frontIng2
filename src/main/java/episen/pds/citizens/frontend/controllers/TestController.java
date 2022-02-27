@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController {
 
-    private TestService testService = new TestService();
+    private final TestService testService = new TestService();
 
 
 //

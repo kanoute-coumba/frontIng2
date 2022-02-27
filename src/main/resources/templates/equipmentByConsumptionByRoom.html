@@ -18,22 +18,13 @@ a{
 text-decoration: none;
 color : black;
 }
-.style{
-align: center;
-}
 
 .table{
  margin-left: auto;
  margin-right: auto;
  margin-top: 10px;
  width: 60%;
- table-layout: auto;
- table-layout: fixed;
-}
-
-.name{
-text-align: center;
-margin-top: 30px;
+    table-layout: fixed;
 }
 
     </style>
@@ -51,7 +42,6 @@ margin-top: 30px;
     </tr>
     </thead>
     <tbody>
-    </tr>
     <tr th:each="equip: ${equipmentWithConsumption2}">
         <td><span th:text="${equip.id_equipment}"> numéro de l'équipement </span></td>
         <td><span th:text="${equip.id_room}"> numéro de la salle </span></td>

@@ -1,6 +1,6 @@
 package episen.pds.citizens.frontend.model;
 
-public class ChoixAlgoForm {
+public class ChoiceAlgoForm {
     private int id_choice_algo;
     private String choice;
     private String pref1;
@@ -10,11 +10,11 @@ public class ChoixAlgoForm {
     private float prop2;
     private float prop3;
 
-    public ChoixAlgoForm(){
+    public ChoiceAlgoForm(){
 
     }
 
-    public ChoixAlgoForm(int id, String choice, String pref1, String pref2, String pref3, float prop1, float prop2, float prop3) {
+    public ChoiceAlgoForm(int id, String choice, String pref1, String pref2, String pref3, float prop1, float prop2, float prop3) {
         this.id_choice_algo = id;
         this.choice = choice;
         this.pref1 = pref1;

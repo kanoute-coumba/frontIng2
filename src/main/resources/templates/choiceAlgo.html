@@ -8,6 +8,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script>
+        function essai(radio) {
+            if (radio=="preference") {
+                document.getElementById('3').style.display='none';
+                document.getElementById('1').style.display='block';
+            } else if (radio=="proportionequity") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='none';
+            }else if (radio=="proportionchoice") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='block';
+            }else if (radio=="proportionweather") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='none';
+            }
+        }
+
+    </script>
+
+    <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
 </head>
 <body>
 
@@ -41,6 +70,95 @@
 
 <!-- Choice Algo -->
 
+<h1>Choix de l'algo</h1>
+<p>Choix de l'algo actuel :</p>
+<br>
+<hr>
 
+<h1>Modifier le choix de l'algo :</h1>
+<form id="first" action="#" th:action="@{/AlgoMix}" th:object="${choix}" method="post">
+    <div>
+    <p>
+        <input type="radio" name="choice" value="preference" onchange="essai(this.value)" th:field="*{choice}"> Préférence<br>
+        <div id="1" style="display:none">
+            <label>produir en 1 :
+                <select name="pref1" size="1" th:field="*{pref1}">
+                    <option value="solaire">solaire</option>
+                    <option value="eolienne">eolienne</option>
+                    <option value="hydraulique">hydraulique</option>
+                </select>
+            </label>
+            <br/>
+            <label>produir en 2 :
+                <select name="pref2" size="1" th:field="*{pref2}">
+                    <option value="solaire">solaire</option>
+                    <option value="eolienne">eolienne</option>
+                    <option value="hydraulique">hydraulique</option>
+                </select>
+            </label>
+            <br/>
+            <label>produir en 3 :
+                <select name="pref3" size="1" th:field="*{pref3}">
+                    <option value="solaire">solaire</option>
+                    <option value="eolienne">eolienne</option>
+                    <option value="hydraulique">hydraulique</option>
+                </select>
+            </label><br><br>
+        </div>
+
+        <input type="radio" name="choice" value="proportionequity" onchange="essai(this.value)" th:field="*{choice}"> Production équitable<br><br>
+
+        <input type="radio" name="choice" value="proportionchoice" onchange="essai(this.value)" th:field="*{choice}"> Choisir la proportion de chaque type d'énergie<br><br>
+        <div id="3" style="display:none">
+            prop1:  <input type="number" name="prop1" th:field="*{prop1}"/>
+            prop2:  <input type="number" name="prop2" th:field="*{prop2}"/>
+            prop3:  <input type="number" name="prop3" th:field="*{prop3}"/><br><br>
+        </div>
+
+        <input type="radio" name="choice" value="proportionweather" onchange="essai(this.value)" th:field="*{choice}"> Production en fonction des condition météo<br>
+    </p>
+        <input type="submit" value="Valider">
+    </div>
+</form>
+
+<br>
+<br>
+<br>
+
+
+<div id="accordion">
+    <h3>Algo 1</h3>
+    <div>
+        <p th:field="${choix.choice}" value="preference">
+            Premier Algo
+        </p>
+    </div>
+    <h3>Algo 2</h3>
+    <div>
+        <p>
+            Deuxième Algo
+        </p>
+    </div>
+    <h3>Algo 3</h3>
+    <div>
+        <p>
+            Troisième Algo
+        </p>
+        <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+        </ul>
+    </div>
+    <h3>Algo 4</h3>
+    <div>
+        <p>
+            Algo4
+        </p>
+    </div>
+</div>
+<br>
+<br>
+<br>
 </body>
 </html>

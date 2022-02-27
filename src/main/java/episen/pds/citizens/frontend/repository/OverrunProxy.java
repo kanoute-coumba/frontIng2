@@ -18,12 +18,50 @@ import java.util.logging.Logger;
 @Component
 public class OverrunProxy {
     @Autowired
-    private static CustomProperties props = new CustomProperties();
+    private static CustomProperties props = new CustomProperties() ;
 
     private static final Logger logger = Logger.getLogger(OverrunProxy.class.getName());
 
+    public Iterable<Attribution> getAttribAfterMock() {
+        String baseApiUrl = props.getApiLocalUrl();
+        String getTestUrl = baseApiUrl + "/attribmock";
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Iterable<Attribution>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<Attribution>>() {
+                }
+        );
+
+        logger.info("Get Attribution Call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<ConsoByDay> getConsoAfterMock() {
+        String baseApiUrl = props.getApiLocalUrl();
+        String getTestUrl = baseApiUrl + "/consomock";
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        ResponseEntity<Iterable<ConsoByDay>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<ConsoByDay>>() {
+                }
+        );
+
+        logger.info("Get ConsoByDay Call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
     public Iterable<ConsoByDay> getConsumption() {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getTestUrl = baseApiUrl + "/conso";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -36,14 +74,14 @@ public class OverrunProxy {
                 }
         );
 
-        logger.info("Get Consobyday Call " + response.getStatusCode().toString());
+        logger.info("Get ConsoByDay Call " + response.getStatusCode().toString());
 
         return response.getBody();
     }
 
     public Iterable<Attribution> getAttribution() {
-        String baseApiUrl = props.getApiUrl();
-        String getTestUrl = baseApiUrl + "/overrun";
+        String baseApiUrl = props.getApiLocalUrl();
+        String getTestUrl = baseApiUrl + "/attribution";
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Attribution>> response = restTemplate.exchange(
@@ -60,7 +98,7 @@ public class OverrunProxy {
     }
 
     public Iterable<PeakDay> getPeakDay() {
-        String baseApiUrl = props.getApiUrl();
+        String baseApiUrl = props.getApiLocalUrl();
         String getTestUrl = baseApiUrl + "/peak";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -72,7 +110,25 @@ public class OverrunProxy {
                 }
         );
 
-        logger.info("Get Attribution call " + response.getStatusCode().toString());
+        logger.info("Get PeakDay call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<PeakDay> getPeak() {
+        String baseApiUrl = props.getApiLocalUrl();
+        String getTestUrl = baseApiUrl + "/statistiques";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakDay>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakDay>>() {
+                }
+        );
+
+        logger.info("Get PeakDay call " + response.getStatusCode().toString());
 
         return response.getBody();
     }

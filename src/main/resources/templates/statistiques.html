@@ -13,7 +13,7 @@
     }
 
     </style>
-    <title>Consommation</title>
+    <title>Dépassements</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -27,24 +27,21 @@
 
 <div align="center" class="container my-2">
     <br>
-    <h3> <b> Consommation d'energie par jour de toute la smartcity </b> </h3>
+    <h1> <b>Les statistiques de pics </b> </h1>
     <br>
-    <form action="/peak">
-        <input type="submit" value="Voir les jours de pics de consommation" />
-    </form>
     <br>
     <table id="test" border="1" class="table table-striped table responsive-md">
         <thead>
         <tr>
-            <th bgcolor="bleu">date</th>
-            <th bgcolor="bleu">conso</th>
+            <th bgcolor="bleu">année</th>
+            <th bgcolor="bleu">nombre de pic</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="conso : ${consumption}">
-            <td th:text="${conso.date}"></td>
-            <td th:text="${conso.consoday}"></td>
+        <tr th:each="pic : ${peak}">
+            <td th:text="${pic.year}"></td>
+            <td th:text="${pic.numberofpeak}"></td>
         </tr>
 
         </tbody>

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 public class CustomProperties {
 
+
     public String getApiUrl() {
         return apiUrl;
     }

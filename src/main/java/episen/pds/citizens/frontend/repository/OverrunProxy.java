@@ -24,7 +24,7 @@ public class OverrunProxy {
     private static final Logger logger = Logger.getLogger(OverrunProxy.class.getName());
 
     public Iterable<Attribution> getAttribAfterMock() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/attribmock";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -43,7 +43,7 @@ public class OverrunProxy {
     }
 
     public Iterable<ConsoByDay> getConsoAfterMock() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/consomock";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -62,7 +62,7 @@ public class OverrunProxy {
     }
 
     public Iterable<ConsoByDay> getConsumption() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/conso";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -81,7 +81,7 @@ public class OverrunProxy {
     }
 
     public Iterable<Attribution> getAttribution() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/attribution";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -99,7 +99,7 @@ public class OverrunProxy {
     }
 
     public Iterable<PeakDay> getPeakDay() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/peak";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -117,7 +117,7 @@ public class OverrunProxy {
     }
 
     public Iterable<PeakYear> getPeak() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/statistiques";
 
         RestTemplate restTemplate = new RestTemplate();

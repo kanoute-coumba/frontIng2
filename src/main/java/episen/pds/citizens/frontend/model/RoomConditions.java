@@ -1,14 +1,17 @@
 package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
+import org.apache.tomcat.jni.Local;
+
+import java.time.LocalTime;
 
 @Data
 public class RoomConditions {
     int id_room;
     int luminosity;
     double temperature;
-    String begin_time;
-    String end_time;
+    LocalTime begin_time;
+    LocalTime end_time;
 
     public int getId_room() {
         return id_room;
@@ -34,16 +37,20 @@ public class RoomConditions {
         this.temperature = temperature;
     }
 
-    public String getBegin_time() {
+    public LocalTime getBegin_time() {
         return begin_time;
     }
 
-    public void setBegin_time(String begin_time) {
+    public void setBegin_time(LocalTime begin_time) {
         this.begin_time = begin_time;
     }
 
-    public String getEnd_time() {
+    public LocalTime getEnd_time() {
         return end_time;
+    }
+
+    public void setEnd_time(LocalTime end_time) {
+        this.end_time = end_time;
     }
 
     @Override
@@ -55,9 +62,5 @@ public class RoomConditions {
                 ", begin_time='" + begin_time + '\'' +
                 ", end_time='" + end_time + '\'' +
                 '}';
-    }
-
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
     }
 }

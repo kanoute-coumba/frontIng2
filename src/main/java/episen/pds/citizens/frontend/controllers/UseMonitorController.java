@@ -39,14 +39,18 @@ public class UseMonitorController {
     @GetMapping("/configManual/{id}")
     public  String getEquipmentByRoom(Model model, @PathVariable("id") int id_room) {
         logger.info("Id_room="+id_room);
-        Iterable<Equipment> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id_room);
-        for (Equipment row: listEquipmentInRoom) {
+        Iterable<EquipmentAndData> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id_room);
+        for (EquipmentAndData row: listEquipmentInRoom) {
             logger.info(row.toString());
         }
-        logger.info("GET_COND: id_room=" + id_room);
-        RoomConditions cond = useMonitorService.getConditionsInRoom(id_room);
-        logger.info(cond.toString());
-        model.addAttribute(cond);
+        logger.info("GET_BEST_COND: id_room=" + id_room);
+        RoomConditions best_cond = useMonitorService.getConditionsInRoom(id_room);
+        logger.info(best_cond.toString());
+        model.addAttribute("best_cond",best_cond);
+        logger.info("GET_CURRENT_COND: id_room=" + id_room);
+        RoomConditions current_cond = useMonitorService.getCurrentConditionsInRoom(id_room);
+        logger.info(current_cond.toString());
+        model.addAttribute("current_cond",current_cond);
         model.addAttribute("equipments", listEquipmentInRoom);
         return "configmanu";
     }

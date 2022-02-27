@@ -1,20 +1,36 @@
 package episen.pds.citizens.frontend.model;
 
-public class Equipment_Data {
-    private Integer id_equipment_data;
+public class EquipmentAndData {
 
+    private int id_equipment;
+    private int id_room;
+    private String type;
     private String statut;
-
     private double value;
-
     private String type_mode;
 
-    public Integer getId_equipment_data() {
-        return id_equipment_data;
+    public int getId_equipment() {
+        return id_equipment;
     }
 
-    public void setId_equipment_data(Integer id_equipment_data) {
-        this.id_equipment_data = id_equipment_data;
+    public void setId_equipment(int id_equipment) {
+        this.id_equipment = id_equipment;
+    }
+
+    public int getId_room() {
+        return id_room;
+    }
+
+    public void setId_room(int id_room) {
+        this.id_room = id_room;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getStatut() {
@@ -43,8 +59,10 @@ public class Equipment_Data {
 
     @Override
     public String toString() {
-        return "Equipment_Data{" +
-                "id_equipment_data=" + id_equipment_data +
+        return "EquipmentAndData{" +
+                "id_equipment=" + id_equipment +
+                ", id_room=" + id_room +
+                ", type='" + type + '\'' +
                 ", statut='" + statut + '\'' +
                 ", value=" + value +
                 ", type_mode='" + type_mode + '\'' +

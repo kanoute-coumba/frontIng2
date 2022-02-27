@@ -12,14 +12,14 @@ public class UseMonitorService {
     private UseMonitorProxy useMonitorProxy = new UseMonitorProxy();
 
     public Iterable<ConsumptionByBuilding> getConsumptionByBuilding() {
-        return useMonitorProxy.getConsumptionByBuilding();
+        return UseMonitorProxy.getConsumptionByBuilding();
     }
 
     public Iterable<Room> getRooms() {
         return  useMonitorProxy.getRooms();
     }
 
-    public Iterable<Equipment> getEquipmentByRoom(int id_room) {
+    public Iterable<EquipmentAndData> getEquipmentByRoom(int id_room) {
         return useMonitorProxy.getEquipmentByRoom(id_room);
     }
 
@@ -49,5 +49,9 @@ public class UseMonitorService {
 
     public void setEquipmentOn(int id_equipment) {
         useMonitorProxy.setEquipmentOn(id_equipment);
+    }
+
+    public RoomConditions getCurrentConditionsInRoom(int id_room) {
+        return useMonitorProxy.getCurrentConditionsInRoom(id_room);
     }
 }

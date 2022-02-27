@@ -3,6 +3,7 @@ package episen.pds.citizens.frontend.controllers;
 import episen.pds.citizens.frontend.model.Attribution;
 import episen.pds.citizens.frontend.model.ConsoByDay;
 import episen.pds.citizens.frontend.model.PeakDay;
+import episen.pds.citizens.frontend.model.Test;
 import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,25 +20,33 @@ public class OverrunController {
     @Autowired
     OverrunService overrunService;
 
-    @GetMapping("/overrun")
+    @GetMapping("/attribmock")
+    public String getAttribAfterMock(Model model) {
+        Iterable<Attribution> allAttrib = overrunService.getAttribAfterMock();
+        model.addAttribute("attribution", allAttrib);
+        return "attribution";
+    }
+
+    @GetMapping("/consomock")
+    public String getListTest(Model model) {
+        Iterable<ConsoByDay> allConso = overrunService.getConsoAfterMock();
+        model.addAttribute("consumption", allConso);
+        return "conso";
+    }
+
+    @GetMapping("/attribution")
     public String getAttribution(Model model) {
         Iterable<Attribution> listAttribution = overrunService.getAttribution();
-        for (Attribution att : listAttribution) {
-            logger.info(att.toString());
-        }
         model.addAttribute("attribution", listAttribution);
+
         return "attribution";
-        //return listAttribution;
+
     }
 
     @GetMapping("/conso")
     public String getConsumption(Model model) {
         Iterable<ConsoByDay> listConso = overrunService.getConsumption();
         model.addAttribute("consumption", listConso);
-
-        for (ConsoByDay conso : listConso) {
-            logger.info(conso.toString());
-        }
 
         return "conso";
     }
@@ -47,10 +56,6 @@ public class OverrunController {
         Iterable<PeakDay> listPeak = overrunService.getPeakDay();
         model.addAttribute("peak", listPeak);
 
-        for (PeakDay peak : listPeak) {
-            logger.info(peak.toString());
-        }
-
         return "peak";
     }
 
@@ -59,10 +64,17 @@ public class OverrunController {
             return "municipality";
         }
 
-
     @RequestMapping(method = RequestMethod.POST, value = "/principal")
     public String submitProfil() {
         return "principal";
+    }
+
+    @GetMapping("/statistiques")
+    public String getPeak(Model model) {
+        Iterable<PeakDay> nbrePeak = overrunService.getPeak();
+        model.addAttribute("peak", nbrePeak);
+
+        return "statistiques";
     }
 
 }

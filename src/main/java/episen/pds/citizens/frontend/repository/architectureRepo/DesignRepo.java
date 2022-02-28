@@ -1,7 +1,6 @@
 package episen.pds.citizens.frontend.repository.architectureRepo;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.model.architectureModel.Design;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @Slf4j
 @Component

@@ -1,5 +1,6 @@
 package episen.pds.citizens.frontend.service;
 
+import episen.pds.citizens.frontend.model.ChoiceAlgoForm;
 import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.model.MixEnBySite;
 import episen.pds.citizens.frontend.repository.MixEnProxy;
@@ -20,5 +21,9 @@ public class MixEnService {
     public Iterable<MixEnBySite> getMixEnBySite(){
         return mixEnProxy.getCurrentMixEnBySite();
     }
+
+    public ChoiceAlgoForm getCurrentAlgoChoice(){ return mixEnProxy.getCurrentAlgoChoice();}
+
+    public ChoiceAlgoForm saveAlgoChoice(ChoiceAlgoForm choiceAlgo){return mixEnProxy.saveAlgoChoice(choiceAlgo);}
 
 }

@@ -18,6 +18,5 @@ public class Building {
         this.name_building = name_building;
         this.type_building = type_building;
     }
-
 }
 

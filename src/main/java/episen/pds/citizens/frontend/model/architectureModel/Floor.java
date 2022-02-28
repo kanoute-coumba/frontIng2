@@ -18,6 +18,5 @@ public class Floor {
         this.id_building = id_building;
         this.id_design = id_design;
     }
-
 }
 

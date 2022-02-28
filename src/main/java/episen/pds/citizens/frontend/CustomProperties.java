@@ -21,13 +21,13 @@ public class CustomProperties {
         this.apiUrl = apiUrl;
     }
 
-    public String getApiLocalUrl() {
-        return apiLocalUrl;
-    }
+   // public String getApiLocalUrl() {
+     //   return apiLocalUrl;
+    //}
 
-    public void setApiLocalUrl(String apiLocalUrl) {
-        this.apiLocalUrl = apiLocalUrl;
-    }
+    //public void setApiLocalUrl(String apiLocalUrl) {
+      //  this.apiLocalUrl = apiLocalUrl;
+    //}
 
     public String getApiArchitectureUrl() {
         return apiArchitectureUrl;
@@ -37,8 +37,10 @@ public class CustomProperties {
         return apiLocalArchitectureUrl;
     }
 
+
     private String apiUrl= "http://172.31.249.1:9000";
     private String apiLocalUrl ="http://localhost:9000";
+
     private final String apiArchitectureUrl = "http://172.31.249.1:9000/architecture/";
     private final String apiLocalArchitectureUrl = "http://localhost:9000/architecture/";
 

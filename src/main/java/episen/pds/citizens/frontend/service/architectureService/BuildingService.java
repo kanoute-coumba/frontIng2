@@ -12,6 +12,7 @@ public class BuildingService {
     @Autowired
     private BuildingRepo buildingRepo;
 
+    // Not yet
     public Building getBuilding(final int id_building) {
         return buildingRepo.getBuilding(id_building);
     }
@@ -19,6 +20,7 @@ public class BuildingService {
     public Iterable<Building> getAllBuildings() {
         return buildingRepo.getAllBuildings();
     }
+
 
 }
 

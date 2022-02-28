@@ -18,21 +18,22 @@ public class FloorRepo {
     @Autowired
     private CustomProperties customProperties;
 
+    // Not yet
     public Floor getFloor(int id_floor) {
         ResponseEntity<Floor> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floor" + id_floor, HttpMethod.GET, null, Floor.class);
+                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floor/" + id_floor, HttpMethod.GET, null, Floor.class);
+        return responseEntity.getBody();
+    }
+
+    public String getDesignOfFloor(String name_floor) {
+        ResponseEntity<String> responseEntity =
+                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/design_of/" + name_floor, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {});
         return responseEntity.getBody();
     }
 
     public Iterable<Floor> getFloorsOfBuilding(String name_building) {
         ResponseEntity<Iterable<Floor>> responseEntity =
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floors_of/" + name_building, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
-        return responseEntity.getBody();
-    }
-
-    public Iterable<Floor> getAllFloors() {
-        ResponseEntity<Iterable<Floor>> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floors", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
         return responseEntity.getBody();
     }
 

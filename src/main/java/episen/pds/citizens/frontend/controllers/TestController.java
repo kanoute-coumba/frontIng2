@@ -2,13 +2,13 @@ package episen.pds.citizens.frontend.controllers;
 
 
 import episen.pds.citizens.frontend.model.Test;
+import episen.pds.citizens.frontend.service.TestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import episen.pds.citizens.frontend.service.TestService;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -66,10 +66,11 @@ public class TestController {
         return "cafeteria-validation";
     }
 
-    @GetMapping("/chat")
+    /* @GetMapping("/chat")
     public String getChat(Model model) {
         return "chat";
     }
+     */
 
 
     @GetMapping("/planAcces")
@@ -86,4 +87,5 @@ public class TestController {
     public String getGuidage(Model model) {
         return "guidage";
     }
+
 }

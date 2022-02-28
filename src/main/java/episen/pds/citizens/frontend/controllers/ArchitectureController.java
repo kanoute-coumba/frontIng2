@@ -2,13 +2,12 @@ package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.service.architectureService.BuildingService;
+import episen.pds.citizens.frontend.service.architectureService.FloorService;
 import episen.pds.citizens.frontend.service.architectureService.SpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -16,6 +15,8 @@ public class ArchitectureController {
 
     @Autowired
     private BuildingService buildingService;
+    @Autowired
+    private FloorService floorService;
     @Autowired
     private SpaceService spaceService;
 
@@ -26,13 +27,12 @@ public class ArchitectureController {
     }
 
     @GetMapping("/accessMap/display")
-    public String getDisplayAccessMap(Model model) {
-//    @GetMapping("/accessMap/display{name_floor}")
-//    public String getDisplayAccessMap(Model model, @PathVariable final String name_floor) {
-//        model.addAttribute("offices",spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
-//        model.addAttribute("meetingRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
-//        model.addAttribute("individualRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
-//        model.addAttribute("openSpaces",spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
+    public String getDisplayAccessMap(Model model,@RequestParam("floors") String name_floor) {
+        model.addAttribute("design",floorService.getDesignOfFloor(name_floor));
+        model.addAttribute("offices",spaceService.getSpacesOfFloorByType(name_floor,"Bureau"));
+        model.addAttribute("meetingRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle de reunion"));
+        model.addAttribute("individualRooms",spaceService.getSpacesOfFloorByType(name_floor,"Salle individuelle"));
+        model.addAttribute("openSpaces",spaceService.getSpacesOfFloorByType(name_floor,"Espace ouvert"));
         return "architectureTemplates/accessTemplates/display-access-map";
     }
 
@@ -51,6 +51,11 @@ public class ArchitectureController {
     public String getPersonalizeDesign(Model model) {
         return "architectureTemplates/personalizeTemplates/personalize-design";
     }
+
+//    @GetMapping("/personalizeDesign/selectSpaces")
+//    public String getPersonalizeDesignSelectSpaces(Model model) {
+//        return "architectureTemplates/personalizeTemplates/select-spaces";
+//    }
 
     @GetMapping("/personalizeDesign/designBasic")
     public String getDesignBasic(Model model) {
@@ -81,5 +86,6 @@ public class ArchitectureController {
     public String getDisplayDesignParallel(Model model) {
         return "architectureTemplates/personalizeTemplates/design-parallel-display";
     }
+
 
 }

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link rel="stylesheet" th:href="@{/architectureStatic/architecture-css.css}">
     <link rel="icon" type="image/png" sizes="16x16" href="https://img.icons8.com/ultraviolet/100/000000/mac-os--v1.png">
+    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
 </head>
 
 <body>
@@ -31,61 +33,219 @@
         </ul>
     </div>
 </nav>
-<!-- NAV BAR -->
+<!-- NAV BAR  -->
 
 <div class="title-page">Plan d'accès du <span th:text="${param.floors}"></span> </div>
 
-<div class="container text-center mag-t">
-    <form action="/accessMap/display">
-        <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: x-large;">Bureaux :</span> <br><br>
-            <select id="office" name="offices" class="btn btn-primary" >
-                <th:block th:each="office : ${offices}">
-                    <option value="${office.name_space}">
-                        <span th:text="${office.name_space}"></span>
-                    </option>
-                </th:block>
-            </select>
+<div th:switch="${design}">
+    <div th:case="'1'" class="plan0">
+        <div class="item toilet">
+            <div class="item-content">T1F</div>
         </div>
-        <br>
-        <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: x-large;">Salles de réunion :</span> <br><br>
-            <select id="meetingRoom" name="meetingRooms" class="btn btn-primary" >
-                <th:block th:each="meetingRoom : ${meetingRooms}">
-                    <option value="${meetingRoom.name_space}">
-                        <span th:text="${meetingRoom.name_space}"></span>
-                    </option>
-                </th:block>
-            </select>
-        </div>
-        <br>
-        <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: x-large;">Salles individuelles :</span> <br><br>
-            <select id="individualRoom" name="individualRooms" class="btn btn-primary" >
-                <th:block th:each="individualRoom : ${individualRooms}">
-                    <option value="${individualRoom.name_space}">
-                        <span th:text="${individualRoom.name_space}"></span>
-                    </option>
-                </th:block>
-            </select>
-        </div>
-        <br>
-        <div class="dropdown" style="margin:0 auto; width:500px;">
-            <span style="font-size: x-large;">Espaces Ouverts :</span> <br><br>
-            <select id="openSpace" name="openSpaces" class="btn btn-primary" >
+        <div class="item openSpace1">
+            <div class="item-content">
+                <span style="margin-left: 15px;"></span>
                 <th:block th:each="openSpace : ${openSpaces}">
-                    <option value="${openSpace.name_space}">
-                        <span th:text="${openSpace.name_space}"></span>
-                    </option>
+                    <span style="margin: 15px" th:text="${openSpace.name_space}"></span>
                 </th:block>
-            </select>
+                <span style="margin-right: 15px;"></span>
+            </div>
         </div>
-    </form>
+        <div class="item office1">
+            <div class="item-content">
+                <span style="margin-left: 10px;"></span>
+                <th:block th:each="office : ${offices}">
+                    <span style="margin: 10px" th:text="${office.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 10px;"></span>
+            </div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T2F</div>
+        </div>
+        <div class="item elevator">
+            <div class="item-content">A1</div>
+        </div>
+        <div class="item corridor1">
+            <div class="item-content">Couloir</div>
+        </div>
+        <div class="item elevator">
+            <div class="item-content">A2</div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T1H</div>
+        </div>
+        <div class="item meetingRoom1">
+            <div class="item-content">
+                <span style="margin-left: 15px;"></span>
+                <th:block th:each="meetingRoom : ${meetingRooms}">
+                    <span style="margin: 15px" th:text="${meetingRoom.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 15px;"></span>
+            </div>
+        </div>
+        <div class="item individualRoom1">
+            <div class="item-content">
+                <span style="margin-left: 10px;"></span>
+                <th:block th:each="individualRoom : ${individualRooms}">
+                    <span style="margin: 10px" th:text="${individualRoom.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 10px;"></span>
+            </div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T2H</div>
+        </div>
+    </div >
+    <div th:case="'2'" class="plan0">
+        <div class="item toilet">
+            <div class="item-content">T1F</div>
+        </div>
+        <div class="item openSpace2">
+            <div class="item-content">
+                <span style="margin-left: 15px;"></span>
+                <th:block th:each="openSpace : ${openSpaces}">
+                    <span style="margin: 15px" th:text="${openSpace.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 15px;"></span>
+            </div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T2F</div>
+        </div>
+        <div class="item corridor21">
+            <div class="item-content">C1</div>
+        </div>
+        <div class="item corridor24">
+            <div class="item-content">C4</div>
+        </div>
+        <div class="item individualRoom2">
+            <div class="item-content">
+                <span style="margin-left: 10px;"></span>
+                <th:block th:each="individualRoom : ${individualRooms}">
+                    <span style="margin: 10px" th:text="${individualRoom.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 10px;"></span>
+            </div>
+        </div>
+        <div class="item corridor23">
+            <div class="item-content">C3</div>
+        </div>
+        <div class="item elevator">
+            <div class="item-content">A1</div>
+        </div>
+        <div class="item elevator">
+            <div class="item-content">A2</div>
+        </div>
+        <div class="item meetingRoom2">
+            <div class="item-content">
+                <span style="margin-left: 15px;"></span>
+                <th:block th:each="meetingRoom : ${meetingRooms}">
+                    <span style="margin: 15px" th:text="${meetingRoom.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 15px;"></span>
+            </div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T1H</div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T2H</div>
+        </div>
+        <div class="item corridor22">
+            <div class="item-content">C2</div>
+        </div>
+        <div class="item office2">
+            <div class="item-content">
+                <span style="margin-left: 10px;"></span>
+                <th:block th:each="office : ${offices}">
+                    <span style="margin: 10px" th:text="${office.name_space}"></span>-->
+                </th:block>
+                <span style="margin-right: 10px;"></span>
+            </div>
+        </div>
+    </div>
+    <div th:case="'3'" class="plan0">
+        <div class="item toilet">
+            <div class="item-content">T1F</div>
+        </div>
+        <div class="item corridor31">
+            <div class="item-content">C1</div>
+        </div>
+        <div class="item openSpace3">
+            <div class="item-content">
+                <span style="margin-left: 15px;"></span>
+                <th:block th:each="openSpace : ${openSpaces}">
+                    <span style="margin: 15px" th:text="${openSpace.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 15px;"></span>
+            </div>
+        </div>
+        <div class="item corridor32">
+            <div class="item-content">C2</div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T2F</div>
+        </div>
+        <div class="item corridor33">
+            <div class="item-content">C3</div>
+        </div>
+        <div class="item individualRoom3">
+            <div class="item-content">
+                <span style="margin-left: 10px;"></span>
+                <th:block th:each="individualRoom : ${individualRooms}">
+                    <span style="margin: 10px" th:text="${individualRoom.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 10px;"></span>
+            </div>
+        </div>
+        <div class="item corridor34">
+            <div class="item-content">C4</div>
+        </div>
+        <div class="item elevator">
+            <div class="item-content">A1</div>
+        </div>
+        <div class="item elevator">
+            <div class="item-content">A2</div>
+        </div>
+        <div class="item meetingRoom3">
+            <div class="item-content">
+                <span style="margin-left: 15px;"></span>
+                <th:block th:each="meetingRoom : ${meetingRooms}">
+                    <span style="margin: 15px" th:text="${meetingRoom.name_space}"></span>
+                </th:block>
+                <span style="margin-right: 15px;"></span>
+            </div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T1H</div>
+        </div>
+        <div class="item toilet">
+            <div class="item-content">T2H</div>
+        </div>
+        <div class="item corridor35">
+            <div class="item-content">C5</div>
+        </div>
+        <div class="item office3">
+            <div class="item-content">
+                <span style="margin-left: 10px;"></span>
+                <th:block th:each="office : ${offices}">
+                    <span style="margin: 10px" th:text="${office.name_space}"></span>-->
+                </th:block>
+                <span style="margin-right: 10px;"></span>
+            </div>
+        </div>
+    </div>
+    <div th:case="*"   class="etageVide" align="center">
+        <br><br><br><br>
+        <p> Cet étage est vide ! </p>
+        <br><br><br><br>
+    </div>
 </div>
 
-<p style="text-align: center;">
-    <img src="https://www.jung.de/~mi/9930/16537/jung-knx-topologie.png" alt="" />
-</p>
+<script>
+    var plan0 = new Muuri('.plan0', {dragEnabled: false, layout: {vertical: true}});
+</script>
 
 </body>
 

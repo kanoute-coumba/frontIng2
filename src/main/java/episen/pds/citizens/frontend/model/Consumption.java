@@ -2,6 +2,7 @@ package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 
+
 @Data
 public class Consumption {
 
@@ -11,6 +12,6 @@ public class Consumption {
 
     public double value;
 
-    public long date_time;
+    public long date_time;}
 
-}
+

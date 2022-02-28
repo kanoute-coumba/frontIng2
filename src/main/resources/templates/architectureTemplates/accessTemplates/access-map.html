@@ -36,12 +36,13 @@
 <div class="title-page">Plan d'accès</div>
 
 <div class="container text-center mag-t">
-    <form action="/accessMap/display">
+    <form th:action="@{/accessMap/display}" method="get">
             <div class="dropdown" style="margin:0 auto; width:500px;">
                 <span style="font-size: x-large;">Veuillez selectionner un bâtiment :</span> <br><br>
                 <select id="building" name="buildings" class="btn btn-primary" >
+                    <option value="*">Choisissez un bâtiment</option>
                     <th:block th:each="building : ${buildings}">
-                        <option value="${building.name_building}">
+                        <option th:value="${building.name_building}">
                             <span th:text="${building.name_building}"></span>
                         </option>
                     </th:block>
@@ -54,7 +55,7 @@
                 </select>
             </div>
         <br><br><br>
-        <button type=" submit" class="btn btn-primary" style="font-size: large;">Afficher le plan</button>
+        <button type="submit" class="btn btn-primary" style="font-size: large;">Afficher le plan</button>
     </form>
 </div>
 

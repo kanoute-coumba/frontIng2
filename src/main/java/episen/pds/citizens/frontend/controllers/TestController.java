@@ -66,10 +66,11 @@ public class TestController {
         return "cafeteria-validation";
     }
 
-    @GetMapping("/chat")
+    /* @GetMapping("/chat")
     public String getChat(Model model) {
         return "chat";
     }
+     */
 
 
     @GetMapping("/planAcces")

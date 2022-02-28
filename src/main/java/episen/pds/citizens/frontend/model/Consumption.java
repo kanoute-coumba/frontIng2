@@ -2,16 +2,12 @@ package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 
+import java.util.Date;
 
 @Data
 public class Consumption {
-
-    public int id_consumption;
-
-    public int id_equipment;
-
-    public double value;
-
-    public long date_time;}
-
-
+    private int id;
+    private Double value;
+    private Date date_time;
+    private int id_equipment;
+}

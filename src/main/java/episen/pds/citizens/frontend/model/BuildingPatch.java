@@ -3,11 +3,12 @@ package episen.pds.citizens.frontend.model;
 import lombok.Data;
 
 @Data
-public class Building {
+public class BuildingPatch {
     private int id;
     private String name;
     private String address;
     private String type;
-    private String consumption;
-    private String production;
+    private Double consumption;
+    private Double production;
+    private Integer district;
 }

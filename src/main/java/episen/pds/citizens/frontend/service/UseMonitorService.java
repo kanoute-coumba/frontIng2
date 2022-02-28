@@ -1,6 +1,9 @@
 package episen.pds.citizens.frontend.service;
 
-import episen.pds.citizens.frontend.model.*;
+import episen.pds.citizens.frontend.model.ConsumptionByBuilding;
+import episen.pds.citizens.frontend.model.Equipment;
+import episen.pds.citizens.frontend.model.Room;
+import episen.pds.citizens.frontend.model.RoomConditions;
 import episen.pds.citizens.frontend.repository.UseMonitorProxy;
 import lombok.Data;
 import org.springframework.stereotype.Service;

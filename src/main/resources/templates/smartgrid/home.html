@@ -16,6 +16,11 @@
 
 <header class="navbar">
     <h1>Citizens</h1>
+    <div class="menu">
+        <span>Actualisé à --todo--</span>
+        <span th:text="'Production totale : ' + ${sumProduction} + 'W'"></span>
+        <span th:text="'Consommation totale : ' + ${sumConsumption} + 'W'"></span>
+    </div>
 </header>
 
 <div class="container">
@@ -24,10 +29,32 @@
             <form class="filter" action="#" method="post">
                 <div class="filter-field">
                     <label for="search">Recherche</label>
-                    <input class="filter-field-input" type="search" id="search" name="search" placeholder="nom, adresse, .."/>
+                    <input class="filter-field-input" type="search" id="search" name="search" placeholder="nom, type, quartier .."/>
                 </div>
 
                 <div class="filter-field">
+                    <span>Production par quartier</span>
+                    <div th:each="items : ${productionByDistrict}">
+                        <div th:each="item : ${items}">
+                            <span>Quartier</span>
+                            <span th:text="${item.key}"></span> :
+                            <span th:text="${item.value}"></span>W
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-field">
+                    <span>Consommation par quartier</span>
+                    <div th:each="items : ${consumptionByDistrict}">
+                        <div th:each="item : ${items}">
+                            <span>Quartier</span>
+                            <span th:text="${item.key}"></span> :
+                            <span th:text="${item.value}"></span>W
+                        </div>
+                    </div>
+                </div>
+
+                <!--div class="filter-field">
                     <label for="type">Type de bâtiment</label>
                     <select class="filter-field-select" name="type" id="type">
                         <option value="">--todo--</option>
@@ -53,7 +80,7 @@
                         <option value="10">Quartier 10</option>
                         <option value="11">Quartier 11</option>
                     </select>
-                </div>
+                </div-->
             </form>
         </div>
 
@@ -76,9 +103,9 @@
                         <td th:text="${building.name}"></td>
                         <td th:text="${building.address}"></td>
                         <td th:text="${building.type}"></td>
-                        <td th:text="${building.consumption} + 'kWh'"></td>
-                        <td th:text="${building.production} + 'kWh'"></td>
-                        <td>--todo--</td>
+                        <td th:text="${building.production} + 'W'"></td>
+                        <td th:text="${building.consumption} + 'W'"></td>
+                        <td th:text="'Quartier-' + ${building.district}"></td>
                     </tr>
                     </tbody>
                 </table>

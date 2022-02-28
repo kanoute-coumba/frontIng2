@@ -3,11 +3,9 @@ package episen.pds.citizens.frontend.repository;
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.model.EquipmentWithConsumption;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -69,11 +67,11 @@ public class EquipmentProxy {
                 getEquipmentUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<String>>() {
+                new ParameterizedTypeReference<>() {
                 }
         );
 
-        logger.info("Get Equipment call " + response.getStatusCode().toString());
+        logger.info("Get Equipment call " + response.getStatusCode());
 
         return response.getBody();
 

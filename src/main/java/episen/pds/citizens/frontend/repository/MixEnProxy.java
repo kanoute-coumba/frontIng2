@@ -1,11 +1,13 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
+import episen.pds.citizens.frontend.model.ChoiceAlgoForm;
 import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.model.MixEnBySite;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -23,11 +25,11 @@ public class MixEnProxy {
 
     public static Iterable<MixEn> getCurrentMixEn() {
         String baseApiUrl = props.getApiUrl();
-        String getTestUrl = baseApiUrl + "/Mix";
+        String getUrl = baseApiUrl + "/Mix";
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<MixEn>> response = restTemplate.exchange(
-                getTestUrl,
+                getUrl,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<Iterable<MixEn>>() {
@@ -40,11 +42,11 @@ public class MixEnProxy {
 
     public static Iterable<MixEnBySite> getCurrentMixEnBySite() {
         String baseApiUrl = props.getApiUrl();
-        String getTestUrl = baseApiUrl + "/MixBySite";
+        String getUrl = baseApiUrl + "/MixBySite";
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<MixEnBySite>> response = restTemplate.exchange(
-                getTestUrl,
+                getUrl,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<Iterable<MixEnBySite>>() {
@@ -53,6 +55,41 @@ public class MixEnProxy {
 
         return response.getBody();
 
+    }
+
+    public static ChoiceAlgoForm getCurrentAlgoChoice(){
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/CurrentAlgoChoice";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<ChoiceAlgoForm> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<ChoiceAlgoForm>() {
+                }
+        );
+
+        return response.getBody();
+    }
+
+    // save the new algo choice
+    public ChoiceAlgoForm saveAlgoChoice(ChoiceAlgoForm e) {
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/saveAlgoChoice";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<ChoiceAlgoForm> request = new HttpEntity(e);
+        ResponseEntity<ChoiceAlgoForm> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.POST,
+                request,
+                ChoiceAlgoForm.class);
+        System.out.println(request); //TODO
+
+        logger.info("Create Test call " + response.getStatusCode().toString());
+
+        return response.getBody();
     }
 
 }

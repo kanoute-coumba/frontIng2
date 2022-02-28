@@ -18,6 +18,7 @@ public class BuildingRepo {
     @Autowired
     private CustomProperties customProperties;
 
+    // Not yet
     public Building getBuilding(int id_building) {
         ResponseEntity<Building> responseEntity =
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/building/" + id_building, HttpMethod.GET, null, Building.class);
@@ -29,5 +30,6 @@ public class BuildingRepo {
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/buildings", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
         return responseEntity.getBody();
     }
+
 }
 

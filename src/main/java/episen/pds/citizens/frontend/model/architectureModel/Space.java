@@ -22,4 +22,5 @@ public class Space {
         this.width_space = width_space;
         this.id_floor = id_floor;
     }
+
 }

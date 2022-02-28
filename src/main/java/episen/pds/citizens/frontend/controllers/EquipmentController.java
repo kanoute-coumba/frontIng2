@@ -2,14 +2,11 @@ package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.service.EquipmentService;
-import episen.pds.citizens.frontend.service.TestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 

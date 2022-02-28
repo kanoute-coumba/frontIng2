@@ -14,11 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
 </head>
-<script type="text/javascript">
-    function saveDesign() {
-        // ici on doit sauvegarder la configuration
-    }
-</script>
+<!--<script type="text/javascript">-->
+<!--    function saveDesign() {-->
+<!--        // ici on doit sauvegarder la configuration-->
+<!--    }-->
+<!--</script>-->
 
 <body>
 
@@ -39,6 +39,9 @@
 </nav>
 
 <div class="title-page">Configuration Carré</div>
+
+<br>
+<p style="text-align: center;"><span style="font-size: xx-large;">Simulation du nouveau plan :</span></p>
 
 <div class="plan0">
     <div class="item toilet">
@@ -105,11 +108,37 @@
     </div>
 </div>
 
-<br><br>
+<br>
+<p style="text-align: center;"><span style="font-size: xx-large;">Enregistrement de la configuration simulée :</span></p>
+<br>
 
-<p style="text-align: center;">
-    <button type="button" class="btn btn-primary" onclick="saveDesign();">Enregistrer cette configration</button>
-</p>
+<div class="container text-center mag-t">
+    <form action="/personalizeDesign/saveDesign">
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Pour quel bâtiment souhaiteriez vous appliquer cette simulation ?</span> <br><br>
+            <select id="building" name="buildings" class="btn btn-primary">
+                <option value="*">Choisissez un bâtiment</option>
+                <th:block th:each="building : ${buildings}">
+                    <option value="${building.name_building}">
+                        <span th:text="${building.name_building}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+        <br><br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Pour quel étage souhaiteriez vous appliquer cette simulation ?</span> <br><br>
+            <select id="floors" name="floors" class="btn btn-primary">
+            </select>
+        </div>
+        <br><br>
+        <button type=" submit" class="btn btn-primary" style="font-size: large;">Enregistrer la configration</button>
+    </form>
+    <br><br>
+<!--    <button type="button" class="btn btn-primary" onclick="saveDesign();">Enregistrer cette configration</button>-->
+</div>>
+
+<script type="text/javascript" th:src="@{/architectureStatic/getting-floors.js}"></script>
 
 <script>
     var plan0 = new Muuri('.plan0', {dragEnabled: false, layout: {vertical: true}});

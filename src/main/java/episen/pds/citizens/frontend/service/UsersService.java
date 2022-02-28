@@ -1,8 +1,6 @@
 package episen.pds.citizens.frontend.service;
 
-import episen.pds.citizens.frontend.model.Messages;
 import episen.pds.citizens.frontend.model.Users;
-import episen.pds.citizens.frontend.repository.MessagesProxy;
 import episen.pds.citizens.frontend.repository.UsersProxy;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

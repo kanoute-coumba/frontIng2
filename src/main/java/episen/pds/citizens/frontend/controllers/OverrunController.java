@@ -1,11 +1,16 @@
 package episen.pds.citizens.frontend.controllers;
 
-import episen.pds.citizens.frontend.model.*;
+import episen.pds.citizens.frontend.model.Attribution;
+import episen.pds.citizens.frontend.model.ConsoByDay;
+import episen.pds.citizens.frontend.model.PeakDay;
+import episen.pds.citizens.frontend.model.PeakYear;
 import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.logging.Logger;
 

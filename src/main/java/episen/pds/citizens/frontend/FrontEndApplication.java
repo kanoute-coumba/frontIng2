@@ -14,4 +14,8 @@ public class FrontEndApplication  {
 		SpringApplication.run(FrontEndApplication.class, args);
 	}
 
+
+	public void run(String... args) throws Exception {
+
+	}
 }

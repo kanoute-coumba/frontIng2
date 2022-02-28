@@ -8,6 +8,7 @@ public class BuildingPatch {
     private String name;
     private String address;
     private String type;
-    private String consumption;
-    private String production;
+    private Double consumption;
+    private Double production;
+    private Integer district;
 }

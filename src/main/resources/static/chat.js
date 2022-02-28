@@ -52,7 +52,7 @@ let request = {
 
     }
     console.log(request);
-    fetch('http://localhost:9000/messages', request)
+    fetch('http://172.31.249.1:9000/messages', request)
         .then(res => res.json())
         .then(data => {
             // traitement des données reçues

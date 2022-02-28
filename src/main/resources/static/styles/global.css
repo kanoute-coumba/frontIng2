@@ -27,17 +27,10 @@ html, body {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-    display: flex;
-    justify-content: space-between;
 }
 
 .navbar h1 {
     margin: 0;
-}
-
-.navbar .menu {
-    display: flex;
-    flex-direction: column;
 }
 
 /*** Filter ***/

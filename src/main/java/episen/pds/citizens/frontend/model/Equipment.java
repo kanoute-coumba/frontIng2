@@ -8,20 +8,10 @@ public class Equipment {
     private int id_equipment;
     private int id_room;
     private String type;
-    private String statut;
-    private String value;
-    private String type_mode;
+
 
     public int getId_equipment() {
         return id_equipment;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public void setId_equipment(int id_equipment) {
@@ -44,19 +34,4 @@ public class Equipment {
         this.type = type;
     }
 
-    public String getStatut() {
-        return statut;
-    }
-
-    public void setStatut(String statut) {
-        this.statut = statut;
-    }
-
-    public String getType_mode() {
-        return type_mode;
-    }
-
-    public void setType_mode(String type_mode) {
-        this.type_mode = type_mode;
-    }
 }

@@ -12,19 +12,16 @@ public class FloorService {
     @Autowired
     private FloorRepo floorRepo;
 
+    public Iterable<Floor> getAllFloors() {
+        return floorRepo.getAllFloors();
+    }
+
     public Iterable<Floor> getFloorsOfBuilding(final String name_building) {
         return floorRepo.getFloorsOfBuilding(name_building);
     }
 
-    // Not yet
     public Floor getFloor(final int id_floor) {
         return floorRepo.getFloor(id_floor);
     }
 
-    public String getDesignOfFloor(final String name_floor) {
-        return floorRepo.getDesignOfFloor(name_floor);
-    }
-
-
 }
-

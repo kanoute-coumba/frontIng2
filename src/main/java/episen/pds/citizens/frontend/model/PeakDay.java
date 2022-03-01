@@ -8,8 +8,8 @@ import java.sql.Date;
 public class PeakDay {
 
     Date date;
-    int consoday;
-    int value;
+    Double consoday;
+    Double value;
     int numberofpeak;
 
   }

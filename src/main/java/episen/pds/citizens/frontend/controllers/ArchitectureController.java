@@ -2,6 +2,7 @@ package episen.pds.citizens.frontend.controllers;
 
 
 import episen.pds.citizens.frontend.service.architectureService.BuildingService;
+import episen.pds.citizens.frontend.service.architectureService.ConfigurationService;
 import episen.pds.citizens.frontend.service.architectureService.FloorService;
 import episen.pds.citizens.frontend.service.architectureService.SpaceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class ArchitectureController {
     private FloorService floorService;
     @Autowired
     private SpaceService spaceService;
+    @Autowired
+    private ConfigurationService configurationService;
+
+    // ******************** Plan d'accès ******************** //
 
     @GetMapping("/accessMap")
     public String getAccessMap(Model model) {
@@ -37,31 +42,14 @@ public class ArchitectureController {
         return "architectureTemplates/accessTemplates/display-access-map";
     }
 
-    @GetMapping("/guidanceOption")
-    public String getGuidanceOption(Model model) {
-        model.addAttribute("buildings", buildingService.getAllBuildings());
-        return "architectureTemplates/guidanceTemplates/guidance-option";
-    }
+    // ********************************************************* //
 
-    @GetMapping("/guidanceOption/display")
-    public String getDisplayGuidance(Model model, @RequestParam("floors") String name_floor) {
-        model.addAttribute("design", floorService.getDesignOfFloor(name_floor));
-        model.addAttribute("offices", spaceService.getSpacesOfFloorByType(name_floor, "Bureau"));
-        model.addAttribute("meetingRooms", spaceService.getSpacesOfFloorByType(name_floor, "Salle de reunion"));
-        model.addAttribute("individualRooms", spaceService.getSpacesOfFloorByType(name_floor, "Salle individuelle"));
-        model.addAttribute("openSpaces", spaceService.getSpacesOfFloorByType(name_floor, "Espace ouvert"));
-        return "architectureTemplates/guidanceTemplates/display-guidance";
-    }
+    // ******************** Design intérieur ******************** //
 
     @GetMapping("/personalizeDesign")
     public String getPersonalizeDesign(Model model) {
         return "architectureTemplates/personalizeTemplates/personalize-design";
     }
-
-//    @GetMapping("/personalizeDesign/selectSpaces")
-//    public String getPersonalizeDesignSelectSpaces(Model model) {
-//        return "architectureTemplates/personalizeTemplates/select-spaces";
-//    }
 
     @GetMapping("/personalizeDesign/designBasic")
     public String getDesignBasic(Model model) {
@@ -101,5 +89,36 @@ public class ArchitectureController {
         return "architectureTemplates/personalizeTemplates/save-design";
     }
 
+    // ************************************************************ //
+
+    // ******************** Mes Configurations ******************** //
+
+    @GetMapping("/myConfigurations")
+    public String getMyConfigurations(Model model) {
+//        model.addAttribute("configurations", configurationService.getAllConfigurations());
+        return "architectureTemplates/configurationTemplates/configuration-saved";
+    }
+
+    // ************************************************************ //
+
+    // ******************** Se faire guider ******************** //
+
+    @GetMapping("/guidanceOption")
+    public String getGuidanceOption(Model model) {
+        model.addAttribute("buildings", buildingService.getAllBuildings());
+        return "architectureTemplates/guidanceTemplates/guidance-option";
+    }
+
+    @GetMapping("/guidanceOption/display")
+    public String getDisplayGuidance(Model model, @RequestParam("floors") String name_floor) {
+        model.addAttribute("design", floorService.getDesignOfFloor(name_floor));
+        model.addAttribute("offices", spaceService.getSpacesOfFloorByType(name_floor, "Bureau"));
+        model.addAttribute("meetingRooms", spaceService.getSpacesOfFloorByType(name_floor, "Salle de reunion"));
+        model.addAttribute("individualRooms", spaceService.getSpacesOfFloorByType(name_floor, "Salle individuelle"));
+        model.addAttribute("openSpaces", spaceService.getSpacesOfFloorByType(name_floor, "Espace ouvert"));
+        return "architectureTemplates/guidanceTemplates/display-guidance";
+    }
+
+    // ********************************************************** //
 
 }

@@ -17,11 +17,11 @@ public class EnergyController {
     public String getEquipmentWithConsumption(Model model,@PathVariable("id_b") final int id_b){
         Iterable<EquipmentWithConsumption> equipmentWithConsumptionIterable= energyService.getEquipmentWithConsumption(id_b);
         Iterable<CentralByProduction> centralByProductionsIterable=energyService.getCentralWithProduction(id_b);
-        double dc = 0.0;
+        Double dc = 0.0;
         for (CentralByProduction centralByProduction : centralByProductionsIterable) {
             dc+= Double.parseDouble(centralByProduction.value);
         }
-        double dp = 0.0;
+        Double dp = 0.0;
         for (EquipmentWithConsumption equipmentWithConsumption : equipmentWithConsumptionIterable) {
             dp+= Double.parseDouble(equipmentWithConsumption.value);
         }
@@ -36,7 +36,7 @@ public class EnergyController {
     @GetMapping("/Energy/idr={id_r}")
     public String getEquipmentWithConsumptionByRoom(Model model, @PathVariable("id_r") final int id_r){
         Iterable<EquipmentWithConsumption> equipmentWithConsumptionIterable= energyService.getEquipmentWithConsumptionByRoom(id_r);
-        double dp = 0.0;
+        Double dp = 0.0;
         for (EquipmentWithConsumption equipmentWithConsumption : equipmentWithConsumptionIterable) {
             dp+= Double.parseDouble(equipmentWithConsumption.value);
         }

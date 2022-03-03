@@ -2,8 +2,6 @@ package episen.pds.citizens.frontend.model;
 
 import lombok.Data;
 
-
-
 @Data
 public class EquipmentWithConsumption {
 
@@ -14,6 +12,5 @@ public class EquipmentWithConsumption {
     public String type;
 
     public String value;
-
 
 }

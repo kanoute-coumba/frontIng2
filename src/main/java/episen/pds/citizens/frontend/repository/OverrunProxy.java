@@ -134,4 +134,58 @@ public class OverrunProxy {
         return response.getBody();
     }
 
+    public Iterable<PeakYear> getPeak20() {
+        String baseApiUrl = props.getApiUrl();
+        String getTestUrl = baseApiUrl + "/2020";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakYear>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakYear>>() {
+                }
+        );
+
+        logger.info("Get PeakYear call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<PeakYear> getPeak21() {
+        String baseApiUrl = props.getApiUrl();
+        String getTestUrl = baseApiUrl + "/2021";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakYear>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakYear>>() {
+                }
+        );
+
+        logger.info("Get PeakYear call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<PeakYear> getPeak22() {
+        String baseApiUrl = props.getApiUrl();
+        String getTestUrl = baseApiUrl + "/22";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakYear>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakYear>>() {
+                }
+        );
+
+        logger.info("Get PeakYear call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
 }

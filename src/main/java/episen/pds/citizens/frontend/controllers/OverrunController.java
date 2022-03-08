@@ -79,4 +79,28 @@ public class OverrunController {
         return "statistiques";
     }
 
+    @GetMapping("/2020")
+    public String getPeak20(Model model) {
+        Iterable<PeakYear> nbrePeak = overrunService.getPeak20();
+        model.addAttribute("peak", nbrePeak);
+
+        return "peakByMonth";
+    }
+
+    @GetMapping("/2021")
+    public String getPeak21(Model model) {
+        Iterable<PeakYear> nbrePeak = overrunService.getPeak21();
+        model.addAttribute("peak", nbrePeak);
+
+        return "peakByMonth";
+    }
+
+    @GetMapping("/2022")
+    public String getPeak22(Model model) {
+        Iterable<PeakYear> nbrePeak = overrunService.getPeak22();
+        model.addAttribute("peak", nbrePeak);
+
+        return "peakByMonth";
+    }
+
 }

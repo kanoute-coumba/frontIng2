@@ -132,7 +132,7 @@ public class OverrunProxy {
     }
 
     public Iterable<PeakMonth> getPeak20() {
-        String baseApiUrl = props.getApiLocalUrl() ;
+        String baseApiUrl = props.getApiUrl() ;
         String getTestUrl = baseApiUrl + "/2020";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -150,7 +150,7 @@ public class OverrunProxy {
     }
 
     public Iterable<PeakMonth> getPeak21() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/2021";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -168,7 +168,7 @@ public class OverrunProxy {
     }
 
     public Iterable<PeakMonth> getPeak22() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/2022";
 
         RestTemplate restTemplate = new RestTemplate();

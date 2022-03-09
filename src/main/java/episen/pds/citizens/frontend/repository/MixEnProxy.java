@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 @Slf4j
@@ -86,6 +88,26 @@ public class MixEnProxy {
                 HttpMethod.POST,
                 request,
                 ChoiceAlgoForm.class);
+        System.out.println(request); //TODO
+
+        logger.info("Create Test call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public HashMap<String, List<Double>> simulationEconomicCost(HashMap<String,String> e) {
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/simulationEconomicCost";
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<HashMap<String,String>> request = new HttpEntity(e);
+        ResponseEntity<HashMap<String, List<Double>>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.POST,
+                request,
+                new ParameterizedTypeReference<HashMap<String, List<Double>>>() {
+                }
+        );
         System.out.println(request); //TODO
 
         logger.info("Create Test call " + response.getStatusCode().toString());

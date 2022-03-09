@@ -6,6 +6,8 @@ import episen.pds.citizens.frontend.model.MixEnBySite;
 import episen.pds.citizens.frontend.repository.MixEnProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class MixEnService {
@@ -25,5 +27,7 @@ public class MixEnService {
     public ChoiceAlgoForm getCurrentAlgoChoice(){ return mixEnProxy.getCurrentAlgoChoice();}
 
     public ChoiceAlgoForm saveAlgoChoice(ChoiceAlgoForm choiceAlgo){return mixEnProxy.saveAlgoChoice(choiceAlgo);}
+
+    public HashMap<String, List<Double>> simulationEconomicCost(HashMap<String,String> e){return mixEnProxy.simulationEconomicCost(e);}
 
 }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.logging.Logger;
 
@@ -87,5 +89,15 @@ public class MixEnController {
         mixEnService.saveAlgoChoice(model);
         logger.info(""+model.toString());
         return "redirect:/Municipality"; //TODO "redirect:/AlgoMix"
+    }
+
+    @GetMapping("/GraphEconomicCost")
+    public String getGraphEconomicCost(Model model){
+        List<Double> l = new ArrayList<>();
+        for(int i=0;i<=20;i++){
+            l.add((double) (i*200));
+        }
+        model.addAttribute("abs",l);
+        return "graphEconomicCost";
     }
 }

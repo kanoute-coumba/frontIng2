@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h2>Graphique : Coût économique en fonction de la puissance à fournir</h2>
+<div>
+    <p>
+        La production de l'énergie se fera en fonction du coût économique que chaque énergie engendrera. En retour de l'Algorithme il sera
+        proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
+        L'algorithme prend en compte le coût de production et le coût de fabrication/installation (amorti).
+        L'amortissemnt est sur :
+    </p>
+    <ul>
+        <li>10 ans pour l'énergie Solaire</li>
+        <li>15 ans pour l'énergie Eolienne</li>
+        <li>25 ans pour l'énergie Hydraulique</li>
+    </ul>
+    <p>
+        Au dela le coût de fabrication/installation n'est pas pris en compte.
+    </p>
+</div>
+<br>
+<hr>
+
+<h3>Simulation</h3>
+<form>
+Puissance à fournir  <input type="number" min="0" step="1" name="consumption"/>
+<br/>
+<label>Rentabilité énergie Solaire :
+    <select name="pref1" size="1" >
+        <option value="rentable">rentable</option>
+        <option value="pas encore">pas encore</option>
+    </select>
+</label>
+<br/>
+<label>Rentabilité énergie Eolienne :
+    <select name="pref2" size="1" >
+        <option value="rentable">rentable</option>
+        <option value="pas encore">pas encore</option>
+    </select>
+</label>
+<br/>
+<label>Rentabilité énergie Hydraulique :
+    <select name="pref2" size="1" >
+        <option value="rentable">rentable</option>
+        <option value="pas encore">pas encore</option>
+    </select>
+</label>
+<br/>
+<input type="submit" value="Simuler">
+</form>
+<br>
+<hr>
+<!-- Graph -->
+
+<div style="width:65%" align="center" class="container my-2">
+    <canvas id="myChart" align="center" class="container my-2"></canvas>
+</div>
+
+<script>
+  const labels = [[${abs}]];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Solaire',
+      backgroundColor: 'rgb(252, 114, 35)',
+      borderColor: 'rgb(252, 114, 35)',
+      data: [0.0, 177.88, 185.76, 193.64, 201.52, 209.4, 387.28, 395.15999999999997, 403.04, 410.92, 418.8, 596.68, 604.56, 612.44, 620.3199999999999, 628.2, 806.08, 813.96, 821.84, 829.72, 837.6],
+    },
+    {
+      label: 'Eolienne',
+      backgroundColor: 'rgb(35, 252, 109)',
+      borderColor: 'rgb(35, 252, 109)',
+      data: [0.0, 104.45333333333333, 115.57333333333332, 126.69333333333333, 137.81333333333333, 148.93333333333334, 253.38666666666666, 264.50666666666666, 275.62666666666667, 286.74666666666667, 297.8666666666667, 402.32, 413.44, 424.56, 435.67999999999995, 446.79999999999995, 551.2533333333333, 562.3733333333333, 573.4933333333333, 584.6133333333333, 595.7333333333333],
+    },
+    {
+      label: 'Hydraulique',
+      backgroundColor: 'rgb(35, 86, 252)',
+      borderColor: 'rgb(35, 86, 252)',
+      data: [0.0, 217.0, 218.0, 219.0, 220.0, 221.0, 222.0, 223.0, 440.0, 441.0, 442.0, 443.0, 444.0, 445.0, 446.0, 447.0, 664.0, 665.0, 666.0, 667.0, 668.0],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+</body>
+</html>

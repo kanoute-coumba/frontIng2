@@ -27,6 +27,7 @@
 
 <div align="center" class="container my-2">
     <br>
+    <br>
     <h1> <b>Les statistiques de pics </b> </h1>
     <br>
     <br>
@@ -40,7 +41,7 @@
         </thead>
         <tbody>
         <tr th:each="pic : ${peak}">
-            <td th:text="${pic.year}"></td>
+            <td th:text="${pic.month}"></td>
             <td th:text="${pic.numberofpeak}"></td>
         </tr>
 

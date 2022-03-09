@@ -1,9 +1,6 @@
 package episen.pds.citizens.frontend.controllers;
 
-import episen.pds.citizens.frontend.model.Attribution;
-import episen.pds.citizens.frontend.model.ConsoByDay;
-import episen.pds.citizens.frontend.model.PeakDay;
-import episen.pds.citizens.frontend.model.PeakYear;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,7 +78,7 @@ public class OverrunController {
 
     @GetMapping("/2020")
     public String getPeak20(Model model) {
-        Iterable<PeakYear> nbrePeak = overrunService.getPeak20();
+        Iterable<PeakMonth> nbrePeak = overrunService.getPeak20();
         model.addAttribute("peak", nbrePeak);
 
         return "peakByMonth";
@@ -89,7 +86,7 @@ public class OverrunController {
 
     @GetMapping("/2021")
     public String getPeak21(Model model) {
-        Iterable<PeakYear> nbrePeak = overrunService.getPeak21();
+        Iterable<PeakMonth> nbrePeak = overrunService.getPeak21();
         model.addAttribute("peak", nbrePeak);
 
         return "peakByMonth";
@@ -97,7 +94,7 @@ public class OverrunController {
 
     @GetMapping("/2022")
     public String getPeak22(Model model) {
-        Iterable<PeakYear> nbrePeak = overrunService.getPeak22();
+        Iterable<PeakMonth> nbrePeak = overrunService.getPeak22();
         model.addAttribute("peak", nbrePeak);
 
         return "peakByMonth";

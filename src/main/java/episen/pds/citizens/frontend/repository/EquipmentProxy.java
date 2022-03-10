@@ -222,17 +222,13 @@ public class EquipmentProxy {
         logger.info("Get Equipment call " + response.getStatusCode().toString());
     }
 
-    public static void calandarwithtime(String meeting_time) {
+    public static String calandarwithtime(String meeting_time, String nameroom, String typesensor, String date1, String date2) {
         logger.info("j'entre dans la méthode");
         System.out.println(meeting_time + "time");
 
-
-
         String baseApiUrl = props.getApiLocalUrl();
-        String getEquipmentUrl = baseApiUrl + "/updateAutoEquip?meeting_time=" +meeting_time;
-        System.out.println(meeting_time);
-
-
+        String getEquipmentUrl = baseApiUrl + "/updateAutoEquip?meeting_time=" +meeting_time +"&nameroom="+nameroom +"&typesensor="+typesensor +"&date1="+date1 +"&date2="+date2;
+        //http://localhost:9000/updateAutoEquip?meeting_time=2022-01-01T02:00&nameroom=Salle de réunion&typesensor=capteur de présence&date1=2022-01-01 00:00:00&date2=2022-01-01 07:00:00
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(
@@ -244,7 +240,7 @@ public class EquipmentProxy {
         );
 
         logger.info("Get Equipment call " + response.getStatusCode().toString());
+       return response.getBody();
     }
-
 
 }

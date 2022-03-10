@@ -59,7 +59,7 @@
             text-align: center;
             background-color: #A4A4A4;
             height: 130px;
-            margin-left: 75px;
+            /*margin-left: 75px;*/
             margin-top: 37%;
 
         }
@@ -198,18 +198,71 @@
             </div>
 
             <div class="calendar">
-
                 <form method="post" action="/calendarwithtime">
+
                     <label for="meeting_time">Choose a time for your appointment:</label>
-                    <input type="datetime-local" id="meeting_time" name="meeting_time" value="2018-06-12T19:30" min="2018-06-12T19:30"
+                    <input type="datetime-local" id="meeting_time" name="meeting_time" value="2022-01-01T00:30" min="2018-06-12T19:30"
                            max="2023-06-12T19:30"> </br>
-                    <button style="margin-top: 12px" type="submit" class="btn btn-primary">Choisir</button>
-                </form>
+                    <input type="hidden" id="nameroom" value="Salle de réunion" name="nameroom">
+                    <input type="hidden" id="typesensor" value="capteur de présence" name="typesensor">
+                    <input type="hidden" id="date1" value="2022-01-01 00:00:00" name="date1">
+                    <input type="hidden" id="date2" value="2022-01-01 07:00:00" name="date2">
+                    <input type="hidden"  th:value="${id_room}" name="idr">
+
+                    <button style="margin-top: 12px" id="choix"  class="btn btn-primary">Choisir</button>
+                    </form>
+
+                <div class="calendar" id="calendar"
+                th:if="${detectP=='Presence'}">
+                    <label>Disponibilité d'une personne </br></label>
+
+                    <span  th:text="${valuesensor}"></span>
+
+
+
+                </div>
+
+
             </div>
+
+
 
         </div>
     </div>
 </div>
+
+<!--<script>-->
+<!--    let meetting = document.getElementById("choix");-->
+<!--    meetting.addEventListener('click', function () {-->
+<!--        let time = document.getElementById("meeting_time").attributes.value.value;-->
+<!--        let room = document.getElementById("nameroom").attributes.value.value;-->
+<!--        let sensor = document.getElementById("typesensor").attributes.value.value;-->
+<!--        let d1 = document.getElementById("date1").attributes.value.value;-->
+<!--        let d2 = document.getElementById("date2").attributes.value.value;-->
+
+<!--        let url = 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2;-->
+
+<!--        $.ajax({-->
+<!--            url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2,-->
+<!--            type: 'GET',-->
+<!--            dataType: 'json',-->
+<!--            success: function(data) {-->
+
+<!--                document.querySelector("#calendar label").innerHTML = "";-->
+<!--                if (data == 0) {-->
+<!--                    console.log(data)-->
+<!--                    console.log("Pas de présence")-->
+<!--                    document.querySelector("#calendar label").innerHTML += " Pas de présence ";-->
+
+<!--                }-->
+<!--                else {-->
+<!--                    document.querySelector("#calendar label").innerHTML += " Une présence ";-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--    })-->
+
+<!--</script>-->
 
 </body>
 </html>

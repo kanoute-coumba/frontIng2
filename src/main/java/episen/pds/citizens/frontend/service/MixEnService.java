@@ -30,4 +30,6 @@ public class MixEnService {
 
     public HashMap<String, List<Double>> simulationEconomicCost(HashMap<String,String> e){return mixEnProxy.simulationEconomicCost(e);}
 
+    public HashMap<String, List<Double>> getGraphDataEnvironmentalCost(){return mixEnProxy.getGraphDataEnvironmentalCost();}
+
 }

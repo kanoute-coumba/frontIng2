@@ -108,11 +108,26 @@ public class MixEnProxy {
                 new ParameterizedTypeReference<HashMap<String, List<Double>>>() {
                 }
         );
-        System.out.println(request); //TODO
-
-        logger.info("Create Test call " + response.getStatusCode().toString());
+        logger.info(""+request);
 
         return response.getBody();
+    }
+
+    public HashMap<String, List<Double>> getGraphDataEnvironmentalCost(){
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/graphDataEnvironmentalCost";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<HashMap<String, List<Double>>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<HashMap<String, List<Double>>>() {
+                }
+        );
+
+        return response.getBody();
+
     }
 
 }

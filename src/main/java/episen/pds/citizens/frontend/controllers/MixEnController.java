@@ -90,7 +90,7 @@ public class MixEnController {
         model.setIdChoiceAlgo(mixEnService.getCurrentAlgoChoice().getIdChoiceAlgo());
         mixEnService.saveAlgoChoice(model);
         logger.info(""+model.toString());
-        return "redirect:/Municipality"; //TODO "redirect:/AlgoMix"
+        return "redirect:/AlgoMix";
     }
 
     @GetMapping("/GraphEconomicCost")
@@ -130,7 +130,6 @@ public class MixEnController {
         simulationData.put("eolienneAmort", m.getEolienneAmort());
         simulationData.put("hydrauliqueAmort", m.getHydrauliqueAmort());
 
-        //logger.info(""+ m.getAttribute("conso")+" "+m.getAttribute("solaireAmort")+" "+m.getAttribute("EolienneAmort")+" "+m.getAttribute("HydrauliqueAmort"));
         logger.info(""+simulationData);
         HashMap<String,List<Double>> graphData = mixEnService.simulationEconomicCost(simulationData);
         model.addAttribute("abs", graphData.get("abs"));
@@ -139,6 +138,17 @@ public class MixEnController {
         model.addAttribute("hydraulique", graphData.get("hydraulique"));
         model.addAttribute("simu", new SimulationEconomicCost());
         return "graphEconomicCost";
+    }
+
+    @GetMapping("/GraphEnvironmentalCost")
+    public String getGraphEnvironmentalCost(Model model){
+        HashMap<String,List<Double>> graphData = mixEnService.getGraphDataEnvironmentalCost();
+        model.addAttribute("abs", graphData.get("abs"));
+        model.addAttribute("solaire", graphData.get("solaire"));
+        model.addAttribute("eolienne", graphData.get("eolienne"));
+        model.addAttribute("hydraulique", graphData.get("hydraulique"));
+
+        return "graphEnvironmentalCost";
     }
 
 }

@@ -88,9 +88,6 @@ public class MixEnProxy {
                 HttpMethod.POST,
                 request,
                 ChoiceAlgoForm.class);
-        System.out.println(request); //TODO
-
-        logger.info("Create Test call " + response.getStatusCode().toString());
 
         return response.getBody();
     }

@@ -42,6 +42,6 @@ public class BuildingController {
         model.addAttribute("buildings", buildings);
         model.addAttribute("sumProduction", sumProduction);
         model.addAttribute("sumConsumption", sumConsumption);
-        return "smartgrid/home.html";
+        return "smartgrid.html";
     }
 }

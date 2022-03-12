@@ -7,6 +7,10 @@ html, body {
     padding: 0;
 }
 
+i {
+    line-height: 0;
+}
+
 /*****************/
 /*** Constants ***/
 /*****************/
@@ -33,12 +37,17 @@ html, body {
     margin: 0;
 }
 
+/*** Cursor ***/
+.cursor {
+    cursor: pointer;
+}
+
 /*** Filter ***/
+/*
 .filter {
     border: 1px solid var(--color-secondary);
     border-radius: 10px;
     padding: 20px;
-    /*position: fixed;*/
 }
 
 .filter > .filter-field {
@@ -63,8 +72,9 @@ html, body {
     border-color: rgba(223, 225, 229, 0);
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
 }
-
+*/
 /*** List-building ***/
+/*
 .list-building {
     border: 1px solid var(--color-secondary);
     border-radius: 10px;
@@ -91,3 +101,4 @@ html, body {
 .list-building table tbody tr:nth-child(even) {
     background: var(--color-secondary);
 }
+ */

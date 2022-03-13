@@ -1,9 +1,69 @@
-.box {
-    border: 1px solid var(--color-secondary);
-    border-radius: 10px;
+.background {
+    height: 100%;
+    width: 100%;
+    background: bottom -25% right -25% no-repeat url('../image/background.png'),
+    linear-gradient(-45deg, rgba(7,29,9,1) 0%, rgba(143,210,122,1) 50%, rgba(187,238,198,1) 100%);
+}
+
+.item {
     padding: 20px;
     margin-bottom: 20px;
+    background: var(--color-white);
+}
+
+.item-head {
+    margin-bottom: 10px;
+}
+
+.center-one, .center-all {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+}
+
+.center-one {
+    justify-content: center;
+}
+
+.center-all {
+    justify-content: space-between;
+}
+
+.swal2-html-container {
+    height: 400px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.swal2-html-container table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.swal2-html-container table thead {
+    position: sticky;
+    top: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.swal2-html-container table tbody {
+    text-align: left;
+}
+
+.swal2-html-container table tbody tr:nth-child(even) {
+    background: var(--color-secondary);
+}
+
+.swal2-html-container table th, td {
+    padding: 10px;
+}
+
+.rotate {
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    100% {
+        transform:rotate(360deg);
+    }
 }

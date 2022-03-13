@@ -5,10 +5,12 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: inherit;
 }
 
 i {
     line-height: 0;
+    color: var(--color-green-5);
 }
 
 /*****************/
@@ -16,30 +18,85 @@ i {
 /*****************/
 
 :root {
-    --color-primary: #007FFF;
-    --color-secondary: rgba(223, 225, 229, 1);
+    --color-primary: var(--color-green-6);
+    --color-secondary: var(--color-green-1);
+
     --color-white: #FFFFFF;
     --color-black: #000000;
+    --color-grey: rgba(223, 225, 229, 1);
+
+    --color-white-smoke: #FDFEFC;
+    --color-green-1: #9DB599;
+    --color-green-2: #BBEEC6;
+    --color-green-3: #9FDB99;
+    --color-green-4: #8FD27A;
+    --color-green-5: #326019;
+    --color-green-6: #071D09;
+
+    --border-radius: 10px;
 }
 
 /***********************/
 /*** Global elements ***/
 /***********************/
 
-/*** Navbar ***/
-.navbar {
+/*** Font ***/
+@font-face {
+    font-family: "Fredoka";
+    src: url("../fonts/fredoka/Fredoka-Regular.ttf") format("truetype");
+}
+
+body {
+    font-family: "Fredoka";
+}
+
+/*** Header ***/
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    background: var(--color-white);
+    z-index: 1;
 }
 
-.navbar h1 {
+/*** Footer ***/
+/*footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    background: var(--color-white);
+}*/
+
+/*** Navbar ***/
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.navbar .name {
     margin: 0;
 }
 
 /*** Cursor ***/
 .cursor {
     cursor: pointer;
+}
+
+/*** Corner ***/
+.corner {
+    border: 1px solid var(--color-grey);
+    border-radius: var(--border-radius);
 }
 
 /*** Filter ***/

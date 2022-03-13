@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="background">
 <head>
     <meta charset="utf-8">
     <title>SmartGrid</title>
-    <!--link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/-->
-    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <!--link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/-->
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
     <link rel="stylesheet" th:href="@{/styles/global.css}"/>
     <link rel="stylesheet" th:href="@{/styles/smartgrid.css}"/>
@@ -16,48 +17,94 @@
         enabled. Please enable Javascript and reload this page!</h2>
 </noscript>
 
-<header class="navbar">
-    <h1>Citizens</h1>
+<header>
+    <div class="navbar center-all">
+        <div class="center-all">
+            <img th:src="@{/image/icon.png}" class="icon"/>
+            <h1 class="name">Citizens</h1>
+        </div>
+        <a th:href="@{../templates/index.html}">
+            <i class="fi fi-rr-apps"></i>
+        </a>
+    </div>
 </header>
 
 <section class="container-fluid">
     <div class="row">
-        <div class="col-md-7 col-sm-5 col-xs-12">
-            <div class="box">
-                <div><i class="fi fi-rr-sun"></i><span>Solaire</span></div>
-                <div><i class="fi fi-rr-wind"></i><span>Éolienne </span></div>
-                <div><i class="fi fi-rr-raindrops"></i><span>Hydraulique</span></div>
+        <div class="col-md-2 col-sm-4 col-xs-12">
+            <div class="corner item center-all">
+                <i class="cursor refresh-event fi fi-rr-refresh"></i>
+                <span>10:47</span>
             </div>
         </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="box">
-                <div><i class="fi fi-rr-bolt"></i><span>Production</span></div>
-                <div><i class="fi fi-rr-bolt"></i><span>Consommation</span></div>
-                <i class="fi fi-rr-home"></i>
-                <i class="fi fi-rr-building"></i>
-            </div>
-        </div>
-
-        <div class="col-md-1 col-sm-1 col-xs-12">
-            <div class="box cursor refresh-event">
-                <i class="fi fi-rr-refresh"></i>
+        <div class="col-md-10 col-sm-8 col-xs-12">
+            <div class="corner item center-all">
+                <span>Production</span>
+                <!--ul>
+                    <li><i class="fi fi-rr-sun"></i><span>Solaire</span></li>
+                    <li><i class="fi fi-rr-wind"></i><span>Éolienne </span></li>
+                    <li><i class="fi fi-rr-raindrops"></i><span>Hydraulique</span></li>
+                </ul-->
+                <span>Consommation</span>
             </div>
         </div>
     </div>
     <div class="row">
-        <div th:each="district : ${districts}" class="col-md-3 col-sm-4 col-xs-6">
-            <div class="box">
-                <span th:text="${district.name} + ' (' + ${district.id} + ')'"></span>
-                <i class="cursor see-event fi fi-rr-eye"></i>
+        <div th:each="district : ${districts}" class="col-md-3 col-sm-4 col-xs-12">
+            <div class="corner item">
+                <div class="item-head center-all">
+                    <span th:text="${district.name} + ' (' + ${district.id} + ')'"></span>
+                    <i class="cursor see-event fi fi-rr-eye"></i>
+                </div>
+                <div class="center-all">
+                    <div>
+                        <span>Production</span>
+                    </div>
+                    <div>
+                        <span>Consommation</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-
-    </div>
+    <!--div class="row">
+        <div class="col-md-12">
+            <div class="swal2-html-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>adresse</th>
+                        <th>nom</th>
+                        <th>type</th>
+                        <th>quartier</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>40 rue des Boulets, Paris</td>
+                        <td>Immeuble A</td>
+                        <td><i class="fi fi-rr-building"></i></td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>25 rue Cambronne, Paris</td>
+                        <td>Maison C</td>
+                        <td><i class="fi fi-rr-home"></i></td>
+                        <td>1</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div-->
 </section>
 
-<footer>footer</footer>
+<!--footer>
+    <span>Footer</span>
+</footer-->
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/webjars/jquery/jquery.min.js"></script>

@@ -1,9 +1,6 @@
 package episen.pds.citizens.frontend.service;
 
-import episen.pds.citizens.frontend.model.Attribution;
-import episen.pds.citizens.frontend.model.ConsoByDay;
-import episen.pds.citizens.frontend.model.PeakDay;
-import episen.pds.citizens.frontend.model.PeakYear;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.repository.OverrunProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +34,18 @@ public class OverrunService {
 
     public Iterable<PeakYear> getPeak(){
         return overrunProxy.getPeak();
+    }
+
+    public Iterable<PeakMonth> getPeak20(){
+        return overrunProxy.getPeak20();
+    }
+
+    public Iterable<PeakMonth> getPeak21(){
+        return overrunProxy.getPeak21();
+    }
+
+    public Iterable<PeakMonth> getPeak22(){
+        return overrunProxy.getPeak22();
     }
 
     public Iterable<Attribution> getAttribution() { return overrunProxy.getAttribution();

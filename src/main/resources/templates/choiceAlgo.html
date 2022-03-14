@@ -101,17 +101,17 @@
             <br/>
             <label>produir en 2 :
                 <select name="pref2" size="1" th:field="*{pref2}">
-                    <option value="solaire">solaire</option>
                     <option value="eolienne">eolienne</option>
+                    <option value="solaire">solaire</option>
                     <option value="hydraulique">hydraulique</option>
                 </select>
             </label>
             <br/>
             <label>produir en 3 :
                 <select name="pref3" size="1" th:field="*{pref3}">
+                    <option value="hydraulique">hydraulique</option>
                     <option value="solaire">solaire</option>
                     <option value="eolienne">eolienne</option>
-                    <option value="hydraulique">hydraulique</option>
                 </select>
             </label><br><br>
         </div>
@@ -126,7 +126,7 @@
         </div>
 
         <input type="radio" name="choice" value="preferenceweather" onchange="essai(this.value)" th:field="*{choice}"> Algo 4 : Production en fonction des conditions météo<br><br>
-        <input type="radio" name="choice" value="economic" onchange="essai(this.value)" th:field="*{choice}"> Algo 5 : Production en fonction des coûts économiques<br><br>
+        <input type="radio" name="choice" value="economic" onchange="essai(this.value)" th:field="*{choice}" checked="checked"> Algo 5 : Production en fonction des coûts économiques<br><br>
         <input type="radio" name="choice" value="environmental" onchange="essai(this.value)" th:field="*{choice}"> Algo 6 : Production en fonction des coûts environnementaux<br>
 
         </p>
@@ -139,12 +139,12 @@
 <br>
 <hr>
 
-<h3>Descriptif des Algorithme</h3>
+<h3>Descriptif des Algorithmes</h3>
 <div id="accordion">
     <h3>Algo 1</h3>
     <div>
         <p>
-            La production de l'énergie se fera selon les préférences choisis. Par exemple si le choix avait été le suivant :
+            La production de l'énergie se fera selon les préférences choisies. Par exemple si le choix avait été le suivant :
         </p>
         <ul>
             <li>Préférence 1 : Solaire</li>
@@ -157,14 +157,28 @@
     <h3>Algo 2</h3>
     <div>
         <p>
-            Deuxième Algo
+            La production de l'énergie se fera de façon équitable. C'est à dire qu'on répondra à la demande en produisant :
+        <ul>
+            <li> 33%  d'énergie Solaire</li>
+            <li> 33%  d'énergie Eolienne</li>
+            <li> 33%  d'énergie Hydraulique</li>
+        </ul>
+        Si cela n'est pas possible alors la règle suivante sera apppliquée :
         </p>
     </div>
     <h3>Algo 3</h3>
     <div>
         <p>
-            Troisième Algo
+            La production de l'énergie se fera selon les préférences choisis. Par exemple si le choix avait été le suivant :
         </p>
+        <ul>
+            <li>Proportion d'énergie Solaire : 35%</li>
+            <li>Proportion d'énergie Eolienne : 15%</li>
+            <li>Proportion d'énergie Hydraulique : 50%</li>
+        </ul>
+        Alors on aurait répondu à la demande de production en produisant 35% d'énergie Solaire, 15% d'énergie Eolienne et 50% d'énergie Hydraulique
+        par rapport à la demande. Les proportions seront respectées dans la mesure du possible sinon la règle suivante sera appliquée :
+
     </div>
     <h3>Algo 4</h3>
     <div>
@@ -175,14 +189,36 @@
     <h3>Algo 5</h3>
     <div>
         <p>
-            Algo5
+            La production de l'énergie se fera en fonction du coût économique que chaque énergie engendrera. En retour de l'Algorithme il sera
+            proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
+            L'algorithme prend en compte le coût de production et le coût de fabrication/installation (amorti).
+            L'amortissement est sur :
         </p>
+        <ul>
+            <li>10 ans pour l'énergie Solaire</li>
+            <li>15 ans pour l'énergie Eolienne</li>
+            <li>25 ans pour l'énergie Hydraulique</li>
+        </ul>
+        Au dela le coût de fabrication/installation n'est pas pris en compte.
+        Cliquer <a href="/GraphEconomicCost">ici</a> pour faire une simulation (voir le graphe des coûts économiques en fonction de la puissance à fournir)
     </div>
     <h3>Algo 6</h3>
     <div>
         <p>
-            Algo6
+            La production de l'énergie se fera en fonction du coût environnemental que chaque énergie engendrera. En retour de l'Algorithme il sera
+            proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
+            L'algorithme se base sur l'analyse du cycle de vie (ACV). L'ACV  s’intéresse aux impacts environnementaux d’un produit
+            ou d’un service sur l’ensemble de son cycle de vie. Cela comprend l’extraction et le du traitement des matières premières,
+            les processus de fabrication, de transport et de distribution, l’utilisation et de la réutilisation du produit fini et,
+            finalement, le recyclage et la gestion des déchets en fin de vie.<br>
+            Les coûts :
         </p>
+        <ul>
+            <li>55g de CO2 par kWh pour l'énergie Solaire</li>
+            <li>12.7g de CO2 par kWh pour l'énergie Eolienne</li>
+            <li>6g de CO2 par kWh pour l'énergie Hydraulique</li>
+        </ul>
+        Cliquer <a href="/GraphEnvironmentalCost">ici</a> pour visualiser le graph du coût environnemental en fonction de l'énergie
     </div>
 </div>
 <br>

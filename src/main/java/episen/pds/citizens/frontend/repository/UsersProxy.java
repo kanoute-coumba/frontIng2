@@ -1,7 +1,6 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.model.Messages;
 import episen.pds.citizens.frontend.model.Users;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

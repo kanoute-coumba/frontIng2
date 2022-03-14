@@ -1,12 +1,10 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.controllers.UseMonitorController;
 import episen.pds.citizens.frontend.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -51,12 +49,12 @@ public class UseMonitorProxy {
         return response.getBody();
     }
 
-    public Iterable<Equipment> getEquipmentByRoom(int id_room) {
+    public Iterable<EquipmentAndData> getEquipmentByRoom(int id_room) {
         String baseApiUrl = props.getApiUrl();
         String getConsBuildUrl = baseApiUrl + "/getEquipmentsByRoom/" + id_room;
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<Equipment>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<EquipmentAndData>> response = restTemplate.exchange(
                 getConsBuildUrl,
                 HttpMethod.GET,
                 null,
@@ -81,12 +79,12 @@ public class UseMonitorProxy {
         return response.getBody();
     }
 
-    public Iterable<RoomConditions> getConditionsInRoom(int id) {
+    public RoomConditions getConditionsInRoom(int id_room) {
         String baseApiUrl = props.getApiUrl();
-        String getConsBuildUrl = baseApiUrl + "/getRoomConditions?id_room=" + id;
+        String getConsBuildUrl = baseApiUrl + "/getLastBestConditions/" + id_room;
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<RoomConditions>> response = restTemplate.exchange(
+        ResponseEntity<RoomConditions> response = restTemplate.exchange(
                 getConsBuildUrl,
                 HttpMethod.GET,
                 null,
@@ -179,5 +177,20 @@ public class UseMonitorProxy {
                 new ParameterizedTypeReference<>() {
                 }
         );
+    }
+
+    public RoomConditions getCurrentConditionsInRoom(int id_room) {
+        String baseApiUrl = props.getApiUrl();
+        String getConsBuildUrl = baseApiUrl + "/getLastMeasures/" + id_room;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<RoomConditions> response = restTemplate.exchange(
+                getConsBuildUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        return response.getBody();
     }
 }

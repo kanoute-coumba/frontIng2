@@ -28,28 +28,20 @@
 <div align="center" class="container my-2">
     <br>
     <br>
-    <h1> <b>Les jours de pics </b> </h1>
+    <h1> <b>Les statistiques de pics </b> </h1>
     <br>
-    <br>
-    <form action="/statistiques">
-        <input type="submit" value="Voir les statistique de pics" />
-    </form>
     <br>
     <table id="test" border="1" class="table table-striped table responsive-md">
         <thead>
         <tr>
-            <th bgcolor="bleu">date</th>
-            <th bgcolor="bleu">consoday</th>
-            <th bgcolor="bleu">value</th>
-            <th bgcolor="bleu">pic</th>
+            <th bgcolor="bleu">mois</th>
+            <th bgcolor="bleu">nombre de pic</th>
 
         </tr>
         </thead>
         <tbody>
         <tr th:each="pic : ${peak}">
-            <td th:text="${pic.date}"></td>
-            <td th:text="${pic.consoday}"></td>
-            <td th:text="${pic.value}"></td>
+            <td th:text="${pic.month}"></td>
             <td th:text="${pic.numberofpeak}"></td>
         </tr>
 

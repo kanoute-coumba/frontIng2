@@ -5,7 +5,9 @@ import episen.pds.citizens.frontend.service.OverrunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.logging.Logger;
 
@@ -72,6 +74,30 @@ public class OverrunController {
         model.addAttribute("peak", nbrePeak);
 
         return "statistiques";
+    }
+
+    @GetMapping("/2020")
+    public String getPeak20(Model model) {
+        Iterable<PeakMonth> nbrePeak = overrunService.getPeak20();
+        model.addAttribute("peak", nbrePeak);
+
+        return "peakByMonth";
+    }
+
+    @GetMapping("/2021")
+    public String getPeak21(Model model) {
+        Iterable<PeakMonth> nbrePeak = overrunService.getPeak21();
+        model.addAttribute("peak", nbrePeak);
+
+        return "peakByMonth";
+    }
+
+    @GetMapping("/2022")
+    public String getPeak22(Model model) {
+        Iterable<PeakMonth> nbrePeak = overrunService.getPeak22();
+        model.addAttribute("peak", nbrePeak);
+
+        return "peakByMonth";
     }
 
 }

@@ -14,11 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
 </head>
-<script type="text/javascript">
-    function saveDesign() {
-        // ici on doit sauvegarder la configuration
-    }
-</script>
+<!--<script type="text/javascript">-->
+<!--    function saveDesign() {-->
+<!--        // ici on doit sauvegarder la configuration-->
+<!--    }-->
+<!--</script>-->
 
 <body>
 
@@ -40,6 +40,9 @@
 
 <div class="title-page">Configuration Parallèle</div>
 
+<br>
+<p style="text-align: center;"><span style="font-size: xx-large;">Simulation du nouveau plan :</span></p>
+
 <div class="plan0">
     <div class="item toilet">
         <div class="item-content">T1F</div>
@@ -48,7 +51,13 @@
         <div class="item-content">C1</div>
     </div>
     <div class="item openSpace3">
-        <div class="item-content">Espace Ouvert</div>
+        <div class="item-content">
+            <span style="margin-left: 10px;"></span>
+            <th:block th:each="os : ${#numbers.sequence(1,param.os)}">
+                <span style="margin: 20px">E.Ouvert</span>
+            </th:block>
+            <span style="margin-right: 10px;"></span>
+        </div>
     </div>
     <div class="item corridor32">
         <div class="item-content">C2</div>
@@ -60,7 +69,11 @@
         <div class="item-content">C3</div>
     </div>
     <div class="item individualRoom3">
-        <div class="item-content">Salle individuelle</div>
+        <div class="item-content">
+            <th:block th:each="ir : ${#numbers.sequence(1,param.ir)}">
+                <span style="margin: 5px">S.I</span>
+            </th:block>
+        </div>
     </div>
     <div class="item corridor34">
         <div class="item-content">C4</div>
@@ -72,7 +85,13 @@
         <div class="item-content">A2</div>
     </div>
     <div class="item meetingRoom3">
-        <div class="item-content ">Salle de réunion</div>
+        <div class="item-content">
+            <span style="margin-left: 10px;"></span>
+            <th:block th:each="mr : ${#numbers.sequence(1,param.mr)}">
+                <span style="margin: 20px">S.Réunion</span>
+            </th:block>
+            <span style="margin-right: 10px;"></span>
+        </div>
     </div>
     <div class="item toilet">
         <div class="item-content">T1H</div>
@@ -84,15 +103,45 @@
         <div class="item-content">C5</div>
     </div>
     <div class="item office3">
-        <div class="item-content">Bureau</div>
+        <div class="item-content">
+            <th:block th:each="of : ${#numbers.sequence(1,param.of)}">
+                <span style="margin: 5px">Bu</span>
+            </th:block>
+        </div>
     </div>
 </div>
 
-<br><br>
+<br>
+<p style="text-align: center;"><span style="font-size: xx-large;">Enregistrement de la configuration simulée :</span></p>
+<br>
 
-<p style="text-align: center;">
-    <button type="button" class="btn btn-primary" onclick="saveDesign();">Enregistrer cette configration</button>
-</p>
+<div class="container text-center mag-t">
+    <form action="/personalizeDesign/saveDesign">
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Pour quel bâtiment souhaiteriez vous appliquer cette simulation ?</span> <br><br>
+            <select id="building" name="buildings" class="btn btn-primary">
+                <option value="*">Choisissez un bâtiment</option>
+                <th:block th:each="building : ${buildings}">
+                    <option value="${building.name_building}">
+                        <span th:text="${building.name_building}"></span>
+                    </option>
+                </th:block>
+            </select>
+        </div>
+        <br><br>
+        <div class="dropdown" style="margin:0 auto; width:500px;">
+            <span style="font-size: x-large;">Pour quel étage souhaiteriez vous appliquer cette simulation ?</span> <br><br>
+            <select id="floors" name="floors" class="btn btn-primary">
+            </select>
+        </div>
+        <br><br>
+        <button type=" submit" class="btn btn-primary" style="font-size: large;">Enregistrer la configration</button>
+    </form>
+    <br><br>
+    <!--    <button type="button" class="btn btn-primary" onclick="saveDesign();">Enregistrer cette configration</button>-->
+</div>>
+
+<script type="text/javascript" th:src="@{/architectureStatic/getting-floors.js}"></script>
 
 <script>
     var plan0 = new Muuri('.plan0', {dragEnabled: false, layout: {vertical: true}});

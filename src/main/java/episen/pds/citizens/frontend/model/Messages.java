@@ -1,9 +1,8 @@
 package episen.pds.citizens.frontend.model;
-import java.sql.Timestamp;
-import java.util.Date;
-
 
 import lombok.Data;
+
+import java.sql.Timestamp;
 
 @Data
 public class Messages {

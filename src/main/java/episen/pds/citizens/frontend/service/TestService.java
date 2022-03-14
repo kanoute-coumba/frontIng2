@@ -1,14 +1,12 @@
 package episen.pds.citizens.frontend.service;
 
+import episen.pds.citizens.frontend.model.Test;
 import episen.pds.citizens.frontend.repository.TestProxy;
 import lombok.Data;
-
-import episen.pds.citizens.frontend.model.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Iterator;
 import java.util.logging.Logger;
 
 @Data

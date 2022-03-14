@@ -8,7 +8,7 @@ import java.sql.Date;
 public class ConsoByDay {
 
     private Date date;
-    private int consoday;
+    private double consoday;
 
     public ConsoByDay() {
 
@@ -27,7 +27,7 @@ public class ConsoByDay {
         this.date = date;
     }
 
-    public int getConsoday() {
+    public double getConsoday() {
         return consoday;
     }
 

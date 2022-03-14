@@ -4,7 +4,6 @@ import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.ChoiceAlgoForm;
 import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.model.MixEnBySite;
-import episen.pds.citizens.frontend.model.Test;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;

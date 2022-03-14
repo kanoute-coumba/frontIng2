@@ -36,6 +36,18 @@ public class OverrunService {
         return overrunProxy.getPeak();
     }
 
+    public Iterable<PeakMonth> getPeak20(){
+        return overrunProxy.getPeak20();
+    }
+
+    public Iterable<PeakMonth> getPeak21(){
+        return overrunProxy.getPeak21();
+    }
+
+    public Iterable<PeakMonth> getPeak22(){
+        return overrunProxy.getPeak22();
+    }
+
     public Iterable<Attribution> getAttribution() { return overrunProxy.getAttribution();
     }
 }

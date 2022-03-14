@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Coût environnemental</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        a{
+        color:blue
+        }
+    </style>
+</head>
+<body>
+<a href="/AlgoMix">retour</a><br><br>
+<h2>Graphique : Coût environnemental en fonction de la puissance à fournir</h2>
+<div>
+    <p>
+        La production de l'énergie se fera en fonction du coût environnemental que chaque énergie engendrera. En retour de l'Algorithme il sera
+        proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
+        L'algorithme se base sur l'analyse du cycle de vie (ACV). L'ACV  s’intéresse aux impacts environnementaux d’un produit
+        ou d’un service sur l’ensemble de son cycle de vie. Cela comprend l’extraction et le du traitement des matières premières,
+        les processus de fabrication, de transport et de distribution, l’utilisation et de la réutilisation du produit fini et,
+        finalement, le recyclage et la gestion des déchets en fin de vie.<br>
+        Les coûts :
+    </p>
+    <ul>
+        <li>55g de CO2 par kWh pour l'énergie Solaire</li>
+        <li>12.7g de CO2 par kWh pour l'énergie Eolienne</li>
+        <li>6g de CO2 par kWh pour l'énergie Hydraulique</li>
+    </ul>
+</div>
+<br>
+<hr>
+
+<!-- Graph -->
+
+<div style="width:65%">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+  const labels = [[${abs}]];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Solaire',
+      backgroundColor: 'rgb(252, 114, 35)',
+      borderColor: 'rgb(252, 114, 35)',
+      data: [[${solaire}]],
+     },
+    {
+      label: 'Eolienne',
+      backgroundColor: 'rgb(35, 252, 109)',
+      borderColor: 'rgb(35, 252, 109)',
+      data: [[${eolienne}]],
+    },
+    {
+      label: 'Hydraulique',
+      backgroundColor: 'rgb(35, 86, 252)',
+      borderColor: 'rgb(35, 86, 252)',
+      data: [[${hydraulique}]],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+</body>
+</html>

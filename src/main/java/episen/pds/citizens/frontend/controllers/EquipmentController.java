@@ -1,7 +1,7 @@
 package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Equipment;
-import episen.pds.citizens.frontend.model.House;
+
 import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.service.EquipmentService;
 import org.springframework.stereotype.Controller;

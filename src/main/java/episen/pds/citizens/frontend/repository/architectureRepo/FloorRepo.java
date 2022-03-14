@@ -18,6 +18,7 @@ public class FloorRepo {
     @Autowired
     private CustomProperties customProperties;
 
+    // Not yet
     public Floor getFloor(int id_floor) {
         ResponseEntity<Floor> responseEntity =
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floor/" + id_floor, HttpMethod.GET, null, Floor.class);
@@ -33,12 +34,6 @@ public class FloorRepo {
     public Iterable<Floor> getFloorsOfBuilding(String name_building) {
         ResponseEntity<Iterable<Floor>> responseEntity =
                 restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floors_of/" + name_building, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
-        return responseEntity.getBody();
-    }
-
-    public Iterable<Floor> getAllFloors() {
-        ResponseEntity<Iterable<Floor>> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/floors", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
         return responseEntity.getBody();
     }
 

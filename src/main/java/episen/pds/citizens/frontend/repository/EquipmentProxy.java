@@ -3,7 +3,7 @@ package episen.pds.citizens.frontend.repository;
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.Equipment;
 import episen.pds.citizens.frontend.model.EquipmentWithConsumption;
-import episen.pds.citizens.frontend.model.House;
+
 import episen.pds.citizens.frontend.model.architectureModel.Building;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

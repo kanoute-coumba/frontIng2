@@ -12,7 +12,69 @@
 
 <body>
 
-<nav th:insert="~{fragment :: navbar}"></nav>
+<!-- NAV BAR -->
+<nav class=" navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">
+        <img src="https://mallmaverick.imgix.net/web/property_managers/1/properties/726/stores/citizen_watch_company_store/20200316201327/__asset_get_105347" alt=""  height="50" />
+    </a>
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Accueil</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/Monitor">Monitorer</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/listRooms">Configurer</a>
+            </li>
+            <!--<li class="nav-item active">
+                <a class="nav-link" href="/configManual">Mes Equipements</a>
+            </li>-->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Architecture
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <a class="dropdown-item" href="/accessMap">Plan d'accès</a>
+                    <a class="dropdown-item" href="/guidanceOption">Se faire guider</a>
+                    <a class="dropdown-item" href="/personalizeDesign">Design intérieur (Admin)</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Services
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    <a class="dropdown-item" href="/chat/sender=amimouni/receiver=dzaher">Chat</a>
+                    <a class="dropdown-item" href="/cafeteria">Restauration</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Salles de réunion
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/sallesReunion">Services généraux</a>
+                    <a class="dropdown-item" href="#">Ecran salle de réunion</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/buildingsPatch">Exploitation de la SmartGrid</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/municipality">Activité de la SmartCity</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+
+<!-- NAV BAR -->
+
 
 <div align="center" class="container my-2">
     <h1>Liste des personnes enregistrées</h1>

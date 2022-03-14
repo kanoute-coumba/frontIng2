@@ -61,7 +61,7 @@
     <h2  th:text="'LES EQUIPEMENTS DE LA SALLE ' + ${id}"></h2>
     <p th:text="'CONDITIONS ACTUELLES : temperature=' + ${current_cond.temperature} + '; luminosité=' + ${current_cond.luminosity}"></p>
     <p th:text="'CONDITIONS OPTIMALES : temperature=' + ${best_cond.temperature} + '; luminosité=' + ${best_cond.luminosity}"></p>
-    <table id="equipment" border="1" class="table table-striped table responsive-md">
+    <table id="DWPEquipment" border="1" class="table table-striped table responsive-md">
         <thead>
         <tr>
             <!--<th bgcolor="bleu">Statut</th>
@@ -79,33 +79,33 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="equipment : ${equipments}">
-            <td th:text="${equipment.id_equipment}"></td>
-            <td th:text="${equipment.type}"></td>
-            <td th:text="${equipment.statut}"></td>
-            <td th:text="${equipment.value}"></td>
+        <tr th:each="DWPEquipment : ${equipments}">
+            <td th:text="${DWPEquipment.id_equipment}"></td>
+            <td th:text="${DWPEquipment.type}"></td>
+            <td th:text="${DWPEquipment.statut}"></td>
+            <td th:text="${DWPEquipment.value}"></td>
             <td>
-                <form th:action="@{/setEquipmentValue/{id_equipment}(id_equipment=${equipment.id_equipment})}" method="post" name="changevalue">
+                <form th:action="@{/setEquipmentValue/{id_equipment}(id_equipment=${DWPEquipment.id_equipment})}" method="post" name="changevalue">
                     <input type="hidden" th:value="${id}" name="id_room" id="id_room">
-                    <input type="range" class="form-range" min="0" max="5" step="1" name="changevalue" id="changevalue" th:value="${equipment.value}" oninput="this.nextElementSibling.value = this.value">
-                    <output th:text="${equipment.value}"></output>
+                    <input type="range" class="form-range" min="0" max="5" step="1" name="changevalue" id="changevalue" th:value="${DWPEquipment.value}" oninput="this.nextElementSibling.value = this.value">
+                    <output th:text="${DWPEquipment.value}"></output>
                     <button type="submit" class="btn btn-primary">Confirmer</button>
                 </form>
             </td>
             <td>
-                <form th:action="@{/setEquipmentAuto/{id_equipment}(id_equipment=${equipment.id_equipment})}" method="post" name="changetypemode">
+                <form th:action="@{/setEquipmentAuto/{id_equipment}(id_equipment=${DWPEquipment.id_equipment})}" method="post" name="changetypemode">
                     <input type="hidden" th:value="${id}" name="id_room" id="id_room1">
-                    <div th:switch="${equipment.type_mode}">
+                    <div th:switch="${DWPEquipment.type_mode}">
                         <button th:case="Automatique"  class="btn btn-success" disabled>Automatisé</button>
                         <button th:case="Manuel" type="submit" class="btn btn-primary">Automatiser</button>
                     </div>
                 </form>
             </td>
 <!--
-            <td th:text="${equipment.icon}"></td>
-            <td th:text="${equipment.value}"></td>
-            <td th:text="${equipment.measure}"></td>
-            <td th:text="${equipment.consumption}"></td>-->
+            <td th:text="${DWPEquipment.icon}"></td>
+            <td th:text="${DWPEquipment.value}"></td>
+            <td th:text="${DWPEquipment.measure}"></td>
+            <td th:text="${DWPEquipment.consumption}"></td>-->
         </tr>
         </tbody>
     </table>

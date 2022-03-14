@@ -53,13 +53,13 @@ margin-top: 30px;
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="equipment : ${listEquipment}">
-                    <td th:if="${equipment.type} == 'lampe'"><a
-                            th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment}}"
-                            class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
-                    <td th:unless="${equipment.type} == 'lampe'"><span th:text="${equipment.type}"></span></td>
-                    <td th:text="${equipment.statut}"></td>
-                    <td th:text="${equipment.type_mode}"></td>
+                <tr th:each="DWPEquipment : ${listEquipment}">
+                    <td th:if="${DWPEquipment.type} == 'lampe'"><a
+                            th:href="@{'/configurationLampe?id_equipment=' + ${DWPEquipment.id_equipment}}"
+                            class="link-dark"> <span th:text="${DWPEquipment.type}"></span> </a></td>
+                    <td th:unless="${DWPEquipment.type} == 'lampe'"><span th:text="${DWPEquipment.type}"></span></td>
+                    <td th:text="${DWPEquipment.statut}"></td>
+                    <td th:text="${DWPEquipment.type_mode}"></td>
 
                 </tr>
                 </tbody>

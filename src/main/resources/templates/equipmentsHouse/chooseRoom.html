@@ -44,7 +44,8 @@
         console.log("url test"+test);
         $.ajax({
             //url: 'http://172.31.249.1:9000/floor?house=' + houseselected,
-            url: 'http://localhost:9000/floor?house=' + houseselected,
+            //url: 'http://localhost:9000/floor?house='
+            url: 'http://172.31.249.1:9000/floor?house=' + houseselected,
             type: 'GET',
             dataType: 'json',
             success: function (listFloor) {
@@ -65,7 +66,8 @@
         console.log("L'id est : " + floorselected);
         $.ajax({
             //url: 'http://172.31.249.1:9000/room?floor=' + floorselected,
-            url: 'http://localhost:9000/room?floor=' + floorselected,
+            //url : 'http://localhost:9000/room?floor='
+            url: 'http://172.31.249.1:9000/room?floor=' + floorselected,
             type: 'GET',
             dataType: 'json',
             success: function (listRoom) {

@@ -1,16 +1,15 @@
 <!doctype html>
-<html lang="fr" class="background">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>SmartGrid</title>
+    <title>Citizens</title>
     <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
-    <!--link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/-->
     <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
     <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
     <link rel="stylesheet" th:href="@{/styles/global.css}"/>
     <link rel="stylesheet" th:href="@{/styles/smartgrid.css}"/>
 </head>
-<body>
+<body class="background">
 
 <noscript>
     <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
@@ -23,7 +22,7 @@
             <img th:src="@{/image/icon.png}" class="icon"/>
             <h1 class="name">Citizens</h1>
         </div>
-        <a th:href="@{../templates/index.html}">
+        <a th:href="@{/}">
             <i class="fi fi-rr-apps"></i>
         </a>
     </div>
@@ -31,75 +30,66 @@
 
 <section class="container-fluid">
     <div class="row">
-        <div class="col-md-2 col-sm-4 col-xs-12">
-            <div class="corner item center-all">
-                <i class="cursor refresh-event fi fi-rr-refresh"></i>
-                <span>10:47</span>
-            </div>
-        </div>
-        <div class="col-md-10 col-sm-8 col-xs-12">
-            <div class="corner item center-all">
-                <span>Production</span>
-                <!--ul>
-                    <li><i class="fi fi-rr-sun"></i><span>Solaire</span></li>
-                    <li><i class="fi fi-rr-wind"></i><span>Éolienne </span></li>
-                    <li><i class="fi fi-rr-raindrops"></i><span>Hydraulique</span></li>
-                </ul-->
-                <span>Consommation</span>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div th:each="district : ${districts}" class="col-md-3 col-sm-4 col-xs-12">
-            <div class="corner item">
-                <div class="item-head center-all">
-                    <span th:text="${district.name} + ' (' + ${district.id} + ')'"></span>
-                    <i class="cursor see-event fi fi-rr-eye"></i>
-                </div>
-                <div class="center-all">
-                    <div>
-                        <span>Production</span>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="corner item center-all">
+                        <i class="cursor refresh-event fi fi-rr-refresh"></i>
+                        <span>10<span class="flash">:</span>47</span>
                     </div>
-                    <div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="corner item center-all">
+                        <span>Production</span>
                         <span>Consommation</span>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="corner item">
+                        <ul class="weather-list">
+                            <li class="vcenter"><i class="fi fi-rr-thermometer-half"></i><span>Température (°C)</span></li>
+                            <li class="vcenter"><i class="fi fi-rr-clouds"></i><span>Couverture nuageuse (%)</span></li>
+                            <li class="vcenter"><i class="fi fi-rr-wind"></i><span>Vitesse du vent (km/h)</span></li>
+                            <li class="vcenter"><i class="fi fi-rr-raindrops"></i><span>Précipitation (mm)</span></li>
+                            <li class="vcenter"><i class="fi fi-rr-sun"></i><span>Évaporation (%)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row box-central"></div>
+                <!--div th:each="central : ${centrals}" class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="corner item">
+                        <div class="center-all item-central">
+                            <div th:switch="${central.type}" class="center-all">
+                                <i th:case="'solaire'" class="fi fi-rr-sun"></i>
+                                <i th:case="'eolienne'" class="fi fi-rr-wind"></i>
+                                <i th:case="'hydraulique'" class="fi fi-rr-raindrops"></i>
+                                <i th:case="'thermique'" class="fi fi-rr-flame"></i>
+                                <span th:text="${central.name}"></span>
+                            </div>
+                            <div>
+                                <span th:text="${central.capacity} + '/' + ${central.maxCapacity} + 'W'"></span>
+                            </div>
+                        </div>
+                        <span th:text="${central.address}"></span>
+                    </div>
+                </div-->
         </div>
-    </div>
-    <!--div class="row">
-        <div class="col-md-12">
-            <div class="swal2-html-container">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>adresse</th>
-                        <th>nom</th>
-                        <th>type</th>
-                        <th>quartier</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>40 rue des Boulets, Paris</td>
-                        <td>Immeuble A</td>
-                        <td><i class="fi fi-rr-building"></i></td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>0</td>
-                        <td>25 rue Cambronne, Paris</td>
-                        <td>Maison C</td>
-                        <td><i class="fi fi-rr-home"></i></td>
-                        <td>1</td>
-                    </tr>
-                    </tbody>
-                </table>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="row">
+                <div th:each="district : ${districts}" class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="corner item">
+                        <div class="center-all">
+                            <span class="text-dots" th:text="${district.name} + ' (' + ${district.id} + ')'"></span>
+                            <i th:attr="data-id=${district.id}, data-name=${district.name}" class="cursor see-event fi fi-rr-eye"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div-->
+    </div>
 </section>
 
 <!--footer>

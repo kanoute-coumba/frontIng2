@@ -10,5 +10,5 @@ public class BuildingCentral {
     private String type;
     private Double maxCapacity;
     private Double capacity;
+    private Double production;
 }
-

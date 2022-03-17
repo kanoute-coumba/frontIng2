@@ -1,31 +1,52 @@
 var stompClient = null;
 var server = 'http://localhost:9000';
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
 
 $(function() {
     connect();
 
-    $(".refresh-event").on("click", function() {
-        $(this).addClass("rotate");
-        $.ajax({
-            url: server + '/readBuildingsTypeCentral'
-        }).done(function(centrals) {
-            console.log(centrals);
-            if(centrals.body !== undefined && centrals.body !== null && centrals.body.length > 0) {
-                $(".box-central").html(centralsHtml(JSON.parse(centrals.body)));
+    clock();
 
+    $(".refresh-event").on("click", function() {
+        var refresh = $(this);
+        refresh.addClass("rotate");
+        $.ajax({
+            url: server + '/readBuildingsTypeCentral',
+            type: 'GET',
+            success: function(centrals) {
+                console.log("Manual update of the centrals");
+                $(".box-central").html(centralsHtml(centrals));
+                refresh.removeClass("rotate");
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Centrales mis à jour'
+                });
             }
-            $(this).removeClass("rotate");
         });
         /*send("/smartgrid/refresh", "refresh");*/
     });
 
     $(".see-event").on("click", function() {
+        var district = $(this);
         $.ajax({
-            url: server + '/readBuildingsByDistrict?district=' + $(this).data("id"),
+            url: server + '/readBuildingsByDistrict?district=' + district.data("id"),
             type: "GET",
+            beforeSend: function() {
+                Swal.showLoading();
+            },
             success: function(buildings) {
                 Swal.fire({
-                    title: $(this).data("name"),
+                    title: district.data("name"),
                     html: buildingsHtml(buildings),
                     width: 600,
                     height: 600,
@@ -39,6 +60,17 @@ $(function() {
         });
     });
 });
+
+function clock() {
+    var date = new Date();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    minute = minute < 10 ? "0" + minute : minute;
+    second = second < 10 ? "0" + second : second;
+    document.querySelector('.clock-event').innerHTML = hour + ":" + minute + ":" + second;
+    setTimeout(clock, 500);
+}
 
 function buildingsHtml(buildings) {
     let html = '<table><thead><tr><th>type</th><th>nom</th><th>adresse</th><th>consommation</th><th>production</th></thead><tbody>';
@@ -77,7 +109,7 @@ function centralsHtml(centrals) {
                 html += '<i class="fi fi-rr-flame"></i>';
                 break;
         }
-        html += '<span>' + centrals[i].name + '</span></div><div><span class="flash">' + centrals[i].capacity + '/' + centrals[i].maxCapacity + 'W</span></div></div><span>' + centrals[i].address + '</span></div></div>';
+        html += '<span>' + centrals[i].name + '</span></div><span>' + centrals[i].capacity + '/' + centrals[i].maxCapacity + 'W</span></div><div class="center-all"><span>' + centrals[i].address + '</span><span class="flash">' + centrals[i].production + 'W</span></div></div></div>';
     }
     return html;
 }
@@ -89,8 +121,14 @@ function connect() {
     stompClient.connect({}, function() {
         stompClient.subscribe('/smartgrid/centrals', function(centrals) {
             if(centrals.body !== undefined && centrals.body !== null && centrals.body.length > 0) {
-                console.log("central updated");
-                $(".box-central").html(centralsHtml(JSON.parse(centrals.body)));
+                console.log("Automatic update of the centrals");
+                $(".socket-central").html(centralsHtml(JSON.parse(centrals.body)));
+            }
+        });
+        stompClient.subscribe('/smartgrid/city', function(data) {
+            if(data.body !== undefined && data.body !== null && data.body.length > 0) {
+                console.log("Automatic update of the city energy balance");
+                $(".socket-city-energy-balance").html(data.body + "W");
             }
         });
         /*stompClient.subscribe('/smartgrid/refresh', function(response) {

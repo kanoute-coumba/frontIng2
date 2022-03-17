@@ -4,6 +4,7 @@ import episen.pds.citizens.frontend.model.BuildingCentral;
 import episen.pds.citizens.frontend.model.District;
 import episen.pds.citizens.frontend.service.BuildingCentralService;
 import episen.pds.citizens.frontend.service.DistrictService;
+import episen.pds.citizens.frontend.service.SmartGridService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @EnableScheduling
@@ -25,6 +27,9 @@ public class SmartGridController {
     private BuildingCentralService buildingCentralService;
 
     @Autowired
+    private SmartGridService smartGridService;
+
+    @Autowired
     private SimpMessagingTemplate template;
 
     @Scheduled(cron = "*/30 * * * * *")
@@ -32,6 +37,8 @@ public class SmartGridController {
         System.out.println("central updated");
         List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
         this.template.convertAndSend("/smartgrid/centrals", centrals);
+        Double balance = smartGridService.smartgrid();
+        this.template.convertAndSend("/smartgrid/city", balance);
     }
 
     @GetMapping("/smartgrid")

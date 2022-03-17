@@ -74,6 +74,10 @@
     padding: 10px;
 }
 
+.swal2-loader {
+    border-color: var(--color-green-5) transparent var(--color-green-5) transparent !important;
+}
+
 .rotate {
     animation: rotation 1s linear infinite;
 }

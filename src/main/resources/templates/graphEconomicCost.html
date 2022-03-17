@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Coût économique</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        a{
+        color:blue
+        }
+    </style>
+</head>
+<body>
+<a href="/AlgoMix">retour</a><br><br>
+<h2>Graphique : Coût économique en fonction de la puissance à fournir</h2>
+<div>
+    <p>
+        La production de l'énergie se fera en fonction du coût économique que chaque énergie engendrera. En retour de l'Algorithme il sera
+        proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
+        L'algorithme prend en compte le coût de production et le coût de fabrication/installation (amorti).
+        L'amortissement est sur :
+    </p>
+    <ul>
+        <li>10 ans pour l'énergie Solaire</li>
+        <li>15 ans pour l'énergie Eolienne</li>
+        <li>25 ans pour l'énergie Hydraulique</li>
+    </ul>
+    <p>
+        Au dela le coût de fabrication/installation n'est pas pris en compte.
+    </p>
+</div>
+<br>
+<hr>
+
+<h3>Simulation</h3>
+<form action="#" th:action="@{/GraphEconomicCost}" method="post">
+Puissance à fournir  <input type="number" min="0" step="1" name="consumption" value="4000" th:field="${simu.conso}"/>
+<br/>
+<label>Rentabilité énergie Solaire :
+    <select name="pref1" size="1" th:field="${simu.solaireAmort}">
+        <option value="pas encore">pas encore</option>
+        <option value="rentable">rentable</option>
+    </select>
+</label>
+<br/>
+<label>Rentabilité énergie Eolienne :
+    <select name="pref2" size="1" th:field="${simu.eolienneAmort}">
+        <option value="pas encore">pas encore</option>
+        <option value="rentable">rentable</option>
+    </select>
+</label>
+<br/>
+<label>Rentabilité énergie Hydraulique :
+    <select name="pref2" size="1" th:field="${simu.hydrauliqueAmort}">
+        <option value="pas encore">pas encore</option>
+        <option value="rentable">rentable</option>
+    </select>
+</label>
+<br/>
+<input type="submit" value="Simuler">
+</form>
+<br>
+<hr>
+<!-- Graph -->
+
+<div style="width:65%" align="center" class="container my-2">
+    <canvas id="myChart" align="center" class="container my-2"></canvas>
+</div>
+
+<script>
+  const labels = [[${abs}]];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Solaire',
+      backgroundColor: 'rgb(252, 114, 35)',
+      borderColor: 'rgb(252, 114, 35)',
+      data: [[${solaire}]],
+     },
+    {
+      label: 'Eolienne',
+      backgroundColor: 'rgb(35, 252, 109)',
+      borderColor: 'rgb(35, 252, 109)',
+      data: [[${eolienne}]],
+    },
+    {
+      label: 'Hydraulique',
+      backgroundColor: 'rgb(35, 86, 252)',
+      borderColor: 'rgb(35, 86, 252)',
+      data: [[${hydraulique}]],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+</body>
+</html>

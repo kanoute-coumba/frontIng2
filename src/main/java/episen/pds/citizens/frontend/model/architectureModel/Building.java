@@ -5,10 +5,12 @@ import lombok.Data;
 
 @Data
 public class Building {
+
     private Integer id_building;
     private String address;
     private String name_building;
     private String type_building;
+    private Integer id_owner;
 
     public Building() {}
 

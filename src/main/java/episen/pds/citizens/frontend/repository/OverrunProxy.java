@@ -1,10 +1,7 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.model.Attribution;
-import episen.pds.citizens.frontend.model.ConsoByDay;
-import episen.pds.citizens.frontend.model.PeakDay;
-import episen.pds.citizens.frontend.model.PeakYear;
+import episen.pds.citizens.frontend.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -130,6 +127,60 @@ public class OverrunProxy {
         );
 
         logger.info("Get PeakYear call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<PeakMonth> getPeak20() {
+        String baseApiUrl = props.getApiUrl() ;
+        String getTestUrl = baseApiUrl + "/2020";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakMonth>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakMonth>>() {
+                }
+        );
+
+        logger.info("Get PeakMonth call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<PeakMonth> getPeak21() {
+        String baseApiUrl = props.getApiUrl();
+        String getTestUrl = baseApiUrl + "/2021";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakMonth>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakMonth>>() {
+                }
+        );
+
+        logger.info("Get PeakMonth call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+    public Iterable<PeakMonth> getPeak22() {
+        String baseApiUrl = props.getApiUrl();
+        String getTestUrl = baseApiUrl + "/2022";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Iterable<PeakMonth>> response = restTemplate.exchange(
+                getTestUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Iterable<PeakMonth>>() {
+                }
+        );
+
+        logger.info("Get PeakMonth call " + response.getStatusCode().toString());
 
         return response.getBody();
     }

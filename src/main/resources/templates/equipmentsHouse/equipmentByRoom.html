@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipements</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <style>
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+
+        }
+
+        .table tbody td.bouton {
+            width: 250px;
+        }
+
+        th, td {
+            background-color: #96D4D4;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .style {
+            align: center;
+        }
+
+        .table {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            width: 100%;
+            table-layout: auto;
+
+        }
+
+        .name {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .bouton {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            text-align: center;
+        }
+
+        .calendar{
+            border-radius: 10px;
+            text-align: center;
+            background-color: #A4A4A4;
+            height: 130px;
+            /*margin-left: 75px;*/
+            margin-top: 37%;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<nav th:insert="~{fragment :: navbar}"></nav>
+
+
+<div class="container my-2" align="center">
+    <div class="row">
+        <div class="col-12" style="display: grid; grid-template-columns: 80% auto;">
+            <div>
+                <div class="name" th:text="${nameRoom}"></div>
+                <table border="1" class="table">
+                    <thead>
+                    <tr>
+                        <th style="vertical-align: middle" scope="col">Equipements</th>
+                        <th style="vertical-align: middle" scope="col">Statut</th>
+                        <th style="vertical-align: middle" scope="col">Mode équipement</th>
+                        <th style="vertical-align: middle" scope="col">Valeur équipement</th>
+                        <th style="vertical-align: middle; width: 250px" scope="col">Configuration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="equipment : ${listEquipment}">
+                        <td th:if="${equipment.type} == 'lampe'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a>
+                        </td>
+
+                        <td th:if="${equipment.type} == 'télévision'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'fenêtre'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'store'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'radiateur'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'climatisation'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'four'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'réfrigérateur'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'table-cuisson'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'lave-vaiselle'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+
+                        <td th:text="${equipment.statut}"></td>
+                        <td th:text="${equipment.type_mode}"></td>
+                        <td th:text="${equipment.value}">
+                            <div th:if="${equipment.type} == 'lampe'">
+                                <span th:text="lx"></span>
+                            </div>
+                        </td>
+                        <td class="bouton">
+                            <div th:if="${equipment.type} == 'lampe'">
+                                <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'télévision'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'fenêtre'">
+                                <a th:href="@{'/fenetre?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'store'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+
+                            <div th:if="${equipment.type} == 'radiateur'">
+                                <a th:href="@{'/radiateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'climatisation'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'lave-vaiselle'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'table-cuisson'">
+                                <a th:href="@{'/Cuisine/TableCuisson?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'réfrigérateur'">
+                                <a th:href="@{'/Cuisine/Refrigerateur?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'four'">
+                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+
+                            <form method="get" action="/formAuto">
+                                <input type="hidden" th:value="${equipment.id_equipment}" name="id_equipment">
+                                <input type="hidden" value="Automatique" name="type_mode">
+                                <input type="hidden" th:value="${id_room}" name="id_room">
+                                <input type="submit" class="btn btn-dark" value="Automatique"/>
+                            </form>
+
+                        </td>
+
+
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="calendar">
+                <form method="post" action="/calendarwithtime">
+
+                    <label for="meeting_time">Choose a time for your appointment:</label>
+                    <input type="datetime-local" id="meeting_time" name="meeting_time" value="2022-01-01T00:30" min="2018-06-12T19:30"
+                           max="2023-06-12T19:30"> </br>
+                    <input type="hidden" id="nameroom" value="Salle de réunion" name="nameroom">
+                    <input type="hidden" id="typesensor" value="capteur de présence" name="typesensor">
+                    <input type="hidden" id="date1" value="2022-01-01 00:00:00" name="date1">
+                    <input type="hidden" id="date2" value="2022-01-01 07:00:00" name="date2">
+                    <input type="hidden"  th:value="${id_room}" name="idr">
+
+                    <button style="margin-top: 12px" id="choix"  class="btn btn-primary">Choisir</button>
+                    </form>
+
+                <div class="calendar" id="calendar"
+                th:if="${detectP=='Presence'}">
+                    <label>Disponibilité d'une personne </br></label>
+
+                    <span  th:text="${valuesensor}"></span>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--<script>-->
+<!--    let meetting = document.getElementById("choix");-->
+<!--    meetting.addEventListener('click', function () {-->
+<!--        let time = document.getElementById("meeting_time").attributes.value.value;-->
+<!--        let room = document.getElementById("nameroom").attributes.value.value;-->
+<!--        let sensor = document.getElementById("typesensor").attributes.value.value;-->
+<!--        let d1 = document.getElementById("date1").attributes.value.value;-->
+<!--        let d2 = document.getElementById("date2").attributes.value.value;-->
+
+<!--        let url = 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2;-->
+
+<!--        $.ajax({-->
+<!--            url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2,-->
+<!--            type: 'GET',-->
+<!--            dataType: 'json',-->
+<!--            success: function(data) {-->
+
+<!--                document.querySelector("#calendar label").innerHTML = "";-->
+<!--                if (data == 0) {-->
+<!--                    console.log(data)-->
+<!--                    console.log("Pas de présence")-->
+<!--                    document.querySelector("#calendar label").innerHTML += " Pas de présence ";-->
+
+<!--                }-->
+<!--                else {-->
+<!--                    document.querySelector("#calendar label").innerHTML += " Une présence ";-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--    })-->
+
+<!--</script>-->
+
+</body>
+</html>

@@ -1,8 +1,9 @@
 var stompClient = null;
-var server = 'http://localhost:9000';
+//var server = 'http://localhost:9000';
+var server = 'http://172.31.249.1:9000';
 const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -49,7 +50,6 @@ $(function() {
                     title: district.data("name"),
                     html: buildingsHtml(buildings),
                     width: 600,
-                    height: 600,
                     padding: '20px',
                     color: '#000000',
                     background: '#FDFEFC',

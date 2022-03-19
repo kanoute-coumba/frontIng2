@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Random;
 
 @Controller
 @EnableScheduling
@@ -35,10 +34,10 @@ public class SmartGridController {
     @Scheduled(cron = "*/30 * * * * *")
     public void loop() {
         System.out.println("central updated");
-        List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
-        this.template.convertAndSend("/smartgrid/centrals", centrals);
         Double balance = smartGridService.smartgrid();
         this.template.convertAndSend("/smartgrid/city", balance);
+        List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
+        this.template.convertAndSend("/smartgrid/centrals", centrals);
     }
 
     @GetMapping("/smartgrid")

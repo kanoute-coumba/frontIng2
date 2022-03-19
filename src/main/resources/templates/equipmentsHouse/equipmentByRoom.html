@@ -54,7 +54,7 @@
             text-align: center;
         }
 
-        .calendar{
+        .calendar {
             border-radius: 10px;
             text-align: center;
             background-color: #A4A4A4;
@@ -63,7 +63,6 @@
             margin-top: 37%;
 
         }
-
 
 
     </style>
@@ -198,71 +197,87 @@
             </div>
 
             <div class="calendar">
-                <form method="post" action="/calendarwithtime">
 
-                    <label for="meeting_time">Choose a time for your appointment:</label>
-                    <input type="datetime-local" id="meeting_time" name="meeting_time" value="2022-01-01T00:30" min="2018-06-12T19:30"
-                           max="2023-06-12T19:30"> </br>
-                    <input type="hidden" id="nameroom" value="Salle de réunion" name="nameroom">
-                    <input type="hidden" id="typesensor" value="capteur de présence" name="typesensor">
-                    <input type="hidden" id="date1" value="2022-01-01 00:00:00" name="date1">
-                    <input type="hidden" id="date2" value="2022-01-01 07:00:00" name="date2">
-                    <input type="hidden"  th:value="${id_room}" name="idr">
+                <label for="selected_date">Choisir l'heure </label>
+                <input type="datetime-local" id="myTime"
+                       name="meeting-time" value="2022-01-01T00:00"
+                       min="2018-06-07T00:00" max="2023-06-14T00:00">
+                </br>
+                <input type="hidden" id="nameroom" value="Salle de réunion" name="nameroom">
+                <input type="hidden" id="typesensor" value="capteur de présence" name="typesensor">
+                <input type="hidden" id="date1" value="2022-01-01 00:00:00" name="date1">
+                <input type="hidden" id="date2" value="2022-01-01 07:00:00" name="date2">
+                <input type="hidden" id="idroom" th:value="${id_room}" name="idr">
 
-                    <button style="margin-top: 12px" id="choix"  class="btn btn-primary">Choisir</button>
-                    </form>
-
-                <div class="calendar" id="calendar"
-                th:if="${detectP=='Presence'}">
-                    <label>Disponibilité d'une personne </br></label>
-
-                    <span  th:text="${valuesensor}"></span>
+                <button style="margin-top: 12px" id="choix" class="btn btn-primary">Lancer</button>
 
 
+                <div class="calendar" id="calendar">
+                    <label>Présence dans la pièce :  </br></label>
+                    <span id="presence" th:text="${valuesensor}"></span>
 
                 </div>
-
-
             </div>
-
 
 
         </div>
     </div>
 </div>
 
-<!--<script>-->
-<!--    let meetting = document.getElementById("choix");-->
-<!--    meetting.addEventListener('click', function () {-->
-<!--        let time = document.getElementById("meeting_time").attributes.value.value;-->
-<!--        let room = document.getElementById("nameroom").attributes.value.value;-->
-<!--        let sensor = document.getElementById("typesensor").attributes.value.value;-->
-<!--        let d1 = document.getElementById("date1").attributes.value.value;-->
-<!--        let d2 = document.getElementById("date2").attributes.value.value;-->
+<script>
 
-<!--        let url = 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2;-->
+    const toTimestamp = (strDate) => {
+        const dt = Date.parse(strDate);
+        return dt / 1000;
+    }
 
-<!--        $.ajax({-->
-<!--            url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2,-->
-<!--            type: 'GET',-->
-<!--            dataType: 'json',-->
-<!--            success: function(data) {-->
+    let button = document.getElementById("choix");
+    let idroom = document.getElementById("idroom").value;
 
-<!--                document.querySelector("#calendar label").innerHTML = "";-->
-<!--                if (data == 0) {-->
-<!--                    console.log(data)-->
-<!--                    console.log("Pas de présence")-->
-<!--                    document.querySelector("#calendar label").innerHTML += " Pas de présence ";-->
+    button.addEventListener('click', function () {
+        let myTime = document.getElementById("myTime");
+        myTime.value = new Date('2022-01-01 01:00:00').toISOString().slice(0,16);
+        let str = myTime.value;
+        let d = new Date(str);
+        let c = 60000;
+        const  interval = setInterval(function () {
+            console.log('Before:\t', d.toLocaleString())
+            d.setHours(d.getHours() + 1);
+            console.log('After:\t', d.toLocaleString())
+            myTime.value =d.toISOString().slice(0,16);
 
-<!--                }-->
-<!--                else {-->
-<!--                    document.querySelector("#calendar label").innerHTML += " Une présence ";-->
-<!--                }-->
-<!--            }-->
-<!--        })-->
-<!--    })-->
+            let datevalue = document.getElementById("myTime").value;
+            datevalue = datevalue.replace('T', ' ')
+            datevalue = datevalue.replace('/', '-').substring(0, 13);
+            console.log(datevalue)
 
-<!--</script>-->
+            // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
+
+
+            $.ajax({
+                url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+                type: 'GET',
+                dataType: 'json',
+                success: function (currentvalue) {
+                    console.log(currentvalue)
+                    if (currentvalue === 0) {
+                        document.getElementById("presence").innerHTML = 'Non'
+                        console.log("Absence")
+                    } else {
+                        console.log("Présence")
+                        document.getElementById("presence").innerHTML = 'Oui'
+                    }
+                }
+            })
+            c = c - 2500;
+            if (c === 0) {
+                console.log("stop");
+                clearInterval(interval);
+            }
+        }, 2500);
+    })
+
+</script>
 
 </body>
 </html>

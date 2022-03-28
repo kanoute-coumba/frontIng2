@@ -130,12 +130,12 @@
                                 class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
 
-                        <td th:text="${equipment.statut}"></td>
+                        <td th:text="${equipment.statut}" th:id="statut+${equipment.id_equipment}"></td>
                         <td th:text="${equipment.type_mode}"></td>
-                        <td th:text="${equipment.value}">
-                            <div th:if="${equipment.type} == 'lampe'">
-                                <span th:text="lx"></span>
-                            </div>
+                        <td th:text="${equipment.value}" th:id="value+${equipment.id_equipment}">
+<!--                            <div th:if="${equipment.type} == 'lampe'">-->
+<!--                                <span th:text="lx"></span>-->
+<!--                            </div>-->
                         </td>
                         <td class="bouton">
                             <div th:if="${equipment.type} == 'lampe'">
@@ -203,19 +203,14 @@
                        name="meeting-time" value="2022-01-01T00:00"
                        min="2018-06-07T00:00" max="2023-06-14T00:00">
                 </br>
-                <input type="hidden" id="nameroom" value="Salle de réunion" name="nameroom">
-                <input type="hidden" id="typesensor" value="capteur de présence" name="typesensor">
-                <input type="hidden" id="date1" value="2022-01-01 00:00:00" name="date1">
-                <input type="hidden" id="date2" value="2022-01-01 07:00:00" name="date2">
-                <input type="hidden" id="idroom" th:value="${id_room}" name="idr">
 
+                <input type="hidden" id="idroom" th:value="${id_room}" name="idr">
                 <button style="margin-top: 12px" id="choix" class="btn btn-primary">Lancer</button>
 
 
                 <div class="calendar" id="calendar">
                     <label>Présence dans la pièce :  </br></label>
                     <span id="presence" th:text="${valuesensor}"></span>
-
                 </div>
             </div>
 
@@ -236,15 +231,15 @@
 
     button.addEventListener('click', function () {
         let myTime = document.getElementById("myTime");
-        myTime.value = new Date('2022-01-01 01:00:00').toISOString().slice(0,16);
+        myTime.value = new Date('2022-01-01 01:00:00').toISOString().slice(0, 16);
         let str = myTime.value;
         let d = new Date(str);
         let c = 60000;
-        const  interval = setInterval(function () {
+        const interval = setInterval(function () {
             console.log('Before:\t', d.toLocaleString())
             d.setHours(d.getHours() + 1);
             console.log('After:\t', d.toLocaleString())
-            myTime.value =d.toISOString().slice(0,16);
+            myTime.value = d.toISOString().slice(0, 16);
 
             let datevalue = document.getElementById("myTime").value;
             datevalue = datevalue.replace('T', ' ')
@@ -276,6 +271,71 @@
             }
         }, 2500);
     })
+
+
+
+
+    button.addEventListener('click', function () {
+        let myTime = document.getElementById("myTime");
+        myTime.value = new Date('2022-01-01 01:00:00').toISOString().slice(0, 16);
+        let str = myTime.value;
+        let d = new Date(str);
+        let c = 60000;
+        const interval = setInterval(function () {
+            console.log('Before:\t', d.toLocaleString())
+            d.setHours(d.getHours() + 1);
+            console.log('After:\t', d.toLocaleString())
+            myTime.value = d.toISOString().slice(0, 16);
+
+            let datehours = document.getElementById("myTime").value;
+            datehours = datehours.replace('T', ' ')
+            datehours = datehours.replace('/', '-')
+            datehours += ':00'
+
+            console.log(datehours)
+
+            // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
+            // http://localhost:9000/updateAutoEquip?meeting_time=2022-01-01 08:00
+
+
+            $.ajax({
+                url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours,
+                type: 'GET',
+                dataType: 'json',
+                success: function (currentdate) {
+                    console.log(currentdate)
+
+                }
+            })
+            c = c - 2500;
+            if (c === 0) {
+                console.log("stop");
+                clearInterval(interval);
+            }
+            $.ajax({
+                //http://localhost:9000/equipmentBYRoom/12
+                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    console.log(data);
+                    for (let i = 0; i < data.length; i++) {
+                        document.getElementById("statut"+data[i].id_equipment).innerHTML = data[i].statut;
+                        document.getElementById("value"+data[i].id_equipment).innerHTML = data[i].value;
+                    }
+                }
+            })
+
+        }, 2500);
+    })
+
+
+
+
+
+
+
 
 </script>
 

@@ -9,9 +9,24 @@ public class Users {
     private String username;
     private String right_layer;
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String type;
+
+    public Users(int user_id, String username, String right_layer,String type) {
+        this.user_id = user_id;
+        this.username = username;
+        this.right_layer = right_layer;
+        this.type=type;
+    }
+
     public int getUser_id() {
         return user_id;
     }
+
+    public String getType(){return type;}
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 @Service
 public class UsersService {
 
-    @Autowired
     private UsersProxy usersProxy = new UsersProxy();
 
     public Iterable<Users> getUsers() {

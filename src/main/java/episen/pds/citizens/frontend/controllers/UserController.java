@@ -2,19 +2,23 @@ package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Login;
 import episen.pds.citizens.frontend.model.Users;
+import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.service.UsersService;
+import episen.pds.citizens.frontend.service.architectureService.BuildingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 @Controller
 public class UserController {
     private static final Logger logger = Logger.getLogger(UserController.class.getName());
     private final UsersService usersService = new UsersService();
+    private final BuildingService buildingService = new BuildingService();
 
     @PostMapping("/userName")
     public String getUserByUserName(@ModelAttribute Login username, Model model){
@@ -29,6 +33,13 @@ public class UserController {
         }
         model.addAttribute("user",users);
         if(users.getType().equals("Habitant")){
+            ArrayList<Building> buildingIterable = buildingService.getBuildingByIdUser(users.getUser_id());
+            if(buildingIterable.size()==1){
+                model.addAttribute("house",buildingIterable.get(0));
+            }
+            else{
+            model.addAttribute("buildingIterable",buildingIterable);
+            }
             return "homeResident";
         }
         if(users.getType().equals("Service Généraux")){

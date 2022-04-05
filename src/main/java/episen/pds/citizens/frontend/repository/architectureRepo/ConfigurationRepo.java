@@ -27,7 +27,7 @@ public class ConfigurationRepo {
 
     public Iterable<Configuration> getAllConfigurations() {
         ResponseEntity<Iterable<Configuration>> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/configurations", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
+                restTemplate.exchange(customProperties.getApiLocalArchitectureUrl() + "/configurations", HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
         return responseEntity.getBody();
     }
 

@@ -1,6 +1,5 @@
 package episen.pds.citizens.frontend.controllers;
 
-
 import episen.pds.citizens.frontend.service.architectureService.BuildingService;
 import episen.pds.citizens.frontend.service.architectureService.ConfigurationService;
 import episen.pds.citizens.frontend.service.architectureService.FloorService;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 public class ArchitectureController {
@@ -95,7 +93,7 @@ public class ArchitectureController {
 
     @GetMapping("/myConfigurations")
     public String getMyConfigurations(Model model) {
-//        model.addAttribute("configurations", configurationService.getAllConfigurations());
+        model.addAttribute("configurations", configurationService.getAllConfigurations());
         return "architectureTemplates/configurationTemplates/configuration-saved";
     }
 

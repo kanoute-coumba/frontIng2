@@ -59,7 +59,6 @@
             text-align: center;
             background-color: #A4A4A4;
             height: 130px;
-            /*margin-left: 75px;*/
             margin-top: 37%;
 
         }
@@ -82,7 +81,8 @@
                         <th style="vertical-align: middle" scope="col">Equipements</th>
                         <th style="vertical-align: middle" scope="col">Statut</th>
                         <th style="vertical-align: middle" scope="col">Mode équipement</th>
-                        <th style="vertical-align: middle" scope="col">Intensité</th>
+                        <th style="vertical-align: middle" scope="col">Puissance</th>
+                        <th style="vertical-align: middle" scope="col">Unité</th>
                         <th style="vertical-align: middle; width: 250px" scope="col">Configuration</th>
                     </tr>
                     </thead>
@@ -132,11 +132,39 @@
 
                         <td th:text="${equipment.statut}" th:id="statut+${equipment.id_equipment}"></td>
                         <td th:text="${equipment.type_mode}"></td>
-                        <td th:text="${equipment.value}" th:id="value+${equipment.id_equipment}">
-                            <!--                            <div th:if="${equipment.type} == 'lampe'">-->
-                            <!--                                <span th:text="lx"></span>-->
-                            <!--                            </div>-->
+                        <td th:text="${equipment.value}" th:id="value+${equipment.id_equipment}"></td>
+                        <td th:if="${equipment.type} == 'lampe'">
+                            <span>lux</span>
                         </td>
+                        <td th:if="${equipment.type} == 'radiateur'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'climatisation'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'télévision'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'store'">
+                            <span>m/s</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'fenêtre'">
+                            <span>m/s</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'lave-vaiselle'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'table-cuisson'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'réfrigérateur'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'four'">
+                            <span>Watt</span>
+                        </td>
+
+
                         <td class="bouton">
                             <div th:if="${equipment.type} == 'lampe'">
                                 <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"

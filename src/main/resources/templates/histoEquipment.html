@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique équipement</title>
+</head>
+
+<body>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<table id="test" border="1" class="table table-striped table responsive-md">
+    <thead>
+    <tr>
+        <th>numéro de l'équipement</th>
+        <th>numéro de la consommation</th>
+        <th>date de la consommation</th>
+        <th>consommation de l'équipement</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="conso: ${consoIterable}">
+        <td><span th:text="${conso.id_equipment}"> numéro de l'équipement </span></td>
+        <td><span th:text="${conso.id_consumption}"> numéro de la consommation </span></td>
+        <td><span th:text="${conso.date_time}"> date de la consommation </span></td>
+        <td><span th:text="${conso.value}"> consommation de l'équipement </span></td>
+
+    </tr>
+    </tbody>
+</table>
+
+<div>saluuuuuuut</div>
+<script th:inline="javascript">
+    var conso = [[${consoIterable}]];
+</script>
+<script type="text/javascript" th:src="@{/graphConso.js}"></script>
+</body>
+</html>

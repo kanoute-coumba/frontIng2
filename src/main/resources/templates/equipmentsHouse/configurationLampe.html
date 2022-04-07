@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuration d'une Lampe</title>
+    <link rel="stylesheet" type="text/css" href="configurationEquip.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <style>
+        .test {
+            margin-top: 10%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 160px;
+
+        }
+    </style>
+
+</head>
+<body>
+<nav th:insert="~{fragment :: navbar}"></nav>
+<div class="test">
+    Configuration de la<span th:text="${nameEquipment}"></span>
+
+    <div th:if="${nameEquipment} == 'lampe'"><a th:href="@{'/Chambre/Lampe?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'télévision'"><a th:href="@{'/Chambre/Television?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'table-cuisson'"><a th:href="@{'/Cuisine/TableCuisson?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'réfrigérateur'"><a th:href="@{'/Cuisine/Refrigerateur?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'fenêtre'"><a th:href="@{'/fenetre?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'radiateur'"><a th:href="@{'/radiateur?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+
+
+    <form method="get" action="/formAuto" >
+        <input type="hidden" th:value="${id_equipment}" name="id_equipment">
+        <input type="hidden" value="Automatique" name="type_mode">
+        <input type="submit" class="btn btn-dark" value="Automatique"/>
+    </form>
+
+
+</div>
+
+</body>
+</html>

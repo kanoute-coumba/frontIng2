@@ -23,11 +23,16 @@
                 <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="/formUser">Gérer son domicile</a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="/Monitor">Monitorer</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/listRooms">Configurer</a>
             </li>
+
+
             <!--<li class="nav-item active">
                 <a class="nav-link" href="/configManual">Mes Equipements</a>
             </li>-->
@@ -61,7 +66,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/buildingsPatch">Exploitation de la SmartGrid</a>
+                <a class="nav-link" href="/smartgrid">SmartGrid</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/municipality">Activité de la SmartCity</a>
@@ -90,11 +95,11 @@
         </thead>
         <tbody>
         <tr th:each="test : ${tests}">
-            <td th:text="${test.id}"></td>
+<!--            <td th:text="${test.id}"></td>-->
             <td th:text="${test.firstname}"></td>
             <td th:text="${test.lastname}"></td>
             <td>
-                <a th:href="@{/deleteTest/{id}(id=${test.id})}" class="btn btn-link btn-sm mb-3"> Supprimer </a></td>
+<!--                <a th:href="@{/deleteTest/{id}(id=${test.id})}" class="btn btn-link btn-sm mb-3"> Supprimer </a></td>-->
 
         </tr>
 

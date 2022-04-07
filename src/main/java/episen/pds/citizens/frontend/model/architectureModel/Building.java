@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class Building {
+
     private Integer id_building;
     private String address;
     private String name_building;
@@ -19,5 +20,14 @@ public class Building {
         this.type_building = type_building;
     }
 
+    @Override
+    public String toString() {
+        return "Building{" +
+                "id_building=" + id_building +
+                ", address='" + address + '\'' +
+                ", name_building='" + name_building + '\'' +
+                ", type_building='" + type_building + '\'' +
+                '}';
+    }
 }
 

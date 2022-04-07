@@ -37,6 +37,7 @@ public class CustomProperties {
         return apiLocalArchitectureUrl;
     }
 
+
     private String apiUrl= "http://172.31.249.1:9000";
     //private String apiUrl= "http://localhost:9000";
     private String apiLocalUrl ="http://localhost:9000";

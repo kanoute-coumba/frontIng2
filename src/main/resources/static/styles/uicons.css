@@ -1,8 +1,8 @@
 @font-face {
 font-family: "uicons";
-src: url("../fonts/uicons.eot#iefix") format("embedded-opentype"),
-url("../fonts/uicons.woff2") format("woff2"),
-url("../fonts/uicons.woff") format("woff");
+src: url("../fonts/uicons/uicons.eot#iefix") format("embedded-opentype"),
+url("../fonts/uicons/uicons.woff2") format("woff2"),
+url("../fonts/uicons/uicons.woff") format("woff");
 }
 
     i[class^="fi-rr-"]:before, i[class*=" fi-rr-"]:before, span[class^="fi-rr-"]:before, span[class*="fi-rr-"]:before {

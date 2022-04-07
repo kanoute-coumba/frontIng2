@@ -6,8 +6,8 @@ import java.util.Date;
 
 @Data
 public class Consumption {
-    private int id;
+    private int id_consumption;
     private Double value;
-    private Date date_time;
+    private int date_time;
     private int id_equipment;
 }

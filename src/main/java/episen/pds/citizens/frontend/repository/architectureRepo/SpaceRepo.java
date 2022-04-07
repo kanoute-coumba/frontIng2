@@ -19,17 +19,9 @@ public class SpaceRepo {
     @Autowired
     private CustomProperties customProperties;
 
-    // Not yet
-    public Space getSpace(int id_space) {
+    public Space getSpaceByName(String name_space) {
         ResponseEntity<Space> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/space" + id_space, HttpMethod.GET, null, Space.class);
-        return responseEntity.getBody();
-    }
-
-    // Not yet
-    public Iterable<Space> getSpacesOfBuilding(String name_building) {
-        ResponseEntity<Iterable<Space>> responseEntity =
-                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/spaces_of_building/" + name_building, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
+                restTemplate.exchange(customProperties.getApiArchitectureUrl() + "/spaces/" + name_space, HttpMethod.GET, null, Space.class);
         return responseEntity.getBody();
     }
 

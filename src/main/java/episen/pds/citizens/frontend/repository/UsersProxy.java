@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 @Slf4j
@@ -37,6 +38,23 @@ public class UsersProxy {
 
         logger.info("Get Test call " + response.getStatusCode().toString());
 
+        return response.getBody();
+    }
+    public static ArrayList<Users> getUsersByUserName(String uName) {
+        logger.info("proxy getUsersByUserName");
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/usersName="+uName;
+        logger.info(getUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        logger.info("avant ResponseEntity");
+        ResponseEntity<ArrayList<Users>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        logger.info("avant le retour du proxy");
         return response.getBody();
 
 

@@ -10,7 +10,6 @@ public class Building {
     private String address;
     private String name_building;
     private String type_building;
-    private Integer id_owner;
 
     public Building() {}
 
@@ -21,5 +20,14 @@ public class Building {
         this.type_building = type_building;
     }
 
+    @Override
+    public String toString() {
+        return "Building{" +
+                "id_building=" + id_building +
+                ", address='" + address + '\'' +
+                ", name_building='" + name_building + '\'' +
+                ", type_building='" + type_building + '\'' +
+                '}';
+    }
 }
 

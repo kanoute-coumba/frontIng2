@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <link rel="stylesheet" th:href="@{/styles/global.css}"/>
+    <title>Historique du batiment</title>
+</head>
+
+<body>
+
+<noscript>
+    <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+        enabled. Please enable Javascript and reload this page!</h2>
+</noscript>
+<header>
+    <div class="navbar center-all">
+        <div class="center-all">
+            <img th:src="@{/image/icon.png}" class="icon" alt="" src=""/>
+            <h1 class="name">Citizens</h1>
+        </div>
+        <a th:href="@{/}">
+            <i class="fi fi-rr-apps"></i>
+        </a>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Accueil</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<!--
+<table id="test" border="1" class="table table-striped table responsive-md">
+    <thead>
+    <th>numéro de l'équipement</th>
+    <th>numéro de la consommation</th>
+    <th>date de la consommation</th>
+    <th>consommation de l'équipement</th>
+    </thead>
+    <tbody>
+    <tr th:each="conso: ${consoIterable}">
+        <td><span th:text="${conso.id_equipment}"> numéro de l'équipement </span></td>
+        <td><span th:text="${conso.id_consumption}"> numéro de la consommation </span></td>
+        <td><span th:text="${conso.date_time}"> date de la consommation </span></td>
+        <td><span th:text="${conso.value}"> consommation de l'équipement </span></td>
+
+    </tr>
+    </tbody>
+</table> -->
+
+<script th:inline="javascript">
+    var conso = [[${consoIterable}]];
+</script>
+<script type="text/javascript" th:src="@{/graphConso.js}"></script>
+</body>
+</html>

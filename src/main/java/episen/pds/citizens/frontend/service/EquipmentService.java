@@ -58,8 +58,8 @@ public class EquipmentService {
         System.out.println(type_mode + "ttttp");
     }
 
-    public String calandarwithtime (String meeting_time, String nameroom, String typesensor, String date1, String date2) {
-        return EquipmentProxy.calandarwithtime(meeting_time, nameroom, typesensor, date1, date2);
+    public String calandarwithtime (String meeting_time) {
+        return EquipmentProxy.calandarwithtime(meeting_time);
     }
 
 }

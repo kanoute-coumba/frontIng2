@@ -2,6 +2,7 @@ package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
 import episen.pds.citizens.frontend.model.ChoiceAlgoForm;
+import episen.pds.citizens.frontend.model.HistoricalProductionDate;
 import episen.pds.citizens.frontend.model.MixEn;
 import episen.pds.citizens.frontend.model.MixEnBySite;
 import lombok.extern.slf4j.Slf4j;
@@ -119,6 +120,75 @@ public class MixEnProxy {
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<HashMap<String, List<Double>>>() {
+                }
+        );
+
+        return response.getBody();
+
+    }
+
+    public HashMap<String, List<Double>> getHistoricalProductionByEnergy(){
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/graphDataHistoricalProductionEnergy";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<HashMap<String, List<Double>>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<HashMap<String, List<Double>>>() {
+                }
+        );
+
+        return response.getBody();
+
+    }
+
+
+    public List<Double> getHistoSolar(){
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/graphHSolar";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List<Double>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Double>>() {
+                }
+        );
+
+        return response.getBody();
+
+    }
+
+    public List<Double> getHistoWind(){
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/graphHWind";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List<Double>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Double>>() {
+                }
+        );
+
+        return response.getBody();
+
+    }
+
+    public List<Double> getHistoHydraulic(){
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/graphHHydraulic";
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List<Double>> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Double>>() {
                 }
         );
 

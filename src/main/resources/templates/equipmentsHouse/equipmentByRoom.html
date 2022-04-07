@@ -54,16 +54,14 @@
             text-align: center;
         }
 
-        .calendar{
+        .calendar {
             border-radius: 10px;
             text-align: center;
             background-color: #A4A4A4;
             height: 130px;
-            /*margin-left: 75px;*/
             margin-top: 37%;
 
         }
-
 
 
     </style>
@@ -83,7 +81,8 @@
                         <th style="vertical-align: middle" scope="col">Equipements</th>
                         <th style="vertical-align: middle" scope="col">Statut</th>
                         <th style="vertical-align: middle" scope="col">Mode équipement</th>
-                        <th style="vertical-align: middle" scope="col">Valeur équipement</th>
+                        <th style="vertical-align: middle" scope="col">Puissance</th>
+                        <th style="vertical-align: middle" scope="col">Unité</th>
                         <th style="vertical-align: middle; width: 250px" scope="col">Configuration</th>
                     </tr>
                     </thead>
@@ -131,13 +130,41 @@
                                 class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
 
-                        <td th:text="${equipment.statut}"></td>
+                        <td th:text="${equipment.statut}" th:id="statut+${equipment.id_equipment}"></td>
                         <td th:text="${equipment.type_mode}"></td>
-                        <td th:text="${equipment.value}">
-                            <div th:if="${equipment.type} == 'lampe'">
-                                <span th:text="lx"></span>
-                            </div>
+                        <td th:text="${equipment.value}" th:id="value+${equipment.id_equipment}"></td>
+                        <td th:if="${equipment.type} == 'lampe'">
+                            <span>lux</span>
                         </td>
+                        <td th:if="${equipment.type} == 'radiateur'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'climatisation'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'télévision'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'store'">
+                            <span>m/s</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'fenêtre'">
+                            <span>m/s</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'lave-vaiselle'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'table-cuisson'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'réfrigérateur'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'four'">
+                            <span>Watt</span>
+                        </td>
+
+
                         <td class="bouton">
                             <div th:if="${equipment.type} == 'lampe'">
                                 <a th:href="@{'/Chambre/Lampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
@@ -198,71 +225,170 @@
             </div>
 
             <div class="calendar">
-                <form method="post" action="/calendarwithtime">
 
-                    <label for="meeting_time">Choose a time for your appointment:</label>
-                    <input type="datetime-local" id="meeting_time" name="meeting_time" value="2022-01-01T00:30" min="2018-06-12T19:30"
-                           max="2023-06-12T19:30"> </br>
-                    <input type="hidden" id="nameroom" value="Salle de réunion" name="nameroom">
-                    <input type="hidden" id="typesensor" value="capteur de présence" name="typesensor">
-                    <input type="hidden" id="date1" value="2022-01-01 00:00:00" name="date1">
-                    <input type="hidden" id="date2" value="2022-01-01 07:00:00" name="date2">
-                    <input type="hidden"  th:value="${id_room}" name="idr">
+                <label for="myTime">Choisir l'heure </label>
+                <input type="datetime-local" id="myTime"
+                       name="meeting-time" value="2022-01-01T00:00"
+                       min="2018-06-07T00:00" max="2023-06-14T00:00">
+                </br>
 
-                    <button style="margin-top: 12px" id="choix"  class="btn btn-primary">Choisir</button>
-                    </form>
-
-                <div class="calendar" id="calendar"
-                th:if="${detectP=='Presence'}">
-                    <label>Disponibilité d'une personne </br></label>
-
-                    <span  th:text="${valuesensor}"></span>
+                <input type="hidden" id="idroom" th:value="${id_room}" name="idr">
+                <button style="margin-top: 12px" id="choix" class="btn btn-primary">Lancer</button>
 
 
-
+                <div class="calendar" id="calendar">
+                    <label>Présence dans la pièce :  </br></label>
+                    <span id="presence" th:text="${valuesensor}"></span>
                 </div>
-
-
             </div>
-
 
 
         </div>
     </div>
 </div>
 
-<!--<script>-->
-<!--    let meetting = document.getElementById("choix");-->
-<!--    meetting.addEventListener('click', function () {-->
-<!--        let time = document.getElementById("meeting_time").attributes.value.value;-->
-<!--        let room = document.getElementById("nameroom").attributes.value.value;-->
-<!--        let sensor = document.getElementById("typesensor").attributes.value.value;-->
-<!--        let d1 = document.getElementById("date1").attributes.value.value;-->
-<!--        let d2 = document.getElementById("date2").attributes.value.value;-->
+<script>
 
-<!--        let url = 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2;-->
+    const toTimestamp = (strDate) => {
+        const dt = Date.parse(strDate);
+        return dt / 1000;
+    }
 
-<!--        $.ajax({-->
-<!--            url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + time + '&nameroom=' + room + '&typesensor=' + sensor + '&date1=' + d1 + '&date2='+d2,-->
-<!--            type: 'GET',-->
-<!--            dataType: 'json',-->
-<!--            success: function(data) {-->
+    let button = document.getElementById("choix");
+    let idroom = document.getElementById("idroom").value;
 
-<!--                document.querySelector("#calendar label").innerHTML = "";-->
-<!--                if (data == 0) {-->
-<!--                    console.log(data)-->
-<!--                    console.log("Pas de présence")-->
-<!--                    document.querySelector("#calendar label").innerHTML += " Pas de présence ";-->
+    button.addEventListener('click', function () {
+        let myTime = document.getElementById("myTime");
+        myTime.value = new Date('2022-01-01 01:00:00').toISOString().slice(0, 16);
+        let str = myTime.value;
+        let d = new Date(str);
+        let c = 60000;
+        const interval = setInterval(function () {
+            console.log('Before:\t', d.toLocaleString())
+            d.setHours(d.getHours() + 1);
+            console.log('After:\t', d.toLocaleString())
+            myTime.value = d.toISOString().slice(0, 16);
 
-<!--                }-->
-<!--                else {-->
-<!--                    document.querySelector("#calendar label").innerHTML += " Une présence ";-->
-<!--                }-->
-<!--            }-->
-<!--        })-->
-<!--    })-->
+            let datevalue = document.getElementById("myTime").value;
+            datevalue = datevalue.replace('T', ' ')
+            datevalue = datevalue.replace('/', '-').substring(0, 13);
+            console.log(datevalue)
 
-<!--</script>-->
+            // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
+            http://172.31.249.1:9000/room?floor=
+
+
+            $.ajax({
+                url: 'http://172.31.249.1:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+                type: 'GET',
+                dataType: 'json',
+                success: function (currentvalue) {
+                    console.log(currentvalue)
+                    if (currentvalue === 0) {
+                        document.getElementById("presence").innerHTML = 'Non'
+                        console.log("Absence")
+                    } else {
+                        console.log("Présence")
+                        document.getElementById("presence").innerHTML = 'Oui'
+                    }
+                }
+            })
+            c = c - 2500;
+            if (c === 0) {
+                console.log("stop");
+                clearInterval(interval);
+            }
+
+
+        }, 2500);
+    })
+
+
+    button.addEventListener('click', function () {
+        let myTime = document.getElementById("myTime");
+        myTime.value = new Date('2022-01-01 01:00:00').toISOString().slice(0, 16);
+        let str = myTime.value;
+        let d = new Date(str);
+        let c = 60000;
+        const interval = setInterval(function () {
+
+            console.log('Before:\t', d.toLocaleString())
+            d.setHours(d.getHours() + 1);
+            console.log('After:\t', d.toLocaleString())
+            myTime.value = d.toISOString().slice(0, 16);
+
+            // let datevalue = document.getElementById("myTime").value;
+            // datevalue = datevalue.replace('T', ' ')
+            // datevalue = datevalue.replace('/', '-').substring(0, 13);
+            // console.log(datevalue)
+
+            let datehours = document.getElementById("myTime").value;
+            datehours = datehours.replace('T', ' ')
+            datehours = datehours.replace('/', '-')
+            datehours += ':00'
+
+            console.log(datehours)
+
+            // $.ajax({
+            //     url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+            //     type: 'GET',
+            //     dataType: 'json',
+            //     success: function (currentvalue) {
+            //         console.log(currentvalue)
+            //         if (currentvalue === 0) {
+            //             document.getElementById("presence").innerHTML = 'Non'
+            //             console.log("Absence")
+            //         } else {
+            //             console.log("Présence")
+            //             document.getElementById("presence").innerHTML = 'Oui'
+            //         }
+            //     }
+            // })
+
+            // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
+            // http://localhost:9000/updateAutoEquip?meeting_time=2022-01-01 08:00
+
+
+            $.ajax({
+                url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours,
+                type: 'GET',
+                dataType: 'json',
+                success: function (currentdate) {
+                    console.log(currentdate)
+
+                }
+            })
+            c = c - 2500;
+            if (c === 0) {
+                console.log("stop");
+                clearInterval(interval);
+            }
+            $.ajax({
+                //http://localhost:9000/equipmentBYRoom/12
+                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    console.log(data);
+                    for (let i = 0; i < data.length; i++) {
+                        console.log("lelelelellelelelelel");
+                        document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
+                        document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
+                    }
+                }
+            })
+
+        }, 2500);
+
+    })
+
+
+
+
+
+
+</script>
 
 </body>
 </html>

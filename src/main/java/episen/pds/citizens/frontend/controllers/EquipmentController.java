@@ -20,15 +20,11 @@ public class EquipmentController {
 
     @GetMapping("/getIdrEquipmentRoom/{idr}")
     public String getEquipmentByRoom(@PathVariable("idr") final int idr, Model model) {
-        System.out.println(" dna s cette méthode");
         Iterable<Map<String, String>> iterable = equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
         model.addAttribute("id_room", idr);
-        System.out.println(nameRoom + "liste equipement");
-        System.out.println(iterable.toString() + "n");
-
         return "equipmentsHouse/equipmentByRoom";
     }
 
@@ -175,29 +171,24 @@ public class EquipmentController {
     }
 
     @PostMapping("/calendarwithtime")
-    public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time, @RequestParam("nameroom") String nameroom, @RequestParam("typesensor") String typesensor, @RequestParam("date1") String date1, @RequestParam("date2") String date2, Model model, @RequestParam("idr")  int idr) {
-        System.out.println(equipmentService.calandarwithtime(meeting_time, nameroom, typesensor, date1, date2));
+    public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time, Model model, @RequestParam("idr")  int idr) {
+        System.out.println(equipmentService.calandarwithtime(meeting_time));
+        model.addAttribute("mytime", meeting_time);
 
 
-            String valuesensor =  equipmentService.calandarwithtime(meeting_time, nameroom, typesensor, date1, date2);
-        if(valuesensor.equals("0")) {
-            model.addAttribute("valuesensor", "Pas de présence");
-        } else {
-            model.addAttribute("valuesensor","Présence");
-        }
 
 
-        System.out.println(" dna s cette méthode");
+
+
         Iterable<Map<String, String>> iterable = equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
         model.addAttribute("id_room", idr);
-        System.out.println(nameRoom + "liste equipement");
-        System.out.println(iterable.toString() + "n");
 
-        String detectpresence = "Presence" ;
-        model.addAttribute("detectP", detectpresence);
+
+
+
 
         return "equipmentsHouse/equipmentByRoom";
 

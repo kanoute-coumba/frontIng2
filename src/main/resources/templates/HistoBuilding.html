@@ -24,24 +24,38 @@
     </div>
 </header>
 
-<form id="first" action="#" th:action="@{/ConsumptionByIdBuilding/}" th:object="${objectForModel}"  method="post">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Accueil</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<form id="first" action="#" th:action="@{/ConsumptionByIdBuilding/{idb}(idb=${house.id_building})}" th:object="${objectForModel}"  method="post">
     <h1>Historique</h1>
     <div id="container">
         <label><b>Date de début de l'historique</b></label>
         <label>
-            <object name="dateB" th:text="${objectForModel.getDateB().getDate()}"></object>
-            <input name="objectForModel" placeholder="AAAA/MM/JJ/HH/mm/ss" required type="text" th:field="${dateB}">
+            <input name="dateB" placeholder="AAAA/MM/JJ/HH/mm/ss" required type="text" th:field="*{dateB}">
         </label>
     </div>
     <div id="container2">
         <label><b>Date de fin de l'historique</b></label>
         <label>
-            <object name="dateE" th:text="${objectForModel.getDateE().getDate()}"></object>
-            <input name="dateE" placeholder="AAAA/MM/JJ/HH/mm/ss" required type="text" th:field="${dateE}">
+            <input name="dateE" placeholder="AAAA/MM/JJ/HH/mm/ss" required type="text" th:field="*{dateE}">
         </label>
     </div>
     <input type="submit" id='submit' value='Confirmer' >
 </form>
+
+<script th:inline="javascript">
+    var obj = [[${objectForModel}]];
+    var house = [[${house}]];
+    obj.house=house;
+</script>
 
 </body>
 </html>

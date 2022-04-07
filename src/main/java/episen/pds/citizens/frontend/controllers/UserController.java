@@ -40,8 +40,7 @@ public class UserController {
             if(buildingIterable.size()==1){
                 Building b = buildingIterable.get(0);
                 model.addAttribute("house",b);
-                ArrayList<Floor> floorArrayList = floorService.getFloorByIdBuilding(b.getId_building());
-                model.addAttribute("floorArrayList",floorArrayList);
+                logger.info(b+"");
             }
             else{
                 model.addAttribute("buildingIterable",buildingIterable);}

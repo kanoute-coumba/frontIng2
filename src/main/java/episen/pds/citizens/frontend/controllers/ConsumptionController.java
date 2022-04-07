@@ -6,6 +6,7 @@ import episen.pds.citizens.frontend.model.Login;
 import episen.pds.citizens.frontend.model.ObjectForModel;
 import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.service.ConsumptionService;
+import episen.pds.citizens.frontend.service.architectureService.BuildingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 public class ConsumptionController {
     private static final Logger logger = Logger.getLogger(ConsumptionController.class.getName());
     private final ConsumptionService consumptionService = new ConsumptionService();
+    private final BuildingService buildingService = new BuildingService();
 
     @GetMapping("/ConsumptionByIdEquipment/{ide}")
     public String getConsumptionOfEquipment(Model model, @PathVariable("ide") int ide) {
@@ -67,26 +69,36 @@ public class ConsumptionController {
         return "historicBuilding";
     }
 
-    @GetMapping("/HistoBuilding")
-    public String HistoBuilding(Model model, @ModelAttribute Building house){
+    @GetMapping("/HistoBuilding/{idu}")
+    public String HistoBuilding(Model model, @PathVariable("idu") int idu){
         logger.info("HistoBuilding");
+        ArrayList<Building> buildingIterable = buildingService.getBuildingByIdUser(idu);
+        Building house = new Building();
+        if(buildingIterable.size()==1){
+            house = buildingIterable.get(0);
+            model.addAttribute("house",house);
+        }
         DateBeginOrEnd dateBegin = new DateBeginOrEnd();
         DateBeginOrEnd dateEnd = new DateBeginOrEnd();
         ObjectForModel objectForModel = new ObjectForModel();
         objectForModel.setDateB(dateBegin);
         objectForModel.setDateE(dateEnd);
         objectForModel.setHouse(house);
+        logger.info(house+"");
         model.addAttribute("objectForModel",objectForModel);
         model.addAttribute("dateE",dateEnd);
         model.addAttribute("dateB",dateBegin);
         return "HistoBuilding";
     }
-    @PostMapping("/ConsumptionByIdBuilding/")
+    @PostMapping("/ConsumptionByIdBuilding/{idb}")
     public String HistoConsumptionBuilding(Model model,
-                                           @ModelAttribute ObjectForModel objectForModel){
+                                           @ModelAttribute ObjectForModel objectForModel,
+                                           @PathVariable("idb") int idb){
+        logger.info(objectForModel.getDateB()+"");
+        logger.info(objectForModel.getDateB().toLong()+"");
         ArrayList<Consumption> consumptionIterable =
                 consumptionService.getConsumptionByBuildingBetweenTwoDate(
-                        objectForModel.getHouse().getId_building(),
+                        idb,
                         objectForModel.getDateB().toLong(),
                         objectForModel.getDateE().toLong());
         model.addAttribute("consoIterable", consumptionIterable);

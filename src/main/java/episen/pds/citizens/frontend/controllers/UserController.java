@@ -65,6 +65,7 @@ public class UserController {
     public String Login(Model model){
         Login username = new Login();
         model.addAttribute("username",username);
+        logger.info("login d'un utilisateur");
         return "login";
     }
 }

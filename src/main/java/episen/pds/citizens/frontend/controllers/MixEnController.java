@@ -1,9 +1,6 @@
 package episen.pds.citizens.frontend.controllers;
 
-import episen.pds.citizens.frontend.model.ChoiceAlgoForm;
-import episen.pds.citizens.frontend.model.MixEn;
-import episen.pds.citizens.frontend.model.MixEnBySite;
-import episen.pds.citizens.frontend.model.SimulationEconomicCost;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.service.MixEnService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -149,5 +146,26 @@ public class MixEnController {
 
         return "graphEnvironmentalCost";
     }
+
+    @GetMapping("/GraphHP")
+    public String getHistoricalProductionByEnergy(Model model){
+        //HashMap<String,List<Double>> graphData = mixEnService.getHistoricalProductionByEnergy();
+        //model.addAttribute("solaire", graphData.get("solaire"));
+        //model.addAttribute("eolienne", graphData.get("eolienne"));
+        //model.addAttribute("hydraulique", graphData.get("hydraulique"));
+        List<Double> s = mixEnService.getHistoSolar();
+        List<Double> w = mixEnService.getHistoWind();
+        List<Double> h = mixEnService.getHistoHydraulic();
+
+        String[] abs = {"janvier","fevrier","mars","avril","mai","juin","juillet","aout","septembre","octobre","novembre","decembre"};
+        model.addAttribute("abs", abs);
+        model.addAttribute("solaire", s);
+        model.addAttribute("eolienne", w);
+        model.addAttribute("hydraulique", h);
+
+        return "graphHistoricalProduction";
+    }
+
+
 
 }

@@ -275,10 +275,11 @@
             console.log(datevalue)
 
             // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
+            http://172.31.249.1:9000/room?floor=
 
 
             $.ajax({
-                url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+                url: 'http://172.31.249.1:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentvalue) {
@@ -349,7 +350,7 @@
 
 
             $.ajax({
-                url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours,
+                url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours,
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentdate) {
@@ -364,7 +365,7 @@
             }
             $.ajax({
                 //http://localhost:9000/equipmentBYRoom/12
-                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
+                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

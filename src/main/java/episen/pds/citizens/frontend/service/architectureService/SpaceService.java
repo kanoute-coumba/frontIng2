@@ -13,11 +13,6 @@ public class SpaceService {
     @Autowired
     private SpaceRepo spaceRepo;
 
-    // Not yet
-    public Iterable<Space> getSpacesOfBuilding(final String name_building) {
-        return spaceRepo.getSpacesOfBuilding(name_building);
-    }
-
     public Iterable<Space> getSpacesOfFloor(final String name_floor) {
         return spaceRepo.getSpacesOfFloor(name_floor);
     }
@@ -26,9 +21,8 @@ public class SpaceService {
         return spaceRepo.getSpacesOfFloorByType(name_floor,type_space);
     }
 
-    // Not yet
-    public Space getSpace(final int id_space) {
-        return spaceRepo.getSpace(id_space);
+    public Space getSpaceByName(final String name_space) {
+        return spaceRepo.getSpaceByName(name_space);
     }
 
 }

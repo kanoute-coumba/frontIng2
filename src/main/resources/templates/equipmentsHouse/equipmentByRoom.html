@@ -82,7 +82,7 @@
                         <th style="vertical-align: middle" scope="col">Equipements</th>
                         <th style="vertical-align: middle" scope="col">Statut</th>
                         <th style="vertical-align: middle" scope="col">Mode équipement</th>
-                        <th style="vertical-align: middle" scope="col">Valeur équipement</th>
+                        <th style="vertical-align: middle" scope="col">Intensité</th>
                         <th style="vertical-align: middle; width: 250px" scope="col">Configuration</th>
                     </tr>
                     </thead>
@@ -133,9 +133,9 @@
                         <td th:text="${equipment.statut}" th:id="statut+${equipment.id_equipment}"></td>
                         <td th:text="${equipment.type_mode}"></td>
                         <td th:text="${equipment.value}" th:id="value+${equipment.id_equipment}">
-<!--                            <div th:if="${equipment.type} == 'lampe'">-->
-<!--                                <span th:text="lx"></span>-->
-<!--                            </div>-->
+                            <!--                            <div th:if="${equipment.type} == 'lampe'">-->
+                            <!--                                <span th:text="lx"></span>-->
+                            <!--                            </div>-->
                         </td>
                         <td class="bouton">
                             <div th:if="${equipment.type} == 'lampe'">
@@ -269,10 +269,10 @@
                 console.log("stop");
                 clearInterval(interval);
             }
+
+
         }, 2500);
     })
-
-
 
 
     button.addEventListener('click', function () {
@@ -282,10 +282,16 @@
         let d = new Date(str);
         let c = 60000;
         const interval = setInterval(function () {
+
             console.log('Before:\t', d.toLocaleString())
             d.setHours(d.getHours() + 1);
             console.log('After:\t', d.toLocaleString())
             myTime.value = d.toISOString().slice(0, 16);
+
+            // let datevalue = document.getElementById("myTime").value;
+            // datevalue = datevalue.replace('T', ' ')
+            // datevalue = datevalue.replace('/', '-').substring(0, 13);
+            // console.log(datevalue)
 
             let datehours = document.getElementById("myTime").value;
             datehours = datehours.replace('T', ' ')
@@ -293,6 +299,22 @@
             datehours += ':00'
 
             console.log(datehours)
+
+            // $.ajax({
+            //     url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+            //     type: 'GET',
+            //     dataType: 'json',
+            //     success: function (currentvalue) {
+            //         console.log(currentvalue)
+            //         if (currentvalue === 0) {
+            //             document.getElementById("presence").innerHTML = 'Non'
+            //             console.log("Absence")
+            //         } else {
+            //             console.log("Présence")
+            //             document.getElementById("presence").innerHTML = 'Oui'
+            //         }
+            //     }
+            // })
 
             // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
             // http://localhost:9000/updateAutoEquip?meeting_time=2022-01-01 08:00
@@ -321,16 +343,16 @@
 
                     console.log(data);
                     for (let i = 0; i < data.length; i++) {
-                        document.getElementById("statut"+data[i].id_equipment).innerHTML = data[i].statut;
-                        document.getElementById("value"+data[i].id_equipment).innerHTML = data[i].value;
+                        console.log("lelelelellelelelelel");
+                        document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
+                        document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
                     }
                 }
             })
 
         }, 2500);
+
     })
-
-
 
 
 

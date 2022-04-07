@@ -108,12 +108,13 @@ public class ArchitectureController {
     }
 
     @GetMapping("/guidanceOption/display")
-    public String getDisplayGuidance(Model model, @RequestParam("floors") String name_floor) {
+    public String getDisplayGuidance(Model model, @RequestParam("floors") String name_floor, @RequestParam("spaces") String name_space) {
         model.addAttribute("design", floorService.getDesignOfFloor(name_floor));
         model.addAttribute("offices", spaceService.getSpacesOfFloorByType(name_floor, "Bureau"));
         model.addAttribute("meetingRooms", spaceService.getSpacesOfFloorByType(name_floor, "Salle de reunion"));
         model.addAttribute("individualRooms", spaceService.getSpacesOfFloorByType(name_floor, "Salle individuelle"));
         model.addAttribute("openSpaces", spaceService.getSpacesOfFloorByType(name_floor, "Espace ouvert"));
+        model.addAttribute("space", spaceService.getSpaceByName(name_space));
         return "architectureTemplates/guidanceTemplates/display-guidance";
     }
 

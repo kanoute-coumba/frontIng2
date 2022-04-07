@@ -162,7 +162,7 @@
             <div class="item-content">
                 <span style="margin-left: 10px;"></span>
                 <th:block th:each="office : ${offices}">
-                    <span style="margin: 10px" th:text="${office.name_space}"></span>-->
+                    <span style="margin: 10px" th:text="${office.name_space}"></span>
                 </th:block>
                 <span style="margin-right: 10px;"></span>
             </div>
@@ -233,7 +233,7 @@
             <div class="item-content">
                 <span style="margin-left: 10px;"></span>
                 <th:block th:each="office : ${offices}">
-                    <span style="margin: 10px" th:text="${office.name_space}"></span>-->
+                    <span style="margin: 10px" th:text="${office.name_space}"></span>
                 </th:block>
                 <span style="margin-right: 10px;"></span>
             </div>
@@ -245,6 +245,24 @@
         <br><br><br><br>
     </div>
 </div>
+
+
+<div align="center">
+    Vous devez prendre l'ascenceur numéro <span th:text="${space.prox_asc}"></span>
+    <br>
+    <div th:switch="${design}">
+        <div th:case="'1'" >
+            Ensuite traverser le couloir numéro <span th:text="${space.prox_cor1}"></span> (couloir unique)
+        </div>
+        <div th:case="'2'" >
+            Ensuite traverser le couloir numéro <span th:text="${space.prox_cor1}"></span> puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
+        </div>
+        <div th:case="'3'" >
+            Ensuite traverser le couloir numéro <span th:text="${space.prox_cor1}"></span> puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
+        </div>
+    </div>
+</div>
+
 
 <script>
     var plan0 = new Muuri('.plan0', {dragEnabled: false, layout: {vertical: true}});

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Restauration</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+<nav th:insert="~{fragment :: navbar}"></nav>
+<!-- NAV BAR -->
+
+<div class="title-page">Espaces Reservés</div>
+
+<div class="row" style="margin-top:50px">
+
+        <div class="col-sm-6">
+            <div class="liste-salle-reunion">
+                <div class="title-liste-salle">Toutes les Reservations</div>
+                <tr th:each="resa : ${ReservedSpace}">
+                <hr>
+                <div id="liste-salle-reserve">
+                    <div class="salle-element">
+                        <div class="nom-salle" th:text="${resa.name_space}" > </E></div>
+                        <div class= "menu">
+                            <div> C'est un
+                            <td th:text="${resa.type_space}"></td>
+                                 au
+                                <td th:text="${resa.id_floor}"></td> em etage
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr class="hr-liste-salle">
+                    <div class="action-salle">
+                        <a href="/cafeteria_reservation/1" class="btn btn-link btn-sm mb-3">
+                            <button type="button" class="btn btn-primary">Voir les creneaux restants pour cet espace </button>
+                        </a>
+                    </div>
+                </div>
+                </tr>
+            </div>
+        </div>
+
+</div>
+
+
+
+<script type="text/javascript" th:src="@{/salles_reunion_js.js}" th:inline="javascript"></script>
+<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
+</body>
+
+</html>

@@ -83,7 +83,6 @@ public class EquipmentProxy {
     }
 
     public static void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment) {
-        System.out.println("oooooooooooo");
         String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/choosestatut?chooseStatut=" + chooseStatut + "&type_mode=" + type_mode + "&id_equipment=" + id_equipment;
 
@@ -101,7 +100,6 @@ public class EquipmentProxy {
     }
 
     public static String getNameRoomByIdroom(Integer id_room) {
-        System.out.println("oooooooooooo");
         String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/nameRoom?id_room=" + id_room;
 
@@ -137,7 +135,7 @@ public class EquipmentProxy {
         );
 
         logger.info("Get Equipment call " + response.getStatusCode().toString());
-        System.out.println("fin de nameEquipment");
+
 
         return response.getBody();
 
@@ -200,15 +198,9 @@ public class EquipmentProxy {
     }
 
     public static void updateStatutAuto(String type_mode, Integer id_equipment) {
-        logger.info("j'entre dans la méthode");
-        System.out.println(type_mode + "proxy");
-
-
 
         String baseApiUrl = props.getApiUrl();
         String getEquipmentUrl = baseApiUrl + "/updateAuto?type_mode=" + type_mode +"&id_equipment=" + id_equipment;
-
-
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(
@@ -222,13 +214,11 @@ public class EquipmentProxy {
         logger.info("Get Equipment call " + response.getStatusCode().toString());
     }
 
-    public static String calandarwithtime(String meeting_time, String nameroom, String typesensor, String date1, String date2) {
-        logger.info("j'entre dans la méthode");
-        System.out.println(meeting_time + "time");
+    public static String calandarwithtime(String meeting_time) {
+
 
         String baseApiUrl = props.getApiUrl();
-        String getEquipmentUrl = baseApiUrl + "/updateAutoEquip?meeting_time=" +meeting_time +"&nameroom="+nameroom +"&typesensor="+typesensor +"&date1="+date1 +"&date2="+date2;
-        //http://localhost:9000/updateAutoEquip?meeting_time=2022-01-01T02:00&nameroom=Salle de réunion&typesensor=capteur de présence&date1=2022-01-01 00:00:00&date2=2022-01-01 07:00:00
+        String getEquipmentUrl = baseApiUrl + "/updateAutoEquip?meeting_time=" +meeting_time ;
         System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(

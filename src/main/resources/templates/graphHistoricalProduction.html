@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique production 2021</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h2>Graphique : Historique de la production pour l'année 2021 par énergie</h2>
+
+<!-- Graph -->
+
+<div style="width:65%">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+  const labels = ['janvier','fevrier','mars','avril','mai','juin','juillet','aout','septembre','octobre','novembre','decembre'];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Solaire',
+      backgroundColor: 'rgb(252, 114, 35)',
+      borderColor: 'rgb(252, 114, 35)',
+      data: [[${solaire}]],
+     },
+    {
+      label: 'Eolienne',
+      backgroundColor: 'rgb(35, 252, 109)',
+      borderColor: 'rgb(35, 252, 109)',
+      data: [[${eolienne}]],
+    },
+    {
+      label: 'Hydraulique',
+      backgroundColor: 'rgb(35, 86, 252)',
+      borderColor: 'rgb(35, 86, 252)',
+      data: [[${hydraulique}]],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+</body>
+</html>

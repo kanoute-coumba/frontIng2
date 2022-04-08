@@ -1,0 +1,27 @@
+.form-login {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login label {
+    font-size: initial;
+    margin-bottom: 5px;
+}
+
+.form-login input {
+    padding: 10px;
+}
+
+.form-login input[type='text'] {
+    margin-bottom: 20px;
+}
+
+.form-login input[type='submit'] {
+    background: var(--color-green-5);
+    color: var(--color-white);
+    border: none;
+    border-radius: 5px;
+}

@@ -99,63 +99,19 @@ header {
     border-radius: var(--border-radius);
 }
 
-/*** Filter ***/
-/*
-.filter {
-    border: 1px solid var(--color-secondary);
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.filter > .filter-field {
+/*** Class générique */
+.vcenter, .center-all {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    align-items: center;
 }
 
-.filter > .filter-field:last-child {
-    margin-bottom: 0;
+.center-all {
+    justify-content: space-between;
 }
 
-.filter > .filter-field > .filter-field-input,
-.filter > .filter-field > .filter-field-select {
-    padding: 10px;
-    border: 1px solid var(--color-secondary);
-    border-radius: 5px;
+/*** Background ***/
+.background {
+    background: bottom -25% right -25% no-repeat url('../image/background.png'),
+    linear-gradient(-45deg, rgba(7,29,9,1) 0%, rgba(143,210,122,1) 50%, rgba(187,238,198,1) 100%);
+    background-attachment: fixed;
 }
-
-.filter > .filter-field > .filter-field-input:hover,
-.filter > .filter-field > .filter-field-select:hover {
-    border-color: rgba(223, 225, 229, 0);
-    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-}
-*/
-/*** List-building ***/
-/*
-.list-building {
-    border: 1px solid var(--color-secondary);
-    border-radius: 10px;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-.list-building table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.list-building table thead tr {
-    color: var(--color-white);
-    background: var(--color-primary);
-}
-
-.list-building table td,
-.list-building table th {
-    text-align: left;
-    padding: 10px;
-}
-
-.list-building table tbody tr:nth-child(even) {
-    background: var(--color-secondary);
-}
- */

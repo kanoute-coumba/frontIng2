@@ -1,38 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Citizens</title>
     <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
     <link rel="stylesheet" th:href="@{/styles/global.css}"/>
-    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/styles/login.css}"/>
 </head>
-<body>
+<body class="background">
+
 <noscript>
     <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
         enabled. Please enable Javascript and reload this page!</h2>
 </noscript>
+
 <header>
     <div class="navbar center-all">
         <div class="center-all">
-            <img th:src="@{/image/icon.png}" class="icon" alt="" src=""/>
+            <img th:src="@{/image/icon.png}" class="icon"/>
             <h1 class="name">Citizens</h1>
         </div>
-        <a th:href="@{/}">
-            <i class="fi fi-rr-apps"></i>
-        </a>
     </div>
 </header>
 
-<form id="first" action="#" th:action="@{/userName}" th:object="${username}" method="post">
-<div id="container">
-    <!-- zone de connexion -->
-        <h1>Connexion</h1>
-        <label><b>Nom d'utilisateur</b></label>
-        <label>
-            <input name="login" placeholder="Entrer le nom d'utilisateur" required type="text" th:field="*{login}">
-        </label>
-        <input type="submit" id='submit' value='Confirmer' >
-</div>
-</form>
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-push-4 col-md-4 col-sm-push-3 col-sm-6 col-xs-12">
+            <form th:action="@{/userName}" th:object="${username}" method="post" class="form-login corner">
+                <label for="login">Nom d'utilisateur</label>
+                <input type="text" id="login" name="login" placeholder="nom d'utilisateur" th:field="*{login}" required/>
+                <input type="submit" value="Confirmer"/>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/scripts/login.js}"></script>
+
 </body>
 </html>

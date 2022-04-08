@@ -7,19 +7,21 @@ public class Users {
 
     private int user_id;
     private String username;
-    private String right_layer;
+    private int right_layer;
+    private String type;
 
     public void setType(String type) {
         this.type = type;
     }
 
-    private String type;
-
-    public Users(int user_id, String username, String right_layer,String type) {
+    public Users(int user_id, String username, int right_layer,String type) {
         this.user_id = user_id;
         this.username = username;
         this.right_layer = right_layer;
         this.type=type;
+    }
+
+    public Users() {
     }
 
     public int getUser_id() {
@@ -40,11 +42,11 @@ public class Users {
         this.username = username;
     }
 
-    public String getRight_layer() {
+    public int getRight_layer() {
         return right_layer;
     }
 
-    public void setRight_layer(String right_layer) {
+    public void setRight_layer(int right_layer) {
         this.right_layer = right_layer;
     }
 }

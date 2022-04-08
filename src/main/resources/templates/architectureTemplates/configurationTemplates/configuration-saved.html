@@ -30,19 +30,44 @@
                 <a class="nav-link" href="/guidanceOption">Se faire guider</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/myConfigurations">Mes Configurations</a>
+                <a class="nav-link" href="/personalizeDesign">Design Intérieur</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div class="title-page">Design Intérieur</div>
+<div class="title-page">Mes Configurations</div>
 
-<br><br>
-<p style="text-align: center;"><span style="font-size: xx-large;">La configuration a bien été sauvegardée !</span></p>
-<br><br>
-
-// Ajouter le lien vers la page de config
+<div style="text-align: center;" class="container my-2">
+    <br><br>
+    <p style="text-align: center;"><span style="font-size: xx-large;">Liste des configurations sauvegardées</span></p>
+    <br><br>
+    <table id="myconfigurations" border="1"  class="table table-striped table responsive-md pagination-lg">
+        <thead>
+        <tr>
+            <th bgcolor="bleu">Id Etage</th>
+            <th bgcolor="bleu">Id Design</th>
+            <th bgcolor="bleu">Date</th>
+            <th bgcolor="red">Nb Bureau</th>
+            <th bgcolor="red">Nb Espace ouvert</th>
+            <th bgcolor="red">Nb Salle de réunion</th>
+            <th bgcolor="red">Nb Salle individuelle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="configuration : ${configurations}">
+            <td th:text="${configuration.id_floor}"></td>
+            <td th:text="${configuration.id_design}"></td>
+            <td th:text="${configuration.date_configuration}"></td>
+            <td th:text="${configuration.office_number}"></td>
+            <td th:text="${configuration.openspace_number}"></td>
+            <td th:text="${configuration.meetingroom_number}"></td>
+            <td th:text="${configuration.individualroom_number}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+</div>
 
 </body>
 </html>

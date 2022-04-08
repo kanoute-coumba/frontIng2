@@ -40,17 +40,21 @@ public class UsersProxy {
 
         return response.getBody();
     }
-    public ArrayList<Users> getUsersByUserName(String uName) {
+    public static ArrayList<Users> getUsersByUserName(String uName) {
+        logger.info("proxy getUsersByUserName");
         String baseApiUrl = props.getApiUrl();
-        String getTestUrl = baseApiUrl + "/usersName="+uName;
+        String getUrl = baseApiUrl + "/usersName="+uName;
+        logger.info(getUrl);
         RestTemplate restTemplate = new RestTemplate();
+        logger.info("avant ResponseEntity");
         ResponseEntity<ArrayList<Users>> response = restTemplate.exchange(
-                getTestUrl,
+                getUrl,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {
                 }
         );
+        logger.info("avant le retour du proxy");
         return response.getBody();
 
 

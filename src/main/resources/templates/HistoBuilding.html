@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
     <link rel="stylesheet" th:href="@{/styles/global.css}"/>
-    <title>Page de l'habitant</title>
+    <title>Historique du bâtiment</title>
 </head>
 <body>
+
 <noscript>
     <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
         enabled. Please enable Javascript and reload this page!</h2>
@@ -23,19 +24,38 @@
     </div>
 </header>
 
-<p type="text" th:text=${user.username}></p>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="/login">Accueil</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/HistoBuilding/{idu}(idu=${user.user_id})}" >Historique de Consommation de la maison</a>
-            </li>
         </ul>
     </div>
 </nav>
+
+<form id="first" action="#" th:action="@{/ConsumptionByIdBuilding/{idb}(idb=${house.id_building})}" th:object="${objectForModel}"  method="post">
+    <h1>Historique</h1>
+    <div id="container">
+        <label><b>Date de début de l'historique</b></label>
+        <label>
+            <input name="dateB" placeholder="AAAA/MM/JJ/HH/mm/ss" required type="text" th:field="*{dateB}">
+        </label>
+    </div>
+    <div id="container2">
+        <label><b>Date de fin de l'historique</b></label>
+        <label>
+            <input name="dateE" placeholder="AAAA/MM/JJ/HH/mm/ss" required type="text" th:field="*{dateE}">
+        </label>
+    </div>
+    <input type="submit" id='submit' value='Confirmer' >
+</form>
+
+<script th:inline="javascript">
+    var obj = [[${objectForModel}]];
+    var house = [[${house}]];
+    obj.house=house;
+</script>
 
 </body>
 </html>

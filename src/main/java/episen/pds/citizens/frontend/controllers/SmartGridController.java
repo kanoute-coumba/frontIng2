@@ -38,6 +38,7 @@ public class SmartGridController {
         this.template.convertAndSend("/smartgrid/city", balance);
         List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
         this.template.convertAndSend("/smartgrid/centrals", centrals);
+
     }
 
     @GetMapping("/smartgrid")

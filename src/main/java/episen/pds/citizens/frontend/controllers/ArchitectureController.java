@@ -49,9 +49,9 @@ public class ArchitectureController {
         return "architectureTemplates/personalizeTemplates/personalize-design";
     }
 
-    @GetMapping("/personalizeDesign/designBasic")
-    public String getDesignBasic(Model model) {
-        return "architectureTemplates/personalizeTemplates/design-basic";
+    @GetMapping("/personalizeDesign/designPanoramic")
+    public String getDesignPanoramic(Model model) {
+        return "architectureTemplates/personalizeTemplates/design-panoramic";
     }
 
     @GetMapping("/personalizeDesign/designSquare")
@@ -64,10 +64,10 @@ public class ArchitectureController {
         return "architectureTemplates/personalizeTemplates/design-parallel";
     }
 
-    @GetMapping("/personalizeDesign/designBasic/display")
-    public String getDisplayDesignBasic(Model model) {
+    @GetMapping("/personalizeDesign/designPanoramic/display")
+    public String getDisplayDesignPanoramic(Model model) {
         model.addAttribute("buildings", buildingService.getAllBuildings());
-        return "architectureTemplates/personalizeTemplates/design-basic-display";
+        return "architectureTemplates/personalizeTemplates/design-panoramic-display";
     }
 
     @GetMapping("/personalizeDesign/designSquare/display")

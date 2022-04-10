@@ -250,58 +250,13 @@
         <br>
         <b>Etape 1 :</b> Prenez l'ascenceur numéro <span th:text="${space.prox_asc}"></span>
         <br>
-        <div th:switch="${design}">
-            <div th:case="'1'">
-                <div th:switch="${space.prox_asc}">
-                    <div th:case="'1'">
-                        <b>Etape 2 :</b> Tournez à droite
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir unique
-                    </div>
-                    <div th:case="'2'">
-                        <b>Etape 2 :</b> Tournez à gauche
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir unique
-                    </div>
-                </div>
-            </div>
-            <div th:case="'2'">
-                <div th:switch="${space.prox_asc}">
-                    <div th:case="'1'">
-                        <b>Etape 2 :</b> Tournez à droite
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                    <div th:case="'2'">
-                        <b>Etape 2 :</b> Tournez à gauche
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                </div>
-            </div>
-            <div th:case="'3'">
-                <div th:switch="${space.prox_asc}">
-                    <div th:case="'1'">
-                        <b>Etape 2 :</b> Tournez à droite
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                    <div th:case="'2'">
-                        <b>Etape 2 :</b> Tournez à gauche
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <b>Etape 2 :</b> Vous vous retrouvez dans le couloir numéro <span th:text="${space.prox_cor1}"></span>
+        <br>
+        <b>Etape 3 :</b> Rejoignez l'intersection du couloir <span th:text="${space.prox_cor1}"></span> et le couloir <span th:text="${space.prox_cor2}"></span>
+        <br>
+        <b>Etape 4 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor2}"></span>
+        <br>
+        <b>Etape 5 :</b> Vous êtes arrivé à la salle <span th:text="${space.name_space}"></span> !
     </div>
 </div>
 

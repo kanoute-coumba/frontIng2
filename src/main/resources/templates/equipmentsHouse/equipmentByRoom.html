@@ -350,7 +350,7 @@
 
 
             $.ajax({
-                url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours,
+                url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours,
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentdate) {
@@ -365,7 +365,7 @@
             }
             $.ajax({
                 //http://localhost:9000/equipmentBYRoom/12
-                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
+                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -373,8 +373,10 @@
                     console.log(data);
                     for (let i = 0; i < data.length; i++) {
                         console.log("lelelelellelelelelel");
-                        document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
-                        document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
+                        let s = document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
+                       let v =  document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
+                        console.log(v);
+                        console.log(s);
                     }
                 }
             })

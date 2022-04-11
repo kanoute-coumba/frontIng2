@@ -109,7 +109,7 @@ function centralsHtml(centrals) {
                 html += '<i class="fi fi-rr-flame"></i>';
                 break;
         }
-        html += '<span>' + centrals[i].name + '</span></div><span>' + centrals[i].capacity + '/' + centrals[i].maxCapacity + 'W</span></div><div class="center-all"><span>' + centrals[i].address + '</span><span class="flash">' + centrals[i].production + 'W</span></div></div></div>';
+        html += '<span>' + centrals[i].name + '</span></div><span>' + centrals[i].capacity.toFixed(2) + '/' + centrals[i].maxCapacity.toFixed(2) + 'W</span></div><div class="center-all"><span>' + centrals[i].address + '</span><span class="flash">' + centrals[i].production.toFixed(2) + 'W</span></div></div></div>';
     }
     return html;
 }

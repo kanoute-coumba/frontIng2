@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Data
 @Service
-public class MessagesService {
+public class MessageService {
 
     @Autowired
     private MessagesProxy messagesProxy = new MessagesProxy();
@@ -21,7 +21,6 @@ public class MessagesService {
         //System.out.print(MessagesProxy.getMessagesById(id).getClass());
         return MessagesProxy.getMessageBySenderAndReceiver(sender, receiver);
     }
-
 
     /*public Messages_reservation saveMessages(Messages_reservation messages_reservation) {
         return messagesProxy.reserveMessages(messages_reservation);

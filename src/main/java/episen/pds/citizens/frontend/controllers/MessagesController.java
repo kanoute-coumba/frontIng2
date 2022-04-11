@@ -3,7 +3,7 @@ package episen.pds.citizens.frontend.controllers;
 
 import episen.pds.citizens.frontend.model.Messages;
 import episen.pds.citizens.frontend.model.Users;
-import episen.pds.citizens.frontend.service.MessagesService;
+import episen.pds.citizens.frontend.service.MessageService;
 import episen.pds.citizens.frontend.service.UsersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 @Controller
 public class MessagesController {
 
-    MessagesService messagesService = new MessagesService();
+    MessageService messagesService = new MessageService();
     UsersService UsersService = new UsersService();
     private static final Logger logger = Logger.getLogger(MessagesController.class.getName());
 

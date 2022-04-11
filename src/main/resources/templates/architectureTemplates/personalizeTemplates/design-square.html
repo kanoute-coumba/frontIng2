@@ -43,22 +43,22 @@
         <div class="item-content">T1F</div>
     </div>
     <div class="item openSpace2">
-        <div class="item-content">Espace Ouvert</div>
+        <div class="item-content">Espaces ouverts</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2F</div>
     </div>
     <div class="item corridor21">
-        <div class="item-content">C1</div>
+        <div class="item-content"></div>
     </div>
     <div class="item corridor24">
-        <div class="item-content">C4</div>
+        <div class="item-content"></div>
     </div>
     <div class="item individualRoom2">
-        <div class="item-content ">Salle individuelle</div>
+        <div class="item-content ">Salles individuelles</div>
     </div>
     <div class="item corridor23">
-        <div class="item-content">C3</div>
+        <div class="item-content"></div>
     </div>
     <div class="item elevator">
         <div class="item-content">A1</div>
@@ -67,7 +67,7 @@
         <div class="item-content">A2</div>
     </div>
     <div class="item meetingRoom2">
-        <div class="item-content">Salle de réunion</div>
+        <div class="item-content">Salles de réunion</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T1H</div>
@@ -76,18 +76,19 @@
         <div class="item-content">T2H</div>
     </div>
     <div class="item corridor22">
-        <div class="item-content">C2</div>
+        <div class="item-content"></div>
     </div>
     <div class="item office2">
-        <div class="item-content">Bureau</div>
+        <div class="item-content">Bureaux</div>
     </div>
 </div>
 
 <form method="get" action="/personalizeDesign/designSquare/display">
     <p style="text-align: center; font-size: large;">
-        Espace ouvert :
+        Espaces ouverts :
         <select name ="os" id="os">
             <option value="">Choisissez une valeur</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -95,7 +96,7 @@
         </select>
     </p>
     <p style="text-align: center; font-size: large;">
-        Bureau :
+        Bureaux :
         <select name ="of" id="of">
             <option value="">Choisissez une valeur</option>
             <option value="5">5</option>
@@ -105,9 +106,10 @@
         </select>
     </p>
     <p style="text-align: center; font-size: large;">
-        Salle de réunion :
+        Salles de réunion :
         <select name ="mr" id="mr">
             <option value="">Choisissez une valeur</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -115,7 +117,7 @@
         </select>
     </p>
     <p style="text-align: center; font-size: large;">
-        Salle individuelle :
+        Salles individuelles :
         <select name ="ir" id="ir">
             <option value="">Choisissez une valeur</option>
             <option value="5">5</option>
@@ -126,7 +128,7 @@
     </p>
     <br><br>
     <p style="text-align: center;">
-        <input type="submit" class="btn btn-primary" value="Simuler le plan" />
+        <input type="submit" class="btn btn-primary" value="Simuler le plan"/>
     </p>
 </form>
 

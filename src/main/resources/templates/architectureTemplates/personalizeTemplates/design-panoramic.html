@@ -36,26 +36,38 @@
     </div>
 </nav>
 
-<div class="title-page">Personnalisation du design basique</div>
+<div class="title-page">Personnalisation du design panoramique</div>
 
 <div class="plan0">
     <div class="item toilet">
         <div class="item-content">T1F</div>
     </div>
-    <div class="item openSpace1">
-        <div class="item-content">Espace Ouvert</div>
+    <div class="item corridor11" style="background: lightgray; width: 3%; height: 100%; border: 0px;">
+        <div class="item-content"></div>
     </div>
-    <div class="item office1">
-        <div class="item-content ">Bureau</div>
+    <div class="item corridor12" style="background: lightgray; width: 84%; height: 7%; border: 0px;">
+        <div class="item-content"></div>
+    </div>
+    <div class="item corridor13" style="background: lightgray; width: 3%; height: 100%; border: 0px;">
+        <div class="item-content"></div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2F</div>
     </div>
+    <div class="item openSpace1" style="background: orange; width:40%; height:37%; border:0px;">
+        <div class="item-content">Espaces ouverts</div>
+    </div>
+    <div class="item corridor16" style="background: lightgray; width:4%; height:37%; border:0px;">
+        <div class="item-content"></div>
+    </div>
+    <div class="item office1" style="background:red; width:40%; height:37%; border:0px;">
+        <div class="item-content">Bureaux</div>
+    </div>
     <div class="item elevator">
         <div class="item-content">A1</div>
     </div>
-    <div class="item corridor1">
-        <div class="item-content">Couloir</div>
+    <div class="item corridor15" style="background: lightgray; width: 84%; height: 12%; border: 0px;">
+        <div class="item-content"></div>
     </div>
     <div class="item elevator">
         <div class="item-content">A2</div>
@@ -63,22 +75,29 @@
     <div class="item toilet">
         <div class="item-content">T1H</div>
     </div>
-    <div class="item meetingRoom1">
-        <div class="item-content">Salle de réunion</div>
+    <div class="item meetingRoom1" style="background: coral; width: 40%; height: 37%; border: 0px;">
+        <div class="item-content">Salles de réunion</div>
     </div>
-    <div class="item individualRoom1">
-        <div class="item-content">Salle individuelle</div>
+    <div class="item corridor17" style="background: lightgray; width: 4%; height: 37%; border: 0px;">
+        <div class="item-content"></div>
+    </div>
+    <div class="item individualRoom1" style="background: hotpink; width: 40%; height: 37%; border: 0px;">
+        <div class="item-content">Salles individuelles</div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2H</div>
     </div>
-</div>
+    <div class="item corridor14" style="background: lightgray; width: 84%; height: 7%; border: 0px;">
+        <div class="item-content"></div>
+    </div>
+</div >
 
-<form method="get" action="/personalizeDesign/designBasic/display">
+<form method="get" action="/personalizeDesign/designPanoramic/display">
     <p style="text-align: center; font-size: large;">
-        Espace ouvert :
+        Espaces ouverts :
         <select name ="os" id="os">
             <option value="">Choisissez une valeur</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -86,7 +105,7 @@
         </select>
     </p>
     <p style="text-align: center; font-size: large;">
-        Bureau :
+        Bureaux :
         <select name ="of" id="of">
             <option value="">Choisissez une valeur</option>
             <option value="5">5</option>
@@ -96,9 +115,10 @@
         </select>
     </p>
     <p style="text-align: center; font-size: large;">
-        Salle de réunion :
+        Salles de réunion :
         <select name ="mr" id="mr">
             <option value="">Choisissez une valeur</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -106,7 +126,7 @@
         </select>
     </p>
     <p style="text-align: center; font-size: large;">
-        Salle individuelle :
+        Salles individuelles :
         <select name ="ir" id="ir">
             <option value="">Choisissez une valeur</option>
             <option value="5">5</option>

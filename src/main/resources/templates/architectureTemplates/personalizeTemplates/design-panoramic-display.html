@@ -41,7 +41,7 @@
     </div>
 </nav>
 
-<div class="title-page">Configuration Basique</div>
+<div class="title-page">Configuration Panoramique</div>
 
 <br>
 <p style="text-align: center;"><span style="font-size: xx-large;">Simulation du nouveau plan :</span></p>
@@ -50,30 +50,40 @@
     <div class="item toilet">
         <div class="item-content">T1F</div>
     </div>
-    <div class="item openSpace1">
-        <div class="item-content">
-            <span style="margin-left: 15px;"></span>
-            <th:block th:each="os : ${#numbers.sequence(1,param.os)}">
-                <span style="margin: 10px">E.Ouvert</span>
-            </th:block>
-            <span style="margin-right: 15px;"></span>
-        </div>
+    <div class="item corridor11" style="background: lightgray; width: 3%; height: 100%; border: 0px;">
+        <div class="item-content"></div>
     </div>
-    <div class="item office1">
-        <div class="item-content ">
-            <th:block th:each="of : ${#numbers.sequence(1,param.of)}">
-                <span style="margin: 1.5px">Bu</span>
-            </th:block>
-        </div>
+    <div class="item corridor12" style="background: lightgray; width: 84%; height: 7%; border: 0px;">
+        <div class="item-content"></div>
+    </div>
+    <div class="item corridor13" style="background: lightgray; width: 3%; height: 100%; border: 0px;">
+        <div class="item-content"></div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2F</div>
     </div>
+    <div class="item openSpace1" style="background: orange; width:40%; height:37%; border:0px;">
+        <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
+            <th:block th:each="os : ${#numbers.sequence(1,param.os)}">
+                <span>E.O</span>
+            </th:block>
+        </div>
+    </div>
+    <div class="item corridor16" style="background: lightgray; width:4%; height:37%; border:0px;">
+        <div class="item-content"></div>
+    </div>
+    <div class="item office1" style="background:red; width:40%; height:37%; border:0px;">
+        <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
+            <th:block th:each="of : ${#numbers.sequence(1,param.of)}">
+                <span>Bu</span>
+            </th:block>
+        </div>
+    </div>
     <div class="item elevator">
         <div class="item-content">A1</div>
     </div>
-    <div class="item corridor1">
-        <div class="item-content">Couloir</div>
+    <div class="item corridor15" style="background: lightgray; width: 84%; height: 12%; border: 0px;">
+        <div class="item-content"></div>
     </div>
     <div class="item elevator">
         <div class="item-content">A2</div>
@@ -81,26 +91,30 @@
     <div class="item toilet">
         <div class="item-content">T1H</div>
     </div>
-    <div class="item meetingRoom1">
-        <div class="item-content">
-            <span style="margin-left: 15px;"></span>
+    <div class="item meetingRoom1" style="background: coral; width: 40%; height: 37%; border: 0px;">
+        <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
             <th:block th:each="mr : ${#numbers.sequence(1,param.mr)}">
-                <span style="margin: 10px">S.Réunion</span>
+                <span>S.R</span>
             </th:block>
-            <span style="margin-right: 15px;"></span>
         </div>
     </div>
-    <div class="item individualRoom1">
-        <div class="item-content">
+    <div class="item corridor17" style="background: lightgray; width: 4%; height: 37%; border: 0px;">
+        <div class="item-content"></div>
+    </div>
+    <div class="item individualRoom1" style="background: hotpink; width: 40%; height: 37%; border: 0px;">
+        <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
             <th:block th:each="ir : ${#numbers.sequence(1,param.ir)}">
-                <span style="margin: 2px">S.I</span>
+                <span>S.I</span>
             </th:block>
         </div>
     </div>
     <div class="item toilet">
         <div class="item-content">T2H</div>
     </div>
-</div>
+    <div class="item corridor14" style="background: lightgray; width: 84%; height: 7%; border: 0px;">
+        <div class="item-content"></div>
+    </div>
+</div >
 
 <br>
 <p style="text-align: center;"><span style="font-size: xx-large;">Enregistrement de la configuration simulée :</span></p>

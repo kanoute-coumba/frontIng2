@@ -66,11 +66,6 @@ td {
 }
 .elevator        { background: greenyellow; width: 5%;  height: 12%; border: 0px;}
 .toilet          { background: green;       width: 5%;  height: 44%; border: 0px;}
-.openSpace1      { background: orange;      width: 45%; height: 44%; border: 0px;}
-.office1         { background: red;         width: 45%; height: 44%; border: 0px;}
-.individualRoom1 { background: coral;       width: 45%; height: 44%; border: 0px;}
-.meetingRoom1    { background: hotpink;     width: 45%; height: 44%; border: 0px;}
-.corridor1       { background: lightgray;   width: 90%; height: 12%; border: 0px;}
 .openSpace2      { background: orange;      width: 90%; height: 17%; border: 0px;}
 .office2         { background: red;         width: 90%; height: 17%; border: 0px;}
 .individualRoom2 { background: coral;       width: 80%; height: 23%; border: 0px;}
@@ -88,4 +83,8 @@ td {
 .corridor33      { background: lightgray;  width: 80%; height: 8%;   border: 0px;}
 .corridor34      { background: lightgray;  width: 80%; height: 12%;  border: 0px;}
 .corridor35      { background: lightgray;  width: 80%; height: 8%;   border: 0px;}
+
+
+
+
 

@@ -45,30 +45,42 @@
         <div class="item toilet">
             <div class="item-content">T1F</div>
         </div>
-        <div class="item openSpace1">
-            <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
-                <th:block th:each="openSpace : ${openSpaces}">
-                    <span th:text="${openSpace.name_space}"></span>
-<!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
-                </th:block>
-            </div>
+        <div class="item corridor11" style="background: lightgray;   width: 3%;  height: 100%; border: 0px;">
+            <div class="item-content">C1</div>
         </div>
-        <div class="item office1">
-            <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
-                <th:block th:each="office : ${offices}">
-                    <span th:text="${office.name_space}"></span>
-<!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
-                </th:block>
-            </div>
+        <div class="item corridor12" style="background: lightgray;   width: 84%; height: 7%;   border: 0px;">
+            <div class="item-content">C2</div>
+        </div>
+        <div class="item corridor13" style="background: lightgray;   width: 3%;  height: 100%; border: 0px;">
+            <div class="item-content">C3</div>
         </div>
         <div class="item toilet">
             <div class="item-content">T2F</div>
         </div>
+        <div class="item openSpace1" style="background: orange;      width: 40%; height: 37%;  border: 0px;">
+            <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
+                <th:block th:each="openSpace : ${openSpaces}">
+                    <span th:text="${openSpace.name_space}"></span>
+                    <!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
+                </th:block>
+            </div>
+        </div>
+        <div class="item corridor16" style="background: lightgray;   width: 4%;  height: 37%;  border: 0px;">
+            <div class="item-content">C6</div>
+        </div>
+        <div class="item office1" style="background: red;         width: 40%; height: 37%;  border: 0px;">
+            <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
+                <th:block th:each="office : ${offices}">
+                    <span th:text="${office.name_space}"></span>
+                    <!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
+                </th:block>
+            </div>
+        </div>
         <div class="item elevator">
             <div class="item-content">A1</div>
         </div>
-        <div class="item corridor1">
-            <div class="item-content">Couloir</div>
+        <div class="item corridor15" style="background: lightgray;   width: 84%; height: 12%;  border: 0px;">
+            <div class="item-content">C5</div>
         </div>
         <div class="item elevator">
             <div class="item-content">A2</div>
@@ -76,24 +88,30 @@
         <div class="item toilet">
             <div class="item-content">T1H</div>
         </div>
-        <div class="item meetingRoom1">
+        <div class="item meetingRoom1" style="background: coral;       width: 40%; height: 37%;  border: 0px;">
             <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
                 <th:block th:each="meetingRoom : ${meetingRooms}">
                     <span th:text="${meetingRoom.name_space}"></span>
-<!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
+                    <!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
                 </th:block>
             </div>
         </div>
-        <div class="item individualRoom1">
+        <div class="item corridor17" style="background: lightgray;   width: 4%;  height: 37%;  border: 0px;">
+            <div class="item-content">C7</div>
+        </div>
+        <div class="item individualRoom1" style="background: hotpink;     width: 40%; height: 37%;  border: 0px;">
             <div class="item-content" style="display: flex; justify-content: space-around; align-items: center; width: 100%; height: 100%">
                 <th:block th:each="individualRoom : ${individualRooms}">
                     <span th:text="${individualRoom.name_space}"></span>
-<!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
+                    <!--                    <span style="width: 1px; height: 100%; background-color: white"></span>-->
                 </th:block>
             </div>
         </div>
         <div class="item toilet">
             <div class="item-content">T2H</div>
+        </div>
+        <div class="item corridor14" style="background: lightgray;   width: 84%; height: 7%;   border: 0px;">
+            <div class="item-content">C4</div>
         </div>
     </div >
     <div th:case="'2'" class="plan0">
@@ -232,58 +250,13 @@
         <br>
         <b>Etape 1 :</b> Prenez l'ascenceur numéro <span th:text="${space.prox_asc}"></span>
         <br>
-        <div th:switch="${design}">
-            <div th:case="'1'">
-                <div th:switch="${space.prox_asc}">
-                    <div th:case="'1'">
-                        <b>Etape 2 :</b> Tournez à droite
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir unique
-                    </div>
-                    <div th:case="'2'">
-                        <b>Etape 2 :</b> Tournez à gauche
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir unique
-                    </div>
-                </div>
-            </div>
-            <div th:case="'2'">
-                <div th:switch="${space.prox_asc}">
-                    <div th:case="'1'">
-                        <b>Etape 2 :</b> Tournez à droite
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                    <div th:case="'2'">
-                        <b>Etape 2 :</b> Tournez à gauche
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                </div>
-            </div>
-            <div th:case="'3'">
-                <div th:switch="${space.prox_asc}">
-                    <div th:case="'1'">
-                        <b>Etape 2 :</b> Tournez à droite
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                    <div th:case="'2'">
-                        <b>Etape 2 :</b> Tournez à gauche
-                        <br>
-                        <b>Etape 3 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor1}"></span>
-                        <br>
-                        <b>Etape 4 :</b> Puis le couloir numéro <span th:text="${space.prox_cor2}"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <b>Etape 2 :</b> Vous vous retrouvez dans le couloir numéro <span th:text="${space.prox_cor1}"></span>
+        <br>
+        <b>Etape 3 :</b> Rejoignez l'intersection du couloir <span th:text="${space.prox_cor1}"></span> et le couloir <span th:text="${space.prox_cor2}"></span>
+        <br>
+        <b>Etape 4 :</b> Traversez le couloir numéro <span th:text="${space.prox_cor2}"></span>
+        <br>
+        <b>Etape 5 :</b> Vous êtes arrivé à la salle <span th:text="${space.name_space}"></span> !
     </div>
 </div>
 

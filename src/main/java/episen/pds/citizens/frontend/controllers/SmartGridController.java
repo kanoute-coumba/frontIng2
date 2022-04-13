@@ -34,19 +34,22 @@ public class SmartGridController {
     @Scheduled(cron = "*/30 * * * * *")
     public void loop() {
         System.out.println("central updated");
-        Double balance = smartGridService.smartgrid();
-        this.template.convertAndSend("/smartgrid/city", balance);
+        List<District> districts = districtService.readDistricts();
+        this.template.convertAndSend("/smartgrid/districts", districts);
         List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
         this.template.convertAndSend("/smartgrid/centrals", centrals);
-
+        Double balance = smartGridService.smartgrid();
+        this.template.convertAndSend("/smartgrid/balance", balance);
     }
 
     @GetMapping("/smartgrid")
     public String init(Model model) {
         List<District> districts = districtService.readDistricts();
         model.addAttribute("districts", districts);
-        //List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
-        //model.addAttribute("centrals", centrals);
+        List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
+        model.addAttribute("centrals", centrals);
+        Double balance = smartGridService.smartgrid();
+        model.addAttribute("balance", balance);
         return "smartgrid.html";
     }
 

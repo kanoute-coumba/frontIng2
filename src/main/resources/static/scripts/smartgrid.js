@@ -15,28 +15,50 @@ const Toast = Swal.mixin({
 
 $(function() {
     connect();
-
     clock();
+    refreshListener();
+    seeListener();
+});
 
+function refreshListener() {
     $(".refresh-event").on("click", function() {
         var refresh = $(this);
         refresh.addClass("rotate");
         $.ajax({
-            url: server + '/readBuildingsTypeCentral',
+            url: server + '/districts',
             type: 'GET',
-            success: function(centrals) {
-                console.log("Manual update of the centrals");
-                $(".box-central").html(centralsHtml(centrals));
-                refresh.removeClass("rotate");
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Centrales mis à jour'
+            success: function(districts) {
+                $.ajax({
+                    url: server + '/readBuildingsTypeCentral',
+                    type: 'GET',
+                    success: function(centrals) {
+                        $.ajax({
+                            url: server + '/smartgrid',
+                            type: 'GET',
+                            success: function(balance) {
+                                console.log("Manual update of the (districts, centrals, city balance)");
+                                $(".socket-district").html(districtsHtml(districts));
+                                seeListener();
+                                $(".socket-central").html(centralsHtml(centrals));
+                                $(".socket-city-energy-balance").html(balance + "W");
+                                refresh.removeClass("rotate");
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Données mises à jour'
+                                });
+                                clock();
+                            }
+                        });
+                    }
                 });
             }
         });
         /*send("/smartgrid/refresh", "refresh");*/
     });
+}
 
+function seeListener() {
+    $(".see-event").off();
     $(".see-event").on("click", function() {
         var district = $(this);
         $.ajax({
@@ -47,7 +69,7 @@ $(function() {
             },
             success: function(buildings) {
                 Swal.fire({
-                    title: district.data("name"),
+                    title: district.data("name") + ' (' + district.data("balance").toFixed(2) + 'W)',
                     html: buildingsHtml(buildings),
                     width: 600,
                     padding: '20px',
@@ -59,17 +81,18 @@ $(function() {
             }
         });
     });
-});
+}
 
 function clock() {
     var date = new Date();
     var hour = date.getHours();
     var minute = date.getMinutes();
     var second = date.getSeconds();
+    hour = hour < 10 ? "0" + hour : hour;
     minute = minute < 10 ? "0" + minute : minute;
     second = second < 10 ? "0" + second : second;
     document.querySelector('.clock-event').innerHTML = hour + ":" + minute + ":" + second;
-    setTimeout(clock, 500);
+    //setTimeout(clock, 500);
 }
 
 function buildingsHtml(buildings) {
@@ -109,7 +132,26 @@ function centralsHtml(centrals) {
                 html += '<i class="fi fi-rr-flame"></i>';
                 break;
         }
-        html += '<span>' + centrals[i].name + '</span></div><span>' + centrals[i].capacity.toFixed(2) + '/' + centrals[i].maxCapacity.toFixed(2) + 'W</span></div><div class="center-all"><span>' + centrals[i].address + '</span><span class="flash">' + centrals[i].production.toFixed(2) + 'W</span></div></div></div>';
+        html += '<span>' + centrals[i].name + '</span></div><span class="text-dots">' + centrals[i].capacity.toFixed(2) + '/' + centrals[i].maxCapacity.toFixed(2) + 'W</span></div><div class="center-all"><span>' + centrals[i].address + '</span><span class="flash text-dots">' + centrals[i].production.toFixed(2) + 'W</span></div></div></div>';
+    }
+    return html;
+}
+
+function districtsHtml(districts) {
+    let html = '';
+    for (let i = 0; i < districts.length; i++) {
+        html += '<div class="col-md-4 col-sm-4 col-xs-12">' +
+                    '<div class="corner item">' +
+                        '<div class="center-all item-header">' +
+                            '<span class="text-dots">' + districts[i].name + '</span>' +
+                            '<i class="cursor see-event fi fi-rr-eye" data-id="' + districts[i].id + '" data-name="'+ districts[i].name +'" data-balance="' + (districts[i].production - districts[i].consumption) + '"></i>' +
+                        '</div>' +
+                        '<div>' +
+                            '<span class="text-dots">Consommation : ' + districts[i].consumption.toFixed(2) + 'W</span>' +
+                            '<span class="text-dots">Production : ' + districts[i].production.toFixed(2) + 'W</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
     }
     return html;
 }
@@ -119,16 +161,24 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.debug = null;
     stompClient.connect({}, function() {
+        stompClient.subscribe('/smartgrid/districts', function(districts) {
+            if(districts.body !== undefined && districts.body !== null && districts.body.length > 0) {
+                console.log("Automatic update of the districts");
+                $(".socket-district").html(districtsHtml(JSON.parse(districts.body)));
+                seeListener();
+            }
+        });
         stompClient.subscribe('/smartgrid/centrals', function(centrals) {
             if(centrals.body !== undefined && centrals.body !== null && centrals.body.length > 0) {
                 console.log("Automatic update of the centrals");
                 $(".socket-central").html(centralsHtml(JSON.parse(centrals.body)));
+                clock();
             }
         });
-        stompClient.subscribe('/smartgrid/city', function(data) {
-            if(data.body !== undefined && data.body !== null && data.body.length > 0) {
+        stompClient.subscribe('/smartgrid/balance', function(balance) {
+            if(balance.body !== undefined && balance.body !== null && balance.body.length > 0) {
                 console.log("Automatic update of the city energy balance");
-                $(".socket-city-energy-balance").html(data.body + "W");
+                $(".socket-city-energy-balance").html(balance.body + "W");
             }
         });
         /*stompClient.subscribe('/smartgrid/refresh', function(response) {

@@ -4,6 +4,12 @@
     background: var(--color-white);
 }
 
+.item .item-header {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-grey);
+}
+
 .item-central {
     margin-bottom: 5px;
 }
@@ -27,6 +33,7 @@
 }
 
 .text-dots {
+    display: block;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Citizens</title>
+    <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/global.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/user.css}"/>
+</head>
+<body class="background">
+
+<noscript>
+    <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+        enabled. Please enable Javascript and reload this page!</h2>
+</noscript>
+
+<header>
+    <div class="navbar center-all">
+        <div class="center-all">
+            <img th:src="@{/image/icon.png}" class="icon"/>
+            <h1 class="name">Citizens</h1>
+        </div>
+        <div class="right-navbar center-all">
+            <a href="/login">Accueil</a>
+            <a href="/accessMap">Plan d'accès</a>
+            <a href="/guidanceOption">Se faire guider</a>
+<!--            <a href="/personalizeDesign">Design Intérieur</a>-->
+<!--            <a href="/myConfigurations">Mes Configurations</a>-->
+            <div class="user center-all">
+                <i class="fi fi-rr-user"></i>
+                <span class="username" th:text="${user.username}"></span>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-push-4 col-md-4 col-sm-push-3 col-sm-6 col-xs-12"></div>
+    </div>
+</section>
+
+</body>
+</html>

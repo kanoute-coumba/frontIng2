@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>Citizens</title>
@@ -22,6 +22,9 @@
             <img th:src="@{/image/icon.png}" class="icon"/>
             <h1 class="name">Citizens</h1>
         </div>
+        <div class="center-all">
+            <h2 class="name">Résident</h2>
+        </div>
         <div class="right-navbar center-all">
             <a href="/login">Accueil</a>
             <a th:href="@{/HistoBuilding/{idu}(idu=${user.user_id})}" >Historique de Consommation de la maison</a>
@@ -34,11 +37,8 @@
     </div>
 </header>
 
-<section class="container-fluid">
-    <div class="row">
-        <div class="col-md-push-4 col-md-4 col-sm-push-3 col-sm-6 col-xs-12"></div>
-    </div>
-</section>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<p style="text-align: center;"><span style="font-size: xx-large;">Bienvenue <span class="username" th:text="${user.username}"></span></span></p>
 
 </body>
 </html>

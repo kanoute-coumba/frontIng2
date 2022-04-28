@@ -1,50 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>UC 7 - Architecture</title>
+    <meta charset="utf-8">
+    <title>Citizens</title>
+    <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/global.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/user.css}"/>
+    <link rel="stylesheet" th:href="@{/architectureStatic/architecture-css.css}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link rel="stylesheet" th:href="@{/architectureStatic/architecture-css.css}">
+    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="https://img.icons8.com/ultraviolet/100/000000/mac-os--v1.png">
     <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <!--<script type="text/javascript">-->
+    <!--    function saveDesign() {-->
+    <!--        // ici on doit sauvegarder la configuration-->
+    <!--    }-->
+    <!--</script>-->
 </head>
-<!--<script type="text/javascript">-->
-<!--    function saveDesign() {-->
-<!--        // ici on doit sauvegarder la configuration-->
-<!--    }-->
-<!--</script>-->
 
-<body>
+<body class="background">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Accueil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/accessMap">Plan d'accès</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/guidanceOption">Se faire guider</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/myConfigurations">Mes Configurations</a>
-            </li>
-        </ul>
+<noscript>
+    <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+        enabled. Please enable Javascript and reload this page!</h2>
+</noscript>
+
+<header>
+    <div class="navbar center-all">
+        <div class="center-all">
+            <img th:src="@{/image/icon.png}" class="icon"/>
+            <h1 class="name">Citizens</h1>
+        </div>
+        <div class="center-all">
+            <h2 class="name">Services Généraux</h2>
+        </div>
+        <div class="right-navbar center-all">
+            <a href="/myConfigurations">Configurations Sauvegardées</a>
+            <a href="/login">
+                <i class="fi fi-rr-apps"></i>
+            </a>
+        </div>
     </div>
-</nav>
-
-<div class="title-page">Configuration Carré</div>
+</header>
 
 <br>
-<p style="text-align: center;"><span style="font-size: xx-large;">Simulation du nouveau plan :</span></p>
+<p style="text-align: center;"><span style="font-size: xx-large;">Simulation du nouveau plan avec la configuration Carré:</span></p>
 
 <div class="plan0">
     <div class="item toilet">

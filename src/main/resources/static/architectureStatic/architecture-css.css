@@ -33,7 +33,7 @@ body {
 .plan0 {
     position: relative;
     width: 800px;
-    height: 200px;
+    height: 400px;
     border: 2px solid black;
     margin: 5% auto;
 }
@@ -59,13 +59,30 @@ body {
     margin: 10% auto;
 }
 th {
-    border:5px solid #095484;
+    border:20px solid white;
 }
 td {
-    border:20px groove #1c87c9;
+    border:20px groove white;
 }
-.elevator        { background: greenyellow; width: 5%;  height: 12%; border: 0px;}
-.toilet          { background: green;       width: 5%;  height: 44%; border: 0px;}
+tr {
+    border:20px groove white;
+}
+
+.elevator        { background: greenyellow; width: 5%;  height: 12%;  border: 0px;}
+.toilet          { background: green;       width: 5%;  height: 44%;  border: 0px;}
+
+.openSpace1      { background: orange;      width: 40%; height: 37%;  border: 0px;}
+.office1         { background: red;         width: 40%; height: 37%;  border: 0px;}
+.individualRoom1 { background: coral;       width: 40%; height: 37%;  border: 0px;}
+.meetingRoom1    { background: hotpink;     width: 40%; height: 37%;  border: 0px;}
+.corridor11      { background: lightgray;   width: 3%;  height: 100%; border: 0px;}
+.corridor12      { background: lightgray;   width: 84%; height: 7%;   border: 0px;}
+.corridor13      { background: lightgray;   width: 3%;  height: 100%; border: 0px;}
+.corridor14      { background: lightgray;   width: 84%; height: 7%;   border: 0px;}
+.corridor15      { background: lightgray;   width: 84%; height: 12%;  border: 0px;}
+.corridor16      { background: lightgray;   width: 4%;  height: 37%;  border: 0px;}
+.corridor17      { background: lightgray;   width: 4%;  height: 37%;  border: 0px;}
+
 .openSpace2      { background: orange;      width: 90%; height: 17%; border: 0px;}
 .office2         { background: red;         width: 90%; height: 17%; border: 0px;}
 .individualRoom2 { background: coral;       width: 80%; height: 23%; border: 0px;}
@@ -74,6 +91,7 @@ td {
 .corridor22      { background: lightgray;   width: 90%; height: 10%; border: 0px;}
 .corridor23      { background: lightgray;   width: 5%;  height: 46%; border: 0px;}
 .corridor24      { background: lightgray;   width: 5%;  height: 46%; border: 0px;}
+
 .openSpace3      { background: orange;      width: 80%; height: 18%; border: 0px;}
 .office3         { background: red;         width: 80%; height: 18%; border: 0px;}
 .individualRoom3 { background: coral;       width: 80%; height: 18%; border: 0px;}

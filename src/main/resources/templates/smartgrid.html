@@ -41,7 +41,7 @@
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="corner item center-all">
                         <span>bilan énergétique de la ville :</span>
-                        <span class="socket-city-energy-balance"></span>
+                        <span th:text="${balance}" class="socket-city-energy-balance"></span>
                     </div>
                 </div>
             </div>
@@ -58,8 +58,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row socket-central"></div>
-                <!--div th:each="central : ${centrals}" class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row socket-central">
+                <div th:each="central : ${centrals}" class="col-md-12 col-sm-12 col-xs-12">
                     <div class="corner item">
                         <div class="center-all item-central">
                             <div th:switch="${central.type}" class="center-all">
@@ -69,21 +69,27 @@
                                 <i th:case="'thermique'" class="fi fi-rr-flame"></i>
                                 <span th:text="${central.name}"></span>
                             </div>
-                            <div>
-                                <span th:text="${central.capacity} + '/' + ${central.maxCapacity} + 'W'"></span>
-                            </div>
+                            <span th:text="${#numbers.formatDecimal(central.capacity, 3, 2, 'POINT')} + '/' + ${#numbers.formatDecimal(central.maxCapacity, 3, 2, 'POINT')} + 'W'" class="text-dots"></span>
                         </div>
-                        <span th:text="${central.address}"></span>
+                        <div class="center-all">
+                            <span th:text="${central.address}"></span>
+                            <span th:text="${#numbers.formatDecimal(central.production, 3, 2, 'POINT')} + 'W'" class="flash text-dots"></span>
+                        </div>
                     </div>
-                </div-->
+                </div>
+            </div>
         </div>
         <div class="col-md-8 col-sm-12 col-xs-12">
-            <div class="row">
+            <div class="row socket-district">
                 <div th:each="district : ${districts}" class="col-md-4 col-sm-4 col-xs-12">
                     <div class="corner item">
-                        <div class="center-all">
-                            <span class="text-dots" th:text="${district.name} + ' (' + ${district.id} + ')'"></span>
-                            <i th:attr="data-id=${district.id}, data-name=${district.name}" class="cursor see-event fi fi-rr-eye"></i>
+                        <div class="center-all item-header">
+                            <span class="text-dots" th:text="${district.name}"></span>
+                            <i th:attr="data-id=${district.id}, data-name=${district.name}, data-balance=${district.production - district.consumption}" class="cursor see-event fi fi-rr-eye"></i>
+                        </div>
+                        <div>
+                            <span class="text-dots" th:text="'Consommation : ' + ${#numbers.formatDecimal(district.consumption, 3, 2, 'POINT')} + 'W'"></span>
+                            <span class="text-dots" th:text="'Production : ' + ${#numbers.formatDecimal(district.production, 3, 2, 'POINT')} + 'W'"></span>
                         </div>
                     </div>
                 </div>

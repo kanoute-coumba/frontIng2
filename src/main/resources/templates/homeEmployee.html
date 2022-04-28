@@ -23,11 +23,12 @@
             <h1 class="name">Citizens</h1>
         </div>
         <div class="center-all">
-            <h2 class="name">Résident</h2>
+            <h2 class="name">Employé</h2>
         </div>
         <div class="right-navbar center-all">
             <a href="/login">Accueil</a>
-            <a th:href="@{/HistoBuilding/{idu}(idu=${user.user_id})}" >Historique de Consommation de la maison</a>
+            <a href="/accessMap">Plan d'accès</a>
+            <a href="/guidanceOption">Se faire guider</a>
             <div class="user center-all">
                 <i class="fi fi-rr-user"></i>
                 <span class="username" th:text="${user.username}"></span>

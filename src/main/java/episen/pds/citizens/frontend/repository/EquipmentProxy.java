@@ -216,10 +216,8 @@ public class EquipmentProxy {
 
     public static String calandarwithtime(String meeting_time) {
 
-
         String baseApiUrl = props.getApiLocalUrl();
         String getEquipmentUrl = baseApiUrl + "/updateAutoEquip?meeting_time=" +meeting_time ;
-        System.out.println(getEquipmentUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(
                 getEquipmentUrl,
@@ -231,6 +229,24 @@ public class EquipmentProxy {
 
         logger.info("Get Equipment call " + response.getStatusCode().toString());
        return response.getBody();
+    }
+
+    public static String updateHoursBeginAndEndEquipment(String begin_time, String end_time, Integer id_equipment_data) {
+
+        String baseApiUrl = props.getApiLocalUrl();
+        String getEquipmentUrl = baseApiUrl + "/updateHoursBeginAndEnd?begin_time=" +begin_time + "&end_time=" +end_time + "&id_equipment_data=" +id_equipment_data;
+        System.out.println(getEquipmentUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                getEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+
+        logger.info("Get Equipment call " + response.getStatusCode().toString());
+        return response.getBody();
     }
 
 }

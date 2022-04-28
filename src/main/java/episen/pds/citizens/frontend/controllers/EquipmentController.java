@@ -100,16 +100,35 @@ public class EquipmentController {
         return "equipmentsHouse/radiateur";
     }
 
+    @GetMapping("/Douche/lave-vaisselle")
+    public String updateEquipmentOnTime(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
+        model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("id_room", id_room);
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
+        return "equipmentsHouse/laveVaisselleManuel";
+    }
+
+    @GetMapping("/formVaisselle")
+    public String formVaiselle(@RequestParam("timebegin") String timebegin, @RequestParam("timeend") String timeend, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, @RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode) {
+        equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
+        equipmentService.updateHoursBeginAndEndEquipment(timebegin, timeend, id_equipment);
+        equipmentService.updateValueEquipment(valueEquipment, id_equipment);
+        return "redirect:/getIdrEquipmentRoom/" + idr;
+    }
+
 
     @GetMapping("/form")
-    public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+    public String form(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
 
+
     @GetMapping("/formTableCuisson")
-    public String formTableC(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+    public String formTableC(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;

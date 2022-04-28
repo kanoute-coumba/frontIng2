@@ -62,4 +62,8 @@ public class EquipmentService {
         return EquipmentProxy.calandarwithtime(meeting_time);
     }
 
+    public String updateHoursBeginAndEndEquipment(String begin_time, String end_time, Integer id_equipment_data) {
+        return EquipmentProxy.updateHoursBeginAndEndEquipment(begin_time, end_time, id_equipment_data);
+    }
+
 }

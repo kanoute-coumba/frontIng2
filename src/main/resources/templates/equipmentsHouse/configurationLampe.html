@@ -54,6 +54,11 @@
     </a>
     </div>
 
+    <div th:if="${nameEquipment} == 'sèche-linge'"><a th:href="@{'/Douche/lave-vaisselle?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
 
 
     <form method="get" action="/formAuto" >

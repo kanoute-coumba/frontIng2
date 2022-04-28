@@ -125,7 +125,14 @@
                                 th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                 class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
-                        <td th:if="${equipment.type} == 'lave-vaiselle'"><a
+                        <td th:if="${equipment.type} == 'lave-vaisselle'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
+                        <td th:if="${equipment.type} == 'sèche-linge'"><a
+                                th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+                        <td th:if="${equipment.type} == 'lave-linge'"><a
                                 th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                 class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
 
@@ -151,7 +158,7 @@
                         <td th:if="${equipment.type} == 'fenêtre'">
                             <span>m/s</span>
                         </td>
-                        <td th:if="${equipment.type} == 'lave-vaiselle'">
+                        <td th:if="${equipment.type} == 'lave-vaisselle'">
                             <span>Watt</span>
                         </td>
                         <td th:if="${equipment.type} == 'table-cuisson'">
@@ -161,6 +168,12 @@
                             <span>Watt</span>
                         </td>
                         <td th:if="${equipment.type} == 'four'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'sèche-linge'">
+                            <span>Watt</span>
+                        </td>
+                        <td th:if="${equipment.type} == 'lave-linge'">
                             <span>Watt</span>
                         </td>
 
@@ -191,7 +204,7 @@
                                 <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
-                            <div th:if="${equipment.type} == 'lave-vaiselle'">
+                            <div th:if="${equipment.type} == 'lave-vaisselle'">
                                 <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
@@ -207,6 +220,15 @@
                                 <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
+                            <div th:if="${equipment.type} == 'sèche-linge'">
+                                <a th:href="@{'Douche/lave-vaisselle?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+                            <div th:if="${equipment.type} == 'lave-linge'">
+                                <a th:href="@{'Douche/lave-vaisselle?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                   class="btn btn-info"> <span>Manuelle</span></a>
+                            </div>
+
 
                             <form method="get" action="/formAuto">
                                 <input type="hidden" th:value="${equipment.id_equipment}" name="id_equipment">
@@ -350,7 +372,7 @@
 
 
             $.ajax({
-                url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours,
+                url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours,
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentdate) {
@@ -365,7 +387,7 @@
             }
             $.ajax({
                 //http://localhost:9000/equipmentBYRoom/12
-                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
+                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -373,8 +395,10 @@
                     console.log(data);
                     for (let i = 0; i < data.length; i++) {
                         console.log("lelelelellelelelelel");
-                        document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
-                        document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
+                        let s = document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
+                       let v =  document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
+                        console.log(v);
+                        console.log(s);
                     }
                 }
             })

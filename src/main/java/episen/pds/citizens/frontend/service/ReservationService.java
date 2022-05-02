@@ -1,5 +1,6 @@
 package episen.pds.citizens.frontend.service;
 
+import episen.pds.citizens.frontend.model.RSpace;
 import episen.pds.citizens.frontend.model.Reservation;
 import episen.pds.citizens.frontend.model.architectureModel.Space;
 import episen.pds.citizens.frontend.repository.MessagesProxy;
@@ -24,7 +25,7 @@ public class ReservationService {
         return reservationProxy.getReservation();
     }
 
-    public Iterable<Space> getReservesSpace() {
+    public Iterable<RSpace> getReservesSpace() {
         //System.out.print(MessagesProxy.getMessagesById(id).getClass());
         return reservationProxy.getReservedSpace();
     }

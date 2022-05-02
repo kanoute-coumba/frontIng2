@@ -1,6 +1,7 @@
 package episen.pds.citizens.frontend.controllers;
 
 
+import episen.pds.citizens.frontend.model.RSpace;
 import episen.pds.citizens.frontend.model.Reservation;
 import episen.pds.citizens.frontend.model.architectureModel.Space;
 import episen.pds.citizens.frontend.service.ReservationService;
@@ -33,7 +34,7 @@ public class ReservationController {
         Iterable<Reservation> listReservation = reservationService.getReservation();
         model.addAttribute("Reservation", listReservation);
 
-        Iterable<Space> listReservedSpace = reservationService.getReservesSpace();
+        Iterable<RSpace> listReservedSpace = reservationService.getReservesSpace();
         model.addAttribute("ReservedSpace", listReservedSpace);
 
         return "spaceReservation";

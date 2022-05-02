@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link th:href="@{/salle_reunion.css}" rel="stylesheet"/>
 
 </head>
 
@@ -33,8 +34,13 @@
                             <div> C'est un
                             <td th:text="${resa.type_space}"></td>
                                  au
-                                <td th:text="${resa.id_floor}"></td> em etage
+                                <td th:text="${resa.id_floor}"></td> em etage. Reservé par
+                                <td th:text="${resa.username}"></td> de
+                                <td th:text="${resa.start_time}"></td> a
+                                <td th:text="${resa.end_time}"></td>
                             </div>
+
+
 
                         </div>
                     </div>
@@ -54,7 +60,6 @@
 
 
 <script type="text/javascript" th:src="@{/salles_reunion_js.js}" th:inline="javascript"></script>
-<link th:href="@{/salles_reunion_css.css}" rel="stylesheet"/>
 </body>
 
 </html>

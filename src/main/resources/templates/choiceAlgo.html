@@ -13,63 +13,16 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
 
-    <script>
-        function essai(radio) {
-            if (radio=="preference") {
-                document.getElementById('3').style.display='none';
-                document.getElementById('1').style.display='block';
-            } else if (radio=="proportionequity") {
-                document.getElementById('1').style.display='none';
-                document.getElementById('3').style.display='none';
-            }else if (radio=="proportionchoice") {
-                document.getElementById('1').style.display='none';
-                document.getElementById('3').style.display='block';
-            }else if (radio=="preferenceweather") {
-                document.getElementById('1').style.display='none';
-                document.getElementById('3').style.display='none';
-            }else if (radio=="economic") {
-                document.getElementById('1').style.display='none';
-                document.getElementById('3').style.display='none';
-            }else if (radio=="environmental") {
-                document.getElementById('1').style.display='none';
-                document.getElementById('3').style.display='none';
-            }
-        }
-
-    </script>
-
-    <script>
-  $( function() {
-    $( "#accordion" ).accordion();
-  } );
-  </script>
-
-    <script>
-        function controlPref(radio){
-            var selectElmt1 = document.getElementById("pref1");
-            var valeurselectionnee1 = selectElmt1.options[selectElmt1.selectedIndex].value;
-            var selectElmt2 = document.getElementById("pref2");
-            var valeurselectionnee2 = selectElmt2.options[selectElmt2.selectedIndex].value;
-            var selectElmt3 = document.getElementById("pref3");
-            var valeurselectionnee3 = selectElmt3.options[selectElmt3.selectedIndex].value;
-
-            //var prop1 document.getElementById("prop1").value;
-
-            var radio = document.querySelector('input[name="choice"]:checked').value;
-            if(radio=="preference"){
-                if(valeurselectionnee1==valeurselectionnee2||valeurselectionnee2==valeurselectionnee3||valeurselectionnee1==valeurselectionnee3){
-                    alert("il faut que les pref soient diff");
-                    return false;
-
-                }
-            }
-            else{return true;}
-        }
-    </script>
+    <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/global.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/user.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/choiceAlgo.css}"/>
 </head>
-<body>
+<body class="background">
 
-<!-- NAV BAR -->
+<!-- NAV BAR
 <nav class=" navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
     <a class="navbar-brand" href="/Municipality">
@@ -94,23 +47,41 @@
 <br>
 <br>
 <br>
+-->
+<header>
+    <div class="navbar center-all">
+        <div class="center-all">
+            <img th:src="@{/image/icon.png}" class="icon"/>
+            <h1 class="name">Citizens</h1>
+        </div>
+        <div class="right-navbar center-all">
+            <a href="/smartgrid">Accueil</a>
+            <a href="/Mix">Mix En actuel</a>
+            <a href="/AlgoMix">Choix du mix</a>
+            <a href="/GraphHP">Mix 2021</a>
+            <a href="/login">déconnexion</a>
+        </div>
 
+    </div>
+</header>
 <!-- END NAV BAR -->
 
 <!-- Choice Algo -->
 
 <h2 align="center" class="container my-2"> Choix de l'algo </h2>
-<h3>Choix de l'algo actuel :</h3>
-<p>
+
+<hr>
+<h3 align="center">Choix de l'algo actuel :</h3>
+<p align="center">
     <span th:utext="${choixActuel}"></span>
 </p>
 
 <br>
 <hr>
 
-<h3>Modifier le choix de l'algo :</h3>
+<h3 align="center">Modifier le choix de l'algo :</h3>
 <form id="first" action="#" th:action="@{/AlgoMix}" th:object="${choix}" method="post" onsubmit="return controlPref()">
-    <div>
+    <div class="selectchoice">
     <p>
         <input type="radio" name="choice" value="preference" onchange="essai(this.value)" th:field="*{choice}"> Algo 1 : Préférence<br>
         <div id="1" style="display:none">
@@ -149,7 +120,7 @@
         </div>
 
         <input type="radio" name="choice" value="preferenceweather" onchange="essai(this.value)" th:field="*{choice}"> Algo 4 : Production en fonction des conditions météo<br><br>
-        <input type="radio" name="choice" value="economic" onchange="essai(this.value)" th:field="*{choice}" checked="checked"> Algo 5 : Production en fonction des coûts économiques<br><br>
+        <input type="radio" name="choice" value="economic" checked onchange="essai(this.value)" th:field="*{choice}"> Algo 5 : Production en fonction des coûts économiques<br><br>
         <input type="radio" name="choice" value="environmental" onchange="essai(this.value)" th:field="*{choice}"> Algo 6 : Production en fonction des coûts environnementaux<br>
 
         </p>
@@ -162,10 +133,10 @@
 <br>
 <hr>
 
-<h3>Descriptif des Algorithmes</h3>
+<h3 align="center">Descriptif des Algorithmes</h3>
 <div id="accordion">
-    <h3>Algo 1</h3>
-    <div>
+    <h3 align="center">Algo 1</h3>
+    <div class="rectangle">
         <p>
             La production de l'énergie se fera selon les préférences choisies. Par exemple si le choix avait été le suivant :
         </p>
@@ -177,8 +148,9 @@
         Alors on aurait répondu à la demande de production en produisant d'abord de l'énergie solaire,
         puis de l'énergie éolienne si ce n'était pas suffisant et enfin de l'énergie hydraulique si ce n'était toujours pas suffisant.
     </div>
-    <h3>Algo 2</h3>
-    <div>
+    <br>
+    <h3 align="center">Algo 2</h3>
+    <div class="rectangle">
         <p>
             La production de l'énergie se fera de façon équitable. C'est à dire qu'on répondra à la demande en produisant :
         <ul>
@@ -189,8 +161,9 @@
         Si cela n'est pas possible alors la règle suivante sera apppliquée :
         </p>
     </div>
-    <h3>Algo 3</h3>
-    <div>
+    <br>
+    <h3 align="center">Algo 3</h3>
+    <div class="rectangle">
         <p>
             La production de l'énergie se fera selon les préférences choisis. Par exemple si le choix avait été le suivant :
         </p>
@@ -203,14 +176,16 @@
         par rapport à la demande. Les proportions seront respectées dans la mesure du possible sinon la règle suivante sera appliquée :
 
     </div>
-    <h3>Algo 4</h3>
-    <div>
+    <br>
+    <h3 align="center">Algo 4</h3>
+    <div class="rectangle">
         <p>
             Algo4
         </p>
     </div>
-    <h3>Algo 5</h3>
-    <div>
+    <br>
+    <h3 align="center">Algo 5</h3>
+    <div class="rectangle">
         <p>
             La production de l'énergie se fera en fonction du coût économique que chaque énergie engendrera. En retour de l'Algorithme il sera
             proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
@@ -225,8 +200,9 @@
         Au dela le coût de fabrication/installation n'est pas pris en compte.
         Cliquer <a href="/GraphEconomicCost">ici</a> pour faire une simulation (voir le graphe des coûts économiques en fonction de la puissance à fournir)
     </div>
-    <h3>Algo 6</h3>
-    <div>
+    <br>
+    <h3 align="center">Algo 6</h3>
+    <div class="rectangle">
         <p>
             La production de l'énergie se fera en fonction du coût environnemental que chaque énergie engendrera. En retour de l'Algorithme il sera
             proposé un choix de préférence où on classera les énergie de la moins couteuse à la plus couteuse.<br>
@@ -247,5 +223,87 @@
 <br>
 <br>
 <br>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+    <script>
+        function essai(radio) {
+            if (radio=="preference") {
+                document.getElementById('3').style.display='none';
+                document.getElementById('1').style.display='block';
+            } else if (radio=="proportionequity") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='none';
+            }else if (radio=="proportionchoice") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='block';
+            }else if (radio=="preferenceweather") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='none';
+            }else if (radio=="economic") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='none';
+            }else if (radio=="environmental") {
+                document.getElementById('1').style.display='none';
+                document.getElementById('3').style.display='none';
+            }
+        }
+
+    </script>
+    <script>
+        function controlPref(radio){
+            var selectElmt1 = document.getElementById("pref1");
+            var valeurselectionnee1 = selectElmt1.options[selectElmt1.selectedIndex].value;
+            var selectElmt2 = document.getElementById("pref2");
+            var valeurselectionnee2 = selectElmt2.options[selectElmt2.selectedIndex].value;
+            var selectElmt3 = document.getElementById("pref3");
+            var valeurselectionnee3 = selectElmt3.options[selectElmt3.selectedIndex].value;
+
+            let prop1 = document.getElementById("prop1").value;
+            let prop2 = document.getElementById("prop2").value;
+            let prop3 = document.getElementById("prop3").value;
+            let sum = parseInt(prop1)+parseInt(prop2)+parseInt(prop3)
+
+            if($('input[name=choice]:checked').length == 0){
+                Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'il faut chocher un Algo',
+                      backdrop: 'rgba(157, 181, 153, 0.5)',
+                      confirmButtonColor: '#326019'
+                    });
+                    return false;
+            }
+
+            var radio = document.querySelector('input[name="choice"]:checked').value;
+            if(radio=="preference"){
+                if(valeurselectionnee1==valeurselectionnee2||valeurselectionnee2==valeurselectionnee3||valeurselectionnee1==valeurselectionnee3){
+                    //alert("il faut que les choix des préférences soient différents!");
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'il faut que les choix des préférences soient différents!',
+                      backdrop: 'rgba(157, 181, 153, 0.5)',
+                      confirmButtonColor: '#326019'
+                    });
+                    return false;
+
+                }
+            }
+            if(radio=="proportionchoice"){
+                if(sum!=100){
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'il faut que la somme des proportions soit égale à 100!',
+                      backdrop: 'rgba(157, 181, 153, 0.5)',
+                      confirmButtonColor: '#326019'
+                    });
+                    return false;
+                }
+            }
+            else{return true;}
+        }
+    </script>
 </body>
 </html>

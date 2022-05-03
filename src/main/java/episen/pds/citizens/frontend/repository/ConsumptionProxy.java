@@ -33,6 +33,20 @@ public class ConsumptionProxy {
         logger.info("Get Consumption By Equipment call " + response.getStatusCode());
         return response.getBody();
     }
+    public static Consumption getConsumptionByIdBuildingNow(int idb){
+        String baseApiUrl = props.getApiUrl();
+        String getConsumptionByEquipmentUrl = baseApiUrl +"/ConsumptionByIdBuildingNow/"+idb;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Consumption> response = restTemplate.exchange(
+                getConsumptionByEquipmentUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        logger.info("Get Consumption By Equipment call " + response.getStatusCode());
+        return response.getBody();
+    }
     public static Iterable<Consumption> getConsumptionByEquipmentBetweenTwoDate(int id_e, long db, long de){
         String baseApiUrl = props.getApiUrl();
         String getConsumptionByEquipmentUrl = baseApiUrl

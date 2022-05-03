@@ -1,12 +1,12 @@
 package episen.pds.citizens.frontend.controllers;
 
+import episen.pds.citizens.frontend.model.Consumption;
 import episen.pds.citizens.frontend.model.Login;
 import episen.pds.citizens.frontend.model.Users;
 import episen.pds.citizens.frontend.model.architectureModel.Building;
-import episen.pds.citizens.frontend.model.architectureModel.Floor;
+import episen.pds.citizens.frontend.service.ConsumptionService;
 import episen.pds.citizens.frontend.service.UsersService;
 import episen.pds.citizens.frontend.service.architectureService.BuildingService;
-import episen.pds.citizens.frontend.service.architectureService.FloorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ public class UserController {
     private static final Logger logger = Logger.getLogger(UserController.class.getName());
     private final UsersService usersService = new UsersService();
     private final BuildingService buildingService = new BuildingService();
-    private final FloorService floorService = new FloorService();
+    private final ConsumptionService consumptionService = new ConsumptionService();
 
     @PostMapping("/userName")
     public String getUserByUserName(@ModelAttribute Login username, Model model){
@@ -54,7 +54,7 @@ public class UserController {
             return "homeEmployee";
         }
         if(users.getType().equals("Municipalité")){
-            return "homeMunicipality";
+            return "redirect:/smartgrid";
         }
         Login username1 = new Login();
         model.addAttribute("username",username1);
@@ -78,6 +78,8 @@ public class UserController {
             if(buildingIterable.size()==1){
                 Building b = buildingIterable.get(0);
                 model.addAttribute("house",b);
+                Consumption consumption = consumptionService.getConsumptionByIdBuilding(b.getId_building());
+                model.addAttribute("consumption",consumption);
                 logger.info(b+"");
             }
             else{

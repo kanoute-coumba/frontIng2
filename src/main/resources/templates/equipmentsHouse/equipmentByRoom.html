@@ -132,6 +132,7 @@
                         <td th:if="${equipment.type} == 'sèche-linge'"><a
                                 th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                 class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
+
                         <td th:if="${equipment.type} == 'lave-linge'"><a
                                 th:href="@{'/configurationLampe?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                 class="link-dark"> <span th:text="${equipment.type}"></span> </a></td>
@@ -205,7 +206,7 @@
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
                             <div th:if="${equipment.type} == 'lave-vaisselle'">
-                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                <a th:href="@{'/Douche/lave-vaisselle?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
                             <div th:if="${equipment.type} == 'table-cuisson'">
@@ -217,17 +218,14 @@
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
                             <div th:if="${equipment.type} == 'four'">
-                                <a th:href="@{'/Chambre/Television?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                <a th:href="@{'/Cuisine/four?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
                             <div th:if="${equipment.type} == 'sèche-linge'">
-                                <a th:href="@{'Douche/lave-vaisselle?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
+                                <a th:href="@{'/Douche/lave-vaisselle?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
                                    class="btn btn-info"> <span>Manuelle</span></a>
                             </div>
-                            <div th:if="${equipment.type} == 'lave-linge'">
-                                <a th:href="@{'Douche/lave-vaisselle?id_equipment=' + ${equipment.id_equipment} + '&room='+${nameRoom}}"
-                                   class="btn btn-info"> <span>Manuelle</span></a>
-                            </div>
+
 
 
                             <form method="get" action="/formAuto">
@@ -258,10 +256,10 @@
                 <button style="margin-top: 12px" id="choix" class="btn btn-primary">Lancer</button>
 
 
-                <div class="calendar" id="calendar">
-                    <label>Présence dans la pièce :  </br></label>
-                    <span id="presence" th:text="${valuesensor}"></span>
-                </div>
+<!--                <div class="calendar" id="calendar">-->
+<!--                    <label>Présence dans la pièce :  </br></label>-->
+<!--                    <span id="presence" th:text="${valuesensor}"></span>-->
+<!--                </div>-->
             </div>
 
 
@@ -339,10 +337,6 @@
             console.log('After:\t', d.toLocaleString())
             myTime.value = d.toISOString().slice(0, 16);
 
-            // let datevalue = document.getElementById("myTime").value;
-            // datevalue = datevalue.replace('T', ' ')
-            // datevalue = datevalue.replace('/', '-').substring(0, 13);
-            // console.log(datevalue)
 
             let datehours = document.getElementById("myTime").value;
             datehours = datehours.replace('T', ' ')
@@ -350,26 +344,6 @@
             datehours += ':00'
 
             console.log(datehours)
-
-            // $.ajax({
-            //     url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
-            //     type: 'GET',
-            //     dataType: 'json',
-            //     success: function (currentvalue) {
-            //         console.log(currentvalue)
-            //         if (currentvalue === 0) {
-            //             document.getElementById("presence").innerHTML = 'Non'
-            //             console.log("Absence")
-            //         } else {
-            //             console.log("Présence")
-            //             document.getElementById("presence").innerHTML = 'Oui'
-            //         }
-            //     }
-            // })
-
-            // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
-            // http://localhost:9000/updateAutoEquip?meeting_time=2022-01-01 08:00
-
 
             $.ajax({
                 url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours,
@@ -394,7 +368,6 @@
 
                     console.log(data);
                     for (let i = 0; i < data.length; i++) {
-                        console.log("lelelelellelelelelel");
                         let s = document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
                        let v =  document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
                         console.log(v);

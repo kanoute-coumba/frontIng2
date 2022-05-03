@@ -1,7 +1,7 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.model.Tenant;
+import episen.pds.citizens.frontend.model.OccupationRate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -21,17 +21,17 @@ public class OccupationProxy {
 
     private static final Logger logger = Logger.getLogger(OccupationProxy.class.getName());
 
-    public Iterable<Tenant> getTenant() {
-        String baseApiUrl = props.getApiUrl();
-        String getTestUrl = baseApiUrl + "/tenant";
+    public Iterable<OccupationRate> OccupationRate() {
+        String baseApiUrl = props.getApiLocalUrl();
+        String getTestUrl = baseApiUrl + "/occupation_rate";
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<Iterable<Tenant>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<OccupationRate>> response = restTemplate.exchange(
                 getTestUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<Tenant>>() {
+                new ParameterizedTypeReference<Iterable<OccupationRate>>() {
                 }
         );
 
@@ -39,4 +39,5 @@ public class OccupationProxy {
 
         return response.getBody();
     }
+
 }

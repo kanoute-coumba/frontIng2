@@ -1,9 +1,8 @@
 package episen.pds.citizens.frontend.repository;
 
 import episen.pds.citizens.frontend.CustomProperties;
-import episen.pds.citizens.frontend.model.Messages;
+import episen.pds.citizens.frontend.model.RSpace;
 import episen.pds.citizens.frontend.model.Reservation;
-import episen.pds.citizens.frontend.model.Users;
 import episen.pds.citizens.frontend.model.architectureModel.Space;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,16 +60,16 @@ public class ReservationProxy {
 
     }
 
-    public static Iterable<Space> getReservedSpace() {
+    public static Iterable<RSpace> getReservedSpace() {
         String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/spaces";
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Iterable<Space>> response = restTemplate.exchange(
+        ResponseEntity<Iterable<RSpace>> response = restTemplate.exchange(
                 getTestUrl,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<Iterable<Space>>() {
+                new ParameterizedTypeReference<Iterable<RSpace>>() {
                 }
         );
 

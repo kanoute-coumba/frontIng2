@@ -44,7 +44,7 @@ public class ConsumptionProxy {
                 new ParameterizedTypeReference<>() {
                 }
         );
-        logger.info("Get Consumption By Equipment call " + response.getStatusCode());
+        logger.info("Get ConsumptionByIdBuildingNow/idb  call " + response.getStatusCode());
         return response.getBody();
     }
     public static Iterable<Consumption> getConsumptionByEquipmentBetweenTwoDate(int id_e, long db, long de){

@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
     <link rel="stylesheet" th:href="@{/styles/global.css}"/>
     <link rel="stylesheet" th:href="@{/styles/smartgrid.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/user.css}"/>
 </head>
 <body class="background">
 
@@ -22,9 +23,13 @@
             <img th:src="@{/image/icon.png}" class="icon"/>
             <h1 class="name">Citizens</h1>
         </div>
-        <a th:href="@{/}">
-            <i class="fi fi-rr-apps"></i>
-        </a>
+        <div class="right-navbar center-all">
+            <a href="/Mix">Mix Energétique</a>
+            <a th:href="@{/login}">
+                <i class="fi fi-rr-apps"></i>
+            </a>
+        </div>
+
     </div>
 </header>
 

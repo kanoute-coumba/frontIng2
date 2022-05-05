@@ -53,21 +53,21 @@ public class OccupationController {
         }
         @GetMapping("/2020rate")
         public String get2020rate(Model model) {
-            Iterable<OccupationRate> occupationRate = occupationService.getOccupationRate();
+            Iterable<OccupationRateByBuilding> occupationRate = occupationService.get2020Rate();
             model.addAttribute("occupationRate", occupationRate);
             return "rateByBuilding";
         }
 
         @GetMapping("/2021rate")
         public String get2021rate(Model model) {
-            Iterable<OccupationRate> occupationRate = occupationService.getOccupationRate();
+            Iterable<OccupationRateByBuilding> occupationRate = occupationService.get2021Rate();
             model.addAttribute("occupationRate", occupationRate);
             return "rateByBuilding";
         }
 
         @GetMapping("/2022rate")
         public String get2022rate(Model model) {
-            Iterable<OccupationRate> occupationRate = occupationService.getOccupationRate();
+            Iterable<OccupationRateByBuilding> occupationRate = occupationService.get2022Rate();
             model.addAttribute("occupationRate", occupationRate);
             return "rateByBuilding";
         }

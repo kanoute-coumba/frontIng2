@@ -1,0 +1,20 @@
+#accordion a {
+            color:blue
+}
+.selectchoice{
+    margin: auto;
+    padding-top: 10px;
+    width: 400px;
+}
+.selectchoice input[type='submit']{
+    display: block;
+    margin : auto;
+}
+.rectangle{
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 700px;
+    background: white;
+}

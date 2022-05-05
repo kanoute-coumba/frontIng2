@@ -34,6 +34,9 @@ public class UsersService {
             return new Users(0,"vide",1,"vide");
         }
     }
+    public Users getUsersById(int id){
+        return usersProxy.getUsersByUserId(id);
+    }
 }
 
 

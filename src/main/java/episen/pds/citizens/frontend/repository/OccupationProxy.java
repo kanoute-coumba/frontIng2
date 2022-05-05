@@ -22,7 +22,7 @@ public class OccupationProxy {
     private static final Logger logger = Logger.getLogger(OccupationProxy.class.getName());
 
     public Iterable<Tenant> getTenant() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/tenant";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -41,7 +41,7 @@ public class OccupationProxy {
     }
 
     public Iterable<DWPbyBuilding> getDWPbuildings() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/dwp_buildings";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -60,7 +60,7 @@ public class OccupationProxy {
     }
 
     public Iterable<TenantDetails> getTenantDetails() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/tenantdetails";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -78,8 +78,8 @@ public class OccupationProxy {
         return response.getBody();
     }
 
-    public Iterable<RentCounterByYear> getCounterByYear() {
-        String baseApiUrl = props.getApiLocalUrl();
+    public Iterable<RentCounterByYear> getRentCounterByYear() {
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/rentyearcounter";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -100,7 +100,7 @@ public class OccupationProxy {
 
 
     public Iterable<OccupationRate> getOccupationRate() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/occupation_rate";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -119,7 +119,7 @@ public class OccupationProxy {
     }
 
     public Iterable<OccupationRateByBuilding> get2020Rate() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/2020rate";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -138,7 +138,7 @@ public class OccupationProxy {
     }
 
     public Iterable<OccupationRateByBuilding> get2021Rate() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/2021rate";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -157,7 +157,7 @@ public class OccupationProxy {
     }
 
     public Iterable<OccupationRateByBuilding> get2022Rate() {
-        String baseApiUrl = props.getApiLocalUrl();
+        String baseApiUrl = props.getApiUrl();
         String getTestUrl = baseApiUrl + "/2022rate";
 
         RestTemplate restTemplate = new RestTemplate();

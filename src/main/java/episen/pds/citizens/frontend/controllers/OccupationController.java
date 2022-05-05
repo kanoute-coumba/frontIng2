@@ -40,7 +40,7 @@ public class OccupationController {
 
         @GetMapping("/rentyearcounter")
         public String getCounterByYear(Model model) {
-            Iterable<RentCounterByYear> counter = occupationService.getCounterByYear();
+            Iterable<RentCounterByYear> counter = occupationService.getRentCounterByYear();
             model.addAttribute("rentCounterByYear", counter);
             return "rentCounterByYear";
         }

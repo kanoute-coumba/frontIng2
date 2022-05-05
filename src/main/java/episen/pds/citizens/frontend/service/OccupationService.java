@@ -26,8 +26,8 @@ public class OccupationService {
         return occupationProxy.getTenantDetails();
     }
 
-    public Iterable<RentCounterByYear> getCounterByYear() {
-        return occupationProxy.getCounterByYear();
+    public Iterable<RentCounterByYear> getRentCounterByYear() {
+        return occupationProxy.getRentCounterByYear();
     }
 
     public Iterable<OccupationRate> getOccupationRate() {

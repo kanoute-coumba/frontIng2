@@ -1,6 +1,6 @@
 package episen.pds.citizens.frontend.service;
 
-import episen.pds.citizens.frontend.model.Tenant;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.repository.OccupationProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,37 @@ public class OccupationService {
 
     public Iterable<Tenant> getTenant() {
         return occupationProxy.getTenant();
+    }
+
+    public Iterable<DWPbyBuilding> getDWPbuildings() {
+        return occupationProxy.getDWPbuildings();
+    }
+
+    public Iterable<TenantDetails> getTenantDetails() {
+        return occupationProxy.getTenantDetails();
+    }
+
+    public Iterable<RentCounterByYear> getRentCounterByYear() {
+        return occupationProxy.getRentCounterByYear();
+    }
+
+    public Iterable<OccupationRate> getOccupationRate() {
+        return occupationProxy.getOccupationRate();
+    }
+
+    public Iterable<OccupationRateByBuilding> get2020Rate() {
+        return occupationProxy.get2020Rate();
 
     }
+
+    public Iterable<OccupationRateByBuilding> get2021Rate() {
+        return occupationProxy.get2021Rate();
+
+    }
+
+    public Iterable<OccupationRateByBuilding> get2022Rate() {
+        return occupationProxy.get2022Rate();
+
+    }
+
 }

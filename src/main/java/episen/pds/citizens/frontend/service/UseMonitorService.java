@@ -19,8 +19,8 @@ public class UseMonitorService {
         return UseMonitorProxy.getConsumptionByBuilding();
     }
 
-    public Iterable<Room> getRooms() {
-        return  useMonitorProxy.getRooms();
+    public Iterable<Room> getRooms(int id_user) {
+        return  useMonitorProxy.getRooms(id_user);
     }
 
     public Iterable<EquipmentAndData> getEquipmentByRoom(int id_room) {

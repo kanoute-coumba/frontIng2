@@ -94,9 +94,9 @@ public class UseMonitorProxy {
         return response.getBody();
     }
 
-    public Iterable<Room> getRooms() {
+    public Iterable<Room> getRooms(int id_user) {
         String baseApiUrl = props.getApiUrl();
-        String getConsBuildUrl = baseApiUrl + "/getAllRooms";
+        String getConsBuildUrl = baseApiUrl + "/getAllRooms/" + id_user;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Room>> response = restTemplate.exchange(

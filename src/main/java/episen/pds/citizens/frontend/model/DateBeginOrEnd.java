@@ -25,6 +25,11 @@ public class DateBeginOrEnd {
     public DateBeginOrEnd() {
     }
 
+    @Override
+    public String toString() {
+        return "AAAA/MM/JJ/HH/mm/ss";
+    }
+
     public long toLong(){
         logger.info("la date est "+date);
         try{

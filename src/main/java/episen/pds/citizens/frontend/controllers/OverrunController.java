@@ -63,8 +63,15 @@ public class OverrunController {
             return "municipality";
         }
 
+    /*
     @RequestMapping(method = RequestMethod.POST, value = "/principal")
     public String submitProfil() {
+        return "principal";
+    }
+     */
+
+    @GetMapping("/principal")
+    public String activitySmartCity() {
         return "principal";
     }
 

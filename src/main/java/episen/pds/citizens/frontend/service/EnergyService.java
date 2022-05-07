@@ -2,8 +2,10 @@ package episen.pds.citizens.frontend.service;
 
 import episen.pds.citizens.frontend.model.CentralByProduction;
 import episen.pds.citizens.frontend.model.EquipmentWithConsumption;
+import episen.pds.citizens.frontend.model.Production;
 import episen.pds.citizens.frontend.repository.CentralProxy;
 import episen.pds.citizens.frontend.repository.EquipmentProxy;
+import episen.pds.citizens.frontend.repository.ProductionProxy;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,8 @@ public class EnergyService {
         logger.info("EnergyService getCentral");
         return CentralProxy.getCentralByProduction(id_b);
 
+    }
+    public Production getProductionByIdBuilding(int idb){
+        return ProductionProxy.getProductionByIdBuilding(idb);
     }
 }

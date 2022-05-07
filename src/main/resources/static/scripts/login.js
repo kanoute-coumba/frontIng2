@@ -1,5 +1,6 @@
 var server = 'http://172.31.249.1:9000';
-var serverFront = 'http://172.31.249.240:9001';
+//var serverFront = 'http://172.31.249.240:9001';
+var serverFront = 'http://localhost:9001';
 
 $(function() {
     $(".form-login").submit(function(e) {

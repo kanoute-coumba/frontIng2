@@ -217,6 +217,14 @@ public class EquipmentController {
         return "equipmentsHouse/chooseRoom";
     }
 
+    @GetMapping("/chooseRoom2/{email}")
+    public String chooseRoom2(@PathVariable("email") String email, Model model) {
+        Iterable<Building> listHouse = equipmentService.getBuildings(email);
+        model.addAttribute("houses", listHouse);
+        System.out.println(listHouse.toString());
+        return "equipmentsHouse/chooseRoom";
+    }
+
     @PostMapping("/calendarwithtime")
     public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time, Model model, @RequestParam("idr") int idr) {
         System.out.println(equipmentService.calandarwithtime(meeting_time));

@@ -8,9 +8,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
 
+    <title>Citizens</title>
+    <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/global.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/user.css}"/>
+
 </head>
 <body>
-<nav th:insert="~{fragment :: navbar}"></nav>
+
+
+
 <form method="get" action="/formForRoom">
     <div class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <div class="row"><label for="building"> Choississez votre maison </label><br>
@@ -39,7 +48,7 @@
 <script>
     let house = document.getElementById("building");
     house.addEventListener('click', function () {
-        let houseselected = house.options[house.options.selectedIndex].label;
+        let houseselected = house.options[house.options.selectedIndex].value;
         let test = 'http://localhost:9000/floor?house' + houseselected;
         console.log("url test"+test);
         $.ajax({

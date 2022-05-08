@@ -50,7 +50,7 @@ public class Messages {
 
     public String getTime() {
         Timestamp ts = new Timestamp(time);
-        String str = ts.toString();  ;
+        String str = ts.toString();
         String[] date_hour = str.split(" ");
         str = date_hour[1];
         String[] hour = str.split(":");

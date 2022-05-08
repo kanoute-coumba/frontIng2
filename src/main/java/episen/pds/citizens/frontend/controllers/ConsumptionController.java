@@ -1,12 +1,11 @@
 package episen.pds.citizens.frontend.controllers;
 
-import episen.pds.citizens.frontend.model.Consumption;
-import episen.pds.citizens.frontend.model.DateBeginOrEnd;
-import episen.pds.citizens.frontend.model.Login;
-import episen.pds.citizens.frontend.model.ObjectForModel;
+import episen.pds.citizens.frontend.model.*;
 import episen.pds.citizens.frontend.model.architectureModel.Building;
 import episen.pds.citizens.frontend.service.ConsumptionService;
+import episen.pds.citizens.frontend.service.UsersService;
 import episen.pds.citizens.frontend.service.architectureService.BuildingService;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +21,7 @@ public class ConsumptionController {
     private static final Logger logger = Logger.getLogger(ConsumptionController.class.getName());
     private final ConsumptionService consumptionService = new ConsumptionService();
     private final BuildingService buildingService = new BuildingService();
+    private final UsersService usersService = new UsersService();
 
     @GetMapping("/ConsumptionByIdEquipment/{ide}")
     public String getConsumptionOfEquipment(Model model, @PathVariable("ide") int ide) {
@@ -74,6 +74,7 @@ public class ConsumptionController {
         logger.info("HistoBuilding");
         ArrayList<Building> buildingIterable = buildingService.getBuildingByIdUser(idu);
         Building house = new Building();
+        Users users = usersService.getUsersById(idu);
         if(buildingIterable.size()==1){
             house = buildingIterable.get(0);
             model.addAttribute("house",house);
@@ -85,11 +86,13 @@ public class ConsumptionController {
         objectForModel.setDateE(dateEnd);
         objectForModel.setHouse(house);
         logger.info(house+"");
+        model.addAttribute("user",users);
         model.addAttribute("objectForModel",objectForModel);
         model.addAttribute("dateE",dateEnd);
         model.addAttribute("dateB",dateBegin);
         return "HistoBuilding";
     }
+
     @PostMapping("/ConsumptionByIdBuilding/{idb}")
     public String HistoConsumptionBuilding(Model model,
                                            @ModelAttribute ObjectForModel objectForModel,

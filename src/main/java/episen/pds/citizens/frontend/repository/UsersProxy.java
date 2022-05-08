@@ -56,8 +56,20 @@ public class UsersProxy {
         );
         logger.info("avant le retour du proxy");
         return response.getBody();
-
-
+    }
+    public static Users getUsersByUserId(int id) {
+        logger.info("proxy getUsersByUserId");
+        String baseApiUrl = props.getApiUrl();
+        String getUrl = baseApiUrl + "/users/"+id;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Users> response = restTemplate.exchange(
+                getUrl,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                }
+        );
+        return response.getBody();
     }
 
   /*  public Messages_reservation reserveMessages (Messages_reservation Messages_reservation) {

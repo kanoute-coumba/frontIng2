@@ -1,12 +1,11 @@
 package episen.pds.citizens.frontend.model;
 
-import lombok.Data;
+import java.util.Date;
 
-@Data
 public class Tenant {
-    private String company_name;
-    private String type_space;
-    private String building_name;
-    private String floor_name;
 
+     int id_tenant;
+     int id_company;
+     int id_space;
+     Date date;
 }

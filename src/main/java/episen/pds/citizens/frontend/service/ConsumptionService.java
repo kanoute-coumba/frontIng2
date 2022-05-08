@@ -33,5 +33,7 @@ public class ConsumptionService {
         logger.info("getConsumptionByEquipment "+id_r +" Between "+db +" "+de);
         return ConsumptionProxy.getConsumptionByBuildingBetweenTwoDate(id_r,db,de);
     }
-
+    public Consumption getConsumptionByIdBuilding(int idb){
+        return ConsumptionProxy.getConsumptionByIdBuildingNow(idb);
+    }
 }

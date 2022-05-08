@@ -80,6 +80,16 @@ public class EquipmentController {
         return "equipmentsHouse/fenetre";
     }
 
+    @GetMapping("Cuisine/four")
+    public String configManuFour(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
+        model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("id_room", id_room);
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
+        return "equipmentsHouse/four";
+    }
+
     @GetMapping("/Cuisine/Refrigerateur")
     public String configManuRefrigerateur(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
         Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
@@ -110,10 +120,28 @@ public class EquipmentController {
         return "equipmentsHouse/laveVaisselleManuel";
     }
 
+    @GetMapping("/Douche/sèchelinge")
+    public String updateEquipmentOnTimes(@RequestParam("id_equipment") Integer id_equipment, @RequestParam("room") String name_room, Model model) {
+        Integer id_room = equipmentService.getIdRoomByEquipment(id_equipment);
+        model.addAttribute("id_equipment", id_equipment);
+        model.addAttribute("id_room", id_room);
+        String nameEquipment = equipmentService.NameEquipment(id_equipment);
+        model.addAttribute("nameEquipment", nameEquipment);
+        return "equipmentsHouse/sèche-linge";
+    }
+
+
     @GetMapping("/formVaisselle")
     public String formVaiselle(@RequestParam("timebegin") String timebegin, @RequestParam("timeend") String timeend, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, @RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode) {
         equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateHoursBeginAndEndEquipment(timebegin, timeend, id_equipment);
+        equipmentService.updateValueEquipment(valueEquipment, id_equipment);
+        return "redirect:/getIdrEquipmentRoom/" + idr;
+    }
+
+    @GetMapping("/formfour")
+    public String formfour(@RequestParam("chooseStatut") String chooseStatut, @RequestParam("type_mode") String type_mode, @RequestParam("id_equipment") Integer id_equipment, @RequestParam("valueEquipment") Integer valueEquipment, @RequestParam("idr") Integer idr, Model model) {
+        equipmentService.updateStatutMode(chooseStatut, type_mode, id_equipment);
         equipmentService.updateValueEquipment(valueEquipment, id_equipment);
         return "redirect:/getIdrEquipmentRoom/" + idr;
     }
@@ -185,33 +213,25 @@ public class EquipmentController {
     public String chooseRoom(@RequestParam("email") String email, Model model) {
         Iterable<Building> listHouse = equipmentService.getBuildings(email);
         model.addAttribute("houses", listHouse);
-        System.out.println(listHouse.toString());
+        return "equipmentsHouse/chooseRoom";
+    }
+
+    @GetMapping("/chooseRoom2/{email}")
+    public String chooseRoom2(@PathVariable("email") String email, Model model) {
+        Iterable<Building> listHouse = equipmentService.getBuildings(email);
+        model.addAttribute("houses", listHouse);
         return "equipmentsHouse/chooseRoom";
     }
 
     @PostMapping("/calendarwithtime")
-    public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time, Model model, @RequestParam("idr")  int idr) {
-        System.out.println(equipmentService.calandarwithtime(meeting_time));
+    public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time, Model model, @RequestParam("idr") int idr) {
         model.addAttribute("mytime", meeting_time);
-
-
-
-
-
-
         Iterable<Map<String, String>> iterable = equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
         model.addAttribute("id_room", idr);
-
-
-
-
-
         return "equipmentsHouse/equipmentByRoom";
 
     }
-
-
 }

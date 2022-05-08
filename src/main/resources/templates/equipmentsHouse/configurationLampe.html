@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<nav th:insert="~{fragment :: navbar}"></nav>
+<!--<nav th:insert="~{fragment :: navbar}"></nav>-->
 <div class="test">
     Configuration de la<span th:text="${nameEquipment}"></span>
 
@@ -59,6 +59,20 @@
     </a>
     </div>
 
+    <div th:if="${nameEquipment} == 'lave-vaisselle'"><a th:href="@{'/Douche/lave-vaisselle?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'four'"><a th:href="@{'/Cuisine/four?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
+
+    <div th:if="${nameEquipment} == 'climatisation'"><a th:href="@{'/Chambre/Television?id_equipment=' + ${id_equipment} + '&room='+${nameRoom}}">
+        <button type="button" class="btn btn-info">Manuelle</button>
+    </a>
+    </div>
 
 
     <form method="get" action="/formAuto" >

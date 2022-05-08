@@ -22,15 +22,11 @@ public class EquipmentService {
     }
 
     public void updateStatutMode(String chooseStatut, String type_mode, Integer id_equipment) {
-        System.out.println("debut");
         EquipmentProxy.updateStatutMode(chooseStatut, type_mode, id_equipment);
-        logger.info("fin");
     }
 
     public void updateValueEquipment(Integer valueEquipment, Integer id_equipment) {
-        System.out.println("début de nouvelle");
         EquipmentProxy.updateValueEquipment(valueEquipment, id_equipment);
-        logger.info("fin 22");
     }
 
     public String getNameRoomByIdroom(Integer id_room) {
@@ -38,8 +34,6 @@ public class EquipmentService {
     }
 
     public String NameEquipment(Integer id_equipment) {
-        System.out.println("deerrrrrr");
-        System.out.println(EquipmentProxy.NameEquipment(id_equipment));
         return EquipmentProxy.NameEquipment(id_equipment);
     }
 
@@ -55,7 +49,6 @@ public class EquipmentService {
 
     public void updateStatutAuto(String type_mode, Integer id_equipment){
         EquipmentProxy.updateStatutAuto(type_mode, id_equipment);
-        System.out.println(type_mode + "ttttp");
     }
 
     public String calandarwithtime (String meeting_time) {

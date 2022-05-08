@@ -213,7 +213,6 @@ public class EquipmentController {
     public String chooseRoom(@RequestParam("email") String email, Model model) {
         Iterable<Building> listHouse = equipmentService.getBuildings(email);
         model.addAttribute("houses", listHouse);
-        System.out.println(listHouse.toString());
         return "equipmentsHouse/chooseRoom";
     }
 
@@ -221,26 +220,18 @@ public class EquipmentController {
     public String chooseRoom2(@PathVariable("email") String email, Model model) {
         Iterable<Building> listHouse = equipmentService.getBuildings(email);
         model.addAttribute("houses", listHouse);
-        System.out.println(listHouse.toString());
         return "equipmentsHouse/chooseRoom";
     }
 
     @PostMapping("/calendarwithtime")
     public String displayCalandarwithtime(@RequestParam("meeting_time") String meeting_time, Model model, @RequestParam("idr") int idr) {
-        System.out.println(equipmentService.calandarwithtime(meeting_time));
         model.addAttribute("mytime", meeting_time);
-
-
         Iterable<Map<String, String>> iterable = equipmentService.getEquipmentByRoom(idr);
         model.addAttribute("listEquipment", iterable);
         String nameRoom = equipmentService.getNameRoomByIdroom(idr);
         model.addAttribute("nameRoom", nameRoom);
         model.addAttribute("id_room", idr);
-
-
         return "equipmentsHouse/equipmentByRoom";
 
     }
-
-
 }

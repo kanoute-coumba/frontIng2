@@ -262,10 +262,6 @@
                 <button style="margin-top: 12px" id="choix" class="btn btn-primary">Lancer</button>
 
 
-<!--                <div class="calendar" id="calendar">-->
-<!--                    <label>Présence dans la pièce :  </br></label>-->
-<!--                    <span id="presence" th:text="${valuesensor}"></span>-->
-<!--                </div>-->
             </div>
 
 
@@ -352,7 +348,7 @@
             console.log(datehours)
 
             $.ajax({
-                url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building=11534",
+                url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building=11534",
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentdate) {
@@ -366,8 +362,8 @@
                 clearInterval(interval);
             }
             $.ajax({
-                //http://localhost:9000/equipmentBYRoom/12
-                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
+                //http://172.31.249.1:9000/equipmentBYRoom/12
+                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

@@ -33,13 +33,13 @@ public class SmartGridController {
 
     @Scheduled(cron = "*/30 * * * * *")
     public void loop() {
-//        System.out.println("central updated");
-//        List<District> districts = districtService.readDistricts();
-//        this.template.convertAndSend("/smartgrid/districts", districts);
-//        List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
-//        this.template.convertAndSend("/smartgrid/centrals", centrals);
-//        Double balance = smartGridService.smartgrid();
-//        this.template.convertAndSend("/smartgrid/balance", balance);
+        System.out.println("central updated");
+        List<District> districts = districtService.readDistricts();
+        this.template.convertAndSend("/smartgrid/districts", districts);
+        List<BuildingCentral> centrals = buildingCentralService.readBuildingsTypeCentral();
+        this.template.convertAndSend("/smartgrid/centrals", centrals);
+        Double balance = smartGridService.smartgrid();
+        this.template.convertAndSend("/smartgrid/balance", balance);
     }
 
     @GetMapping("/smartgrid")

@@ -245,5 +245,4 @@ public class EquipmentProxy {
         logger.info("Get Equipment call " + response.getStatusCode().toString());
         return response.getBody();
     }
-
 }

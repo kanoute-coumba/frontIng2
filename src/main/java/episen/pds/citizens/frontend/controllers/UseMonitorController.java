@@ -4,6 +4,7 @@ import episen.pds.citizens.frontend.model.*;
 
 import episen.pds.citizens.frontend.service.ConsumptionService;
 import episen.pds.citizens.frontend.service.UseMonitorService;
+import episen.pds.citizens.frontend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,8 @@ public class UseMonitorController {
     private ConsumptionService consumptionService;
     private static final Logger logger = Logger.getLogger(UseMonitorController.class.getName());
 
+    @Autowired
+    UsersService usersService;
     @GetMapping("/monitor")
     public String getConsumptionByBuilding(Model model) {
         Iterable<ConsumptionByBuilding> listConsumption = useMonitorService.getConsumptionByBuilding();
@@ -40,12 +43,14 @@ public class UseMonitorController {
         for (Room row: listRoom) {
             logger.info(row.toString());
         }
+        Users user = usersService.getUsersById(id_user);
         model.addAttribute("rooms", listRoom);
+        model.addAttribute("user", user);
         return "showmyrooms";
     }
 
-    @GetMapping("/configManual/{id}")
-    public  String getEquipmentByRoom(Model model, @PathVariable("id") int id_room) {
+    @GetMapping("/configManual/{id_user}/{id_room}")
+    public  String getEquipmentByRoom(Model model, @PathVariable("id_room") int id_room, @PathVariable("id_user") int id_user) {
         logger.info("Id_room="+id_room);
         Iterable<EquipmentAndData> listEquipmentInRoom = useMonitorService.getEquipmentByRoom(id_room);
         for (EquipmentAndData row: listEquipmentInRoom) {
@@ -60,6 +65,8 @@ public class UseMonitorController {
         logger.info(current_cond.toString());
         model.addAttribute("current_cond",current_cond);
         model.addAttribute("equipments", listEquipmentInRoom);
+        Users user = usersService.getUsersById(id_user);
+        model.addAttribute("user", user);
         return "configmanu";
     }
 
@@ -74,8 +81,8 @@ public class UseMonitorController {
     }
 
     @PostMapping("/setEquipmentValue/{id_equipment}")
-    public String setEquipmentValue(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("changevalue") double value, @RequestParam("id_room") int id_room) {
-        logger.info("SET: id_equipment="+id_equipment + ", new_value=" + value + ", id_room=" + id_room);
+    public String setEquipmentValue(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("changevalue") double value, @RequestParam("id_room") int id_room, @RequestParam("id_user") int id_user) {
+        logger.info("SET: id_equipment="+id_equipment + ", new_value=" + value + ", id_room=" + id_room + ", id_user=" + id_user);
         useMonitorService.setEquipmentValue(id_equipment,value);
         useMonitorService.setEquipmentManu(id_equipment);
         if (value > 0) {
@@ -84,26 +91,27 @@ public class UseMonitorController {
         else {
             useMonitorService.setEquipmentOff(id_equipment);
         }
-        return "redirect:/configManual/"+ id_room;
+
+        return "redirect:/configManual/"+ id_user + "/" + id_room;
     }
 
     @PostMapping("/setEquipmentAuto/{id_equipment}")
-    public String setEquipmentAuto(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
-        logger.info("SET_AUTO: id_equipment="+ id_equipment + ", id_room=" + id_room);
+    public String setEquipmentAuto(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room, @RequestParam("id_user") int id_user) {
+        logger.info("SET_AUTO: id_equipment="+ id_equipment + ", id_room=" + id_room+ ", id_user=" + id_user + ", id_user=" + id_user);
         useMonitorService.setEquipmentAuto(id_equipment);
-        return "redirect:/configManual/"+ id_room;
+        return "redirect:/configManual/"+ id_user + "/" + id_room;
     }
 
     @PostMapping("/setEquipmentOn/{id_equipment}")
-    public String setEquipmentOn(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
-        logger.info("SET_ON: id_equipment="+ id_equipment + ", id_room=" + id_room);
+    public String setEquipmentOn(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room, @RequestParam("id_user") int id_user) {
+        logger.info("SET_ON: id_equipment="+ id_equipment + ", id_room=" + id_room + ", id_user=" + id_user);
         useMonitorService.setEquipmentOn(id_equipment);
         return "redirect:/configManual/"+ id_room;
     }
 
     @PostMapping("/setEquipmentOff/{id_equipment}")
-    public String setEquipmentOff(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room) {
-        logger.info("SET_OFF: id_equipment="+ id_equipment + ", id_room=" + id_room);
+    public String setEquipmentOff(Model model, @PathVariable("id_equipment") int id_equipment, @RequestParam("id_room") int id_room, @RequestParam("id_user") int id_user) {
+        logger.info("SET_OFF: id_equipment="+ id_equipment + ", id_room=" + id_room + ", id_user=" + id_user);
         useMonitorService.setEquipmentOff(id_equipment);
         return "redirect:/configManual/"+ id_room;
     }

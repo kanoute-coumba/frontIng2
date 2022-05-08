@@ -1,13 +1,6 @@
- <!DOCTYPE html>
+<!doctype html>
 <html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Configurer</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <meta charset="utf-8">
     <title>Citizens</title>
     <link rel="icon" type="image/png" th:href="@{/image/icon.png}"/>
@@ -15,17 +8,14 @@
     <link rel="stylesheet" th:href="@{/styles/uicons.css}"/>
     <link rel="stylesheet" th:href="@{/styles/global.css}"/>
     <link rel="stylesheet" th:href="@{/styles/user.css}"/>
-
+</head>
+<body class="background">
 
 <noscript>
     <h2>Seems your browser doesn't support Javascript! Websocket relies on Javascript being
         enabled. Please enable Javascript and reload this page!</h2>
 </noscript>
-</head>
 
-<body class="background">
-
-<!-- NAV BAR -->
 <header>
     <div class="navbar center-all">
         <div class="center-all">
@@ -48,10 +38,6 @@
 
     </div>
 </header>
-<br>
-<br>
-<br>
-<!-- NAV BAR -->
 
 <div style="text-align: center;" class="container my-2">
         <h2>VOS SALLES</h2>
@@ -71,7 +57,7 @@
                 <td th:text="${room.id_floor}"></td>
                 <td th:text="${room.name}"></td>
                 <td>
-                    <a th:href="@{/configManual/{id}(id=${room.id_room})}" class="btn btn-link btn-sm mb-3">
+                    <a th:href="@{'/configManual/' + ${user.user_id} + '/' +${room.id_room}}" class="btn btn-link btn-sm mb-3">
                         <button type="button" class="btn btn-primary">Configurer</button>
                     </a>
                 </td>

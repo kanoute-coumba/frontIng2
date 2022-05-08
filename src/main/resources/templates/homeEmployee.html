@@ -29,7 +29,7 @@
             <a href="/login">Accueil</a>
             <a href="/accessMap">Plan d'accès</a>
             <a href="/guidanceOption">Se faire guider</a>
-            <a class="nav-link" href="/listRooms/${user.user_id}">Configurer</a>
+            <a class="nav-link" th:href="@{'/listRooms/' + ${user.user_id}}">Configurer</a>
             <div class="user center-all">
                 <i class="fi fi-rr-user"></i>
                 <span class="username" th:text="${user.username}"></span>

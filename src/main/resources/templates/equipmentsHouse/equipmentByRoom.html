@@ -296,24 +296,15 @@
             datevalue = datevalue.replace('/', '-').substring(0, 13);
             console.log(datevalue)
 
-            // console.log('http://localhost:9000/valuepresence?=' + idroom + '&currentdate=' + datevalue);
-            http://172.31.249.1:9000/room?floor=
-
 
             $.ajax({
-                url: 'http://172.31.249.1:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+                url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentvalue) {
                     console.log(currentvalue)
-                    if (currentvalue === 0) {
-                        document.getElementById("presence").innerHTML = 'Non'
-                        console.log("Absence")
-                    } else {
-                        console.log("Présence")
-                        document.getElementById("presence").innerHTML = 'Oui'
-                    }
-                }
+
+                 }
             })
             c = c - 2500;
             if (c === 0) {
@@ -346,16 +337,21 @@
             datehours += ':00'
 
             console.log(datehours)
+            let idbuilding = null;
 
             $.ajax({
-                url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building=11534",
+                url: 'http://localhost:9000/idbuildingbyRoom?idroom='+ idroom,
                 type: 'GET',
                 dataType: 'json',
-                success: function (currentdate) {
-                    console.log(currentdate)
+                success: function (id_building) {
+                    console.log("L'idbuilding est: " +id_building);
+                     idbuilding = id_building;
+                     getIdbuilding(id_building);
 
                 }
             })
+
+
             c = c - 2500;
             if (c === 0) {
                 console.log("stop");
@@ -363,7 +359,7 @@
             }
             $.ajax({
                 //http://172.31.249.1:9000/equipmentBYRoom/12
-                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
+                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -381,6 +377,27 @@
         }, 2500);
 
     })
+
+    function getIdbuilding(idbuilding) {
+        let datehours = document.getElementById("myTime").value;
+        datehours = datehours.replace('T', ' ')
+        datehours = datehours.replace('/', '-')
+        datehours += ':00'
+
+        console.log(datehours)
+        console.log('http://localhost:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building="+idbuilding);
+        $.ajax({
+            url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building="+idbuilding,
+            type: 'GET',
+            dataType: 'json',
+            success: function (currentdate) {
+                console.log(currentdate)
+
+            }
+        })
+    }
+
+
 
 
 

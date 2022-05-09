@@ -286,15 +286,15 @@
         let d = new Date(str);
         let c = 60000;
         const interval = setInterval(function () {
-            console.log('Before:\t', d.toLocaleString())
+
             d.setHours(d.getHours() + 1);
-            console.log('After:\t', d.toLocaleString())
+
             myTime.value = d.toISOString().slice(0, 16);
 
             let datevalue = document.getElementById("myTime").value;
             datevalue = datevalue.replace('T', ' ')
             datevalue = datevalue.replace('/', '-').substring(0, 13);
-            console.log(datevalue)
+
 
 
             $.ajax({
@@ -325,9 +325,9 @@
         let c = 60000;
         const interval = setInterval(function () {
 
-            console.log('Before:\t', d.toLocaleString())
+
             d.setHours(d.getHours() + 1);
-            console.log('After:\t', d.toLocaleString())
+
             myTime.value = d.toISOString().slice(0, 16);
 
 
@@ -336,7 +336,7 @@
             datehours = datehours.replace('/', '-')
             datehours += ':00'
 
-            console.log(datehours)
+
             let idbuilding = null;
 
             $.ajax({
@@ -344,7 +344,7 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (id_building) {
-                    console.log("L'idbuilding est: " +id_building);
+
                      idbuilding = id_building;
                      getIdbuilding(id_building);
 
@@ -364,12 +364,11 @@
                 dataType: 'json',
                 success: function (data) {
 
-                    console.log(data);
+
                     for (let i = 0; i < data.length; i++) {
                         let s = document.getElementById("statut" + data[i].id_equipment).innerHTML = data[i].statut;
                        let v =  document.getElementById("value" + data[i].id_equipment).innerHTML = data[i].value;
-                        console.log(v);
-                        console.log(s);
+
                     }
                 }
             })
@@ -384,8 +383,7 @@
         datehours = datehours.replace('/', '-')
         datehours += ':00'
 
-        console.log(datehours)
-        console.log('http://localhost:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building="+idbuilding);
+
         $.ajax({
             url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building="+idbuilding,
             type: 'GET',

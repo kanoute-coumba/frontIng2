@@ -49,12 +49,11 @@
     let house = document.getElementById("building");
     house.addEventListener('click', function () {
         let houseselected = house.options[house.options.selectedIndex].value;
-        let test = 'http://localhost:9000/floor?house' + houseselected;
-        console.log("url test"+test);
+
         $.ajax({
             //url: 'http://172.31.249.1:9000/floor?house=' + houseselected,
             //url: 'http://localhost:9000/floor?house='
-            url: 'http://localhost:9000/floor?house=' + houseselected,
+            url: 'http://172.31.249.1:9000/floor?house=' + houseselected,
             type: 'GET',
             dataType: 'json',
             success: function (listFloor) {
@@ -72,11 +71,10 @@
     let floor = document.getElementById("floor");
     floor.addEventListener('click', function () {
         let floorselected = floor.options[floor.options.selectedIndex].value;
-        console.log("L'id est : " + floorselected);
         $.ajax({
             //url: 'http://172.31.249.1:9000/room?floor=' + floorselected,
             //url : 'http://localhost:9000/room?floor='
-            url: 'http://localhost:9000/room?floor=' + floorselected,
+            url: 'http://172.31.249.1:9000/room?floor=' + floorselected,
             type: 'GET',
             dataType: 'json',
             success: function (listRoom) {

@@ -298,7 +298,7 @@
 
 
             $.ajax({
-                url: 'http://localhost:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
+                url: 'http://172.31.249.1:9000/valuepresence?idroom=' + idroom + '&currentdate=' + datevalue,
                 type: 'GET',
                 dataType: 'json',
                 success: function (currentvalue) {
@@ -340,7 +340,7 @@
             let idbuilding = null;
 
             $.ajax({
-                url: 'http://localhost:9000/idbuildingbyRoom?idroom='+ idroom,
+                url: 'http://172.31.249.1:9000/idbuildingbyRoom?idroom='+ idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (id_building) {
@@ -359,7 +359,7 @@
             }
             $.ajax({
                 //http://172.31.249.1:9000/equipmentBYRoom/12
-                url: 'http://localhost:9000/equipmentBYRoom/' + idroom,
+                url: 'http://172.31.249.1:9000/equipmentBYRoom/' + idroom,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -383,9 +383,8 @@
         datehours = datehours.replace('/', '-')
         datehours += ':00'
 
-
         $.ajax({
-            url: 'http://localhost:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building="+idbuilding,
+            url: 'http://172.31.249.1:9000/updateAutoEquip?meeting_time=' + datehours + "&id_building="+idbuilding,
             type: 'GET',
             dataType: 'json',
             success: function (currentdate) {
@@ -394,13 +393,6 @@
             }
         })
     }
-
-
-
-
-
-
-
 
 </script>
 
